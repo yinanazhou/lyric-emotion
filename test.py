@@ -185,7 +185,7 @@ denom = args.adaptive
 # set path
 trg_path = "moody_test.json"
 ending_path = ('%s_%d_bs_%d_adamw_data_%d_lr_%s_%d' %(model, MAX_LEN, batch_size,(1 - test_size)*100, str(lr).replace("-",""),denom))
-save_model_path = "/models/" + ending_path
+save_model_path = "models/" + ending_path
 if not os.path.exists(save_model_path):
     os.makedirs(save_model_path)
 
