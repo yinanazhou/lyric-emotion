@@ -219,6 +219,8 @@ for seq in input_ids:
     attention_masks.append(seq_mask)
 
 # train validation split
+input_ids = torch.Tensor(input_ids)
+encoded_labels = torch.Tensor(encoded_labels)
 train_inputs, validation_inputs, train_labels, validation_labels = train_test_split(input_ids, encoded_labels,
                                                                                     random_state=2018, test_size=test_size)
 train_masks, validation_masks, _, _ = train_test_split(attention_masks, input_ids,
