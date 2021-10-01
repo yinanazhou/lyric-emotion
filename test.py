@@ -9,7 +9,8 @@ from transformers import XLNetTokenizer, XLNetForSequenceClassification, XLNetMo
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 # from sklearn.feature_extraction.stop_words import ENGLISH_STOP_WORDS
-from keras.preprocessing.sequence import pad_sequences
+# from tensorflow import keras
+from tensorflow.keras.preprocessing.sequence import pad_sequences
 from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
 import torch.nn as nn
 from sklearn.metrics import fbeta_score, precision_recall_fscore_support, f1_score
@@ -162,13 +163,17 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 if torch.cuda.device_count() > 1:
     print("Let's use", torch.cuda.device_count(), "GPUs!")
 
+SEED = 0
+torch.manual_seed(SEED)
+torch.cuda.manual_seed(SEED)
+
 # parser
 parser = argparse.ArgumentParser()
 parser.add_argument('--lr', help='Learning Rate', default=2e-5, type=float)
 parser.add_argument('--epochs', help='Number of Epochs', default=2, type=int)
 parser.add_argument('--ml', help='Max Len of Sequence', default=1024, type=int)
 parser.add_argument('--bs', help='Batch Size', default=8, type=int)
-parser.add_argument('--ts', help='Test Size', default=0.2, type=float)
+parser.add_argument('--ts', help='Test Size (0-1)', default=0.2, type=float)
 parser.add_argument('--adaptive', help='Adaptive LR', default='20', type=float)
 
 args = parser.parse_args()
@@ -185,9 +190,13 @@ denom = args.adaptive
 # set path
 trg_path = "moody_test.json"
 ending_path = ('%s_%d_bs_%d_adamw_data_%d_lr_%s_%d' %(model, MAX_LEN, batch_size,(1 - test_size)*100, str(lr).replace("-",""),denom))
-save_model_path = "models/" + ending_path
+save_model_path = "../models/" + ending_path
 if not os.path.exists(save_model_path):
     os.makedirs(save_model_path)
+if not os.path.exists("../logs/"):
+    os.mkdir("../logs/")
+logfile_path = "../logs/" + ending_path
+logging_storage(logfile_path)
 
 # fetch data
 with open(trg_path) as f:
@@ -219,12 +228,23 @@ for seq in input_ids:
     attention_masks.append(seq_mask)
 
 # train validation split
-input_ids = torch.Tensor(input_ids)
-encoded_labels = torch.Tensor(encoded_labels)
+# print(type(input_ids))
+# input_ids_tensor = torch.tensor(input_ids)[0]
+# print(input_ids_tensor[0])
+# print(input_ids_tensor.size)
+# encoded_labels_tensor = torch.tensor(encoded_labels)[0]
+
 train_inputs, validation_inputs, train_labels, validation_labels = train_test_split(input_ids, encoded_labels,
-                                                                                    random_state=2018, test_size=test_size)
+                                                                                    random_state=SEED, test_size=test_size)
 train_masks, validation_masks, _, _ = train_test_split(attention_masks, input_ids,
-                                                       random_state=2018, test_size=test_size)
+                                                       random_state=SEED, test_size=test_size)
+# Convert to Tensor
+train_inputs = torch.tensor(train_inputs)
+validation_inputs = torch.tensor(validation_inputs)
+train_labels = torch.tensor(train_labels)
+validation_labels = torch.tensor(validation_labels)
+train_masks = torch.tensor(train_masks)
+validation_masks = torch.tensor(validation_masks)
 
 # dataloader
 train_data = TensorDataset(train_inputs, train_masks, train_labels)
