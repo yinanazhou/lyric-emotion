@@ -170,7 +170,7 @@ torch.cuda.manual_seed(SEED)
 # parser
 parser = argparse.ArgumentParser()
 parser.add_argument('--lr', help='Learning Rate', default=2e-5, type=float)
-parser.add_argument('--epochs', help='Number of Epochs', default=2, type=int)
+parser.add_argument('--epochs', help='Number of Epochs', default=20, type=int)
 parser.add_argument('--ml', help='Max Len of Sequence', default=1024, type=int)
 parser.add_argument('--bs', help='Batch Size', default=8, type=int)
 parser.add_argument('--ts', help='Test Size (0-1)', default=0.2, type=float)
@@ -190,12 +190,12 @@ denom = args.adaptive
 # set path
 trg_path = "moody_test.json"
 ending_path = ('%s_%d_bs_%d_adamw_data_%d_lr_%s_%d' %(model, MAX_LEN, batch_size,(1 - test_size)*100, str(lr).replace("-",""),denom))
-save_model_path = "../models/" + ending_path
+save_model_path = "models/" + ending_path
 if not os.path.exists(save_model_path):
     os.makedirs(save_model_path)
-if not os.path.exists("../logs/"):
-    os.mkdir("../logs/")
-logfile_path = "../logs/" + ending_path
+if not os.path.exists("logs/"):
+    os.mkdir("logs/")
+logfile_path = "logs/" + ending_path
 logging_storage(logfile_path)
 
 # fetch data
