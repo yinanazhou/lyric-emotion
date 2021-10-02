@@ -98,7 +98,7 @@ def train(i):
                                                                                total_predicted_label, average='macro')
             logging.info(
                 "Train: %5.1f\tEpoch: %d\tIter: %d\tLoss: %5.5f\tAcc= %5.3f\tPrecision= %5.3f\tRecall= %5.3f\tF1_score= %5.3f" % (
-                train_len * 100.0 / train_inputs.size(0), i, step, total_loss / train_len, f_acc * 100.0 / train_len,
+                train_len * 100.0 / train_inputs.size(0), i+1, step, total_loss / train_len, f_acc * 100.0 / train_len,
                 precision * 100., recall * 100., f1_measure * 100.))
 
         # if torch.cuda.device_count() > 1:
@@ -112,7 +112,7 @@ def train(i):
                                                                        average='macro')
     logging.info(
         "Train: %5.1f\tEpoch: %d\tIter: %d\tLoss: %5.5f\tAcc= %5.3f\tPrecision= %5.3f\tRecall= %5.3f\tF1_score= %5.3f" % (
-        train_len * 100.0 / train_inputs.size(0), i, step, total_loss / train_len, f_acc * 100.0 / train_len,
+        train_len * 100.0 / train_inputs.size(0), i+1, step, total_loss / train_len, f_acc * 100.0 / train_len,
         precision * 100., recall * 100., f1_measure * 100.))
 
 
@@ -147,14 +147,14 @@ def eval(i):
                                                                                total_predicted_label, average='macro')
             logging.info(
                 "Eval: %5.1f\tEpoch: %d\tIter: %d\tLoss: %5.5f\tAcc= %5.3f\tPrecision= %5.3f\tRecall= %5.3f\tF1_score= %5.3f" % (
-                val_len * 100.0 / validation_inputs.size(0), i, step, total_loss / val_len, f_acc * 100.0 / val_len,
+                val_len * 100.0 / validation_inputs.size(0), i+1, step, total_loss / val_len, f_acc * 100.0 / val_len,
                 precision * 100., recall * 100., f1_measure * 100.))
 
     precision, recall, f1_measure, _ = precision_recall_fscore_support(total_actual_label, total_predicted_label,
                                                                        average='macro')
     logging.info(
         "Eval: %5.1f\tEpoch: %d\tIter: %d\tLoss: %5.5f\tAcc= %5.3f\tPrecision= %5.3f\tRecall= %5.3f\tF1_score= %5.3f" % (
-        val_len * 100.0 / validation_inputs.size(0), i, step, total_loss / val_len, f_acc * 100.0 / val_len,
+        val_len * 100.0 / validation_inputs.size(0), i+1, step, total_loss / val_len, f_acc * 100.0 / val_len,
         precision * 100., recall * 100., f1_measure * 100.))
 
 
@@ -188,7 +188,7 @@ num_labels = 4
 denom = args.adaptive
 
 # set path
-trg_path = "moody_test.json"
+trg_path = "moody_lyrics.json"
 ending_path = ('%s_%d_bs_%d_adamw_data_%d_lr_%s_%d' %(model, MAX_LEN, batch_size,(1 - test_size)*100, str(lr).replace("-",""),denom))
 save_model_path = "models/" + ending_path
 if not os.path.exists(save_model_path):
