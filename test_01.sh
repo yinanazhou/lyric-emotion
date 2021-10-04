@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --account=def-ichiro
-#SBATCH --time=01:00:00
+#SBATCH --time=05:00:00
 #SBATCH --output=run_output/test_output_01.out
 #SBATCH --gres=gpu:v100:1
 #SBATCH --gres=gpu:1       # Request GPU "generic resources"
