@@ -1,4 +1,5 @@
 import os
+import gc
 import json
 import re
 import string
@@ -273,5 +274,9 @@ optimizer = AdamW(optimizer_grouped_parameters, lr=lr)
 
 
 for i in range(num_epochs):
+    gc.collect()
+    torch.cuda.empty_cache()
     train(i)
+    gc.collect()
+    torch.cuda.empty_cache()
     eval(i)
