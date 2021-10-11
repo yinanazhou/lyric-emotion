@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=4  # Cores proportional to GPUs: 6 on Cedar, 16 on Graham.
 #SBATCH --mem=15G       # Memory proportional to GPUs: 32000 Cedar, 64000 Graham.
 
-module load python/3.7
+module load python/3.6
 module load scipy-stack
 virtualenv --no-download $SLURM_TMPDIR/env
 source $SLURM_TMPDIR/env/bin/activate
@@ -16,4 +16,4 @@ pip install --no-index -r requirements.txt
 
 
 echo "Starting Task"
-python test.py
+python test.py -bs 32
