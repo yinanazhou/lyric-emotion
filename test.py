@@ -21,7 +21,7 @@ import argparse
 def logging_storage(logfile_path):
     logging.basicConfig(filename=logfile_path, filemode='a', level=logging.INFO, format='%(asctime)s => %(message)s')
     logging.info(torch.__version__)
-    logging.info(device)
+    logging.info(DEVICE)
 
 
 def preprocess(text, tokenizer):
@@ -71,9 +71,10 @@ def train(i):
     ## adaptive lr
     optimizer.param_groups[0]['lr'] *= (0.1) ** (1 / denom)
 
-    for step, batch in enumerate(train_dataloader):
-        batch = tuple(t.to(device) for t in batch)
-        b_input_ids, b_input_mask, b_labels = batch
+    for step, (b_input_ids, b_input_mask, b_labels) in enumerate(train_dataloader):
+        b_input_ids = b_input_ids.to(DEVICE)
+        b_input_mask = b_input_mask.to(DEVICE)
+        b_labels = b_labels.to(DEVICE)
         if b_labels.size(0) <= 1:
             continue
 
@@ -126,9 +127,10 @@ def eval(i):
     f_acc = 0
 
     with torch.no_grad():
-        for step, batch in enumerate(validation_dataloader):
-            batch = tuple(t.cuda() for t in batch)
-            b_input_ids, b_input_mask, b_labels = batch
+        for step, (b_input_ids, b_input_mask, b_labels) in enumerate(validation_dataloader):
+            b_input_ids = b_input_ids.to(DEVICE)
+            b_input_mask = b_input_mask.to(DEVICE)
+            b_labels = b_labels.to(DEVICE)
 
             optimizer.zero_grad()
             outputs = model(b_input_ids, token_type_ids=None, attention_mask=b_input_mask, labels=b_labels)
@@ -160,7 +162,7 @@ def eval(i):
 
 
 # check gpu
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 if torch.cuda.device_count() > 1:
     print("Using", torch.cuda.device_count(), "GPUs!")
 
@@ -253,7 +255,7 @@ validation_dataloader = DataLoader(validation_data, sampler=validation_sampler, 
 # define model
 model = XLNetForSequenceClassification.from_pretrained("xlnet-base-cased", num_labels=num_labels)
 model = nn.DataParallel(model)
-model.to(device)
+model.to(DEVICE)
 
 # define optimizer
 param_optimizer = list(model.named_parameters())
