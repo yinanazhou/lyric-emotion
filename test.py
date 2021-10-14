@@ -79,11 +79,14 @@ def train(i):
             continue
 
         optimizer.zero_grad()
+
+        torch.cuda.empty_cache()
+
         outputs = model(b_input_ids, token_type_ids=None, attention_mask=b_input_mask, labels=b_labels)
 
         pred = outputs[1].detach().cpu().numpy()
         batch_f_acc, pred_flat = flat_accuracy(pred, b_labels)
-        f_acc += batch_f_acc
+        f_acc += float(batch_f_acc)
         loss = outputs[0]
         loss.sum().backward()
         optimizer.step()
@@ -136,7 +139,7 @@ def eval(i):
             outputs = model(b_input_ids, token_type_ids=None, attention_mask=b_input_mask, labels=b_labels)
             pred = outputs[1].detach().cpu().numpy()
             batch_f_acc, pred_flat = flat_accuracy(pred, b_labels)
-            f_acc += batch_f_acc
+            f_acc += float(batch_f_acc)
 
             labels_flat = b_labels.flatten().cpu().detach().numpy()
             total_actual_label = np.concatenate((total_actual_label, labels_flat))
@@ -191,7 +194,7 @@ num_labels = 4
 denom = args.adaptive
 
 # set path
-trg_path = "moody_lyrics.json"
+trg_path = "moody_test.json"
 ending_path = ('%s_%d_bs_%d_adamw_data_%d_lr_%s_%d' %(model, MAX_LEN, batch_size,(1 - test_size)*100, str(lr).replace("-",""),denom))
 save_model_path = "models/" + ending_path
 if not os.path.exists(save_model_path):
