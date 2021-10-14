@@ -91,7 +91,7 @@ def train(i):
         total_actual_label = np.concatenate((total_actual_label, labels_flat))
         total_predicted_label = np.concatenate((total_predicted_label, pred_flat))
 
-        total_loss += outputs[0].sum()
+        total_loss += float(outputs[0].sum())
         train_len += b_input_ids.size(0)
 
         if step % 100 == 0 and step:
@@ -102,12 +102,12 @@ def train(i):
                 train_len * 100.0 / train_inputs.size(0), i+1, step, total_loss / train_len, f_acc * 100.0 / train_len,
                 precision * 100., recall * 100., f1_measure * 100.))
 
-        # if torch.cuda.device_count() > 1:
-        #     p = 100
-        #     path = save_model_path + '/e_' + str(i) + "_" + str(p) + ".ckpt"
-        #     torch.save(model.module.state_dict(), path)
-        # else:
-        #     torch.save(model.state_dict(), path)
+        if torch.cuda.device_count() > 1:
+            p = 100
+            path = save_model_path + '/e_' + str(i) + "_" + str(p) + ".ckpt"
+            torch.save(model.module.state_dict(), path)
+        else:
+            torch.save(model.state_dict(), save_model_path)
 
     precision, recall, f1_measure, _ = precision_recall_fscore_support(total_actual_label, total_predicted_label,
                                                                        average='macro')
@@ -141,7 +141,7 @@ def eval(i):
             total_predicted_label = np.concatenate((total_predicted_label, pred_flat))
 
             val_len += b_input_ids.size(0)
-            total_loss += outputs[0].sum()
+            total_loss += float(outputs[0].sum())
 
         if step % 100 == 0 and step:
             precision, recall, f1_measure, _ = precision_recall_fscore_support(total_actual_label,
@@ -162,7 +162,7 @@ def eval(i):
 # check gpu
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 if torch.cuda.device_count() > 1:
-    print("Let's use", torch.cuda.device_count(), "GPUs!")
+    print("Using", torch.cuda.device_count(), "GPUs!")
 
 SEED = 0
 torch.manual_seed(SEED)
@@ -229,12 +229,6 @@ for seq in input_ids:
     attention_masks.append(seq_mask)
 
 # train validation split
-# print(type(input_ids))
-# input_ids_tensor = torch.tensor(input_ids)[0]
-# print(input_ids_tensor[0])
-# print(input_ids_tensor.size)
-# encoded_labels_tensor = torch.tensor(encoded_labels)[0]
-
 train_inputs, validation_inputs, train_labels, validation_labels = train_test_split(input_ids, encoded_labels,
                                                                                     random_state=SEED, test_size=test_size)
 train_masks, validation_masks, _, _ = train_test_split(attention_masks, input_ids,
