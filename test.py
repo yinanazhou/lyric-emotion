@@ -111,7 +111,8 @@ def train(i):
             path = save_model_path + '/e_' + str(i) + "_" + str(p) + ".ckpt"
             torch.save(model.module.state_dict(), path)
         else:
-            torch.save(model.state_dict(), save_model_path)
+            path = save_model_path + '/e_' + str(i) + ".pt"
+            torch.save(model.state_dict(), path)
 
     precision, recall, f1_measure, _ = precision_recall_fscore_support(total_actual_label, total_predicted_label,
                                                                        average='macro')
@@ -194,7 +195,7 @@ num_labels = 4
 denom = args.adaptive
 
 # set path
-trg_path = "moody_test.json"
+trg_path = "moody_lyrics.json"
 ending_path = ('%s_%d_bs_%d_adamw_data_%d_lr_%s_%d' %(model, MAX_LEN, batch_size,(1 - test_size)*100, str(lr).replace("-",""),denom))
 save_model_path = "models/" + ending_path
 if not os.path.exists(save_model_path):
