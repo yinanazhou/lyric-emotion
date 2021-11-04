@@ -10,7 +10,7 @@
 module load python/3.8
 module load scipy-stack
 module load cuda
-module load torch/1.4.0
+module load torch/1.4.0+computecanada
 virtualenv --no-download $SLURM_TMPDIR/env
 source $SLURM_TMPDIR/env/bin/activate
 pip3 install --upgrade --no-binary numpy==1.20.0 numpy==1.20.0
