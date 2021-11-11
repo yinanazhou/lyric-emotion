@@ -6,11 +6,14 @@ import string
 import torch
 import numpy as np
 import logging
-from transformers import XLNetTokenizer, XLNetForSequenceClassification, XLNetModel, AdamW
+from transformers import XLNetTokenizer, XLNetForSequenceClassification, XLNetModel, AdamW, BertTokenizer, BertForSequenceClassification
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
+from datasets import Dataset
+
 # from sklearn.feature_extraction.stop_words import ENGLISH_STOP_WORDS
 # from tensorflow import keras
+from sklearn.model_selection import KFold
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
 import torch.nn as nn
@@ -60,7 +63,7 @@ def flat_accuracy(preds, labels):
     return np.sum(pred_flat == labels_flat), pred_flat
 
 
-def train(i):
+def train(i, t_dataloader):
     model.train()
     total_loss = 0.0
     total_predicted_label = np.array([])
@@ -71,7 +74,7 @@ def train(i):
     ## adaptive lr
     optimizer.param_groups[0]['lr'] *= (0.1) ** (1 / denom)
 
-    for step, (b_input_ids, b_input_mask, b_labels) in enumerate(train_dataloader):
+    for step, (b_input_ids, b_input_mask, b_labels) in enumerate(t_dataloader):
         b_input_ids = b_input_ids.to(DEVICE)
         b_input_mask = b_input_mask.to(DEVICE)
         b_labels = b_labels.to(DEVICE)
@@ -98,13 +101,13 @@ def train(i):
         total_loss += float(outputs[0].sum())
         train_len += b_input_ids.size(0)
 
-        if step % 100 == 0 and step:
-            precision, recall, f1_measure, _ = precision_recall_fscore_support(total_actual_label,
-                                                                               total_predicted_label, average='macro')
-            logging.info(
-                "Train: %5.1f\tEpoch: %d\tIter: %d\tLoss: %5.5f\tAcc= %5.3f\tPrecision= %5.3f\tRecall= %5.3f\tF1_score= %5.3f" % (
-                train_len * 100.0 / train_inputs.size(0), i+1, step, total_loss / train_len, f_acc * 100.0 / train_len,
-                precision * 100., recall * 100., f1_measure * 100.))
+        # if step % 100 == 0 and step:
+        #     precision, recall, f1_measure, _ = precision_recall_fscore_support(total_actual_label,
+        #                                                                        total_predicted_label, average='macro')
+        #     logging.info(
+        #         "Train: %5.1f\tEpoch: %d\tIter: %d\tLoss: %5.5f\tAcc= %5.3f\tPrecision= %5.3f\tRecall= %5.3f\tF1_score= %5.3f" % (
+        #         train_len * 100.0 / train_inputs.size(0), i+1, step, total_loss / train_len, f_acc * 100.0 / train_len,
+        #         precision * 100., recall * 100., f1_measure * 100.))
 
         if torch.cuda.device_count() > 1:
             p = 100
@@ -120,9 +123,14 @@ def train(i):
         "Train: %5.1f\tEpoch: %d\tIter: %d\tLoss: %5.5f\tAcc= %5.3f\tPrecision= %5.3f\tRecall= %5.3f\tF1_score= %5.3f" % (
         train_len * 100.0 / train_inputs.size(0), i+1, step, total_loss / train_len, f_acc * 100.0 / train_len,
         precision * 100., recall * 100., f1_measure * 100.))
+    k_result['t_loss'].append(total_loss / train_len)
+    k_result['t_accuracy'].append(f_acc * 100.0 / train_len)
+    k_result['t_precision'].append(precision * 100.)
+    k_result['t_recall'].append(recall * 100.)
+    k_result['t_F1_measure'].append(f1_measure * 100.)
 
 
-def eval(i):
+def eva(v_dataloader):
     model.eval()
     val_len = 0
     total_loss = 0
@@ -131,7 +139,7 @@ def eval(i):
     f_acc = 0
 
     with torch.no_grad():
-        for step, (b_input_ids, b_input_mask, b_labels) in enumerate(validation_dataloader):
+        for step, (b_input_ids, b_input_mask, b_labels) in enumerate(v_dataloader):
             b_input_ids = b_input_ids.to(DEVICE)
             b_input_mask = b_input_mask.to(DEVICE)
             b_labels = b_labels.to(DEVICE)
@@ -149,20 +157,26 @@ def eval(i):
             val_len += b_input_ids.size(0)
             total_loss += float(outputs[0].sum())
 
-        if step % 100 == 0 and step:
-            precision, recall, f1_measure, _ = precision_recall_fscore_support(total_actual_label,
-                                                                               total_predicted_label, average='macro')
-            logging.info(
-                "Eval: %5.1f\tEpoch: %d\tIter: %d\tLoss: %5.5f\tAcc= %5.3f\tPrecision= %5.3f\tRecall= %5.3f\tF1_score= %5.3f" % (
-                val_len * 100.0 / validation_inputs.size(0), i+1, step, total_loss / val_len, f_acc * 100.0 / val_len,
-                precision * 100., recall * 100., f1_measure * 100.))
+        # if step % 100 == 0 and step:
+        #     precision, recall, f1_measure, _ = precision_recall_fscore_support(total_actual_label,
+        #                                                                        total_predicted_label, average='macro')
+        #     logging.info(
+        #         "Eval: %5.1f\tEpoch: %d\tIter: %d\tLoss: %5.5f\tAcc= %5.3f\tPrecision= %5.3f\tRecall= %5.3f\tF1_score= %5.3f" % (
+        #         val_len * 100.0 / val_inputs.size(0), i+1, step, total_loss / val_len, f_acc * 100.0 / val_len,
+        #         precision * 100., recall * 100., f1_measure * 100.))
 
-    precision, recall, f1_measure, _ = precision_recall_fscore_support(total_actual_label, total_predicted_label,
-                                                                       average='macro')
-    logging.info(
-        "Eval: %5.1f\tEpoch: %d\tIter: %d\tLoss: %5.5f\tAcc= %5.3f\tPrecision= %5.3f\tRecall= %5.3f\tF1_score= %5.3f" % (
-        val_len * 100.0 / validation_inputs.size(0), i+1, step, total_loss / val_len, f_acc * 100.0 / val_len,
-        precision * 100., recall * 100., f1_measure * 100.))
+        precision, recall, f1_measure, _ = precision_recall_fscore_support(total_actual_label, total_predicted_label,
+                                                                           average='macro')
+        logging.info(
+            "Eval: %5.1f\tEpoch: %d\tIter: %d\tLoss: %5.5f\tAcc= %5.3f\tPrecision= %5.3f\tRecall= %5.3f\tF1_score= %5.3f" % (
+            val_len * 100.0 / val_inputs.size(0), i+1, step, total_loss / val_len, f_acc * 100.0 / val_len,
+            precision * 100., recall * 100., f1_measure * 100.))
+        k_result['e_loss'].append(total_loss / val_len)
+        k_result['e_accuracy'].append(f_acc * 100.0 / val_len)
+        k_result['e_precision'].append(precision * 100.)
+        k_result['e_recall'].append(recall * 100.)
+        k_result['e_F1_measure'].append(f1_measure * 100.)
+    return f_acc * 100.0 / val_len
 
 
 # check gpu
@@ -180,7 +194,7 @@ parser.add_argument('--lr', help='Learning Rate', default=2e-5, type=float)
 parser.add_argument('--epochs', help='Number of Epochs', default=20, type=int)
 parser.add_argument('--ml', help='Max Len of Sequence', default=1024, type=int)
 parser.add_argument('--bs', help='Batch Size', default=8, type=int)
-parser.add_argument('--ts', help='Test Size (0-1)', default=0.2, type=float)
+# parser.add_argument('--ts', help='Test Size (0-1)', default=0.2, type=float)
 parser.add_argument('--adaptive', help='Adaptive LR', default='20', type=float)
 
 args = parser.parse_args()
@@ -189,14 +203,15 @@ lr = args.lr
 num_epochs = args.epochs
 MAX_LEN = args.ml
 batch_size = args.bs
-test_size = args.ts
-model = 'xlnet'
+# test_size = args.ts
+# model_str = 'xlnet'
+model_str = 'bert'
 num_labels = 4
 denom = args.adaptive
 
 # set path
 trg_path = "moody_test.json"
-ending_path = ('%s_%d_bs_%d_adamw_data_%d_lr_%s_%d' %(model, MAX_LEN, batch_size,(1 - test_size)*100, str(lr).replace("-",""),denom))
+ending_path = ('%s_%d_bs_%d_adamw_lr_%s_%d' %(model_str, MAX_LEN, batch_size, str(lr).replace("-",""),denom))
 save_model_path = "models/" + ending_path
 if not os.path.exists(save_model_path):
     os.makedirs(save_model_path)
@@ -204,6 +219,10 @@ if not os.path.exists("logs/"):
     os.mkdir("logs/")
 logfile_path = "logs/" + ending_path
 logging_storage(logfile_path)
+# result_path = "result_json/" + ending_path
+if not os.path.exists("result_json/"):
+    os.makedirs("result_json/")
+
 
 # fetch data
 with open(trg_path) as f:
@@ -217,9 +236,10 @@ encoder = LabelEncoder()
 encoded_labels = encoder.fit_transform(labels)
 
 attention_masks = []
-input_ids = []
+# input_ids = []
 # tokenize
-tokenizer = XLNetTokenizer.from_pretrained('xlnet-base-cased', do_lower_case=True)
+# tokenizer = XLNetTokenizer.from_pretrained('xlnet-base-cased', do_lower_case=True)
+tokenizer = BertTokenizer.from_pretrained('bert-base-cased', do_lower_case=True)
 
 # for i, lyric in enumerate(lyrics):
 #     encodings = tokenizer.encode_plus(lyrics, add_special_tokens=True, max_length=MAX_LEN, return_tensors='pt',
@@ -242,64 +262,90 @@ for seq in input_ids:
     seq_mask = [float(i > 0) for i in seq]
     attention_masks.append(seq_mask)
 
-# train validation test split
+# train-validation test split
 # 6 2 2
-train_inputs, val_test_inputs, train_labels, val_test_labels = train_test_split(input_ids, encoded_labels,
-                                                                                random_state=SEED, test_size=0.4)
-train_masks, val_test_masks, _, _ = train_test_split(attention_masks, input_ids,
-                                                     random_state=SEED, test_size=0.4)
-val_inputs, test_inputs, val_labels, test_labels = train_test_split(val_test_inputs, val_test_labels,
-                                                                    random_state=SEED, test_size=0.5)
-val_masks, test_masks, _, _ = train_test_split(val_test_masks, val_test_inputs,
-                                               random_state=SEED, test_size=0.5)
+train_val_inputs, test_inputs, train_val_labels, test_labels = train_test_split(input_ids, encoded_labels,
+                                                                                random_state=SEED, test_size=0.2)
+train_val_masks, test_masks, _, _ = train_test_split(attention_masks, input_ids,
+                                                     random_state=SEED, test_size=0.2)
 
 # Convert to Tensor
-train_inputs = torch.tensor(train_inputs)
-train_labels = torch.tensor(train_labels)
-train_masks = torch.tensor(train_masks)
-
-validation_inputs = torch.tensor(val_inputs)
-validation_labels = torch.tensor(val_labels)
-validation_masks = torch.tensor(val_masks)
+train_val_inputs = torch.tensor(train_val_inputs)
+train_val_labels = torch.tensor(train_val_labels)
+train_val_masks = torch.tensor(train_val_masks)
 
 test_inputs = torch.tensor(test_inputs)
 test_labels = torch.tensor(test_labels)
 test_masks = torch.tensor(test_masks)
 
 # dataloader
-train_data = TensorDataset(train_inputs, train_masks, train_labels)
-train_sampler = RandomSampler(train_data)
-train_dataloader = DataLoader(train_data, sampler=train_sampler, batch_size=batch_size)
-
-validation_data = TensorDataset(validation_inputs, validation_masks, validation_labels)
-validation_sampler = SequentialSampler(validation_data)
-validation_dataloader = DataLoader(validation_data, sampler=validation_sampler, batch_size=batch_size)
+# train_val_data = TensorDataset(train_val_inputs, train_val_masks, train_val_labels)
+# train_val_sampler = RandomSampler(train_val_data)
+# train_val_dataloader = DataLoader(train_val_data, sampler=train_val_sampler, batch_size=batch_size)
 
 test_data = TensorDataset(test_inputs, test_masks, test_labels)
 test_sampler = SequentialSampler(test_data)
 test_dataloader = DataLoader(test_data, sampler=test_sampler, batch_size=batch_size)
 
-# define model
-model = XLNetForSequenceClassification.from_pretrained("xlnet-base-cased", num_labels=num_labels)
-# model = nn.DataParallel(model)
-model.to(DEVICE)
+k_folds = 2
+results = []
+result_json = {}
+kfold = KFold(n_splits=k_folds, shuffle=True)
+for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
+    logging.info('-------------------------------------------------')
+    logging.info('%d FOLD', fold+1)
 
-# define optimizer
-param_optimizer = list(model.named_parameters())
-no_decay = ['bias', 'gamma', 'beta']
-optimizer_grouped_parameters = [
-    {'params': [p for n, p in param_optimizer if not any(nd in n for nd in no_decay)],
-     'weight_decay_rate': 0.01},
-    {'params': [p for n, p in param_optimizer if any(nd in n for nd in no_decay)],
-     'weight_decay_rate': 0.0}
-]
-optimizer = AdamW(optimizer_grouped_parameters, lr=lr)
+    # write results of each fold into a dic
+    k_result = {'t_loss': [], 't_accuracy': [], 't_precision': [], 't_recall': [], 't_F1_measure': [],
+                'e_loss': [], 'e_accuracy': [], 'e_precision': [], 'e_recall': [], 'e_F1_measure': []}
 
+    # Dataset.select(indices=train_idx)
+    train_inputs, val_inputs = train_val_inputs[train_idx], train_val_inputs[val_idx]
+    train_masks, val_masks = train_val_masks[train_idx], train_val_masks[val_idx]
+    train_labels, val_labels = train_val_labels[train_idx], train_val_labels[val_idx]
 
-for i in range(num_epochs):
+    train_data = TensorDataset(train_inputs, train_masks, train_labels)
+    train_sampler = SequentialSampler(train_data)
+    train_dataloader = DataLoader(train_data, sampler=train_sampler, batch_size=batch_size)
+
+    val_data = TensorDataset(val_inputs, val_masks, val_labels)
+    val_sampler = SequentialSampler(val_data)
+    val_dataloader = DataLoader(val_data, sampler=val_sampler, batch_size=batch_size)
+
+    # define model
+    # xlnet
+    # model = XLNetForSequenceClassification.from_pretrained("xlnet-base-cased", num_labels=num_labels)
+    # BERT
+    model = BertForSequenceClassification.from_pretrained('bert-base-cased', num_labels=num_labels)
+    # model = nn.DataParallel(model)
+    model.to(DEVICE)
+
+    # define optimizer
+    param_optimizer = list(model.named_parameters())
+    no_decay = ['bias', 'gamma', 'beta']
+    optimizer_grouped_parameters = [
+        {'params': [p for n, p in param_optimizer if not any(nd in n for nd in no_decay)],
+         'weight_decay_rate': 0.01},
+        {'params': [p for n, p in param_optimizer if any(nd in n for nd in no_decay)],
+         'weight_decay_rate': 0.0}
+    ]
+    optimizer = AdamW(optimizer_grouped_parameters, lr=lr)
+
+    for i in range(num_epochs):
+        gc.collect()
+        torch.cuda.empty_cache()
+        train(i, train_dataloader)
+
     gc.collect()
     torch.cuda.empty_cache()
-    train(i)
-    gc.collect()
-    torch.cuda.empty_cache()
-    eval(i)
+    k_acc = eva(val_dataloader)
+    results.append(k_acc)
+    result_json[str(fold+1)] = []
+    result_json[str(fold+1)].append(k_result)
+
+logging.info("AVERAGE ACCURACY: %5.3f", sum(results) / len(results))
+result_json['average accuracy'] = []
+result_json['average accuracy'].append(sum(results) / len(results))
+result_path = "result_json/" + ending_path + '.json'
+with open(result_path, 'w') as f:
+    json.dump(result_json, f, indent=4)
