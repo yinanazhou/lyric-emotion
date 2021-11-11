@@ -9,7 +9,7 @@ import logging
 from transformers import XLNetTokenizer, XLNetForSequenceClassification, XLNetModel, AdamW, BertTokenizer, BertForSequenceClassification
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
-from datasets import Dataset
+# from datasets import Dataset
 
 # from sklearn.feature_extraction.stop_words import ENGLISH_STOP_WORDS
 # from tensorflow import keras
@@ -210,7 +210,7 @@ num_labels = 4
 denom = args.adaptive
 
 # set path
-trg_path = "moody_test.json"
+trg_path = "moody_lyrics.json"
 ending_path = ('%s_%d_bs_%d_adamw_lr_%s_%d' %(model_str, MAX_LEN, batch_size, str(lr).replace("-",""),denom))
 save_model_path = "models/" + ending_path
 if not os.path.exists(save_model_path):
