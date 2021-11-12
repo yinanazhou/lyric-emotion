@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --account=def-ichiro
-#SBATCH --time=5-00:00:00
-#SBATCH --output=run_output/bert_cv_output_01.out
+#SBATCH --time=10:00:00
+#SBATCH --output=run_output/bert_cv_output_02.out
 #SBATCH --gres=gpu:v100:1
 #SBATCH --gres=gpu:1       # Request GPU "generic resources"
 #SBATCH --cpus-per-task=1  # Cores proportional to GPUs: 6 on Cedar, 16 on Graham.
@@ -18,4 +18,4 @@ pip install --no-index -r requirements.txt
 
 
 echo "Starting Task"
-python bert_cv.py --ml 512
+python bert_cv.py --ml 512 --bs 32

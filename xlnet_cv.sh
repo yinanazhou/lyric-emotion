@@ -1,11 +1,11 @@
 #!/bin/bash
 #SBATCH --account=def-ichiro
-#SBATCH --time=5-00:00:00
-#SBATCH --output=run_output/xlnet_cv_output_01.out
+#SBATCH --time=10:00:00
+#SBATCH --output=run_output/xlnet_cv_output_02.out
 #SBATCH --gres=gpu:v100:1
 #SBATCH --gres=gpu:1       # Request GPU "generic resources"
 #SBATCH --cpus-per-task=1  # Cores proportional to GPUs: 6 on Cedar, 16 on Graham.
-#SBATCH --mem=150G       # Memory proportional to GPUs: 32000 Cedar, 64000 Graham.
+#SBATCH --mem=180G       # Memory proportional to GPUs: 32000 Cedar, 64000 Graham.
 
 module load python/3.8
 module load scipy-stack
@@ -18,4 +18,4 @@ pip install --no-index -r requirements.txt
 
 
 echo "Starting Task"
-python xlnet_cv.py --ml 512
+python xlnet_cv.py --ml 512 --bs 32

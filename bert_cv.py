@@ -287,7 +287,7 @@ test_data = TensorDataset(test_inputs, test_masks, test_labels)
 test_sampler = SequentialSampler(test_data)
 test_dataloader = DataLoader(test_data, sampler=test_sampler, batch_size=batch_size)
 
-k_folds = 2
+k_folds = 5
 results = []
 result_json = {}
 kfold = KFold(n_splits=k_folds, shuffle=True)
