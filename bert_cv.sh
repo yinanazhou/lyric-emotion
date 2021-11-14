@@ -18,4 +18,4 @@ pip install --no-index -r requirements.txt
 
 
 echo "Starting Task"
-python bert_cv.py --ml 512 --bs 32
+python bert_cv.py --ml 512 --bs 16
