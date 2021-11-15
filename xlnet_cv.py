@@ -199,7 +199,7 @@ parser.add_argument('--adaptive', help='Adaptive LR', default='20', type=float)
 
 args = parser.parse_args()
 
-lr = args.lr
+lr = 10 ** (-args.lr)
 num_epochs = args.epochs
 MAX_LEN = args.ml
 batch_size = args.bs
