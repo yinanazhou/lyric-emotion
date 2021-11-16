@@ -1,0 +1,452 @@
+2021-11-16 04:27:43,159 => 1.10.0
+2021-11-16 04:27:43,159 => cuda
+2021-11-16 04:27:43,660 => loading file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-vocab.txt from cache at /home/yinan/.cache/torch/transformers/5e8a2b4893d13790ed4150ca1906be5f7a03d6c4ddf62296c383f6db42814db2.e13dbb970cb325137104fb2e5f36fe865f27746c6b526f6352861b1980eb80b1
+2021-11-16 04:27:55,543 => -------------------------------------------------
+2021-11-16 04:27:55,543 => 1 FOLD
+2021-11-16 04:27:56,131 => loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-config.json from cache at /home/yinan/.cache/torch/transformers/b945b69218e98b3e2c95acf911789741307dec43c698d35fad11c1ae28bda352.9da767be51e1327499df13488672789394e2ca38b877837e52618a67d7002391
+2021-11-16 04:27:56,132 => Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": null,
+  "do_sample": false,
+  "eos_token_ids": null,
+  "finetuning_task": null,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_labels": 4,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 28996
+}
+
+2021-11-16 04:27:56,543 => loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-pytorch_model.bin from cache at /home/yinan/.cache/torch/transformers/35d8b9d36faaf46728a0192d82bf7d00137490cd6074e8500778afed552a67e5.3fadbea36527ae472139fe84cddaa65454d7429f12d543d80bfc3ad70de55ac2
+2021-11-16 04:28:00,746 => Weights of BertForSequenceClassification not initialized from pretrained model: ['classifier.weight', 'classifier.bias']
+2021-11-16 04:28:00,747 => Weights from pretrained model not used in BertForSequenceClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+2021-11-16 04:31:42,707 => Train: 100.0	Epoch: 1	Iter: 158	Loss: 0.11328	Acc= 63.062	Precision= 63.678	Recall= 62.719	F1_score= 62.516
+2021-11-16 04:35:14,994 => Train: 100.0	Epoch: 2	Iter: 158	Loss: 0.08200	Acc= 75.296	Precision= 75.649	Recall= 75.206	F1_score= 75.305
+2021-11-16 04:38:50,200 => Train: 100.0	Epoch: 3	Iter: 158	Loss: 0.06018	Acc= 81.058	Precision= 81.825	Recall= 80.661	F1_score= 80.623
+2021-11-16 04:42:29,733 => Train: 100.0	Epoch: 4	Iter: 158	Loss: 0.04774	Acc= 88.398	Precision= 88.399	Recall= 88.417	F1_score= 88.385
+2021-11-16 04:46:02,327 => Train: 100.0	Epoch: 5	Iter: 158	Loss: 0.03015	Acc= 92.660	Precision= 92.649	Recall= 92.634	F1_score= 92.619
+2021-11-16 04:49:39,926 => Train: 100.0	Epoch: 6	Iter: 158	Loss: 0.04513	Acc= 90.213	Precision= 90.181	Recall= 90.124	F1_score= 90.130
+2021-11-16 04:53:21,025 => Train: 100.0	Epoch: 7	Iter: 158	Loss: 0.03006	Acc= 93.528	Precision= 93.688	Recall= 93.578	F1_score= 93.571
+2021-11-16 04:56:52,605 => Train: 100.0	Epoch: 8	Iter: 158	Loss: 0.01096	Acc= 98.027	Precision= 98.052	Recall= 98.053	F1_score= 98.048
+2021-11-16 05:00:41,188 => Train: 100.0	Epoch: 9	Iter: 158	Loss: 0.01541	Acc= 97.238	Precision= 97.236	Recall= 97.234	F1_score= 97.229
+2021-11-16 05:04:49,711 => Train: 100.0	Epoch: 10	Iter: 158	Loss: 0.00729	Acc= 98.816	Precision= 98.816	Recall= 98.826	F1_score= 98.819
+2021-11-16 05:08:50,568 => Train: 100.0	Epoch: 11	Iter: 158	Loss: 0.00528	Acc= 99.369	Precision= 99.375	Recall= 99.374	F1_score= 99.374
+2021-11-16 05:13:11,555 => Train: 100.0	Epoch: 12	Iter: 158	Loss: 0.00567	Acc= 99.290	Precision= 99.293	Recall= 99.290	F1_score= 99.290
+2021-11-16 05:17:42,818 => Train: 100.0	Epoch: 13	Iter: 158	Loss: 0.00698	Acc= 98.816	Precision= 98.812	Recall= 98.806	F1_score= 98.807
+2021-11-16 05:21:57,938 => Train: 100.0	Epoch: 14	Iter: 158	Loss: 0.00425	Acc= 99.132	Precision= 99.131	Recall= 99.129	F1_score= 99.129
+2021-11-16 05:29:18,768 => Train: 100.0	Epoch: 15	Iter: 158	Loss: 0.00341	Acc= 99.526	Precision= 99.529	Recall= 99.535	F1_score= 99.531
+2021-11-16 05:34:03,049 => Train: 100.0	Epoch: 16	Iter: 158	Loss: 0.00322	Acc= 99.605	Precision= 99.608	Recall= 99.613	F1_score= 99.609
+2021-11-16 05:41:22,746 => Train: 100.0	Epoch: 17	Iter: 158	Loss: 0.00303	Acc= 99.605	Precision= 99.608	Recall= 99.613	F1_score= 99.609
+2021-11-16 05:45:57,235 => Train: 100.0	Epoch: 18	Iter: 158	Loss: 0.00303	Acc= 99.605	Precision= 99.608	Recall= 99.613	F1_score= 99.609
+2021-11-16 05:51:01,065 => Train: 100.0	Epoch: 19	Iter: 158	Loss: 0.00290	Acc= 99.605	Precision= 99.608	Recall= 99.613	F1_score= 99.609
+2021-11-16 05:55:33,837 => Train: 100.0	Epoch: 20	Iter: 158	Loss: 0.00296	Acc= 99.605	Precision= 99.608	Recall= 99.613	F1_score= 99.609
+2021-11-16 06:00:14,838 => Train: 100.0	Epoch: 21	Iter: 158	Loss: 0.00279	Acc= 99.605	Precision= 99.608	Recall= 99.613	F1_score= 99.609
+2021-11-16 06:04:53,109 => Train: 100.0	Epoch: 22	Iter: 158	Loss: 0.00271	Acc= 99.605	Precision= 99.608	Recall= 99.613	F1_score= 99.609
+2021-11-16 06:09:33,000 => Train: 100.0	Epoch: 23	Iter: 158	Loss: 0.00253	Acc= 99.605	Precision= 99.608	Recall= 99.613	F1_score= 99.609
+2021-11-16 06:14:06,003 => Train: 100.0	Epoch: 24	Iter: 158	Loss: 0.00244	Acc= 99.605	Precision= 99.608	Recall= 99.613	F1_score= 99.609
+2021-11-16 06:18:54,821 => Train: 100.0	Epoch: 25	Iter: 158	Loss: 0.00236	Acc= 99.605	Precision= 99.608	Recall= 99.613	F1_score= 99.609
+2021-11-16 06:23:26,778 => Train: 100.0	Epoch: 26	Iter: 158	Loss: 0.00238	Acc= 99.605	Precision= 99.608	Recall= 99.613	F1_score= 99.609
+2021-11-16 06:27:59,312 => Train: 100.0	Epoch: 27	Iter: 158	Loss: 0.00242	Acc= 99.605	Precision= 99.608	Recall= 99.613	F1_score= 99.609
+2021-11-16 06:32:32,708 => Train: 100.0	Epoch: 28	Iter: 158	Loss: 0.00226	Acc= 99.684	Precision= 99.685	Recall= 99.690	F1_score= 99.686
+2021-11-16 06:37:22,167 => Train: 100.0	Epoch: 29	Iter: 158	Loss: 0.00217	Acc= 99.684	Precision= 99.692	Recall= 99.690	F1_score= 99.689
+2021-11-16 06:41:52,447 => Train: 100.0	Epoch: 30	Iter: 158	Loss: 0.00223	Acc= 99.684	Precision= 99.692	Recall= 99.690	F1_score= 99.689
+2021-11-16 06:49:55,659 => Train: 100.0	Epoch: 31	Iter: 158	Loss: 0.00223	Acc= 99.684	Precision= 99.692	Recall= 99.690	F1_score= 99.689
+2021-11-16 06:54:24,762 => Train: 100.0	Epoch: 32	Iter: 158	Loss: 0.00213	Acc= 99.684	Precision= 99.692	Recall= 99.690	F1_score= 99.689
+2021-11-16 06:59:05,327 => Train: 100.0	Epoch: 33	Iter: 158	Loss: 0.00210	Acc= 99.684	Precision= 99.692	Recall= 99.690	F1_score= 99.689
+2021-11-16 07:03:37,765 => Train: 100.0	Epoch: 34	Iter: 158	Loss: 0.00218	Acc= 99.684	Precision= 99.692	Recall= 99.690	F1_score= 99.689
+2021-11-16 07:08:21,750 => Train: 100.0	Epoch: 35	Iter: 158	Loss: 0.00194	Acc= 99.684	Precision= 99.692	Recall= 99.690	F1_score= 99.689
+2021-11-16 07:12:58,766 => Train: 100.0	Epoch: 36	Iter: 158	Loss: 0.00207	Acc= 99.684	Precision= 99.692	Recall= 99.690	F1_score= 99.689
+2021-11-16 07:18:00,359 => Train: 100.0	Epoch: 37	Iter: 158	Loss: 0.00189	Acc= 99.684	Precision= 99.692	Recall= 99.690	F1_score= 99.689
+2021-11-16 07:22:37,157 => Train: 100.0	Epoch: 38	Iter: 158	Loss: 0.00213	Acc= 99.684	Precision= 99.692	Recall= 99.690	F1_score= 99.689
+2021-11-16 07:29:25,339 => Train: 100.0	Epoch: 39	Iter: 158	Loss: 0.00180	Acc= 99.684	Precision= 99.692	Recall= 99.690	F1_score= 99.689
+2021-11-16 07:34:11,520 => Train: 100.0	Epoch: 40	Iter: 158	Loss: 0.00165	Acc= 99.684	Precision= 99.692	Recall= 99.690	F1_score= 99.689
+2021-11-16 07:38:45,858 => Train: 100.0	Epoch: 41	Iter: 158	Loss: 0.00171	Acc= 99.684	Precision= 99.692	Recall= 99.690	F1_score= 99.689
+2021-11-16 07:43:34,625 => Train: 100.0	Epoch: 42	Iter: 158	Loss: 0.00157	Acc= 99.684	Precision= 99.692	Recall= 99.690	F1_score= 99.689
+2021-11-16 07:48:00,837 => Train: 100.0	Epoch: 43	Iter: 158	Loss: 0.00154	Acc= 99.684	Precision= 99.692	Recall= 99.690	F1_score= 99.689
+2021-11-16 07:52:32,758 => Train: 100.0	Epoch: 44	Iter: 158	Loss: 0.00140	Acc= 99.684	Precision= 99.692	Recall= 99.690	F1_score= 99.689
+2021-11-16 08:00:14,450 => Train: 100.0	Epoch: 45	Iter: 158	Loss: 0.00138	Acc= 99.684	Precision= 99.692	Recall= 99.690	F1_score= 99.689
+2021-11-16 08:06:24,756 => Train: 100.0	Epoch: 46	Iter: 158	Loss: 0.00149	Acc= 99.684	Precision= 99.692	Recall= 99.690	F1_score= 99.689
+2021-11-16 08:12:35,006 => Train: 100.0	Epoch: 47	Iter: 158	Loss: 0.00221	Acc= 99.684	Precision= 99.685	Recall= 99.690	F1_score= 99.686
+2021-11-16 08:19:25,210 => Train: 100.0	Epoch: 48	Iter: 158	Loss: 0.00139	Acc= 99.684	Precision= 99.692	Recall= 99.690	F1_score= 99.689
+2021-11-16 08:24:50,129 => Train: 100.0	Epoch: 49	Iter: 158	Loss: 0.00133	Acc= 99.684	Precision= 99.692	Recall= 99.690	F1_score= 99.689
+2021-11-16 08:30:45,297 => Train: 100.0	Epoch: 50	Iter: 158	Loss: 0.00137	Acc= 99.684	Precision= 99.692	Recall= 99.690	F1_score= 99.689
+2021-11-16 08:30:48,801 => Eval: 100.0	Epoch: 50	Iter: 39	Loss: 0.07258	Acc= 91.483	Precision= 91.422	Recall= 91.508	F1_score= 91.458
+2021-11-16 08:30:48,802 => -------------------------------------------------
+2021-11-16 08:30:48,802 => 2 FOLD
+2021-11-16 08:30:49,223 => loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-config.json from cache at /home/yinan/.cache/torch/transformers/b945b69218e98b3e2c95acf911789741307dec43c698d35fad11c1ae28bda352.9da767be51e1327499df13488672789394e2ca38b877837e52618a67d7002391
+2021-11-16 08:30:49,224 => Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": null,
+  "do_sample": false,
+  "eos_token_ids": null,
+  "finetuning_task": null,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_labels": 4,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 28996
+}
+
+2021-11-16 08:30:49,647 => loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-pytorch_model.bin from cache at /home/yinan/.cache/torch/transformers/35d8b9d36faaf46728a0192d82bf7d00137490cd6074e8500778afed552a67e5.3fadbea36527ae472139fe84cddaa65454d7429f12d543d80bfc3ad70de55ac2
+2021-11-16 08:30:53,912 => Weights of BertForSequenceClassification not initialized from pretrained model: ['classifier.weight', 'classifier.bias']
+2021-11-16 08:30:53,912 => Weights from pretrained model not used in BertForSequenceClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+2021-11-16 08:36:31,940 => Train: 100.0	Epoch: 1	Iter: 158	Loss: 0.16642	Acc= 34.570	Precision= 33.669	Recall= 34.445	F1_score= 33.665
+2021-11-16 08:42:08,943 => Train: 100.0	Epoch: 2	Iter: 158	Loss: 0.17111	Acc= 30.939	Precision= 29.392	Recall= 30.781	F1_score= 29.526
+2021-11-16 08:50:23,895 => Train: 100.0	Epoch: 3	Iter: 158	Loss: 0.16912	Acc= 30.939	Precision= 29.909	Recall= 30.809	F1_score= 29.945
+2021-11-16 08:57:22,116 => Train: 100.0	Epoch: 4	Iter: 158	Loss: 0.17571	Acc= 25.572	Precision= 25.476	Recall= 25.514	F1_score= 25.303
+2021-11-16 09:03:54,881 => Train: 100.0	Epoch: 5	Iter: 158	Loss: 0.17538	Acc= 24.309	Precision= 23.834	Recall= 24.225	F1_score= 23.801
+2021-11-16 09:07:20,208 => 1.10.0
+2021-11-16 09:07:20,209 => cuda
+2021-11-16 09:07:20,691 => loading file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-vocab.txt from cache at /home/yinan/.cache/torch/transformers/5e8a2b4893d13790ed4150ca1906be5f7a03d6c4ddf62296c383f6db42814db2.e13dbb970cb325137104fb2e5f36fe865f27746c6b526f6352861b1980eb80b1
+2021-11-16 09:07:32,524 => -------------------------------------------------
+2021-11-16 09:07:32,524 => 1 FOLD
+2021-11-16 09:07:32,933 => loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-config.json from cache at /home/yinan/.cache/torch/transformers/b945b69218e98b3e2c95acf911789741307dec43c698d35fad11c1ae28bda352.9da767be51e1327499df13488672789394e2ca38b877837e52618a67d7002391
+2021-11-16 09:07:32,935 => Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": null,
+  "do_sample": false,
+  "eos_token_ids": null,
+  "finetuning_task": null,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_labels": 4,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 28996
+}
+
+2021-11-16 09:07:33,328 => loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-pytorch_model.bin from cache at /home/yinan/.cache/torch/transformers/35d8b9d36faaf46728a0192d82bf7d00137490cd6074e8500778afed552a67e5.3fadbea36527ae472139fe84cddaa65454d7429f12d543d80bfc3ad70de55ac2
+2021-11-16 09:07:37,171 => Weights of BertForSequenceClassification not initialized from pretrained model: ['classifier.weight', 'classifier.bias']
+2021-11-16 09:07:37,171 => Weights from pretrained model not used in BertForSequenceClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+2021-11-16 09:12:48,329 => 1.10.0
+2021-11-16 09:12:48,330 => cuda
+2021-11-16 09:12:48,746 => loading file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-vocab.txt from cache at /home/yinan/.cache/torch/transformers/5e8a2b4893d13790ed4150ca1906be5f7a03d6c4ddf62296c383f6db42814db2.e13dbb970cb325137104fb2e5f36fe865f27746c6b526f6352861b1980eb80b1
+2021-11-16 09:13:00,687 => -------------------------------------------------
+2021-11-16 09:13:00,688 => 1 FOLD
+2021-11-16 09:13:01,091 => loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-config.json from cache at /home/yinan/.cache/torch/transformers/b945b69218e98b3e2c95acf911789741307dec43c698d35fad11c1ae28bda352.9da767be51e1327499df13488672789394e2ca38b877837e52618a67d7002391
+2021-11-16 09:13:01,093 => Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": null,
+  "do_sample": false,
+  "eos_token_ids": null,
+  "finetuning_task": null,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_labels": 4,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 28996
+}
+
+2021-11-16 09:13:01,493 => loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-pytorch_model.bin from cache at /home/yinan/.cache/torch/transformers/35d8b9d36faaf46728a0192d82bf7d00137490cd6074e8500778afed552a67e5.3fadbea36527ae472139fe84cddaa65454d7429f12d543d80bfc3ad70de55ac2
+2021-11-16 09:13:05,376 => Weights of BertForSequenceClassification not initialized from pretrained model: ['classifier.weight', 'classifier.bias']
+2021-11-16 09:13:05,377 => Weights from pretrained model not used in BertForSequenceClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+2021-11-16 09:13:17,169 => 1.10.0
+2021-11-16 09:13:17,169 => cuda
+2021-11-16 09:13:17,581 => loading file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-vocab.txt from cache at /home/yinan/.cache/torch/transformers/5e8a2b4893d13790ed4150ca1906be5f7a03d6c4ddf62296c383f6db42814db2.e13dbb970cb325137104fb2e5f36fe865f27746c6b526f6352861b1980eb80b1
+2021-11-16 09:13:29,413 => -------------------------------------------------
+2021-11-16 09:13:29,413 => 1 FOLD
+2021-11-16 09:13:29,830 => loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-config.json from cache at /home/yinan/.cache/torch/transformers/b945b69218e98b3e2c95acf911789741307dec43c698d35fad11c1ae28bda352.9da767be51e1327499df13488672789394e2ca38b877837e52618a67d7002391
+2021-11-16 09:13:29,831 => Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": null,
+  "do_sample": false,
+  "eos_token_ids": null,
+  "finetuning_task": null,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_labels": 4,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 28996
+}
+
+2021-11-16 09:13:30,220 => loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-pytorch_model.bin from cache at /home/yinan/.cache/torch/transformers/35d8b9d36faaf46728a0192d82bf7d00137490cd6074e8500778afed552a67e5.3fadbea36527ae472139fe84cddaa65454d7429f12d543d80bfc3ad70de55ac2
+2021-11-16 09:13:33,846 => Weights of BertForSequenceClassification not initialized from pretrained model: ['classifier.weight', 'classifier.bias']
+2021-11-16 09:13:33,846 => Weights from pretrained model not used in BertForSequenceClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+2021-11-16 09:13:44,319 => 1.10.0
+2021-11-16 09:13:44,319 => cuda
+2021-11-16 09:13:44,722 => loading file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-vocab.txt from cache at /home/yinan/.cache/torch/transformers/5e8a2b4893d13790ed4150ca1906be5f7a03d6c4ddf62296c383f6db42814db2.e13dbb970cb325137104fb2e5f36fe865f27746c6b526f6352861b1980eb80b1
+2021-11-16 09:13:56,580 => -------------------------------------------------
+2021-11-16 09:13:56,580 => 1 FOLD
+2021-11-16 09:13:56,991 => loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-config.json from cache at /home/yinan/.cache/torch/transformers/b945b69218e98b3e2c95acf911789741307dec43c698d35fad11c1ae28bda352.9da767be51e1327499df13488672789394e2ca38b877837e52618a67d7002391
+2021-11-16 09:13:56,992 => Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": null,
+  "do_sample": false,
+  "eos_token_ids": null,
+  "finetuning_task": null,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_labels": 4,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 28996
+}
+
+2021-11-16 09:13:57,404 => loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-pytorch_model.bin from cache at /home/yinan/.cache/torch/transformers/35d8b9d36faaf46728a0192d82bf7d00137490cd6074e8500778afed552a67e5.3fadbea36527ae472139fe84cddaa65454d7429f12d543d80bfc3ad70de55ac2
+2021-11-16 09:14:01,024 => Weights of BertForSequenceClassification not initialized from pretrained model: ['classifier.weight', 'classifier.bias']
+2021-11-16 09:14:01,024 => Weights from pretrained model not used in BertForSequenceClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+2021-11-16 09:14:13,238 => 1.10.0
+2021-11-16 09:14:13,238 => cuda
+2021-11-16 09:14:13,650 => loading file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-vocab.txt from cache at /home/yinan/.cache/torch/transformers/5e8a2b4893d13790ed4150ca1906be5f7a03d6c4ddf62296c383f6db42814db2.e13dbb970cb325137104fb2e5f36fe865f27746c6b526f6352861b1980eb80b1
+2021-11-16 09:14:25,623 => -------------------------------------------------
+2021-11-16 09:14:25,624 => 1 FOLD
+2021-11-16 09:14:26,030 => loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-config.json from cache at /home/yinan/.cache/torch/transformers/b945b69218e98b3e2c95acf911789741307dec43c698d35fad11c1ae28bda352.9da767be51e1327499df13488672789394e2ca38b877837e52618a67d7002391
+2021-11-16 09:14:26,031 => Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": null,
+  "do_sample": false,
+  "eos_token_ids": null,
+  "finetuning_task": null,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_labels": 4,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 28996
+}
+
+2021-11-16 09:14:26,448 => loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-pytorch_model.bin from cache at /home/yinan/.cache/torch/transformers/35d8b9d36faaf46728a0192d82bf7d00137490cd6074e8500778afed552a67e5.3fadbea36527ae472139fe84cddaa65454d7429f12d543d80bfc3ad70de55ac2
+2021-11-16 09:14:30,070 => Weights of BertForSequenceClassification not initialized from pretrained model: ['classifier.weight', 'classifier.bias']
+2021-11-16 09:14:30,070 => Weights from pretrained model not used in BertForSequenceClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
