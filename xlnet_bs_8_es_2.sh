@@ -20,9 +20,3 @@ pip install --no-index -r requirements.txt
 
 echo "Starting Task"
 python xlnet_cv.py --ml 512 --bs 8 --epochs 50 --lr $SLURM_ARRAY_TASK_ID --es 2
-python xlnet_cv.py --ml 512 --bs 8 --epochs 50 --lr $SLURM_ARRAY_TASK_ID --es 3
-python xlnet_cv.py --ml 512 --bs 8 --epochs 50 --lr $SLURM_ARRAY_TASK_ID --es 4
-python xlnet_cv.py --ml 512 --bs 8 --epochs 50 --lr $SLURM_ARRAY_TASK_ID --es 5
-python xlnet_cv.py --ml 512 --bs 8 --epochs 50 --lr $SLURM_ARRAY_TASK_ID --es 6
-
-
