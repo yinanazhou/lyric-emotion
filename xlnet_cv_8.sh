@@ -1,11 +1,11 @@
 #!/bin/bash
 #SBATCH --account=def-ichiro
-#SBATCH --time=10:00:00
-#SBATCH --output=run_output/xlnet_cv_output_%a.out
+#SBATCH --time=3-00:00:00
+#SBATCH --output=run_output/xlnet_cv_output_%A_%a.out
 #SBATCH --gres=gpu:v100:1
 #SBATCH --gres=gpu:1       # Request GPU "generic resources"
 #SBATCH --cpus-per-task=4  # Cores proportional to GPUs: 6 on Cedar, 16 on Graham.
-#SBATCH --array=4-6
+#SBATCH --array=1-6
 #SBATCH --mem=250G       # Memory proportional to GPUs: 32000 Cedar, 64000 Graham.
 
 module load python/3.8
@@ -19,4 +19,11 @@ pip install --no-index -r requirements.txt
 
 
 echo "Starting Task"
-python xlnet_cv.py --ml 512 --bs 16 --lr $SLURM_ARRAY_TASK_ID
+python xlnet_cv.py --ml 512 --bs 8 --epochs 50 --lr $SLURM_ARRAY_TASK_ID --es 1
+python xlnet_cv.py --ml 512 --bs 8 --epochs 50 --lr $SLURM_ARRAY_TASK_ID --es 2
+python xlnet_cv.py --ml 512 --bs 8 --epochs 50 --lr $SLURM_ARRAY_TASK_ID --es 3
+python xlnet_cv.py --ml 512 --bs 8 --epochs 50 --lr $SLURM_ARRAY_TASK_ID --es 4
+python xlnet_cv.py --ml 512 --bs 8 --epochs 50 --lr $SLURM_ARRAY_TASK_ID --es 5
+python xlnet_cv.py --ml 512 --bs 8 --epochs 50 --lr $SLURM_ARRAY_TASK_ID --es 6
+
+
