@@ -93,7 +93,9 @@ def train(i, t_dataloader):
         loss = outputs[0]
 
         if loss < early_stop:
-            logging.info("early stopped at loss: %5.5f" % loss)
+            logging.info("Epoch: %d\tearly stopped at loss: %5.5f" % (i+1, loss))
+            path = save_model_path + '/early_stopped.pt'
+            torch.save(model.state_dict(), path)
             break
 
         loss.sum().backward()
