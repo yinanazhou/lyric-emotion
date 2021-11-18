@@ -91,13 +91,6 @@ def train(i, t_dataloader):
         batch_f_acc, pred_flat = flat_accuracy(pred, b_labels)
         f_acc += float(batch_f_acc)
         loss = outputs[0]
-
-        if loss < early_stop:
-            logging.info("Epoch: %d\tearly stopped at loss: %5.5f" % (i+1, loss))
-            path = save_model_path + '/early_stopped.pt'
-            torch.save(model.state_dict(), path)
-            break
-
         loss.sum().backward()
         optimizer.step()
 
@@ -136,6 +129,14 @@ def train(i, t_dataloader):
     k_result['t_recall'].append(recall * 100.)
     k_result['t_F1_measure'].append(f1_measure * 100.)
 
+    if (total_loss / train_len) < early_stop:
+        logging.info("Epoch: %d\tearly stopped at loss: %5.5f" % (i + 1, total_loss / train_len))
+
+        path = save_model_path + '/early_stopped.pt'
+        torch.save(model.state_dict(), path)
+
+        flag = True
+    return flag
 
 def eva(v_dataloader):
     model.eval()
@@ -210,7 +211,7 @@ lr = 10 ** (-args.lr)
 num_epochs = args.epochs
 MAX_LEN = args.ml
 batch_size = args.bs
-early_stop = 10 ** (-args.lr)
+early_stop = 10 ** (-args.es)
 # test_size = args.ts
 model_str = 'xlnet'
 # model_str = 'bert'
@@ -305,7 +306,8 @@ for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
 
     # write results of each fold into a dic
     k_result = {'t_loss': [], 't_accuracy': [], 't_precision': [], 't_recall': [], 't_F1_measure': [],
-                'e_loss': [], 'e_accuracy': [], 'e_precision': [], 'e_recall': [], 'e_F1_measure': []}
+                'e_loss': [], 'e_accuracy': [], 'e_precision': [], 'e_recall': [], 'e_F1_measure': [],
+                'epoch': []}
 
     # Dataset.select(indices=train_idx)
     train_inputs, val_inputs = train_val_inputs[train_idx], train_val_inputs[val_idx]
@@ -339,11 +341,17 @@ for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
     ]
     optimizer = AdamW(optimizer_grouped_parameters, lr=lr)
 
+    es_flag = False
+
     for i in range(num_epochs):
         gc.collect()
         torch.cuda.empty_cache()
-        train(i, train_dataloader)
+        es_flag = train(i, train_dataloader)
 
+        if es_flag:
+            break
+
+    k_result['epoch'].append(i+1)
     gc.collect()
     torch.cuda.empty_cache()
     k_acc = eva(val_dataloader)
