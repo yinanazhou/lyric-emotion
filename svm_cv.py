@@ -6,22 +6,18 @@ import string
 import torch
 import numpy as np
 import logging
-# from transformers import XLNetTokenizer, XLNetForSequenceClassification, XLNetModel, AdamW, BertTokenizer, BertForSequenceClassification
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from sklearn import svm
-from tensorflow.keras.preprocessing.text import Tokenizer
-# from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.model_selection import KFold
-from tensorflow.keras.preprocessing.sequence import pad_sequences
-# from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
-# import torch.nn as nn
 from sklearn.metrics import fbeta_score, precision_recall_fscore_support, f1_score, accuracy_score
 import argparse
 from nltk.tokenize import word_tokenize
-# import nltk
-#
-# nltk.download('punkt')
+from sklearn.feature_extraction.text import TfidfVectorizer
+from nltk.corpus import stopwords
+import nltk
+
+nltk.download('stopwords')
 
 def logging_storage(logfile_path):
     logging.basicConfig(filename=logfile_path, filemode='a', level=logging.INFO, format='%(asctime)s => %(message)s')
@@ -49,13 +45,14 @@ def preprocess(text):
     # print(text_no_whitespace)
 
     # tokenize
-    # text_tokenize = word_tokenize(text_no_whitespace)
+    text_tokenized = word_tokenize(text_no_whitespace)
+    # print(text_tokenized)
 
     # remove stop words
     # stop_words = set(stopwords.words(‘english’))
     # result = [i for i in text_tokenize if not i in stop_words]
 
-    return text_no_whitespace
+    return text_tokenized
 
 
 def flat_accuracy(preds, labels):
@@ -206,12 +203,13 @@ num_epochs = args.epochs
 MAX_LEN = args.ml
 batch_size = args.bs
 # test_size = args.ts
-model_str = 'svm_rbf_pre_1'
+model_str = 'svm_linear_NoStop'
 num_labels = 4
 denom = args.adaptive
+remove_stop_words = True
 
 # set path
-trg_path = "moody_test.json"
+trg_path = "moody_lyrics.json"
 ending_path = ('%s_%d_bs_%d_adamw_lr_%s_%d' %(model_str, MAX_LEN, batch_size, str(lr).replace("-",""),denom))
 save_model_path = "models/" + ending_path
 if not os.path.exists(save_model_path):
@@ -236,60 +234,28 @@ labels = song_info["Mood"][0]
 encoder = LabelEncoder()
 encoded_labels = encoder.fit_transform(labels)
 
-# attention_masks = []
-# input_ids = []
-# tokenize
-# tokenizer = XLNetTokenizer.from_pretrained('xlnet-base-cased', do_lower_case=True)
-# tokenizer = BertTokenizer.from_pretrained('bert-base-cased', do_lower_case=True)
-tokenizer = Tokenizer(lower=True)
-# tokenizer = word_tokenize()
-# for i, lyric in enumerate(lyrics):
-#     encodings = tokenizer.encode_plus(lyrics, add_special_tokens=True, max_length=MAX_LEN, return_tensors='pt',
-#                                       return_token_type_ids=False, return_attention_mask=True, pad_to_max_length=True)
-#     attention_mask = pad_sequences(encodings['attention_mask'], maxlen=MAX_LEN, dtype="long", truncating="post", padding="post")
-#     attention_masks.append(attention_mask)
-#     input_id = pad_sequences(encodings['input_ids'], maxlen=MAX_LEN, dtype="long", truncating="post", padding="post")
-#     input_ids.append(input_id)
 
-# tokenized_texts = [tokenizer.texts_to_sequences(lyric) for lyric in lyrics]
-# input_ids = [tokenizer.convert_tokens_to_ids(x) for x in tokenized_texts]
 for lyric in lyrics:
-    lyric = preprocess(lyric)
+    # lyric = preprocess(lyric)
+    text_tokenized = word_tokenize(lyric)
 #     print(lyric)
 
-input_ids = tokenizer.texts_to_sequences(lyrics)
-print(input_ids)
-# input_ids = pad_sequences(lyrics, maxlen=MAX_LEN, dtype="long", truncating="post", padding="post")
-
-# Create a mask of 1s for each token followed by 0s for padding
-# for seq in input_ids:
-#     seq_mask = [float(i > 0) for i in seq]
-#     attention_masks.append(seq_mask)
+if remove_stop_words:
+    stop_words = set(stopwords.words('english'))
+    for lyric in lyrics:
+        lyric = [word for word in lyric if word not in stop_words]
 
 # train-validation test split
 # 6 2 2
-train_val_inputs, test_inputs, train_val_labels, test_labels = train_test_split(input_ids, encoded_labels,
+train_val_inputs, test_inputs, train_val_labels, test_labels = train_test_split(lyrics, encoded_labels,
                                                                                 random_state=SEED, test_size=0.2)
-# train_val_masks, test_masks, _, _ = train_test_split(attention_masks, input_ids,
-#                                                      random_state=SEED, test_size=0.2)
 
-# Convert to Tensor
-train_val_inputs = torch.tensor(train_val_inputs)
-train_val_labels = torch.tensor(train_val_labels)
-# train_val_masks = torch.tensor(train_val_masks)
+# Convert to vector
+tfidf_vect = TfidfVectorizer(max_features=MAX_LEN)
+tfidf_vect.fit(lyrics)
 
-test_inputs = torch.tensor(test_inputs)
-test_labels = torch.tensor(test_labels)
-# test_masks = torch.tensor(test_masks)
-
-# dataloader
-# train_val_data = TensorDataset(train_val_inputs, train_val_masks, train_val_labels)
-# train_val_sampler = RandomSampler(train_val_data)
-# train_val_dataloader = DataLoader(train_val_data, sampler=train_val_sampler, batch_size=batch_size)
-
-# test_data = TensorDataset(test_inputs, test_masks, test_labels)
-# test_sampler = SequentialSampler(test_data)
-# test_dataloader = DataLoader(test_data, sampler=test_sampler, batch_size=batch_size)
+train_val_inputs = tfidf_vect.transform(train_val_inputs)
+test_inputs = tfidf_vect.transform(test_inputs)
 
 k_folds = 5
 results = []
@@ -310,29 +276,18 @@ for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
     # train_masks, val_masks = train_val_masks[train_idx], train_val_masks[val_idx]
     train_labels, val_labels = train_val_labels[train_idx], train_val_labels[val_idx]
 
-    # train_data = TensorDataset(train_inputs, train_masks, train_labels)
-    # train_sampler = SequentialSampler(train_data)
-    # train_dataloader = DataLoader(train_data, sampler=train_sampler, batch_size=batch_size)
-
-    # val_data = TensorDataset(val_inputs, val_masks, val_labels)
-    # val_sampler = SequentialSampler(val_data)
-    # val_dataloader = DataLoader(val_data, sampler=val_sampler, batch_size=batch_size)
-
     # define model
     # xlnet
     # model = XLNetForSequenceClassification.from_pretrained("xlnet-base-cased", num_labels=num_labels)
     # BERT
     # model = BertForSequenceClassification.from_pretrained('bert-base-cased', num_labels=num_labels)
     # model = nn.DataParallel(model)
-    model = svm.SVC(kernel="rbf")
+    model = svm.SVC(kernel="linear")
     # model.to(DEVICE)
 
     model.fit(train_inputs, train_labels)
 
     pred = model.predict(val_inputs)
-
-    # logging.info(confusion_matrix(val_labels, pred))
-    # logging.info(classification_report(val_labels, pred))
 
     k_acc = accuracy_score(val_labels, pred)
     precision, recall, f1_measure, _ = precision_recall_fscore_support(val_labels, pred, average='macro')
@@ -344,25 +299,6 @@ for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
     k_result['recall'].append(recall * 100.)
     k_result['F1_measure'].append(f1_measure * 100.)
 
-    # define optimizer
-#     param_optimizer = list(model.named_parameters())
-#     no_decay = ['bias', 'gamma', 'beta']
-#     optimizer_grouped_parameters = [
-#         {'params': [p for n, p in param_optimizer if not any(nd in n for nd in no_decay)],
-#          'weight_decay_rate': 0.01},
-#         {'params': [p for n, p in param_optimizer if any(nd in n for nd in no_decay)],
-#          'weight_decay_rate': 0.0}
-#     ]
-#     optimizer = AdamW(optimizer_grouped_parameters, lr=lr)
-#
-#     for i in range(num_epochs):
-#         gc.collect()
-#         torch.cuda.empty_cache()
-#         train(i, train_dataloader)
-#
-#     gc.collect()
-#     torch.cuda.empty_cache()
-#     k_acc = eva(val_dataloader)
     results.append(k_acc * 100)
     result_json[str(fold+1)] = []
     result_json[str(fold+1)].append(k_result)
