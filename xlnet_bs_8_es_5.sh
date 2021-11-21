@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --account=def-ichiro
-#SBATCH --time=1-00:00:00
+#SBATCH --time=3-00:00:00
 #SBATCH --output=run_output/xlnet_cv_output_%A_%a.out
 #SBATCH --gres=gpu:v100:1
 #SBATCH --gres=gpu:1       # Request GPU "generic resources"
