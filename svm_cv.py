@@ -15,9 +15,12 @@ import argparse
 from nltk.tokenize import word_tokenize
 from sklearn.feature_extraction.text import TfidfVectorizer
 from nltk.corpus import stopwords
-import nltk
+# import nltk
+from nltk.stem import PorterStemmer, WordNetLemmatizer
 
-nltk.download('stopwords')
+# nltk.download('stopwords')
+# nltk.download('wordnet')
+
 
 def logging_storage(logfile_path):
     logging.basicConfig(filename=logfile_path, filemode='a', level=logging.INFO, format='%(asctime)s => %(message)s')
@@ -44,15 +47,7 @@ def preprocess(text):
     text_no_whitespace = text_no_punc.strip()
     # print(text_no_whitespace)
 
-    # tokenize
-    text_tokenized = word_tokenize(text_no_whitespace)
-    # print(text_tokenized)
-
-    # remove stop words
-    # stop_words = set(stopwords.words(‘english’))
-    # result = [i for i in text_tokenize if not i in stop_words]
-
-    return text_tokenized
+    return text_no_whitespace
 
 
 def flat_accuracy(preds, labels):
@@ -203,10 +198,12 @@ num_epochs = args.epochs
 MAX_LEN = args.ml
 batch_size = args.bs
 # test_size = args.ts
-model_str = 'svm_linear_NoStop'
+model_str = 'svm_linear_lemma'
 num_labels = 4
 denom = args.adaptive
-remove_stop_words = True
+remove_stop_words = False
+stemming = False
+lemma = True
 
 # set path
 trg_path = "moody_lyrics.json"
@@ -234,16 +231,31 @@ labels = song_info["Mood"][0]
 encoder = LabelEncoder()
 encoded_labels = encoder.fit_transform(labels)
 
+# lyric preprocessing
+lyrics = [preprocess(lyric) for lyric in lyrics]
 
-for lyric in lyrics:
-    # lyric = preprocess(lyric)
-    text_tokenized = word_tokenize(lyric)
-#     print(lyric)
+if remove_stop_words or stemming or lemma:
 
-if remove_stop_words:
-    stop_words = set(stopwords.words('english'))
-    for lyric in lyrics:
-        lyric = [word for word in lyric if word not in stop_words]
+    lyrics = [word_tokenize(lyric) for lyric in lyrics]
+
+    if remove_stop_words:
+        stop_words = set(stopwords.words('english'))
+        for i in range(len(lyrics)):
+
+            lyrics[i] = [word for word in lyrics[i] if word not in stop_words]
+
+    if stemming:
+        stemmer = PorterStemmer()
+        for i in range(len(lyrics)):
+            lyrics[i] = [stemmer.stem(word) for word in lyrics[i]]
+
+    if lemma:
+        lemmatizer = WordNetLemmatizer()
+        for i in range(len(lyrics)):
+            lyrics[i] = [lemmatizer.lemmatize(word) for word in lyrics[i]]
+
+    for i in range(len(lyrics)):
+        lyrics[i] = ' '.join(lyrics[i])
 
 # train-validation test split
 # 6 2 2
@@ -302,7 +314,7 @@ for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
     results.append(k_acc * 100)
     result_json[str(fold+1)] = []
     result_json[str(fold+1)].append(k_result)
-#
+
 logging.info("AVERAGE ACCURACY: %5.3f", sum(results) / len(results))
 result_json['average accuracy'] = []
 result_json['average accuracy'].append(sum(results) / len(results))
