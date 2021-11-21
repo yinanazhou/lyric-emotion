@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=1  # Cores proportional to GPUs: 6 on Cedar, 16 on Graham.
 #SBATCH --mem=150G       # Memory proportional to GPUs: 32000 Cedar, 64000 Graham.
 
-module load nixpkgs/16.09
+module load StdEnv/2020 nixpkgs/16.09
 module load python/3.8.2
 module load scipy-stack
 virtualenv --no-download $SLURM_TMPDIR/env

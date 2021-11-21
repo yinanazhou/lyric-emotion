@@ -129,6 +129,8 @@ def train(i, t_dataloader):
     k_result['t_recall'].append(recall * 100.)
     k_result['t_F1_measure'].append(f1_measure * 100.)
 
+    flag = False
+
     if (total_loss / train_len) < early_stop:
         logging.info("Epoch: %d\tearly stopped at loss: %5.5f" % (i + 1, total_loss / train_len))
 
@@ -219,7 +221,7 @@ num_labels = 4
 denom = args.adaptive
 
 # set path
-trg_path = "moody_lyrics.json"
+trg_path = "moody_test.json"
 ending_path = ('%s_%d_bs_%d_adamw_lr_%s_es_%s_%d' %(model_str, MAX_LEN, batch_size, str(lr).replace("-",""), str(early_stop).replace("-",""), denom))
 save_model_path = "models/" + ending_path
 if not os.path.exists(save_model_path):

@@ -8,13 +8,13 @@
 #SBATCH --array=1-6
 #SBATCH --mem=180G       # Memory proportional to GPUs: 32000 Cedar, 64000 Graham.
 
-module load python/3.8.0
+module load nixpkgs/16.09
+module load python/3.8.2
 module load scipy-stack
-module load nixpkgs/16.09  intel/2016.4  cuda/8.0.44 torch/20171030
-
 virtualenv --no-download $SLURM_TMPDIR/env
 source $SLURM_TMPDIR/env/bin/activate
 pip3 install --upgrade --no-binary numpy==1.20.0 numpy==1.20.0
+pip install --no-index torch
 pip install --no-index -r requirements.txt
 
 
