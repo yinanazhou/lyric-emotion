@@ -129,11 +129,13 @@ def train(i, t_dataloader):
     k_result['t_recall'].append(recall * 100.)
     k_result['t_F1_measure'].append(f1_measure * 100.)
 
+    flag = False
+
     if (total_loss / train_len) < early_stop:
         logging.info("Epoch: %d\tearly stopped at loss: %5.5f" % (i + 1, total_loss / train_len))
 
-        path = save_model_path + '/early_stopped.pt'
-        torch.save(model.state_dict(), path)
+        # path = save_model_path + '/early_stopped.pt'
+        # torch.save(model.state_dict(), path)
 
         flag = True
     return flag
