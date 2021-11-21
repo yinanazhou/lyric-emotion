@@ -6,12 +6,12 @@
 #SBATCH --gres=gpu:1       # Request GPU "generic resources"
 #SBATCH --cpus-per-task=1  # Cores proportional to GPUs: 6 on Cedar, 16 on Graham.
 #SBATCH --array=1-6
-#SBATCH --mem=200G       # Memory proportional to GPUs: 32000 Cedar, 64000 Graham.
+#SBATCH --mem=180G       # Memory proportional to GPUs: 32000 Cedar, 64000 Graham.
 
-module load python/3.8
+module load python/3.8.0
 module load scipy-stack
-module load cuda
-module --ignore-cache load torch/1.4.0
+module load nixpkgs/16.09  intel/2016.4  cuda/8.0.44 torch/20171030
+
 virtualenv --no-download $SLURM_TMPDIR/env
 source $SLURM_TMPDIR/env/bin/activate
 pip3 install --upgrade --no-binary numpy==1.20.0 numpy==1.20.0
@@ -20,3 +20,4 @@ pip install --no-index -r requirements.txt
 
 echo "Starting Task"
 python xlnet_cv.py --ml 512 --bs 8 --epochs 50 --lr $SLURM_ARRAY_TASK_ID --es 2
+
