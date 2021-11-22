@@ -1,0 +1,432 @@
+2021-11-21 21:57:23,416 => 1.9.1+cu102
+2021-11-21 21:57:23,417 => cuda
+2021-11-21 21:57:23,898 => loading file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-vocab.txt from cache at /home/yinan/.cache/torch/transformers/5e8a2b4893d13790ed4150ca1906be5f7a03d6c4ddf62296c383f6db42814db2.e13dbb970cb325137104fb2e5f36fe865f27746c6b526f6352861b1980eb80b1
+2021-11-21 21:57:36,367 => -------------------------------------------------
+2021-11-21 21:57:36,368 => 1 FOLD
+2021-11-21 21:57:36,792 => loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-config.json from cache at /home/yinan/.cache/torch/transformers/b945b69218e98b3e2c95acf911789741307dec43c698d35fad11c1ae28bda352.9da767be51e1327499df13488672789394e2ca38b877837e52618a67d7002391
+2021-11-21 21:57:36,793 => Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": null,
+  "do_sample": false,
+  "eos_token_ids": null,
+  "finetuning_task": null,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_labels": 4,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 28996
+}
+
+2021-11-21 21:57:37,206 => loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-pytorch_model.bin from cache at /home/yinan/.cache/torch/transformers/35d8b9d36faaf46728a0192d82bf7d00137490cd6074e8500778afed552a67e5.3fadbea36527ae472139fe84cddaa65454d7429f12d543d80bfc3ad70de55ac2
+2021-11-21 21:57:40,630 => Weights of BertForSequenceClassification not initialized from pretrained model: ['classifier.weight', 'classifier.bias']
+2021-11-21 21:57:40,630 => Weights from pretrained model not used in BertForSequenceClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+2021-11-21 21:59:33,576 => Train: 100.0	Epoch: 1	Iter: 158	Loss: 0.13211	Acc= 54.223	Precision= 54.839	Recall= 54.079	F1_score= 54.047
+2021-11-21 22:01:23,454 => Train: 100.0	Epoch: 2	Iter: 158	Loss: 0.11293	Acc= 63.773	Precision= 63.687	Recall= 63.768	F1_score= 63.573
+2021-11-21 22:03:13,646 => Train: 100.0	Epoch: 3	Iter: 158	Loss: 0.13896	Acc= 48.540	Precision= 49.148	Recall= 48.561	F1_score= 48.779
+2021-11-21 22:05:03,876 => Train: 100.0	Epoch: 4	Iter: 158	Loss: 0.14189	Acc= 44.830	Precision= 43.810	Recall= 44.709	F1_score= 41.553
+2021-11-21 22:06:54,014 => Train: 100.0	Epoch: 5	Iter: 158	Loss: 0.15777	Acc= 37.332	Precision= 37.099	Recall= 37.220	F1_score= 36.928
+2021-11-21 22:08:43,933 => Train: 100.0	Epoch: 6	Iter: 158	Loss: 0.17666	Acc= 24.546	Precision= 24.587	Recall= 24.514	F1_score= 24.499
+2021-11-21 22:10:34,038 => Train: 100.0	Epoch: 7	Iter: 158	Loss: 0.17453	Acc= 26.598	Precision= 26.330	Recall= 26.560	F1_score= 26.342
+2021-11-21 22:12:24,139 => Train: 100.0	Epoch: 8	Iter: 158	Loss: 0.17702	Acc= 26.914	Precision= 26.902	Recall= 26.953	F1_score= 26.841
+2021-11-21 22:14:14,075 => Train: 100.0	Epoch: 9	Iter: 158	Loss: 0.17616	Acc= 25.020	Precision= 25.142	Recall= 25.000	F1_score= 25.021
+2021-11-21 22:16:04,147 => Train: 100.0	Epoch: 10	Iter: 158	Loss: 0.17559	Acc= 25.730	Precision= 25.697	Recall= 25.679	F1_score= 25.591
+2021-11-21 22:17:54,199 => Train: 100.0	Epoch: 11	Iter: 158	Loss: 0.17584	Acc= 24.152	Precision= 23.925	Recall= 24.069	F1_score= 23.917
+2021-11-21 22:19:44,395 => Train: 100.0	Epoch: 12	Iter: 158	Loss: 0.17523	Acc= 26.125	Precision= 26.046	Recall= 26.067	F1_score= 25.960
+2021-11-21 22:21:34,491 => Train: 100.0	Epoch: 13	Iter: 158	Loss: 0.17512	Acc= 26.125	Precision= 26.100	Recall= 26.062	F1_score= 25.969
+2021-11-21 22:23:24,245 => Train: 100.0	Epoch: 14	Iter: 158	Loss: 0.17613	Acc= 24.862	Precision= 24.801	Recall= 24.801	F1_score= 24.710
+2021-11-21 22:25:14,407 => Train: 100.0	Epoch: 15	Iter: 158	Loss: 0.17575	Acc= 25.414	Precision= 25.312	Recall= 25.343	F1_score= 25.220
+2021-11-21 22:27:04,558 => Train: 100.0	Epoch: 16	Iter: 158	Loss: 0.17512	Acc= 26.125	Precision= 26.186	Recall= 26.090	F1_score= 26.078
+2021-11-21 22:28:54,713 => Train: 100.0	Epoch: 17	Iter: 158	Loss: 0.17570	Acc= 24.704	Precision= 24.671	Recall= 24.669	F1_score= 24.602
+2021-11-21 22:30:44,382 => Train: 100.0	Epoch: 18	Iter: 158	Loss: 0.17667	Acc= 23.283	Precision= 23.204	Recall= 23.218	F1_score= 23.128
+2021-11-21 22:32:34,545 => Train: 100.0	Epoch: 19	Iter: 158	Loss: 0.17610	Acc= 23.047	Precision= 22.986	Recall= 22.989	F1_score= 22.915
+2021-11-21 22:34:24,669 => Train: 100.0	Epoch: 20	Iter: 158	Loss: 0.17524	Acc= 24.546	Precision= 24.691	Recall= 24.494	F1_score= 24.461
+2021-11-21 22:36:14,852 => Train: 100.0	Epoch: 21	Iter: 158	Loss: 0.17580	Acc= 24.862	Precision= 24.721	Recall= 24.786	F1_score= 24.674
+2021-11-21 22:38:04,621 => Train: 100.0	Epoch: 22	Iter: 158	Loss: 0.17620	Acc= 22.968	Precision= 22.718	Recall= 22.884	F1_score= 22.728
+2021-11-21 22:39:54,758 => Train: 100.0	Epoch: 23	Iter: 158	Loss: 0.17522	Acc= 26.440	Precision= 26.373	Recall= 26.354	F1_score= 26.211
+2021-11-21 22:41:44,826 => Train: 100.0	Epoch: 24	Iter: 158	Loss: 0.17514	Acc= 24.625	Precision= 24.426	Recall= 24.542	F1_score= 24.340
+2021-11-21 22:43:34,990 => Train: 100.0	Epoch: 25	Iter: 158	Loss: 0.17525	Acc= 23.047	Precision= 23.185	Recall= 22.982	F1_score= 22.916
+2021-11-21 22:45:24,843 => Train: 100.0	Epoch: 26	Iter: 158	Loss: 0.17565	Acc= 25.257	Precision= 25.207	Recall= 25.197	F1_score= 25.129
+2021-11-21 22:47:14,955 => Train: 100.0	Epoch: 27	Iter: 158	Loss: 0.17648	Acc= 22.178	Precision= 21.919	Recall= 22.103	F1_score= 21.924
+2021-11-21 22:49:05,024 => Train: 100.0	Epoch: 28	Iter: 158	Loss: 0.17544	Acc= 25.888	Precision= 25.795	Recall= 25.793	F1_score= 25.599
+2021-11-21 22:50:55,169 => Train: 100.0	Epoch: 29	Iter: 158	Loss: 0.17575	Acc= 25.257	Precision= 25.359	Recall= 25.232	F1_score= 25.216
+2021-11-21 22:52:44,990 => Train: 100.0	Epoch: 30	Iter: 158	Loss: 0.17486	Acc= 25.335	Precision= 25.328	Recall= 25.278	F1_score= 25.216
+2021-11-21 22:54:35,005 => Train: 100.0	Epoch: 31	Iter: 158	Loss: 0.17515	Acc= 25.099	Precision= 25.054	Recall= 25.060	F1_score= 24.929
+2021-11-21 22:56:25,056 => Train: 100.0	Epoch: 32	Iter: 158	Loss: 0.17547	Acc= 24.783	Precision= 24.919	Recall= 24.713	F1_score= 24.595
+2021-11-21 22:58:15,263 => Train: 100.0	Epoch: 33	Iter: 158	Loss: 0.17538	Acc= 25.572	Precision= 25.563	Recall= 25.500	F1_score= 25.396
+2021-11-21 23:00:05,221 => Train: 100.0	Epoch: 34	Iter: 158	Loss: 0.17419	Acc= 27.388	Precision= 27.428	Recall= 27.315	F1_score= 27.190
+2021-11-21 23:01:55,081 => Train: 100.0	Epoch: 35	Iter: 158	Loss: 0.17427	Acc= 26.519	Precision= 26.419	Recall= 26.448	F1_score= 26.342
+2021-11-21 23:03:45,214 => Train: 100.0	Epoch: 36	Iter: 158	Loss: 0.16414	Acc= 33.070	Precision= 33.002	Recall= 33.017	F1_score= 32.848
+2021-11-21 23:05:35,349 => Train: 100.0	Epoch: 37	Iter: 158	Loss: 0.13344	Acc= 48.698	Precision= 47.887	Recall= 48.556	F1_score= 44.844
+2021-11-21 23:07:25,464 => Train: 100.0	Epoch: 38	Iter: 158	Loss: 0.11419	Acc= 56.748	Precision= 56.692	Recall= 56.636	F1_score= 54.463
+2021-11-21 23:09:15,424 => Train: 100.0	Epoch: 39	Iter: 158	Loss: 0.10296	Acc= 66.614	Precision= 68.272	Recall= 66.552	F1_score= 64.765
+2021-11-21 23:11:05,525 => Train: 100.0	Epoch: 40	Iter: 158	Loss: 0.09096	Acc= 73.086	Precision= 74.419	Recall= 73.017	F1_score= 72.362
+2021-11-21 23:12:55,674 => Train: 100.0	Epoch: 41	Iter: 158	Loss: 0.08177	Acc= 77.743	Precision= 78.318	Recall= 77.716	F1_score= 77.609
+2021-11-21 23:14:45,764 => Train: 100.0	Epoch: 42	Iter: 158	Loss: 0.07563	Acc= 78.769	Precision= 79.086	Recall= 78.778	F1_score= 78.763
+2021-11-21 23:16:35,584 => Train: 100.0	Epoch: 43	Iter: 158	Loss: 0.07010	Acc= 80.505	Precision= 80.839	Recall= 80.491	F1_score= 80.487
+2021-11-21 23:18:25,662 => Train: 100.0	Epoch: 44	Iter: 158	Loss: 0.06607	Acc= 82.715	Precision= 83.170	Recall= 82.732	F1_score= 82.755
+2021-11-21 23:20:15,845 => Train: 100.0	Epoch: 45	Iter: 158	Loss: 0.06195	Acc= 84.451	Precision= 84.823	Recall= 84.468	F1_score= 84.498
+2021-11-21 23:22:05,993 => Train: 100.0	Epoch: 46	Iter: 158	Loss: 0.05991	Acc= 85.399	Precision= 85.708	Recall= 85.431	F1_score= 85.449
+2021-11-21 23:23:55,717 => Train: 100.0	Epoch: 47	Iter: 158	Loss: 0.05678	Acc= 86.267	Precision= 86.510	Recall= 86.297	F1_score= 86.302
+2021-11-21 23:25:45,771 => Train: 100.0	Epoch: 48	Iter: 158	Loss: 0.05368	Acc= 86.898	Precision= 87.235	Recall= 86.924	F1_score= 86.921
+2021-11-21 23:27:35,846 => Train: 100.0	Epoch: 49	Iter: 158	Loss: 0.05228	Acc= 87.293	Precision= 87.601	Recall= 87.324	F1_score= 87.336
+2021-11-21 23:29:25,996 => Train: 100.0	Epoch: 50	Iter: 158	Loss: 0.05015	Acc= 87.293	Precision= 87.530	Recall= 87.345	F1_score= 87.333
+2021-11-21 23:31:16,057 => Train: 100.0	Epoch: 51	Iter: 158	Loss: 0.04987	Acc= 87.609	Precision= 87.819	Recall= 87.653	F1_score= 87.640
+2021-11-21 23:33:06,484 => Train: 100.0	Epoch: 52	Iter: 158	Loss: 0.04911	Acc= 87.924	Precision= 88.231	Recall= 87.980	F1_score= 87.963
+2021-11-21 23:34:56,898 => Train: 100.0	Epoch: 53	Iter: 158	Loss: 0.04790	Acc= 88.319	Precision= 88.596	Recall= 88.369	F1_score= 88.377
+2021-11-21 23:36:47,288 => Train: 100.0	Epoch: 54	Iter: 158	Loss: 0.04614	Acc= 88.950	Precision= 89.241	Recall= 88.995	F1_score= 88.988
+2021-11-21 23:38:37,399 => Train: 100.0	Epoch: 55	Iter: 158	Loss: 0.04638	Acc= 88.871	Precision= 89.132	Recall= 88.933	F1_score= 88.922
+2021-11-21 23:40:27,664 => Train: 100.0	Epoch: 56	Iter: 158	Loss: 0.04504	Acc= 89.108	Precision= 89.353	Recall= 89.163	F1_score= 89.153
+2021-11-21 23:42:18,042 => Train: 100.0	Epoch: 57	Iter: 158	Loss: 0.04473	Acc= 88.713	Precision= 89.024	Recall= 88.761	F1_score= 88.748
+2021-11-21 23:44:08,481 => Train: 100.0	Epoch: 58	Iter: 158	Loss: 0.04317	Acc= 89.897	Precision= 90.176	Recall= 89.955	F1_score= 89.940
+2021-11-21 23:45:58,790 => Train: 100.0	Epoch: 59	Iter: 158	Loss: 0.04309	Acc= 89.266	Precision= 89.545	Recall= 89.325	F1_score= 89.321
+2021-11-21 23:47:48,853 => Train: 100.0	Epoch: 60	Iter: 158	Loss: 0.04278	Acc= 89.818	Precision= 90.091	Recall= 89.882	F1_score= 89.874
+2021-11-21 23:49:39,292 => Train: 100.0	Epoch: 61	Iter: 158	Loss: 0.04266	Acc= 89.818	Precision= 90.057	Recall= 89.874	F1_score= 89.857
+2021-11-21 23:51:29,854 => Train: 100.0	Epoch: 62	Iter: 158	Loss: 0.04218	Acc= 89.582	Precision= 89.892	Recall= 89.649	F1_score= 89.629
+2021-11-21 23:53:20,146 => Train: 100.0	Epoch: 63	Iter: 158	Loss: 0.04091	Acc= 89.976	Precision= 90.260	Recall= 90.034	F1_score= 90.021
+2021-11-21 23:55:10,082 => Train: 100.0	Epoch: 64	Iter: 158	Loss: 0.04171	Acc= 89.897	Precision= 90.170	Recall= 89.957	F1_score= 89.956
+2021-11-21 23:57:00,203 => Train: 100.0	Epoch: 65	Iter: 158	Loss: 0.04062	Acc= 90.687	Precision= 90.995	Recall= 90.750	F1_score= 90.739
+2021-11-21 23:58:50,286 => Train: 100.0	Epoch: 66	Iter: 158	Loss: 0.04085	Acc= 90.292	Precision= 90.508	Recall= 90.355	F1_score= 90.340
+2021-11-22 00:00:40,408 => Train: 100.0	Epoch: 67	Iter: 158	Loss: 0.04001	Acc= 90.292	Precision= 90.580	Recall= 90.353	F1_score= 90.344
+2021-11-22 00:02:30,244 => Train: 100.0	Epoch: 68	Iter: 158	Loss: 0.04076	Acc= 90.055	Precision= 90.357	Recall= 90.112	F1_score= 90.106
+2021-11-22 00:04:20,424 => Train: 100.0	Epoch: 69	Iter: 158	Loss: 0.03970	Acc= 90.055	Precision= 90.360	Recall= 90.121	F1_score= 90.121
+2021-11-22 00:06:10,462 => Train: 100.0	Epoch: 70	Iter: 158	Loss: 0.04002	Acc= 90.055	Precision= 90.281	Recall= 90.116	F1_score= 90.099
+2021-11-22 00:08:00,370 => Train: 100.0	Epoch: 71	Iter: 158	Loss: 0.03943	Acc= 90.371	Precision= 90.642	Recall= 90.442	F1_score= 90.423
+2021-11-22 00:09:50,259 => Train: 100.0	Epoch: 72	Iter: 158	Loss: 0.04015	Acc= 89.897	Precision= 90.180	Recall= 89.964	F1_score= 89.952
+2021-11-22 00:11:40,333 => Train: 100.0	Epoch: 73	Iter: 158	Loss: 0.03939	Acc= 90.213	Precision= 90.494	Recall= 90.275	F1_score= 90.272
+2021-11-22 00:13:30,433 => Train: 100.0	Epoch: 74	Iter: 158	Loss: 0.03859	Acc= 91.160	Precision= 91.432	Recall= 91.237	F1_score= 91.209
+2021-11-22 00:15:20,574 => Train: 100.0	Epoch: 75	Iter: 158	Loss: 0.03822	Acc= 90.766	Precision= 90.981	Recall= 90.837	F1_score= 90.822
+2021-11-22 00:17:10,618 => Train: 100.0	Epoch: 76	Iter: 158	Loss: 0.03746	Acc= 91.476	Precision= 91.732	Recall= 91.552	F1_score= 91.541
+2021-11-22 00:19:00,667 => Train: 100.0	Epoch: 77	Iter: 158	Loss: 0.03801	Acc= 90.608	Precision= 90.851	Recall= 90.678	F1_score= 90.651
+2021-11-22 00:20:50,821 => Train: 100.0	Epoch: 78	Iter: 158	Loss: 0.03861	Acc= 90.608	Precision= 90.895	Recall= 90.674	F1_score= 90.667
+2021-11-22 00:22:40,969 => Train: 100.0	Epoch: 79	Iter: 158	Loss: 0.03753	Acc= 90.923	Precision= 91.218	Recall= 90.993	F1_score= 90.982
+2021-11-22 00:24:31,022 => Train: 100.0	Epoch: 80	Iter: 158	Loss: 0.03814	Acc= 90.450	Precision= 90.761	Recall= 90.529	F1_score= 90.510
+2021-11-22 00:26:20,975 => Train: 100.0	Epoch: 81	Iter: 158	Loss: 0.03732	Acc= 91.160	Precision= 91.415	Recall= 91.224	F1_score= 91.205
+2021-11-22 00:28:11,112 => Train: 100.0	Epoch: 82	Iter: 158	Loss: 0.03703	Acc= 91.081	Precision= 91.351	Recall= 91.149	F1_score= 91.127
+2021-11-22 00:30:01,247 => Train: 100.0	Epoch: 83	Iter: 158	Loss: 0.03680	Acc= 91.239	Precision= 91.492	Recall= 91.322	F1_score= 91.297
+2021-11-22 00:31:51,351 => Train: 100.0	Epoch: 84	Iter: 158	Loss: 0.03759	Acc= 90.766	Precision= 91.036	Recall= 90.836	F1_score= 90.822
+2021-11-22 00:33:41,215 => Train: 100.0	Epoch: 85	Iter: 158	Loss: 0.03698	Acc= 90.845	Precision= 91.137	Recall= 90.928	F1_score= 90.917
+2021-11-22 00:35:31,344 => Train: 100.0	Epoch: 86	Iter: 158	Loss: 0.03684	Acc= 91.239	Precision= 91.563	Recall= 91.324	F1_score= 91.311
+2021-11-22 00:37:21,432 => Train: 100.0	Epoch: 87	Iter: 158	Loss: 0.03654	Acc= 91.397	Precision= 91.719	Recall= 91.471	F1_score= 91.448
+2021-11-22 00:39:11,585 => Train: 100.0	Epoch: 88	Iter: 158	Loss: 0.03566	Acc= 91.160	Precision= 91.483	Recall= 91.239	F1_score= 91.220
+2021-11-22 00:41:01,514 => Train: 100.0	Epoch: 89	Iter: 158	Loss: 0.03614	Acc= 91.081	Precision= 91.348	Recall= 91.162	F1_score= 91.137
+2021-11-22 00:42:51,709 => Train: 100.0	Epoch: 90	Iter: 158	Loss: 0.03655	Acc= 91.002	Precision= 91.336	Recall= 91.091	F1_score= 91.084
+2021-11-22 00:44:41,914 => Train: 100.0	Epoch: 91	Iter: 158	Loss: 0.03557	Acc= 91.397	Precision= 91.623	Recall= 91.473	F1_score= 91.459
+2021-11-22 00:46:32,144 => Train: 100.0	Epoch: 92	Iter: 158	Loss: 0.03650	Acc= 91.318	Precision= 91.578	Recall= 91.396	F1_score= 91.394
+2021-11-22 00:48:22,018 => Train: 100.0	Epoch: 93	Iter: 158	Loss: 0.03740	Acc= 91.002	Precision= 91.402	Recall= 91.080	F1_score= 91.068
+2021-11-22 00:50:12,211 => Train: 100.0	Epoch: 94	Iter: 158	Loss: 0.03441	Acc= 91.871	Precision= 92.160	Recall= 91.945	F1_score= 91.917
+2021-11-22 00:52:02,327 => Train: 100.0	Epoch: 95	Iter: 158	Loss: 0.03448	Acc= 92.107	Precision= 92.378	Recall= 92.186	F1_score= 92.171
+2021-11-22 00:53:52,443 => Train: 100.0	Epoch: 96	Iter: 158	Loss: 0.03477	Acc= 91.081	Precision= 91.385	Recall= 91.161	F1_score= 91.139
+2021-11-22 00:55:42,308 => Train: 100.0	Epoch: 97	Iter: 158	Loss: 0.03526	Acc= 91.239	Precision= 91.465	Recall= 91.317	F1_score= 91.290
+2021-11-22 00:57:32,326 => Train: 100.0	Epoch: 98	Iter: 158	Loss: 0.03487	Acc= 91.871	Precision= 92.139	Recall= 91.944	F1_score= 91.931
+2021-11-22 00:59:22,396 => Train: 100.0	Epoch: 99	Iter: 158	Loss: 0.03505	Acc= 91.397	Precision= 91.633	Recall= 91.476	F1_score= 91.455
+2021-11-22 01:01:12,603 => Train: 100.0	Epoch: 100	Iter: 158	Loss: 0.03562	Acc= 91.160	Precision= 91.391	Recall= 91.246	F1_score= 91.222
+2021-11-22 01:03:02,681 => Train: 100.0	Epoch: 101	Iter: 158	Loss: 0.03425	Acc= 91.634	Precision= 91.915	Recall= 91.706	F1_score= 91.693
+2021-11-22 01:04:52,597 => Train: 100.0	Epoch: 102	Iter: 158	Loss: 0.03423	Acc= 91.792	Precision= 92.116	Recall= 91.876	F1_score= 91.849
+2021-11-22 01:06:42,695 => Train: 100.0	Epoch: 103	Iter: 158	Loss: 0.03434	Acc= 91.949	Precision= 92.192	Recall= 92.028	F1_score= 92.020
+2021-11-22 01:08:32,810 => Train: 100.0	Epoch: 104	Iter: 158	Loss: 0.03347	Acc= 91.871	Precision= 92.094	Recall= 91.956	F1_score= 91.934
+2021-11-22 01:10:22,953 => Train: 100.0	Epoch: 105	Iter: 158	Loss: 0.03520	Acc= 91.634	Precision= 91.887	Recall= 91.708	F1_score= 91.693
+2021-11-22 01:12:12,851 => Train: 100.0	Epoch: 106	Iter: 158	Loss: 0.03447	Acc= 91.634	Precision= 91.861	Recall= 91.720	F1_score= 91.697
+2021-11-22 01:14:03,000 => Train: 100.0	Epoch: 107	Iter: 158	Loss: 0.03418	Acc= 91.713	Precision= 91.919	Recall= 91.783	F1_score= 91.770
+2021-11-22 01:15:53,144 => Train: 100.0	Epoch: 108	Iter: 158	Loss: 0.03384	Acc= 91.949	Precision= 92.297	Recall= 92.032	F1_score= 92.022
+2021-11-22 01:17:43,120 => Train: 100.0	Epoch: 109	Iter: 158	Loss: 0.03369	Acc= 92.265	Precision= 92.513	Recall= 92.340	F1_score= 92.333
+2021-11-22 01:19:32,935 => Train: 100.0	Epoch: 110	Iter: 158	Loss: 0.03318	Acc= 92.581	Precision= 92.802	Recall= 92.659	F1_score= 92.651
+2021-11-22 01:21:23,113 => Train: 100.0	Epoch: 111	Iter: 158	Loss: 0.03371	Acc= 91.397	Precision= 91.647	Recall= 91.481	F1_score= 91.461
+2021-11-22 01:23:13,226 => Train: 100.0	Epoch: 112	Iter: 158	Loss: 0.03394	Acc= 92.028	Precision= 92.260	Recall= 92.114	F1_score= 92.100
+2021-11-22 01:25:03,374 => Train: 100.0	Epoch: 113	Iter: 158	Loss: 0.03391	Acc= 92.028	Precision= 92.243	Recall= 92.101	F1_score= 92.093
+2021-11-22 01:26:53,551 => Train: 100.0	Epoch: 114	Iter: 158	Loss: 0.03389	Acc= 91.949	Precision= 92.173	Recall= 92.036	F1_score= 92.016
+2021-11-22 01:28:43,720 => Train: 100.0	Epoch: 115	Iter: 158	Loss: 0.03297	Acc= 91.792	Precision= 91.983	Recall= 91.875	F1_score= 91.846
+2021-11-22 01:30:33,870 => Train: 100.0	Epoch: 116	Iter: 158	Loss: 0.03247	Acc= 92.581	Precision= 92.832	Recall= 92.658	F1_score= 92.640
+2021-11-22 01:32:24,290 => Train: 100.0	Epoch: 117	Iter: 158	Loss: 0.03260	Acc= 91.949	Precision= 92.212	Recall= 92.028	F1_score= 92.020
+2021-11-22 01:34:14,558 => Train: 100.0	Epoch: 118	Iter: 158	Loss: 0.03230	Acc= 92.028	Precision= 92.245	Recall= 92.114	F1_score= 92.099
+2021-11-22 01:36:04,983 => Train: 100.0	Epoch: 119	Iter: 158	Loss: 0.03236	Acc= 92.423	Precision= 92.694	Recall= 92.510	F1_score= 92.496
+2021-11-22 01:37:55,386 => Train: 100.0	Epoch: 120	Iter: 158	Loss: 0.03287	Acc= 91.871	Precision= 92.108	Recall= 91.937	F1_score= 91.929
+2021-11-22 01:39:45,805 => Train: 100.0	Epoch: 121	Iter: 158	Loss: 0.03193	Acc= 91.634	Precision= 91.901	Recall= 91.720	F1_score= 91.711
+2021-11-22 01:41:36,022 => Train: 100.0	Epoch: 122	Iter: 158	Loss: 0.03280	Acc= 92.028	Precision= 92.251	Recall= 92.116	F1_score= 92.109
+2021-11-22 01:43:26,411 => Train: 100.0	Epoch: 123	Iter: 158	Loss: 0.03190	Acc= 92.186	Precision= 92.421	Recall= 92.275	F1_score= 92.249
+2021-11-22 01:45:16,603 => Train: 100.0	Epoch: 124	Iter: 158	Loss: 0.03234	Acc= 92.186	Precision= 92.385	Recall= 92.270	F1_score= 92.253
+2021-11-22 01:47:06,991 => Train: 100.0	Epoch: 125	Iter: 158	Loss: 0.03149	Acc= 92.107	Precision= 92.310	Recall= 92.191	F1_score= 92.181
+2021-11-22 01:48:57,224 => Train: 100.0	Epoch: 126	Iter: 158	Loss: 0.03086	Acc= 92.818	Precision= 93.063	Recall= 92.895	F1_score= 92.879
+2021-11-22 01:50:47,527 => Train: 100.0	Epoch: 127	Iter: 158	Loss: 0.03076	Acc= 92.739	Precision= 92.992	Recall= 92.830	F1_score= 92.818
+2021-11-22 01:52:37,840 => Train: 100.0	Epoch: 128	Iter: 158	Loss: 0.03153	Acc= 92.739	Precision= 92.923	Recall= 92.823	F1_score= 92.795
+2021-11-22 01:54:28,001 => Train: 100.0	Epoch: 129	Iter: 158	Loss: 0.03092	Acc= 92.344	Precision= 92.534	Recall= 92.428	F1_score= 92.415
+2021-11-22 01:56:18,129 => Train: 100.0	Epoch: 130	Iter: 158	Loss: 0.03146	Acc= 92.107	Precision= 92.323	Recall= 92.185	F1_score= 92.193
+2021-11-22 01:58:08,096 => Train: 100.0	Epoch: 131	Iter: 158	Loss: 0.03142	Acc= 92.186	Precision= 92.438	Recall= 92.280	F1_score= 92.263
+2021-11-22 01:59:57,910 => Train: 100.0	Epoch: 132	Iter: 158	Loss: 0.03198	Acc= 92.423	Precision= 92.632	Recall= 92.510	F1_score= 92.489
+2021-11-22 02:01:47,991 => Train: 100.0	Epoch: 133	Iter: 158	Loss: 0.03102	Acc= 92.423	Precision= 92.564	Recall= 92.502	F1_score= 92.491
+2021-11-22 02:03:38,081 => Train: 100.0	Epoch: 134	Iter: 158	Loss: 0.03189	Acc= 92.107	Precision= 92.348	Recall= 92.183	F1_score= 92.177
+2021-11-22 02:05:27,909 => Train: 100.0	Epoch: 135	Iter: 158	Loss: 0.03104	Acc= 92.344	Precision= 92.514	Recall= 92.409	F1_score= 92.406
+2021-11-22 02:07:18,082 => Train: 100.0	Epoch: 136	Iter: 158	Loss: 0.03061	Acc= 92.660	Precision= 92.856	Recall= 92.739	F1_score= 92.725
+2021-11-22 02:09:08,203 => Train: 100.0	Epoch: 137	Iter: 158	Loss: 0.02986	Acc= 93.370	Precision= 93.591	Recall= 93.457	F1_score= 93.448
+2021-11-22 02:10:58,347 => Train: 100.0	Epoch: 138	Iter: 158	Loss: 0.03073	Acc= 92.423	Precision= 92.628	Recall= 92.513	F1_score= 92.508
+2021-11-22 02:12:48,217 => Train: 100.0	Epoch: 139	Iter: 158	Loss: 0.02992	Acc= 92.502	Precision= 92.683	Recall= 92.585	F1_score= 92.582
+2021-11-22 02:14:38,346 => Train: 100.0	Epoch: 140	Iter: 158	Loss: 0.03080	Acc= 92.739	Precision= 92.887	Recall= 92.815	F1_score= 92.803
+2021-11-22 02:16:28,423 => Train: 100.0	Epoch: 141	Iter: 158	Loss: 0.02943	Acc= 93.370	Precision= 93.537	Recall= 93.445	F1_score= 93.427
+2021-11-22 02:18:18,558 => Train: 100.0	Epoch: 142	Iter: 158	Loss: 0.02921	Acc= 92.897	Precision= 93.050	Recall= 92.979	F1_score= 92.971
+2021-11-22 02:20:08,282 => Train: 100.0	Epoch: 143	Iter: 158	Loss: 0.02940	Acc= 92.818	Precision= 92.962	Recall= 92.900	F1_score= 92.885
+2021-11-22 02:21:58,402 => Train: 100.0	Epoch: 144	Iter: 158	Loss: 0.02992	Acc= 92.976	Precision= 93.138	Recall= 93.061	F1_score= 93.052
+2021-11-22 02:23:48,423 => Train: 100.0	Epoch: 145	Iter: 158	Loss: 0.02907	Acc= 92.976	Precision= 93.150	Recall= 93.062	F1_score= 93.046
+2021-11-22 02:25:38,518 => Train: 100.0	Epoch: 146	Iter: 158	Loss: 0.02927	Acc= 93.291	Precision= 93.451	Recall= 93.370	F1_score= 93.362
+2021-11-22 02:27:28,549 => Train: 100.0	Epoch: 147	Iter: 158	Loss: 0.03111	Acc= 92.660	Precision= 92.823	Recall= 92.727	F1_score= 92.713
+2021-11-22 02:29:18,503 => Train: 100.0	Epoch: 148	Iter: 158	Loss: 0.02910	Acc= 92.976	Precision= 93.123	Recall= 93.054	F1_score= 93.043
+2021-11-22 02:31:08,575 => Train: 100.0	Epoch: 149	Iter: 158	Loss: 0.02824	Acc= 93.686	Precision= 93.817	Recall= 93.761	F1_score= 93.746
+2021-11-22 02:32:58,766 => Train: 100.0	Epoch: 150	Iter: 158	Loss: 0.02928	Acc= 93.054	Precision= 93.241	Recall= 93.147	F1_score= 93.117
+2021-11-22 02:34:48,616 => Train: 100.0	Epoch: 151	Iter: 158	Loss: 0.02903	Acc= 92.739	Precision= 92.942	Recall= 92.816	F1_score= 92.812
+2021-11-22 02:36:38,449 => Train: 100.0	Epoch: 152	Iter: 158	Loss: 0.02883	Acc= 93.212	Precision= 93.332	Recall= 93.294	F1_score= 93.285
+2021-11-22 02:38:28,484 => Train: 100.0	Epoch: 153	Iter: 158	Loss: 0.02927	Acc= 93.291	Precision= 93.369	Recall= 93.362	F1_score= 93.339
+2021-11-22 02:40:18,618 => Train: 100.0	Epoch: 154	Iter: 158	Loss: 0.02874	Acc= 92.660	Precision= 92.856	Recall= 92.743	F1_score= 92.740
+2021-11-22 02:42:08,563 => Train: 100.0	Epoch: 155	Iter: 158	Loss: 0.02844	Acc= 93.528	Precision= 93.674	Recall= 93.618	F1_score= 93.593
+2021-11-22 02:43:58,389 => Train: 100.0	Epoch: 156	Iter: 158	Loss: 0.02953	Acc= 92.976	Precision= 93.115	Recall= 93.058	F1_score= 93.041
+2021-11-22 02:45:48,450 => Train: 100.0	Epoch: 157	Iter: 158	Loss: 0.02871	Acc= 93.607	Precision= 93.718	Recall= 93.684	F1_score= 93.669
+2021-11-22 02:47:38,564 => Train: 100.0	Epoch: 158	Iter: 158	Loss: 0.02883	Acc= 93.528	Precision= 93.674	Recall= 93.602	F1_score= 93.602
+2021-11-22 02:49:28,636 => Train: 100.0	Epoch: 159	Iter: 158	Loss: 0.02719	Acc= 93.923	Precision= 94.054	Recall= 94.005	F1_score= 93.986
+2021-11-22 02:51:18,285 => Train: 100.0	Epoch: 160	Iter: 158	Loss: 0.02815	Acc= 93.765	Precision= 93.884	Recall= 93.834	F1_score= 93.829
+2021-11-22 02:53:08,410 => Train: 100.0	Epoch: 161	Iter: 158	Loss: 0.02795	Acc= 93.844	Precision= 93.967	Recall= 93.917	F1_score= 93.909
+2021-11-22 02:54:58,546 => Train: 100.0	Epoch: 162	Iter: 158	Loss: 0.02683	Acc= 94.081	Precision= 94.211	Recall= 94.157	F1_score= 94.135
+2021-11-22 02:56:48,692 => Train: 100.0	Epoch: 163	Iter: 158	Loss: 0.02730	Acc= 94.081	Precision= 94.182	Recall= 94.153	F1_score= 94.140
+2021-11-22 02:58:38,461 => Train: 100.0	Epoch: 164	Iter: 158	Loss: 0.02825	Acc= 93.370	Precision= 93.496	Recall= 93.442	F1_score= 93.442
+2021-11-22 03:00:28,468 => Train: 100.0	Epoch: 165	Iter: 158	Loss: 0.02815	Acc= 93.607	Precision= 93.750	Recall= 93.679	F1_score= 93.682
+2021-11-22 03:02:18,591 => Train: 100.0	Epoch: 166	Iter: 158	Loss: 0.02727	Acc= 93.686	Precision= 93.810	Recall= 93.763	F1_score= 93.748
+2021-11-22 03:04:08,787 => Train: 100.0	Epoch: 167	Iter: 158	Loss: 0.02851	Acc= 93.923	Precision= 94.026	Recall= 93.999	F1_score= 93.979
+2021-11-22 03:05:58,985 => Train: 100.0	Epoch: 168	Iter: 158	Loss: 0.02685	Acc= 94.081	Precision= 94.190	Recall= 94.154	F1_score= 94.148
+2021-11-22 03:07:48,946 => Train: 100.0	Epoch: 169	Iter: 158	Loss: 0.02767	Acc= 94.081	Precision= 94.173	Recall= 94.145	F1_score= 94.136
+2021-11-22 03:09:39,137 => Train: 100.0	Epoch: 170	Iter: 158	Loss: 0.02664	Acc= 94.081	Precision= 94.198	Recall= 94.151	F1_score= 94.134
+2021-11-22 03:11:29,201 => Train: 100.0	Epoch: 171	Iter: 158	Loss: 0.02703	Acc= 93.844	Precision= 93.960	Recall= 93.910	F1_score= 93.908
+2021-11-22 03:13:19,235 => Train: 100.0	Epoch: 172	Iter: 158	Loss: 0.02721	Acc= 93.686	Precision= 93.773	Recall= 93.761	F1_score= 93.751
+2021-11-22 03:15:09,484 => Train: 100.0	Epoch: 173	Iter: 158	Loss: 0.02667	Acc= 94.159	Precision= 94.277	Recall= 94.237	F1_score= 94.221
+2021-11-22 03:16:59,949 => Train: 100.0	Epoch: 174	Iter: 158	Loss: 0.02586	Acc= 94.396	Precision= 94.471	Recall= 94.464	F1_score= 94.452
+2021-11-22 03:18:50,359 => Train: 100.0	Epoch: 175	Iter: 158	Loss: 0.02675	Acc= 93.844	Precision= 93.941	Recall= 93.915	F1_score= 93.918
+2021-11-22 03:20:40,584 => Train: 100.0	Epoch: 176	Iter: 158	Loss: 0.02637	Acc= 93.844	Precision= 93.955	Recall= 93.923	F1_score= 93.909
+2021-11-22 03:22:30,777 => Train: 100.0	Epoch: 177	Iter: 158	Loss: 0.02620	Acc= 93.844	Precision= 93.964	Recall= 93.921	F1_score= 93.912
+2021-11-22 03:24:21,178 => Train: 100.0	Epoch: 178	Iter: 158	Loss: 0.02630	Acc= 93.765	Precision= 93.845	Recall= 93.840	F1_score= 93.825
+2021-11-22 03:26:11,562 => Train: 100.0	Epoch: 179	Iter: 158	Loss: 0.02589	Acc= 94.712	Precision= 94.794	Recall= 94.780	F1_score= 94.772
+2021-11-22 03:28:01,827 => Train: 100.0	Epoch: 180	Iter: 158	Loss: 0.02565	Acc= 94.554	Precision= 94.676	Recall= 94.634	F1_score= 94.627
+2021-11-22 03:29:52,129 => Train: 100.0	Epoch: 181	Iter: 158	Loss: 0.02651	Acc= 93.923	Precision= 94.056	Recall= 93.986	F1_score= 93.983
+2021-11-22 03:31:42,510 => Train: 100.0	Epoch: 182	Iter: 158	Loss: 0.02623	Acc= 94.159	Precision= 94.251	Recall= 94.236	F1_score= 94.222
+2021-11-22 03:33:32,898 => Train: 100.0	Epoch: 183	Iter: 158	Loss: 0.02502	Acc= 94.870	Precision= 94.960	Recall= 94.938	F1_score= 94.933
+2021-11-22 03:35:23,383 => Train: 100.0	Epoch: 184	Iter: 158	Loss: 0.02533	Acc= 94.633	Precision= 94.704	Recall= 94.694	F1_score= 94.688
+2021-11-22 03:37:13,415 => Train: 100.0	Epoch: 185	Iter: 158	Loss: 0.02623	Acc= 94.396	Precision= 94.485	Recall= 94.464	F1_score= 94.453
+2021-11-22 03:39:03,469 => Train: 100.0	Epoch: 186	Iter: 158	Loss: 0.02563	Acc= 94.554	Precision= 94.670	Recall= 94.622	F1_score= 94.624
+2021-11-22 03:40:53,465 => Train: 100.0	Epoch: 187	Iter: 158	Loss: 0.02547	Acc= 94.633	Precision= 94.722	Recall= 94.701	F1_score= 94.688
+2021-11-22 03:42:43,503 => Train: 100.0	Epoch: 188	Iter: 158	Loss: 0.02681	Acc= 93.923	Precision= 94.031	Recall= 93.996	F1_score= 93.996
+2021-11-22 03:44:33,399 => Train: 100.0	Epoch: 189	Iter: 158	Loss: 0.02532	Acc= 94.870	Precision= 94.952	Recall= 94.936	F1_score= 94.916
+2021-11-22 03:46:23,273 => Train: 100.0	Epoch: 190	Iter: 158	Loss: 0.02676	Acc= 94.081	Precision= 94.177	Recall= 94.151	F1_score= 94.147
+2021-11-22 03:48:13,322 => Train: 100.0	Epoch: 191	Iter: 158	Loss: 0.02439	Acc= 94.633	Precision= 94.716	Recall= 94.701	F1_score= 94.691
+2021-11-22 03:50:03,339 => Train: 100.0	Epoch: 192	Iter: 158	Loss: 0.02423	Acc= 94.396	Precision= 94.469	Recall= 94.471	F1_score= 94.455
+2021-11-22 03:51:53,322 => Train: 100.0	Epoch: 193	Iter: 158	Loss: 0.02609	Acc= 94.475	Precision= 94.582	Recall= 94.536	F1_score= 94.528
+2021-11-22 03:53:43,219 => Train: 100.0	Epoch: 194	Iter: 158	Loss: 0.02504	Acc= 94.554	Precision= 94.642	Recall= 94.621	F1_score= 94.609
+2021-11-22 03:55:33,294 => Train: 100.0	Epoch: 195	Iter: 158	Loss: 0.02439	Acc= 94.554	Precision= 94.638	Recall= 94.628	F1_score= 94.613
+2021-11-22 03:57:23,356 => Train: 100.0	Epoch: 196	Iter: 158	Loss: 0.02520	Acc= 94.317	Precision= 94.390	Recall= 94.391	F1_score= 94.372
+2021-11-22 03:59:13,447 => Train: 100.0	Epoch: 197	Iter: 158	Loss: 0.02491	Acc= 94.475	Precision= 94.554	Recall= 94.550	F1_score= 94.532
+2021-11-22 04:01:03,242 => Train: 100.0	Epoch: 198	Iter: 158	Loss: 0.02576	Acc= 94.159	Precision= 94.282	Recall= 94.226	F1_score= 94.224
+2021-11-22 04:02:53,308 => Train: 100.0	Epoch: 199	Iter: 158	Loss: 0.02514	Acc= 94.712	Precision= 94.806	Recall= 94.773	F1_score= 94.767
+2021-11-22 04:04:43,340 => Train: 100.0	Epoch: 200	Iter: 158	Loss: 0.02373	Acc= 94.870	Precision= 94.940	Recall= 94.933	F1_score= 94.924
+2021-11-22 04:04:49,534 => Eval: 100.0	Epoch: 200	Iter: 39	Loss: 0.06697	Acc= 85.489	Precision= 85.428	Recall= 85.178	F1_score= 85.140
+2021-11-22 04:04:49,534 => -------------------------------------------------
+2021-11-22 04:04:49,534 => 2 FOLD
+2021-11-22 04:04:49,962 => loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-config.json from cache at /home/yinan/.cache/torch/transformers/b945b69218e98b3e2c95acf911789741307dec43c698d35fad11c1ae28bda352.9da767be51e1327499df13488672789394e2ca38b877837e52618a67d7002391
+2021-11-22 04:04:49,963 => Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": null,
+  "do_sample": false,
+  "eos_token_ids": null,
+  "finetuning_task": null,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1"
+  },
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "is_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_beams": 1,
+  "num_hidden_layers": 12,
+  "num_labels": 4,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 0,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "use_bfloat16": false,
+  "vocab_size": 28996
+}
+
+2021-11-22 04:04:50,381 => loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-pytorch_model.bin from cache at /home/yinan/.cache/torch/transformers/35d8b9d36faaf46728a0192d82bf7d00137490cd6074e8500778afed552a67e5.3fadbea36527ae472139fe84cddaa65454d7429f12d543d80bfc3ad70de55ac2
+2021-11-22 04:04:53,775 => Weights of BertForSequenceClassification not initialized from pretrained model: ['classifier.weight', 'classifier.bias']
+2021-11-22 04:04:53,775 => Weights from pretrained model not used in BertForSequenceClassification: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
+2021-11-22 04:06:42,842 => Train: 100.0	Epoch: 1	Iter: 158	Loss: 0.13352	Acc= 53.118	Precision= 55.519	Recall= 52.903	F1_score= 52.786
+2021-11-22 04:08:31,682 => Train: 100.0	Epoch: 2	Iter: 158	Loss: 0.11802	Acc= 60.931	Precision= 62.430	Recall= 60.474	F1_score= 59.949
+2021-11-22 04:10:20,815 => Train: 100.0	Epoch: 3	Iter: 158	Loss: 0.15238	Acc= 41.200	Precision= 46.764	Recall= 41.124	F1_score= 41.977
+2021-11-22 04:12:09,974 => Train: 100.0	Epoch: 4	Iter: 158	Loss: 0.16268	Acc= 33.070	Precision= 42.166	Recall= 32.888	F1_score= 34.041
+2021-11-22 04:13:59,079 => Train: 100.0	Epoch: 5	Iter: 158	Loss: 0.16461	Acc= 31.334	Precision= 40.486	Recall= 31.213	F1_score= 32.471
+2021-11-22 04:15:47,924 => Train: 100.0	Epoch: 6	Iter: 158	Loss: 0.16389	Acc= 30.624	Precision= 40.665	Recall= 30.439	F1_score= 31.852
+2021-11-22 04:17:36,831 => Train: 100.0	Epoch: 7	Iter: 158	Loss: 0.16172	Acc= 33.544	Precision= 43.382	Recall= 33.320	F1_score= 34.417
+2021-11-22 04:19:25,892 => Train: 100.0	Epoch: 8	Iter: 158	Loss: 0.16157	Acc= 32.202	Precision= 42.319	Recall= 32.018	F1_score= 33.340
+2021-11-22 04:21:15,030 => Train: 100.0	Epoch: 9	Iter: 158	Loss: 0.16182	Acc= 31.807	Precision= 42.222	Recall= 31.614	F1_score= 33.004
+2021-11-22 04:23:04,069 => Train: 100.0	Epoch: 10	Iter: 158	Loss: 0.16115	Acc= 31.728	Precision= 41.712	Recall= 31.585	F1_score= 32.998
+2021-11-22 04:24:53,029 => Train: 100.0	Epoch: 11	Iter: 158	Loss: 0.16137	Acc= 32.360	Precision= 41.571	Recall= 32.161	F1_score= 33.304
+2021-11-22 04:26:42,095 => Train: 100.0	Epoch: 12	Iter: 158	Loss: 0.16141	Acc= 31.492	Precision= 41.921	Recall= 31.262	F1_score= 32.507
+2021-11-22 04:28:31,249 => Train: 100.0	Epoch: 13	Iter: 158	Loss: 0.16133	Acc= 34.491	Precision= 45.469	Recall= 34.356	F1_score= 35.739
+2021-11-22 04:30:20,236 => Train: 100.0	Epoch: 14	Iter: 158	Loss: 0.16139	Acc= 30.229	Precision= 41.108	Recall= 30.051	F1_score= 31.551
+2021-11-22 04:32:09,207 => Train: 100.0	Epoch: 15	Iter: 158	Loss: 0.16164	Acc= 31.571	Precision= 42.194	Recall= 31.376	F1_score= 32.718
+2021-11-22 04:33:58,178 => Train: 100.0	Epoch: 16	Iter: 158	Loss: 0.16100	Acc= 33.070	Precision= 43.380	Recall= 32.783	F1_score= 33.759
+2021-11-22 04:35:47,264 => Train: 100.0	Epoch: 17	Iter: 158	Loss: 0.16123	Acc= 31.728	Precision= 43.480	Recall= 31.503	F1_score= 32.779
+2021-11-22 04:37:36,302 => Train: 100.0	Epoch: 18	Iter: 158	Loss: 0.16002	Acc= 34.807	Precision= 45.996	Recall= 34.562	F1_score= 35.669
+2021-11-22 04:39:25,112 => Train: 100.0	Epoch: 19	Iter: 158	Loss: 0.16066	Acc= 33.702	Precision= 45.370	Recall= 33.456	F1_score= 34.604
+2021-11-22 04:41:14,134 => Train: 100.0	Epoch: 20	Iter: 158	Loss: 0.16086	Acc= 31.650	Precision= 44.128	Recall= 31.418	F1_score= 32.763
+2021-11-22 04:43:03,249 => Train: 100.0	Epoch: 21	Iter: 158	Loss: 0.16089	Acc= 33.544	Precision= 45.732	Recall= 33.323	F1_score= 34.611
+2021-11-22 04:44:52,349 => Train: 100.0	Epoch: 22	Iter: 158	Loss: 0.16035	Acc= 33.465	Precision= 44.356	Recall= 33.191	F1_score= 34.207
+2021-11-22 04:46:41,046 => Train: 100.0	Epoch: 23	Iter: 158	Loss: 0.16057	Acc= 32.597	Precision= 44.102	Recall= 32.369	F1_score= 33.611
+2021-11-22 04:48:30,191 => Train: 100.0	Epoch: 24	Iter: 158	Loss: 0.16102	Acc= 32.439	Precision= 43.528	Recall= 32.184	F1_score= 33.258
+2021-11-22 04:50:19,230 => Train: 100.0	Epoch: 25	Iter: 158	Loss: 0.16050	Acc= 33.938	Precision= 44.954	Recall= 33.623	F1_score= 34.462
+2021-11-22 04:52:08,397 => Train: 100.0	Epoch: 26	Iter: 158	Loss: 0.16095	Acc= 33.781	Precision= 44.995	Recall= 33.496	F1_score= 34.456
+2021-11-22 04:53:57,086 => Train: 100.0	Epoch: 27	Iter: 158	Loss: 0.16088	Acc= 32.439	Precision= 44.371	Recall= 32.239	F1_score= 33.611
+2021-11-22 04:55:46,133 => Train: 100.0	Epoch: 28	Iter: 158	Loss: 0.16015	Acc= 33.070	Precision= 43.588	Recall= 32.791	F1_score= 33.774
+2021-11-22 04:57:35,210 => Train: 100.0	Epoch: 29	Iter: 158	Loss: 0.16123	Acc= 32.991	Precision= 44.409	Recall= 32.732	F1_score= 33.854
+2021-11-22 04:59:24,413 => Train: 100.0	Epoch: 30	Iter: 158	Loss: 0.16084	Acc= 32.755	Precision= 44.478	Recall= 32.501	F1_score= 33.654
+2021-11-22 05:01:13,245 => Train: 100.0	Epoch: 31	Iter: 158	Loss: 0.16072	Acc= 31.807	Precision= 44.076	Recall= 31.553	F1_score= 32.803
+2021-11-22 05:03:02,209 => Train: 100.0	Epoch: 32	Iter: 158	Loss: 0.16040	Acc= 32.360	Precision= 43.847	Recall= 32.132	F1_score= 33.312
+2021-11-22 05:04:51,282 => Train: 100.0	Epoch: 33	Iter: 158	Loss: 0.16047	Acc= 32.597	Precision= 45.282	Recall= 32.372	F1_score= 33.683
+2021-11-22 05:06:40,412 => Train: 100.0	Epoch: 34	Iter: 158	Loss: 0.16102	Acc= 31.886	Precision= 44.368	Recall= 31.686	F1_score= 33.102
+2021-11-22 05:08:29,396 => Train: 100.0	Epoch: 35	Iter: 158	Loss: 0.16068	Acc= 32.439	Precision= 44.542	Recall= 32.187	F1_score= 33.391
+2021-11-22 05:10:18,382 => Train: 100.0	Epoch: 36	Iter: 158	Loss: 0.16066	Acc= 31.807	Precision= 44.195	Recall= 31.528	F1_score= 32.674
+2021-11-22 05:12:07,480 => Train: 100.0	Epoch: 37	Iter: 158	Loss: 0.16105	Acc= 31.176	Precision= 43.501	Recall= 30.908	F1_score= 32.132
+2021-11-22 05:13:56,592 => Train: 100.0	Epoch: 38	Iter: 158	Loss: 0.16114	Acc= 31.807	Precision= 44.024	Recall= 31.562	F1_score= 32.847
+2021-11-22 05:15:45,574 => Train: 100.0	Epoch: 39	Iter: 158	Loss: 0.15987	Acc= 32.597	Precision= 45.137	Recall= 32.389	F1_score= 33.770
+2021-11-22 05:17:34,585 => Train: 100.0	Epoch: 40	Iter: 158	Loss: 0.16024	Acc= 33.702	Precision= 45.241	Recall= 33.420	F1_score= 34.484
+2021-11-22 05:19:23,657 => Train: 100.0	Epoch: 41	Iter: 158	Loss: 0.16025	Acc= 33.860	Precision= 45.808	Recall= 33.611	F1_score= 34.752
+2021-11-22 05:21:12,752 => Train: 100.0	Epoch: 42	Iter: 158	Loss: 0.16053	Acc= 32.202	Precision= 44.466	Recall= 31.946	F1_score= 33.197
+2021-11-22 05:23:01,697 => Train: 100.0	Epoch: 43	Iter: 158	Loss: 0.16070	Acc= 32.912	Precision= 44.698	Recall= 32.629	F1_score= 33.670
+2021-11-22 05:24:50,730 => Train: 100.0	Epoch: 44	Iter: 158	Loss: 0.15996	Acc= 33.702	Precision= 45.616	Recall= 33.463	F1_score= 34.682
+2021-11-22 05:26:39,808 => Train: 100.0	Epoch: 45	Iter: 158	Loss: 0.16029	Acc= 32.202	Precision= 44.108	Recall= 31.968	F1_score= 33.239
+2021-11-22 05:28:28,934 => Train: 100.0	Epoch: 46	Iter: 158	Loss: 0.16057	Acc= 32.123	Precision= 44.456	Recall= 31.889	F1_score= 33.204
+2021-11-22 05:30:17,856 => Train: 100.0	Epoch: 47	Iter: 158	Loss: 0.15975	Acc= 32.912	Precision= 44.908	Recall= 32.662	F1_score= 33.836
+2021-11-22 05:32:06,929 => Train: 100.0	Epoch: 48	Iter: 158	Loss: 0.16079	Acc= 32.439	Precision= 43.970	Recall= 32.171	F1_score= 33.271
+2021-11-22 05:33:56,006 => Train: 100.0	Epoch: 49	Iter: 158	Loss: 0.15987	Acc= 34.017	Precision= 46.057	Recall= 33.851	F1_score= 35.233
+2021-11-22 05:35:45,144 => Train: 100.0	Epoch: 50	Iter: 158	Loss: 0.16116	Acc= 31.413	Precision= 42.773	Recall= 31.219	F1_score= 32.565
+2021-11-22 05:37:34,051 => Train: 100.0	Epoch: 51	Iter: 158	Loss: 0.16011	Acc= 34.017	Precision= 45.894	Recall= 33.696	F1_score= 34.553
+2021-11-22 05:39:23,164 => Train: 100.0	Epoch: 52	Iter: 158	Loss: 0.15988	Acc= 32.439	Precision= 45.513	Recall= 32.275	F1_score= 33.839
+2021-11-22 05:41:12,236 => Train: 100.0	Epoch: 53	Iter: 158	Loss: 0.15972	Acc= 33.623	Precision= 45.466	Recall= 33.320	F1_score= 34.292
+2021-11-22 05:43:01,343 => Train: 100.0	Epoch: 54	Iter: 158	Loss: 0.16030	Acc= 34.570	Precision= 44.763	Recall= 34.268	F1_score= 35.084
+2021-11-22 05:44:50,342 => Train: 100.0	Epoch: 55	Iter: 158	Loss: 0.16101	Acc= 32.518	Precision= 43.904	Recall= 32.258	F1_score= 33.374
+2021-11-22 05:46:39,221 => Train: 100.0	Epoch: 56	Iter: 158	Loss: 0.16040	Acc= 33.070	Precision= 44.957	Recall= 32.815	F1_score= 33.953
+2021-11-22 05:48:28,267 => Train: 100.0	Epoch: 57	Iter: 158	Loss: 0.16102	Acc= 32.044	Precision= 44.376	Recall= 31.837	F1_score= 33.192
+2021-11-22 05:50:17,385 => Train: 100.0	Epoch: 58	Iter: 158	Loss: 0.16053	Acc= 32.281	Precision= 43.873	Recall= 32.030	F1_score= 33.179
+2021-11-22 05:52:06,542 => Train: 100.0	Epoch: 59	Iter: 158	Loss: 0.16040	Acc= 32.991	Precision= 44.866	Recall= 32.778	F1_score= 34.036
+2021-11-22 05:53:55,401 => Train: 100.0	Epoch: 60	Iter: 158	Loss: 0.15998	Acc= 33.781	Precision= 45.583	Recall= 33.557	F1_score= 34.806
+2021-11-22 05:55:44,546 => Train: 100.0	Epoch: 61	Iter: 158	Loss: 0.16068	Acc= 33.465	Precision= 45.728	Recall= 33.242	F1_score= 34.491
+2021-11-22 05:57:33,743 => Train: 100.0	Epoch: 62	Iter: 158	Loss: 0.16056	Acc= 33.228	Precision= 44.430	Recall= 32.927	F1_score= 33.818
+2021-11-22 05:59:22,887 => Train: 100.0	Epoch: 63	Iter: 158	Loss: 0.16112	Acc= 30.150	Precision= 43.050	Recall= 29.949	F1_score= 31.452
+2021-11-22 06:01:11,763 => Train: 100.0	Epoch: 64	Iter: 158	Loss: 0.16012	Acc= 32.991	Precision= 43.083	Recall= 32.730	F1_score= 33.683
+2021-11-22 06:03:00,887 => Train: 100.0	Epoch: 65	Iter: 158	Loss: 0.15963	Acc= 35.833	Precision= 47.246	Recall= 35.543	F1_score= 36.451
+2021-11-22 06:04:49,705 => Train: 100.0	Epoch: 66	Iter: 158	Loss: 0.15966	Acc= 34.017	Precision= 45.755	Recall= 33.726	F1_score= 34.727
+2021-11-22 06:06:38,910 => Train: 100.0	Epoch: 67	Iter: 158	Loss: 0.16072	Acc= 32.281	Precision= 44.024	Recall= 32.056	F1_score= 33.384
+2021-11-22 06:08:27,702 => Train: 100.0	Epoch: 68	Iter: 158	Loss: 0.16004	Acc= 33.149	Precision= 44.570	Recall= 32.984	F1_score= 34.346
+2021-11-22 06:10:16,061 => Train: 100.0	Epoch: 69	Iter: 158	Loss: 0.16072	Acc= 33.149	Precision= 45.308	Recall= 32.877	F1_score= 34.011
+2021-11-22 06:12:04,398 => Train: 100.0	Epoch: 70	Iter: 158	Loss: 0.15945	Acc= 32.991	Precision= 44.959	Recall= 32.802	F1_score= 34.213
+2021-11-22 06:13:52,746 => Train: 100.0	Epoch: 71	Iter: 158	Loss: 0.15911	Acc= 34.807	Precision= 46.109	Recall= 34.487	F1_score= 35.346
+2021-11-22 06:15:41,131 => Train: 100.0	Epoch: 72	Iter: 158	Loss: 0.16128	Acc= 31.965	Precision= 43.984	Recall= 31.704	F1_score= 32.886
+2021-11-22 06:17:29,463 => Train: 100.0	Epoch: 73	Iter: 158	Loss: 0.15943	Acc= 34.254	Precision= 45.952	Recall= 33.948	F1_score= 34.882
+2021-11-22 06:19:17,788 => Train: 100.0	Epoch: 74	Iter: 158	Loss: 0.16025	Acc= 34.017	Precision= 45.891	Recall= 33.682	F1_score= 34.518
+2021-11-22 06:21:06,183 => Train: 100.0	Epoch: 75	Iter: 158	Loss: 0.15992	Acc= 33.228	Precision= 44.935	Recall= 32.995	F1_score= 34.172
+2021-11-22 06:22:54,560 => Train: 100.0	Epoch: 76	Iter: 158	Loss: 0.15984	Acc= 31.965	Precision= 43.217	Recall= 31.769	F1_score= 33.103
+2021-11-22 06:24:42,904 => Train: 100.0	Epoch: 77	Iter: 158	Loss: 0.16031	Acc= 32.123	Precision= 43.684	Recall= 31.879	F1_score= 33.076
+2021-11-22 06:26:31,233 => Train: 100.0	Epoch: 78	Iter: 158	Loss: 0.15953	Acc= 34.728	Precision= 46.241	Recall= 34.469	F1_score= 35.504
+2021-11-22 06:28:19,557 => Train: 100.0	Epoch: 79	Iter: 158	Loss: 0.16155	Acc= 32.518	Precision= 42.931	Recall= 32.212	F1_score= 33.123
+2021-11-22 06:30:07,992 => Train: 100.0	Epoch: 80	Iter: 158	Loss: 0.16035	Acc= 32.833	Precision= 44.874	Recall= 32.567	F1_score= 33.724
+2021-11-22 06:31:56,359 => Train: 100.0	Epoch: 81	Iter: 158	Loss: 0.15936	Acc= 34.807	Precision= 45.976	Recall= 34.547	F1_score= 35.615
+2021-11-22 06:33:44,686 => Train: 100.0	Epoch: 82	Iter: 158	Loss: 0.16103	Acc= 33.307	Precision= 44.958	Recall= 33.034	F1_score= 34.090
+2021-11-22 06:35:32,958 => Train: 100.0	Epoch: 83	Iter: 158	Loss: 0.15990	Acc= 34.017	Precision= 45.767	Recall= 33.773	F1_score= 34.957
+2021-11-22 06:37:21,264 => Train: 100.0	Epoch: 84	Iter: 158	Loss: 0.15981	Acc= 33.623	Precision= 45.299	Recall= 33.373	F1_score= 34.560
+2021-11-22 06:39:09,612 => Train: 100.0	Epoch: 85	Iter: 158	Loss: 0.16031	Acc= 33.386	Precision= 44.660	Recall= 33.197	F1_score= 34.430
+2021-11-22 06:40:57,938 => Train: 100.0	Epoch: 86	Iter: 158	Loss: 0.16001	Acc= 34.333	Precision= 45.894	Recall= 34.009	F1_score= 34.891
+2021-11-22 06:42:46,274 => Train: 100.0	Epoch: 87	Iter: 158	Loss: 0.15941	Acc= 33.228	Precision= 45.256	Recall= 32.993	F1_score= 34.323
+2021-11-22 06:44:34,632 => Train: 100.0	Epoch: 88	Iter: 158	Loss: 0.16069	Acc= 31.807	Precision= 43.964	Recall= 31.586	F1_score= 32.953
+2021-11-22 06:46:22,942 => Train: 100.0	Epoch: 89	Iter: 158	Loss: 0.16098	Acc= 32.518	Precision= 42.931	Recall= 32.228	F1_score= 33.212
+2021-11-22 06:48:11,251 => Train: 100.0	Epoch: 90	Iter: 158	Loss: 0.16121	Acc= 32.281	Precision= 43.591	Recall= 32.010	F1_score= 33.087
+2021-11-22 06:49:59,603 => Train: 100.0	Epoch: 91	Iter: 158	Loss: 0.16066	Acc= 31.965	Precision= 43.799	Recall= 31.737	F1_score= 32.972
+2021-11-22 06:51:48,017 => Train: 100.0	Epoch: 92	Iter: 158	Loss: 0.15931	Acc= 35.359	Precision= 46.112	Recall= 35.060	F1_score= 35.912
+2021-11-22 06:53:36,333 => Train: 100.0	Epoch: 93	Iter: 158	Loss: 0.16150	Acc= 31.413	Precision= 43.334	Recall= 31.203	F1_score= 32.519
+2021-11-22 06:55:24,704 => Train: 100.0	Epoch: 94	Iter: 158	Loss: 0.16141	Acc= 30.860	Precision= 42.887	Recall= 30.655	F1_score= 32.068
+2021-11-22 06:57:13,059 => Train: 100.0	Epoch: 95	Iter: 158	Loss: 0.16062	Acc= 33.149	Precision= 45.285	Recall= 32.875	F1_score= 33.970
+2021-11-22 06:59:01,434 => Train: 100.0	Epoch: 96	Iter: 158	Loss: 0.16037	Acc= 32.518	Precision= 44.232	Recall= 32.257	F1_score= 33.392
+2021-11-22 07:00:49,831 => Train: 100.0	Epoch: 97	Iter: 158	Loss: 0.16071	Acc= 32.833	Precision= 44.649	Recall= 32.528	F1_score= 33.565
+2021-11-22 07:02:38,198 => Train: 100.0	Epoch: 98	Iter: 158	Loss: 0.16086	Acc= 32.518	Precision= 44.108	Recall= 32.268	F1_score= 33.444
+2021-11-22 07:04:26,559 => Train: 100.0	Epoch: 99	Iter: 158	Loss: 0.16037	Acc= 32.123	Precision= 43.175	Recall= 31.826	F1_score= 32.801
+2021-11-22 07:06:14,898 => Train: 100.0	Epoch: 100	Iter: 158	Loss: 0.15966	Acc= 33.307	Precision= 45.494	Recall= 33.071	F1_score= 34.339
+2021-11-22 07:08:03,230 => Train: 100.0	Epoch: 101	Iter: 158	Loss: 0.15982	Acc= 33.228	Precision= 44.278	Recall= 32.935	F1_score= 33.909
+2021-11-22 07:09:51,553 => Train: 100.0	Epoch: 102	Iter: 158	Loss: 0.16030	Acc= 33.623	Precision= 45.462	Recall= 33.369	F1_score= 34.482
+2021-11-22 07:11:39,873 => Train: 100.0	Epoch: 103	Iter: 158	Loss: 0.16018	Acc= 32.912	Precision= 45.238	Recall= 32.663	F1_score= 33.885
+2021-11-22 07:13:28,180 => Train: 100.0	Epoch: 104	Iter: 158	Loss: 0.15986	Acc= 34.254	Precision= 46.034	Recall= 33.966	F1_score= 35.000
+2021-11-22 07:15:16,473 => Train: 100.0	Epoch: 105	Iter: 158	Loss: 0.16080	Acc= 33.702	Precision= 45.995	Recall= 33.435	F1_score= 34.567
+2021-11-22 07:17:04,782 => Train: 100.0	Epoch: 106	Iter: 158	Loss: 0.16024	Acc= 32.439	Precision= 43.551	Recall= 32.215	F1_score= 33.489
+2021-11-22 07:18:53,131 => Train: 100.0	Epoch: 107	Iter: 158	Loss: 0.16040	Acc= 32.755	Precision= 45.106	Recall= 32.497	F1_score= 33.709
+2021-11-22 07:20:41,435 => Train: 100.0	Epoch: 108	Iter: 158	Loss: 0.16071	Acc= 32.439	Precision= 43.666	Recall= 32.163	F1_score= 33.222
+2021-11-22 07:22:29,806 => Train: 100.0	Epoch: 109	Iter: 158	Loss: 0.15966	Acc= 33.938	Precision= 45.875	Recall= 33.687	F1_score= 34.849
+2021-11-22 07:24:18,143 => Train: 100.0	Epoch: 110	Iter: 158	Loss: 0.16019	Acc= 33.938	Precision= 44.275	Recall= 33.675	F1_score= 34.659
+2021-11-22 07:26:06,453 => Train: 100.0	Epoch: 111	Iter: 158	Loss: 0.16043	Acc= 31.492	Precision= 42.760	Recall= 31.232	F1_score= 32.417
+2021-11-22 07:27:54,769 => Train: 100.0	Epoch: 112	Iter: 158	Loss: 0.16106	Acc= 32.439	Precision= 44.021	Recall= 32.142	F1_score= 33.189
+2021-11-22 07:29:43,089 => Train: 100.0	Epoch: 113	Iter: 158	Loss: 0.16005	Acc= 32.202	Precision= 44.258	Recall= 32.010	F1_score= 33.403
+2021-11-22 07:31:31,409 => Train: 100.0	Epoch: 114	Iter: 158	Loss: 0.16075	Acc= 31.176	Precision= 43.240	Recall= 30.905	F1_score= 32.073
+2021-11-22 07:33:19,767 => Train: 100.0	Epoch: 115	Iter: 158	Loss: 0.16076	Acc= 31.255	Precision= 43.012	Recall= 31.058	F1_score= 32.504
+2021-11-22 07:35:08,095 => Train: 100.0	Epoch: 116	Iter: 158	Loss: 0.15962	Acc= 32.597	Precision= 43.690	Recall= 32.366	F1_score= 33.571
+2021-11-22 07:36:56,442 => Train: 100.0	Epoch: 117	Iter: 158	Loss: 0.15945	Acc= 35.043	Precision= 46.598	Recall= 34.761	F1_score= 35.739
+2021-11-22 07:38:44,727 => Train: 100.0	Epoch: 118	Iter: 158	Loss: 0.16017	Acc= 33.544	Precision= 45.212	Recall= 33.262	F1_score= 34.301
+2021-11-22 07:40:33,021 => Train: 100.0	Epoch: 119	Iter: 158	Loss: 0.15972	Acc= 32.991	Precision= 44.792	Recall= 32.744	F1_score= 33.912
+2021-11-22 07:42:21,357 => Train: 100.0	Epoch: 120	Iter: 158	Loss: 0.15963	Acc= 34.570	Precision= 45.978	Recall= 34.279	F1_score= 35.238
