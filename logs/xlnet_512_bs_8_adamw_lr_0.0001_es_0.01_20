@@ -1,0 +1,483 @@
+2021-11-21 16:51:14,121 => 1.9.1+cu102
+2021-11-21 16:51:14,122 => cuda
+2021-11-21 16:51:14,546 => loading file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-spiece.model from cache at /home/yinan/.cache/torch/transformers/dad589d582573df0293448af5109cb6981ca77239ed314e15ca63b7b8a318ddd.8b10bd978b5d01c21303cc761fc9ecd464419b3bf921864a355ba807cfbfafa8
+2021-11-21 16:51:14,956 => ------------------------------------------------------
+2021-11-21 16:51:14,956 => 1 FOLD
+2021-11-21 16:51:15,359 => loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-config.json from cache at /home/yinan/.cache/torch/transformers/c9cc6e53904f7f3679a31ec4af244f4419e25ebc8e71ebf8c558a31cbcf07fc8.69e5e35e0b798cab5e473f253752f8bf4d280ee37682281a23eed80f6e2d09c6
+2021-11-21 16:51:15,360 => Model config XLNetConfig {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "do_sample": false,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "eos_token_ids": null,
+  "ff_activation": "gelu",
+  "finetuning_task": null,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1"
+  },
+  "initializer_range": 0.02,
+  "is_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "num_beams": 1,
+  "num_labels": 4,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 5,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "untie_r": true,
+  "use_bfloat16": false,
+  "vocab_size": 32000
+}
+
+2021-11-21 16:51:15,760 => loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-pytorch_model.bin from cache at /home/yinan/.cache/torch/transformers/24197ba0ce5dbfe23924431610704c88e2c0371afa49149360e4c823219ab474.7eac4fe898a021204e63c88c00ea68c60443c57f94b4bc3c02adbde6465745ac
+2021-11-21 16:51:19,430 => Weights of XLNetForSequenceClassification not initialized from pretrained model: ['sequence_summary.summary.weight', 'sequence_summary.summary.bias', 'logits_proj.weight', 'logits_proj.bias']
+2021-11-21 16:51:19,430 => Weights from pretrained model not used in XLNetForSequenceClassification: ['lm_loss.weight', 'lm_loss.bias']
+2021-11-21 16:51:28,727 => Train: 100.0	Epoch: 1	Iter: 7	Loss: 0.19225	Acc= 20.968	Precision= 19.811	Recall= 20.833	F1_score= 19.419
+2021-11-21 16:51:33,719 => Train: 100.0	Epoch: 2	Iter: 7	Loss: 0.17947	Acc= 38.710	Precision= 58.929	Recall= 32.500	F1_score= 26.183
+2021-11-21 16:51:38,721 => Train: 100.0	Epoch: 3	Iter: 7	Loss: 0.17778	Acc= 35.484	Precision= 25.434	Recall= 29.167	F1_score= 22.391
+2021-11-21 16:51:43,693 => Train: 100.0	Epoch: 4	Iter: 7	Loss: 0.15391	Acc= 54.839	Precision= 63.834	Recall= 50.417	F1_score= 50.542
+2021-11-21 16:51:48,701 => Train: 100.0	Epoch: 5	Iter: 7	Loss: 0.09747	Acc= 70.968	Precision= 71.408	Recall= 66.667	F1_score= 65.800
+2021-11-21 16:51:53,667 => Train: 100.0	Epoch: 6	Iter: 7	Loss: 0.05328	Acc= 91.935	Precision= 92.500	Recall= 91.667	F1_score= 91.616
+2021-11-21 16:51:58,624 => Train: 100.0	Epoch: 7	Iter: 7	Loss: 0.03753	Acc= 91.935	Precision= 91.582	Recall= 91.667	F1_score= 91.245
+2021-11-21 16:52:03,629 => Train: 100.0	Epoch: 8	Iter: 7	Loss: 0.00972	Acc= 98.387	Precision= 98.438	Recall= 98.333	F1_score= 98.331
+2021-11-21 16:52:03,629 => Epoch: 8	early stopped at loss: 0.00972
+2021-11-21 16:52:04,383 => Eval: 100.0	Epoch: 8	Iter: 1	Loss: 0.15394	Acc= 56.250	Precision= 48.958	Recall= 47.024	F1_score= 44.444
+2021-11-21 16:52:04,383 => ------------------------------------------------------
+2021-11-21 16:52:04,383 => 2 FOLD
+2021-11-21 16:52:04,814 => loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-config.json from cache at /home/yinan/.cache/torch/transformers/c9cc6e53904f7f3679a31ec4af244f4419e25ebc8e71ebf8c558a31cbcf07fc8.69e5e35e0b798cab5e473f253752f8bf4d280ee37682281a23eed80f6e2d09c6
+2021-11-21 16:52:04,815 => Model config XLNetConfig {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "do_sample": false,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "eos_token_ids": null,
+  "ff_activation": "gelu",
+  "finetuning_task": null,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1"
+  },
+  "initializer_range": 0.02,
+  "is_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "num_beams": 1,
+  "num_labels": 4,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 5,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "untie_r": true,
+  "use_bfloat16": false,
+  "vocab_size": 32000
+}
+
+2021-11-21 16:52:05,226 => loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-pytorch_model.bin from cache at /home/yinan/.cache/torch/transformers/24197ba0ce5dbfe23924431610704c88e2c0371afa49149360e4c823219ab474.7eac4fe898a021204e63c88c00ea68c60443c57f94b4bc3c02adbde6465745ac
+2021-11-21 16:52:08,856 => Weights of XLNetForSequenceClassification not initialized from pretrained model: ['sequence_summary.summary.weight', 'sequence_summary.summary.bias', 'logits_proj.weight', 'logits_proj.bias']
+2021-11-21 16:52:08,856 => Weights from pretrained model not used in XLNetForSequenceClassification: ['lm_loss.weight', 'lm_loss.bias']
+2021-11-21 16:52:13,974 => Train: 100.0	Epoch: 1	Iter: 7	Loss: 0.19317	Acc= 22.581	Precision= 16.830	Recall= 20.662	F1_score= 17.449
+2021-11-21 16:52:18,937 => Train: 100.0	Epoch: 2	Iter: 7	Loss: 0.17566	Acc= 33.871	Precision= 17.286	Recall= 28.750	F1_score= 21.574
+2021-11-21 16:52:23,913 => Train: 100.0	Epoch: 3	Iter: 7	Loss: 0.16956	Acc= 43.548	Precision= 31.201	Recall= 37.445	F1_score= 33.524
+2021-11-21 16:52:28,870 => Train: 100.0	Epoch: 4	Iter: 7	Loss: 0.13106	Acc= 59.677	Precision= 61.169	Recall= 54.692	F1_score= 54.758
+2021-11-21 16:52:33,876 => Train: 100.0	Epoch: 5	Iter: 7	Loss: 0.09423	Acc= 79.032	Precision= 85.556	Recall= 72.173	F1_score= 72.082
+2021-11-21 16:52:38,846 => Train: 100.0	Epoch: 6	Iter: 7	Loss: 0.08197	Acc= 79.032	Precision= 83.525	Recall= 72.984	F1_score= 73.848
+2021-11-21 16:52:43,819 => Train: 100.0	Epoch: 7	Iter: 7	Loss: 0.05176	Acc= 80.645	Precision= 80.186	Recall= 79.093	F1_score= 78.810
+2021-11-21 16:52:48,787 => Train: 100.0	Epoch: 8	Iter: 7	Loss: 0.04683	Acc= 88.710	Precision= 86.655	Recall= 84.385	F1_score= 85.133
+2021-11-21 16:52:53,754 => Train: 100.0	Epoch: 9	Iter: 7	Loss: 0.00751	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-11-21 16:52:53,755 => Epoch: 9	early stopped at loss: 0.00751
+2021-11-21 16:52:54,460 => Eval: 100.0	Epoch: 9	Iter: 1	Loss: 0.19452	Acc= 56.250	Precision= 55.357	Recall= 47.857	F1_score= 42.857
+2021-11-21 16:52:54,460 => ------------------------------------------------------
+2021-11-21 16:52:54,460 => 3 FOLD
+2021-11-21 16:52:54,880 => loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-config.json from cache at /home/yinan/.cache/torch/transformers/c9cc6e53904f7f3679a31ec4af244f4419e25ebc8e71ebf8c558a31cbcf07fc8.69e5e35e0b798cab5e473f253752f8bf4d280ee37682281a23eed80f6e2d09c6
+2021-11-21 16:52:54,881 => Model config XLNetConfig {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "do_sample": false,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "eos_token_ids": null,
+  "ff_activation": "gelu",
+  "finetuning_task": null,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1"
+  },
+  "initializer_range": 0.02,
+  "is_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "num_beams": 1,
+  "num_labels": 4,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 5,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "untie_r": true,
+  "use_bfloat16": false,
+  "vocab_size": 32000
+}
+
+2021-11-21 16:52:55,288 => loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-pytorch_model.bin from cache at /home/yinan/.cache/torch/transformers/24197ba0ce5dbfe23924431610704c88e2c0371afa49149360e4c823219ab474.7eac4fe898a021204e63c88c00ea68c60443c57f94b4bc3c02adbde6465745ac
+2021-11-21 16:52:58,887 => Weights of XLNetForSequenceClassification not initialized from pretrained model: ['sequence_summary.summary.weight', 'sequence_summary.summary.bias', 'logits_proj.weight', 'logits_proj.bias']
+2021-11-21 16:52:58,887 => Weights from pretrained model not used in XLNetForSequenceClassification: ['lm_loss.weight', 'lm_loss.bias']
+2021-11-21 16:53:03,963 => Train: 100.0	Epoch: 1	Iter: 7	Loss: 0.19521	Acc= 20.968	Precision= 15.083	Recall= 17.273	F1_score= 16.051
+2021-11-21 16:53:08,929 => Train: 100.0	Epoch: 2	Iter: 7	Loss: 0.18555	Acc= 35.484	Precision= 14.349	Recall= 24.167	F1_score= 17.179
+2021-11-21 16:53:13,909 => Train: 100.0	Epoch: 3	Iter: 7	Loss: 0.16991	Acc= 40.323	Precision= 22.588	Recall= 27.292	F1_score= 19.461
+2021-11-21 16:53:18,879 => Train: 100.0	Epoch: 4	Iter: 7	Loss: 0.17108	Acc= 38.710	Precision= 9.677	Recall= 25.000	F1_score= 13.953
+2021-11-21 16:53:23,823 => Train: 100.0	Epoch: 5	Iter: 7	Loss: 0.16208	Acc= 48.387	Precision= 29.861	Recall= 35.000	F1_score= 28.428
+2021-11-21 16:53:28,772 => Train: 100.0	Epoch: 6	Iter: 7	Loss: 0.12846	Acc= 58.065	Precision= 32.812	Recall= 45.625	F1_score= 37.396
+2021-11-21 16:53:33,723 => Train: 100.0	Epoch: 7	Iter: 7	Loss: 0.14678	Acc= 61.290	Precision= 30.541	Recall= 48.958	F1_score= 37.602
+2021-11-21 16:53:38,672 => Train: 100.0	Epoch: 8	Iter: 7	Loss: 0.11861	Acc= 62.903	Precision= 61.377	Recall= 50.417	F1_score= 44.322
+2021-11-21 16:53:43,629 => Train: 100.0	Epoch: 9	Iter: 7	Loss: 0.08315	Acc= 70.968	Precision= 59.966	Recall= 60.417	F1_score= 55.807
+2021-11-21 16:53:48,589 => Train: 100.0	Epoch: 10	Iter: 7	Loss: 0.05066	Acc= 88.710	Precision= 90.661	Recall= 85.322	F1_score= 86.404
+2021-11-21 16:53:53,541 => Train: 100.0	Epoch: 11	Iter: 7	Loss: 0.01850	Acc= 96.774	Precision= 98.077	Recall= 95.455	F1_score= 96.500
+2021-11-21 16:53:58,498 => Train: 100.0	Epoch: 12	Iter: 7	Loss: 0.03025	Acc= 91.935	Precision= 92.014	Recall= 88.826	F1_score= 89.867
+2021-11-21 16:54:03,460 => Train: 100.0	Epoch: 13	Iter: 7	Loss: 0.03563	Acc= 87.097	Precision= 83.854	Recall= 84.470	F1_score= 83.556
+2021-11-21 16:54:08,440 => Train: 100.0	Epoch: 14	Iter: 7	Loss: 0.04061	Acc= 88.710	Precision= 94.355	Recall= 84.091	F1_score= 85.152
+2021-11-21 16:54:13,417 => Train: 100.0	Epoch: 15	Iter: 7	Loss: 0.01215	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-11-21 16:54:18,383 => Train: 100.0	Epoch: 16	Iter: 7	Loss: 0.00365	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-11-21 16:54:18,384 => Epoch: 16	early stopped at loss: 0.00365
+2021-11-21 16:54:19,137 => Eval: 100.0	Epoch: 16	Iter: 1	Loss: 0.13199	Acc= 75.000	Precision= 79.167	Recall= 77.083	F1_score= 76.845
+2021-11-21 16:54:19,137 => ------------------------------------------------------
+2021-11-21 16:54:19,138 => 4 FOLD
+2021-11-21 16:54:19,557 => loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-config.json from cache at /home/yinan/.cache/torch/transformers/c9cc6e53904f7f3679a31ec4af244f4419e25ebc8e71ebf8c558a31cbcf07fc8.69e5e35e0b798cab5e473f253752f8bf4d280ee37682281a23eed80f6e2d09c6
+2021-11-21 16:54:19,558 => Model config XLNetConfig {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "do_sample": false,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "eos_token_ids": null,
+  "ff_activation": "gelu",
+  "finetuning_task": null,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1"
+  },
+  "initializer_range": 0.02,
+  "is_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "num_beams": 1,
+  "num_labels": 4,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 5,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "untie_r": true,
+  "use_bfloat16": false,
+  "vocab_size": 32000
+}
+
+2021-11-21 16:54:19,977 => loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-pytorch_model.bin from cache at /home/yinan/.cache/torch/transformers/24197ba0ce5dbfe23924431610704c88e2c0371afa49149360e4c823219ab474.7eac4fe898a021204e63c88c00ea68c60443c57f94b4bc3c02adbde6465745ac
+2021-11-21 16:54:23,549 => Weights of XLNetForSequenceClassification not initialized from pretrained model: ['sequence_summary.summary.weight', 'sequence_summary.summary.bias', 'logits_proj.weight', 'logits_proj.bias']
+2021-11-21 16:54:23,549 => Weights from pretrained model not used in XLNetForSequenceClassification: ['lm_loss.weight', 'lm_loss.bias']
+2021-11-21 16:54:28,723 => Train: 100.0	Epoch: 1	Iter: 7	Loss: 0.18967	Acc= 30.159	Precision= 29.438	Recall= 27.864	F1_score= 26.671
+2021-11-21 16:54:33,776 => Train: 100.0	Epoch: 2	Iter: 7	Loss: 0.17234	Acc= 33.333	Precision= 34.780	Recall= 30.405	F1_score= 28.992
+2021-11-21 16:54:38,837 => Train: 100.0	Epoch: 3	Iter: 7	Loss: 0.17943	Acc= 28.571	Precision= 19.463	Recall= 24.955	F1_score= 20.184
+2021-11-21 16:54:43,891 => Train: 100.0	Epoch: 4	Iter: 7	Loss: 0.17406	Acc= 26.984	Precision= 17.979	Recall= 22.596	F1_score= 16.750
+2021-11-21 16:54:48,950 => Train: 100.0	Epoch: 5	Iter: 7	Loss: 0.18377	Acc= 26.984	Precision= 12.353	Recall= 21.875	F1_score= 14.410
+2021-11-21 16:54:54,003 => Train: 100.0	Epoch: 6	Iter: 7	Loss: 0.16688	Acc= 42.857	Precision= 47.904	Recall= 39.203	F1_score= 37.988
+2021-11-21 16:54:59,064 => Train: 100.0	Epoch: 7	Iter: 7	Loss: 0.14566	Acc= 52.381	Precision= 51.389	Recall= 50.374	F1_score= 46.962
+2021-11-21 16:55:04,120 => Train: 100.0	Epoch: 8	Iter: 7	Loss: 0.13911	Acc= 50.794	Precision= 55.627	Recall= 49.533	F1_score= 47.792
+2021-11-21 16:55:09,170 => Train: 100.0	Epoch: 9	Iter: 7	Loss: 0.14657	Acc= 53.968	Precision= 41.538	Recall= 47.946	F1_score= 40.254
+2021-11-21 16:55:14,233 => Train: 100.0	Epoch: 10	Iter: 7	Loss: 0.12744	Acc= 55.556	Precision= 52.760	Recall= 49.420	F1_score= 44.844
+2021-11-21 16:55:19,300 => Train: 100.0	Epoch: 11	Iter: 7	Loss: 0.09993	Acc= 61.905	Precision= 55.064	Recall= 58.482	F1_score= 56.099
+2021-11-21 16:55:24,381 => Train: 100.0	Epoch: 12	Iter: 7	Loss: 0.07474	Acc= 74.603	Precision= 60.018	Recall= 69.866	F1_score= 63.734
+2021-11-21 16:55:29,435 => Train: 100.0	Epoch: 13	Iter: 7	Loss: 0.06889	Acc= 76.190	Precision= 62.920	Recall= 71.652	F1_score= 65.926
+2021-11-21 16:55:34,488 => Train: 100.0	Epoch: 14	Iter: 7	Loss: 0.05269	Acc= 82.540	Precision= 85.000	Recall= 80.192	F1_score= 79.398
+2021-11-21 16:55:39,557 => Train: 100.0	Epoch: 15	Iter: 7	Loss: 0.06506	Acc= 74.603	Precision= 75.735	Recall= 69.780	F1_score= 66.928
+2021-11-21 16:55:44,617 => Train: 100.0	Epoch: 16	Iter: 7	Loss: 0.06207	Acc= 79.365	Precision= 86.660	Recall= 76.346	F1_score= 72.997
+2021-11-21 16:55:49,672 => Train: 100.0	Epoch: 17	Iter: 7	Loss: 0.05390	Acc= 77.778	Precision= 77.652	Recall= 73.352	F1_score= 70.278
+2021-11-21 16:55:54,725 => Train: 100.0	Epoch: 18	Iter: 7	Loss: 0.05011	Acc= 74.603	Precision= 69.655	Recall= 71.387	F1_score= 69.199
+2021-11-21 16:55:59,776 => Train: 100.0	Epoch: 19	Iter: 7	Loss: 0.04363	Acc= 84.127	Precision= 91.667	Recall= 80.769	F1_score= 79.375
+2021-11-21 16:56:04,846 => Train: 100.0	Epoch: 20	Iter: 7	Loss: 0.03880	Acc= 85.714	Precision= 86.750	Recall= 84.038	F1_score= 84.286
+2021-11-21 16:56:09,915 => Train: 100.0	Epoch: 21	Iter: 7	Loss: 0.03891	Acc= 88.889	Precision= 89.565	Recall= 87.885	F1_score= 88.322
+2021-11-21 16:56:14,971 => Train: 100.0	Epoch: 22	Iter: 7	Loss: 0.03380	Acc= 95.238	Precision= 96.739	Recall= 94.231	F1_score= 94.995
+2021-11-21 16:56:20,019 => Train: 100.0	Epoch: 23	Iter: 7	Loss: 0.02529	Acc= 95.238	Precision= 95.536	Recall= 94.904	F1_score= 95.171
+2021-11-21 16:56:25,071 => Train: 100.0	Epoch: 24	Iter: 7	Loss: 0.02388	Acc= 96.825	Precision= 97.727	Recall= 96.154	F1_score= 96.726
+2021-11-21 16:56:30,124 => Train: 100.0	Epoch: 25	Iter: 7	Loss: 0.01405	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-11-21 16:56:35,163 => Train: 100.0	Epoch: 26	Iter: 7	Loss: 0.01086	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-11-21 16:56:40,245 => Train: 100.0	Epoch: 27	Iter: 7	Loss: 0.00890	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-11-21 16:56:40,245 => Epoch: 27	early stopped at loss: 0.00890
+2021-11-21 16:56:40,938 => Eval: 100.0	Epoch: 27	Iter: 1	Loss: 0.09215	Acc= 80.000	Precision= 66.429	Recall= 63.095	F1_score= 63.651
+2021-11-21 16:56:40,938 => ------------------------------------------------------
+2021-11-21 16:56:40,938 => 5 FOLD
+2021-11-21 16:56:41,362 => loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-config.json from cache at /home/yinan/.cache/torch/transformers/c9cc6e53904f7f3679a31ec4af244f4419e25ebc8e71ebf8c558a31cbcf07fc8.69e5e35e0b798cab5e473f253752f8bf4d280ee37682281a23eed80f6e2d09c6
+2021-11-21 16:56:41,363 => Model config XLNetConfig {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "do_sample": false,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "eos_token_ids": null,
+  "ff_activation": "gelu",
+  "finetuning_task": null,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1"
+  },
+  "initializer_range": 0.02,
+  "is_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "num_beams": 1,
+  "num_labels": 4,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 5,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "untie_r": true,
+  "use_bfloat16": false,
+  "vocab_size": 32000
+}
+
+2021-11-21 16:56:41,779 => loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-pytorch_model.bin from cache at /home/yinan/.cache/torch/transformers/24197ba0ce5dbfe23924431610704c88e2c0371afa49149360e4c823219ab474.7eac4fe898a021204e63c88c00ea68c60443c57f94b4bc3c02adbde6465745ac
+2021-11-21 16:56:45,362 => Weights of XLNetForSequenceClassification not initialized from pretrained model: ['sequence_summary.summary.weight', 'sequence_summary.summary.bias', 'logits_proj.weight', 'logits_proj.bias']
+2021-11-21 16:56:45,362 => Weights from pretrained model not used in XLNetForSequenceClassification: ['lm_loss.weight', 'lm_loss.bias']
+2021-11-21 16:56:50,570 => Train: 100.0	Epoch: 1	Iter: 7	Loss: 0.18766	Acc= 30.159	Precision= 19.659	Recall= 22.768	F1_score= 20.152
+2021-11-21 16:56:55,651 => Train: 100.0	Epoch: 2	Iter: 7	Loss: 0.17162	Acc= 39.683	Precision= 26.580	Recall= 27.530	F1_score= 19.907
+2021-11-21 16:57:00,724 => Train: 100.0	Epoch: 3	Iter: 7	Loss: 0.16899	Acc= 39.683	Precision= 34.677	Recall= 26.786	F1_score= 17.287
+2021-11-21 16:57:05,789 => Train: 100.0	Epoch: 4	Iter: 7	Loss: 0.17247	Acc= 36.508	Precision= 14.649	Recall= 24.702	F1_score= 16.212
+2021-11-21 16:57:10,861 => Train: 100.0	Epoch: 5	Iter: 7	Loss: 0.17149	Acc= 38.095	Precision= 18.109	Recall= 27.976	F1_score= 21.296
+2021-11-21 16:57:15,929 => Train: 100.0	Epoch: 6	Iter: 7	Loss: 0.17442	Acc= 33.333	Precision= 9.211	Recall= 21.875	F1_score= 12.963
+2021-11-21 16:57:20,991 => Train: 100.0	Epoch: 7	Iter: 7	Loss: 0.16991	Acc= 33.333	Precision= 8.898	Recall= 21.875	F1_score= 12.651
+2021-11-21 16:57:26,052 => Train: 100.0	Epoch: 8	Iter: 7	Loss: 0.17294	Acc= 38.095	Precision= 17.917	Recall= 25.744	F1_score= 16.632
+2021-11-21 16:57:31,106 => Train: 100.0	Epoch: 9	Iter: 7	Loss: 0.17176	Acc= 38.095	Precision= 9.524	Recall= 25.000	F1_score= 13.793
+2021-11-21 16:57:36,170 => Train: 100.0	Epoch: 10	Iter: 7	Loss: 0.16896	Acc= 38.095	Precision= 18.247	Recall= 25.744	F1_score= 16.966
+2021-11-21 16:57:41,244 => Train: 100.0	Epoch: 11	Iter: 7	Loss: 0.17594	Acc= 38.095	Precision= 9.836	Recall= 25.000	F1_score= 14.118
+2021-11-21 16:57:46,304 => Train: 100.0	Epoch: 12	Iter: 7	Loss: 0.17548	Acc= 36.508	Precision= 9.274	Recall= 23.958	F1_score= 13.372
+2021-11-21 16:57:51,369 => Train: 100.0	Epoch: 13	Iter: 7	Loss: 0.17011	Acc= 38.095	Precision= 10.000	Recall= 25.000	F1_score= 14.286
+2021-11-21 16:57:56,444 => Train: 100.0	Epoch: 14	Iter: 7	Loss: 0.17435	Acc= 33.333	Precision= 9.211	Recall= 21.875	F1_score= 12.963
+2021-11-21 16:58:01,513 => Train: 100.0	Epoch: 15	Iter: 7	Loss: 0.17164	Acc= 38.095	Precision= 22.414	Recall= 25.744	F1_score= 17.149
+2021-11-21 16:58:06,577 => Train: 100.0	Epoch: 16	Iter: 7	Loss: 0.17406	Acc= 33.333	Precision= 8.750	Recall= 21.875	F1_score= 12.500
+2021-11-21 16:58:11,674 => Train: 100.0	Epoch: 17	Iter: 7	Loss: 0.17314	Acc= 36.508	Precision= 9.274	Recall= 23.958	F1_score= 13.372
+2021-11-21 16:58:16,744 => Train: 100.0	Epoch: 18	Iter: 7	Loss: 0.17186	Acc= 38.095	Precision= 9.524	Recall= 25.000	F1_score= 13.793
+2021-11-21 16:58:21,819 => Train: 100.0	Epoch: 19	Iter: 7	Loss: 0.17546	Acc= 38.095	Precision= 34.426	Recall= 25.744	F1_score= 16.863
+2021-11-21 16:58:26,896 => Train: 100.0	Epoch: 20	Iter: 7	Loss: 0.17239	Acc= 38.095	Precision= 9.524	Recall= 25.000	F1_score= 13.793
+2021-11-21 16:58:31,971 => Train: 100.0	Epoch: 21	Iter: 7	Loss: 0.17429	Acc= 38.095	Precision= 9.524	Recall= 25.000	F1_score= 13.793
+2021-11-21 16:58:37,041 => Train: 100.0	Epoch: 22	Iter: 7	Loss: 0.17062	Acc= 36.508	Precision= 9.274	Recall= 23.958	F1_score= 13.372
+2021-11-21 16:58:42,117 => Train: 100.0	Epoch: 23	Iter: 7	Loss: 0.17524	Acc= 38.095	Precision= 9.677	Recall= 25.000	F1_score= 13.953
+2021-11-21 16:58:47,185 => Train: 100.0	Epoch: 24	Iter: 7	Loss: 0.17285	Acc= 38.095	Precision= 9.677	Recall= 25.000	F1_score= 13.953
+2021-11-21 16:58:52,257 => Train: 100.0	Epoch: 25	Iter: 7	Loss: 0.16871	Acc= 36.508	Precision= 9.583	Recall= 23.958	F1_score= 13.690
+2021-11-21 16:58:57,319 => Train: 100.0	Epoch: 26	Iter: 7	Loss: 0.17214	Acc= 38.095	Precision= 9.524	Recall= 25.000	F1_score= 13.793
+2021-11-21 16:59:02,385 => Train: 100.0	Epoch: 27	Iter: 7	Loss: 0.17094	Acc= 38.095	Precision= 9.677	Recall= 25.000	F1_score= 13.953
+2021-11-21 16:59:07,451 => Train: 100.0	Epoch: 28	Iter: 7	Loss: 0.16886	Acc= 38.095	Precision= 9.677	Recall= 25.000	F1_score= 13.953
+2021-11-21 16:59:12,525 => Train: 100.0	Epoch: 29	Iter: 7	Loss: 0.17485	Acc= 38.095	Precision= 9.677	Recall= 25.000	F1_score= 13.953
+2021-11-21 16:59:17,580 => Train: 100.0	Epoch: 30	Iter: 7	Loss: 0.17241	Acc= 36.508	Precision= 9.274	Recall= 23.958	F1_score= 13.372
+2021-11-21 16:59:22,648 => Train: 100.0	Epoch: 31	Iter: 7	Loss: 0.17320	Acc= 38.095	Precision= 9.524	Recall= 25.000	F1_score= 13.793
+2021-11-21 16:59:27,723 => Train: 100.0	Epoch: 32	Iter: 7	Loss: 0.16905	Acc= 38.095	Precision= 9.677	Recall= 25.000	F1_score= 13.953
+2021-11-21 16:59:32,791 => Train: 100.0	Epoch: 33	Iter: 7	Loss: 0.16933	Acc= 36.508	Precision= 9.274	Recall= 23.958	F1_score= 13.372
+2021-11-21 16:59:37,884 => Train: 100.0	Epoch: 34	Iter: 7	Loss: 0.16881	Acc= 38.095	Precision= 9.677	Recall= 25.000	F1_score= 13.953
+2021-11-21 16:59:42,960 => Train: 100.0	Epoch: 35	Iter: 7	Loss: 0.17362	Acc= 39.683	Precision= 34.677	Recall= 26.786	F1_score= 17.287
+2021-11-21 16:59:48,032 => Train: 100.0	Epoch: 36	Iter: 7	Loss: 0.16856	Acc= 36.508	Precision= 9.274	Recall= 23.958	F1_score= 13.372
+2021-11-21 16:59:53,104 => Train: 100.0	Epoch: 37	Iter: 7	Loss: 0.16959	Acc= 38.095	Precision= 9.677	Recall= 25.000	F1_score= 13.953
+2021-11-21 16:59:58,163 => Train: 100.0	Epoch: 38	Iter: 7	Loss: 0.17367	Acc= 38.095	Precision= 9.677	Recall= 25.000	F1_score= 13.953
+2021-11-21 17:00:03,232 => Train: 100.0	Epoch: 39	Iter: 7	Loss: 0.17166	Acc= 38.095	Precision= 9.677	Recall= 25.000	F1_score= 13.953
+2021-11-21 17:00:08,298 => Train: 100.0	Epoch: 40	Iter: 7	Loss: 0.17189	Acc= 36.508	Precision= 9.426	Recall= 23.958	F1_score= 13.529
+2021-11-21 17:00:13,367 => Train: 100.0	Epoch: 41	Iter: 7	Loss: 0.16944	Acc= 38.095	Precision= 9.524	Recall= 25.000	F1_score= 13.793
+2021-11-21 17:00:18,432 => Train: 100.0	Epoch: 42	Iter: 7	Loss: 0.17287	Acc= 39.683	Precision= 34.677	Recall= 26.786	F1_score= 17.287
+2021-11-21 17:00:23,500 => Train: 100.0	Epoch: 43	Iter: 7	Loss: 0.17123	Acc= 38.095	Precision= 9.524	Recall= 25.000	F1_score= 13.793
+2021-11-21 17:00:28,563 => Train: 100.0	Epoch: 44	Iter: 7	Loss: 0.17243	Acc= 38.095	Precision= 9.677	Recall= 25.000	F1_score= 13.953
+2021-11-21 17:00:33,630 => Train: 100.0	Epoch: 45	Iter: 7	Loss: 0.16768	Acc= 34.921	Precision= 9.016	Recall= 22.917	F1_score= 12.941
+2021-11-21 17:00:38,705 => Train: 100.0	Epoch: 46	Iter: 7	Loss: 0.17306	Acc= 38.095	Precision= 9.677	Recall= 25.000	F1_score= 13.953
+2021-11-21 17:00:43,775 => Train: 100.0	Epoch: 47	Iter: 7	Loss: 0.17506	Acc= 36.508	Precision= 9.274	Recall= 23.958	F1_score= 13.372
+2021-11-21 17:00:48,854 => Train: 100.0	Epoch: 48	Iter: 7	Loss: 0.16962	Acc= 38.095	Precision= 9.524	Recall= 25.000	F1_score= 13.793
+2021-11-21 17:00:53,926 => Train: 100.0	Epoch: 49	Iter: 7	Loss: 0.17431	Acc= 38.095	Precision= 9.677	Recall= 25.000	F1_score= 13.953
+2021-11-21 17:00:59,012 => Train: 100.0	Epoch: 50	Iter: 7	Loss: 0.17150	Acc= 39.683	Precision= 34.836	Recall= 26.786	F1_score= 17.451
+2021-11-21 17:00:59,728 => Eval: 100.0	Epoch: 50	Iter: 1	Loss: 0.19233	Acc= 20.000	Precision= 5.000	Recall= 25.000	F1_score= 8.333
+2021-11-21 17:00:59,728 => AVERAGE ACCURACY: 57.500
