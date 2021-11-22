@@ -19,4 +19,4 @@ pip install --no-index -r requirements.txt
 
 
 echo "Starting Task"
-python bert_cv.py --ml 512 --bs 8 --epochs 50 --lr $SLURM_ARRAY_TASK_ID --es 4
+python bert_cv.py --ml 512 --bs 8 --epochs 200 --lr $SLURM_ARRAY_TASK_ID --es 4

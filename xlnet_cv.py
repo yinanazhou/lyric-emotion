@@ -63,7 +63,7 @@ def flat_accuracy(preds, labels):
     return np.sum(pred_flat == labels_flat), pred_flat
 
 
-def train(i, t_dataloader):
+def train(i, t_dataloader, loss_new):
     model.train()
     total_loss = 0.0
     total_predicted_label = np.array([])
@@ -131,14 +131,17 @@ def train(i, t_dataloader):
 
     flag = False
 
-    if (total_loss / train_len) < early_stop:
+    loss_last = loss_new
+    loss_new = total_loss / train_len
+
+    if loss_last < early_stop and loss_new < early_stop:
         logging.info("Epoch: %d\tearly stopped at loss: %5.5f" % (i + 1, total_loss / train_len))
 
         # path = save_model_path + '/early_stopped.pt'
         # torch.save(model.state_dict(), path)
 
         flag = True
-    return flag
+    return flag, loss_new
 
 def eva(v_dataloader):
     model.eval()
@@ -221,7 +224,7 @@ num_labels = 4
 denom = args.adaptive
 
 # set path
-trg_path = "moody_test.json"
+trg_path = "moody_lyrics.json"
 ending_path = ('%s_%d_bs_%d_adamw_lr_%s_es_%s_%d' %(model_str, MAX_LEN, batch_size, str(lr).replace("-",""), str(early_stop).replace("-",""), denom))
 save_model_path = "models/" + ending_path
 if not os.path.exists(save_model_path):
@@ -344,11 +347,12 @@ for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
     optimizer = AdamW(optimizer_grouped_parameters, lr=lr)
 
     es_flag = False
+    loss_default = 5
 
     for i in range(num_epochs):
         gc.collect()
         torch.cuda.empty_cache()
-        es_flag = train(i, train_dataloader)
+        es_flag, loss_default = train(i, train_dataloader, loss_default)
 
         if es_flag:
             break
