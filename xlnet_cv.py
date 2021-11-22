@@ -109,13 +109,13 @@ def train(i, t_dataloader):
         #         train_len * 100.0 / train_inputs.size(0), i+1, step, total_loss / train_len, f_acc * 100.0 / train_len,
         #         precision * 100., recall * 100., f1_measure * 100.))
 
-        if torch.cuda.device_count() > 1:
-            p = 100
-            path = save_model_path + '/e_' + str(i) + "_" + str(p) + ".ckpt"
-            torch.save(model.module.state_dict(), path)
-        else:
-            path = save_model_path + '/e_' + str(i) + ".pt"
-            torch.save(model.state_dict(), path)
+        # if torch.cuda.device_count() > 1:
+        #     p = 100
+        #     path = save_model_path + '/e_' + str(i) + "_" + str(p) + ".ckpt"
+        #     torch.save(model.module.state_dict(), path)
+        # else:
+        #     path = save_model_path + '/e_' + str(i) + ".pt"
+        #     torch.save(model.state_dict(), path)
 
     precision, recall, f1_measure, _ = precision_recall_fscore_support(total_actual_label, total_predicted_label,
                                                                        average='macro')
