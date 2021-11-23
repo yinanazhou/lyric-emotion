@@ -15,6 +15,9 @@ source $SLURM_TMPDIR/env/bin/activate
 pip3 install --upgrade --no-binary numpy==1.20.0 numpy==1.20.0
 pip install --no-index torch
 pip install --no-index -r requirements.txt
+pip install --no-index wandb
+
+wandb login $API_KEY
 
 echo "Starting Task"
-python xlnet_cv.py --ml 512 --bs 8 --epochs 50 --es 2
+python xlnet_cv.py --ml 8 --bs 8 --epochs 50 --es 2

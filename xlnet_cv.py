@@ -9,16 +9,13 @@ import logging
 from transformers import XLNetTokenizer, XLNetForSequenceClassification, XLNetModel, AdamW, BertTokenizer, BertForSequenceClassification
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
-# from datasets import Dataset
-
-# from sklearn.feature_extraction.stop_words import ENGLISH_STOP_WORDS
-# from tensorflow import keras
 from sklearn.model_selection import KFold
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
 import torch.nn as nn
 from sklearn.metrics import fbeta_score, precision_recall_fscore_support, f1_score
 import argparse
+import wandb
 
 
 def logging_storage(logfile_path):
@@ -129,6 +126,11 @@ def train(i, t_dataloader, loss_new):
     k_result['t_recall'].append(recall * 100.)
     k_result['t_F1_measure'].append(f1_measure * 100.)
 
+    # wandb log
+    wandb.log({"loss": total_loss / train_len, "accuracy": f_acc * 100.0 / train_len, "precision": precision * 100.,
+               "recall": recall * 100., "F1_measure": f1_measure * 100.})
+
+    # early stop
     flag = False
 
     loss_last = loss_new
@@ -142,6 +144,7 @@ def train(i, t_dataloader, loss_new):
 
         flag = True
     return flag, loss_new
+
 
 def eva(v_dataloader):
     model.eval()
@@ -301,13 +304,17 @@ test_data = TensorDataset(test_inputs, test_masks, test_labels)
 test_sampler = SequentialSampler(test_data)
 test_dataloader = DataLoader(test_data, sampler=test_sampler, batch_size=batch_size)
 
-k_folds = 5
+k_folds = 2
 results = []
 result_json = {}
 kfold = KFold(n_splits=k_folds, shuffle=True)
 for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
     logging.info('------------------------------------------------------')
     logging.info('%d FOLD', fold+1)
+
+    # wandb init
+    wandb_pj = ending_path + 'fold_'+ str(fold)
+    wandb.init(project=wandb_pj, entity="yinanazhou")
 
     # write results of each fold into a dic
     k_result = {'t_loss': [], 't_accuracy': [], 't_precision': [], 't_recall': [], 't_F1_measure': [],
@@ -349,6 +356,14 @@ for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
     es_flag = False
     loss_default = 5
 
+    wandb.config = {
+        "model": model_str,
+        "learning_rate_denom": lr,
+        "epochs": num_epochs,
+        "batch_size": batch_size,
+        "max_len": MAX_LEN,
+        "early_stop_criteria": early_stop
+    }
     for i in range(num_epochs):
         gc.collect()
         torch.cuda.empty_cache()
