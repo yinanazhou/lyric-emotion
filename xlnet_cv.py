@@ -313,7 +313,7 @@ for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
     logging.info('%d FOLD', fold+1)
 
     # wandb init
-    wandb_pj = ending_path + 'fold_'+ str(fold)
+    wandb_pj = ending_path + '_fold_'+ str(fold)
     wandb.init(project=wandb_pj, entity="yinanazhou")
 
     # write results of each fold into a dic
@@ -371,6 +371,8 @@ for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
 
         if es_flag:
             break
+
+    wandb.finish()
 
     k_result['epoch'].append(i+1)
     gc.collect()
