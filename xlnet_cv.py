@@ -304,7 +304,7 @@ test_data = TensorDataset(test_inputs, test_masks, test_labels)
 test_sampler = SequentialSampler(test_data)
 test_dataloader = DataLoader(test_data, sampler=test_sampler, batch_size=batch_size)
 
-k_folds = 2
+k_folds = 5
 results = []
 result_json = {}
 kfold = KFold(n_splits=k_folds, shuffle=True)
@@ -364,6 +364,7 @@ for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
         "max_len": MAX_LEN,
         "early_stop_criteria": early_stop
     }
+
     for i in range(num_epochs):
         gc.collect()
         torch.cuda.empty_cache()

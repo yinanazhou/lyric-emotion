@@ -19,6 +19,7 @@ from torch.utils.data import TensorDataset, DataLoader, RandomSampler, Sequentia
 import torch.nn as nn
 from sklearn.metrics import fbeta_score, precision_recall_fscore_support, f1_score
 import argparse
+import wandb
 
 
 def logging_storage(logfile_path):
@@ -128,6 +129,10 @@ def train(i, t_dataloader, loss_new):
     k_result['t_precision'].append(precision * 100.)
     k_result['t_recall'].append(recall * 100.)
     k_result['t_F1_measure'].append(f1_measure * 100.)
+
+    # wandb log
+    wandb.log({"loss": total_loss / train_len, "accuracy": f_acc * 100.0 / train_len, "precision": precision * 100.,
+               "recall": recall * 100., "F1_measure": f1_measure * 100.})
 
     flag = False
 
@@ -310,6 +315,10 @@ for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
     logging.info('-------------------------------------------------')
     logging.info('%d FOLD', fold+1)
 
+    # wandb init
+    wandb_pj = ending_path + '_fold_' + str(fold)
+    wandb.init(project=wandb_pj, entity="yinanazhou")
+
     # write results of each fold into a dic
     k_result = {'t_loss': [], 't_accuracy': [], 't_precision': [], 't_recall': [], 't_F1_measure': [],
                 'e_loss': [], 'e_accuracy': [], 'e_precision': [], 'e_recall': [], 'e_F1_measure': [],
@@ -350,6 +359,15 @@ for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
     es_flag = False
     loss_default = 5
 
+    wandb.config = {
+        "model": model_str,
+        "learning_rate_denom": lr,
+        "epochs": num_epochs,
+        "batch_size": batch_size,
+        "max_len": MAX_LEN,
+        "early_stop_criteria": early_stop
+    }
+
     for i in range(num_epochs):
         gc.collect()
         torch.cuda.empty_cache()
@@ -357,6 +375,8 @@ for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
 
         if es_flag:
             break
+
+    wandb.finish()
 
     k_result['epoch'].append(i + 1)
     gc.collect()
