@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --account=def-ichiro
-#SBATCH --time=7-00:00:00
-#SBATCH --output=run_output/bert_cv_output_%A_%a.out
+#SBATCH --time=5-00:00:00
+#SBATCH --output=run_output/bert_cv_es5_output_%A_%a.out
 #SBATCH --gres=gpu:v100:1
 #SBATCH --gres=gpu:1       # Request GPU "generic resources"
 #SBATCH --cpus-per-task=1  # Cores proportional to GPUs: 6 on Cedar, 16 on Graham.
@@ -16,7 +16,9 @@ source $SLURM_TMPDIR/env/bin/activate
 pip3 install --upgrade --no-binary numpy==1.20.0 numpy==1.20.0
 pip install --no-index torch
 pip install --no-index -r requirements.txt
+pip install --no-index wandb
 
+wandb login $API_KEY
 
 echo "Starting Task"
 python bert_cv.py --ml 512 --bs 8 --epochs 500 --lr $SLURM_ARRAY_TASK_ID --es 5
