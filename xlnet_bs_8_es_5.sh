@@ -3,7 +3,7 @@
 #SBATCH --time=3-00:00:00
 #SBATCH --output=run_output/xlnet_cv_es5_output_%A_%a.out
 #SBATCH --gres=gpu:v100:1
-#SBATCH --gres=gpu:8       # Request GPU "generic resources"
+#SBATCH --gres=gpu:4       # Request GPU "generic resources"
 #SBATCH --cpus-per-task=1  # Cores proportional to GPUs: 6 on Cedar, 16 on Graham.
 #SBATCH --array=3-6
 #SBATCH --mem=16G       # Memory proportional to GPUs: 32000 Cedar, 64000 Graham.
@@ -21,4 +21,4 @@ pip install --no-index wandb
 wandb login $API_KEY
 
 echo "Starting Task"
-python xlnet_cv.py --ml 512 --bs 8 --epochs 500 --lr $SLURM_ARRAY_TASK_ID --es 5
+python xlnet_cv.py --ml 256 --bs 8 --epochs 500 --lr $SLURM_ARRAY_TASK_ID --es 5
