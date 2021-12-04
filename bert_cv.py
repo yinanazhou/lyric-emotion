@@ -6,17 +6,12 @@ import string
 import torch
 import numpy as np
 import logging
-from transformers import XLNetTokenizer, XLNetForSequenceClassification, XLNetModel, AdamW, BertTokenizer, BertForSequenceClassification
+from transformers import AdamW, BertTokenizer, BertForSequenceClassification
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
-# from datasets import Dataset
-
-# from sklearn.feature_extraction.stop_words import ENGLISH_STOP_WORDS
-# from tensorflow import keras
 from sklearn.model_selection import KFold
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
-import torch.nn as nn
 from sklearn.metrics import fbeta_score, precision_recall_fscore_support, f1_score
 import argparse
 import wandb
@@ -200,8 +195,8 @@ def eva(v_dataloader):
 
 # check gpu
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-if torch.cuda.device_count() > 1:
-    print("Using", torch.cuda.device_count(), "GPUs!")
+# if torch.cuda.device_count() > 1:
+logging.info("Using", torch.cuda.device_count(), "GPUs!")
 
 SEED = 0
 torch.manual_seed(SEED)
@@ -361,7 +356,8 @@ for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
 
     wandb.config = {
         "model": model_str,
-        "learning_rate_denom": lr,
+        "learning_rate": lr,
+        "adaptive_learning_rate": (0.1) ** (1 / denom),
         "epochs": num_epochs,
         "batch_size": batch_size,
         "max_len": MAX_LEN,
