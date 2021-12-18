@@ -32,11 +32,11 @@ def preprocess(text):
     # print(text)
 
     # convert to lowercase
-    text_lower = text.lower()
+    # text_lower = text.lower()
     # print(text_lower)
 
     # remove numbers
-    text_no_number = re.sub(r'\d+', '', text_lower)
+    text_no_number = re.sub(r'\d+', '', text)
     # print(text_no_number)
 
     # remove punctuation
@@ -57,123 +57,6 @@ def flat_accuracy(preds, labels):
     return np.sum(pred_flat == labels_flat), pred_flat
 
 
-# def train(i, t_dataloader):
-#     model.train()
-#     total_loss = 0.0
-#     total_predicted_label = np.array([])
-#     total_actual_label = np.array([])
-#     train_len = 0
-#     f_acc = 0
-#
-#     ## adaptive lr
-#     optimizer.param_groups[0]['lr'] *= (0.1) ** (1 / denom)
-#
-#     for step, (b_input_ids, b_input_mask, b_labels) in enumerate(t_dataloader):
-#         b_input_ids = b_input_ids.to(DEVICE)
-#         b_input_mask = b_input_mask.to(DEVICE)
-#         b_labels = b_labels.to(DEVICE)
-#         if b_labels.size(0) <= 1:
-#             continue
-#
-#         optimizer.zero_grad()
-#
-#         torch.cuda.empty_cache()
-#
-#         outputs = model(b_input_ids, token_type_ids=None, attention_mask=b_input_mask, labels=b_labels)
-#
-#         pred = outputs[1].detach().cpu().numpy()
-#         batch_f_acc, pred_flat = flat_accuracy(pred, b_labels)
-#         f_acc += float(batch_f_acc)
-#         loss = outputs[0]
-#         loss.sum().backward()
-#         optimizer.step()
-#
-#         labels_flat = b_labels.flatten().cpu().detach().numpy()
-#         total_actual_label = np.concatenate((total_actual_label, labels_flat))
-#         total_predicted_label = np.concatenate((total_predicted_label, pred_flat))
-#
-#         total_loss += float(outputs[0].sum())
-#         train_len += b_input_ids.size(0)
-#
-#         # if step % 100 == 0 and step:
-#         #     precision, recall, f1_measure, _ = precision_recall_fscore_support(total_actual_label,
-#         #                                                                        total_predicted_label, average='macro')
-#         #     logging.info(
-#         #         "Train: %5.1f\tEpoch: %d\tIter: %d\tLoss: %5.5f\tAcc= %5.3f\tPrecision= %5.3f\tRecall= %5.3f\tF1_score= %5.3f" % (
-#         #         train_len * 100.0 / train_inputs.size(0), i+1, step, total_loss / train_len, f_acc * 100.0 / train_len,
-#         #         precision * 100., recall * 100., f1_measure * 100.))
-#
-#         if torch.cuda.device_count() > 1:
-#             p = 100
-#             path = save_model_path + '/e_' + str(i) + "_" + str(p) + ".ckpt"
-#             torch.save(model.module.state_dict(), path)
-#         else:
-#             path = save_model_path + '/e_' + str(i) + ".pt"
-#             torch.save(model.state_dict(), path)
-#
-#     precision, recall, f1_measure, _ = precision_recall_fscore_support(total_actual_label, total_predicted_label,
-#                                                                        average='macro')
-#     logging.info(
-#         "Train: %5.1f\tEpoch: %d\tIter: %d\tLoss: %5.5f\tAcc= %5.3f\tPrecision= %5.3f\tRecall= %5.3f\tF1_score= %5.3f" % (
-#         train_len * 100.0 / train_inputs.size(0), i+1, step, total_loss / train_len, f_acc * 100.0 / train_len,
-#         precision * 100., recall * 100., f1_measure * 100.))
-#     k_result['t_loss'].append(total_loss / train_len)
-#     k_result['t_accuracy'].append(f_acc * 100.0 / train_len)
-#     k_result['t_precision'].append(precision * 100.)
-#     k_result['t_recall'].append(recall * 100.)
-#     k_result['t_F1_measure'].append(f1_measure * 100.)
-#
-#
-# def eva(v_dataloader):
-#     model.eval()
-#     val_len = 0
-#     total_loss = 0
-#     total_predicted_label = np.array([])
-#     total_actual_label = np.array([])
-#     f_acc = 0
-#
-#     with torch.no_grad():
-#         for step, (b_input_ids, b_input_mask, b_labels) in enumerate(v_dataloader):
-#             b_input_ids = b_input_ids.to(DEVICE)
-#             b_input_mask = b_input_mask.to(DEVICE)
-#             b_labels = b_labels.to(DEVICE)
-#
-#             optimizer.zero_grad()
-#             outputs = model(b_input_ids, token_type_ids=None, attention_mask=b_input_mask, labels=b_labels)
-#             pred = outputs[1].detach().cpu().numpy()
-#             batch_f_acc, pred_flat = flat_accuracy(pred, b_labels)
-#             f_acc += float(batch_f_acc)
-#
-#             labels_flat = b_labels.flatten().cpu().detach().numpy()
-#             total_actual_label = np.concatenate((total_actual_label, labels_flat))
-#             total_predicted_label = np.concatenate((total_predicted_label, pred_flat))
-#
-#             val_len += b_input_ids.size(0)
-#             total_loss += float(outputs[0].sum())
-#
-#         # if step % 100 == 0 and step:
-#         #     precision, recall, f1_measure, _ = precision_recall_fscore_support(total_actual_label,
-#         #                                                                        total_predicted_label, average='macro')
-#         #     logging.info(
-#         #         "Eval: %5.1f\tEpoch: %d\tIter: %d\tLoss: %5.5f\tAcc= %5.3f\tPrecision= %5.3f\tRecall= %5.3f\tF1_score= %5.3f" % (
-#         #         val_len * 100.0 / val_inputs.size(0), i+1, step, total_loss / val_len, f_acc * 100.0 / val_len,
-#         #         precision * 100., recall * 100., f1_measure * 100.))
-#
-#         precision, recall, f1_measure, _ = precision_recall_fscore_support(total_actual_label, total_predicted_label,
-#                                                                            average='macro')
-#         logging.info(
-#             "Eval: %5.1f\tEpoch: %d\tIter: %d\tLoss: %5.5f\tAcc= %5.3f\tPrecision= %5.3f\tRecall= %5.3f\tF1_score= %5.3f" % (
-#             val_len * 100.0 / val_inputs.size(0), i+1, step, total_loss / val_len, f_acc * 100.0 / val_len,
-#             precision * 100., recall * 100., f1_measure * 100.))
-#         k_result['e_loss'].append(total_loss / val_len)
-#         k_result['e_accuracy'].append(f_acc * 100.0 / val_len)
-#         k_result['e_precision'].append(precision * 100.)
-#         k_result['e_recall'].append(recall * 100.)
-#         k_result['e_F1_measure'].append(f1_measure * 100.)
-#     return f_acc * 100.0 / val_len
-
-
-# check gpu
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 if torch.cuda.device_count() > 1:
     print("Using", torch.cuda.device_count(), "GPUs!")
@@ -198,16 +81,16 @@ num_epochs = args.epochs
 MAX_LEN = args.ml
 batch_size = args.bs
 # test_size = args.ts
-model_str = 'svm_linear_lemma'
+model_str = 'uncased_svm_rbf_stop_stem'
 num_labels = 4
 denom = args.adaptive
-remove_stop_words = False
-stemming = False
-lemma = True
+remove_stop_words = True
+stemming = True
+lemma = False
 
 # set path
 trg_path = "moody_lyrics.json"
-ending_path = ('%s_%d_bs_%d_adamw_lr_%s_%d' %(model_str, MAX_LEN, batch_size, str(lr).replace("-",""),denom))
+ending_path = ('%s_%d_bs_%d' %(model_str, MAX_LEN, batch_size))
 save_model_path = "models/" + ending_path
 if not os.path.exists(save_model_path):
     os.makedirs(save_model_path)
@@ -294,7 +177,7 @@ for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
     # BERT
     # model = BertForSequenceClassification.from_pretrained('bert-base-cased', num_labels=num_labels)
     # model = nn.DataParallel(model)
-    model = svm.SVC(kernel="linear")
+    model = svm.SVC(kernel="rbf")
     # model.to(DEVICE)
 
     model.fit(train_inputs, train_labels)
