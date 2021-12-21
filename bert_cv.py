@@ -196,7 +196,7 @@ def eva(v_dataloader):
 # check gpu
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 # if torch.cuda.device_count() > 1:
-logging.info("Using", torch.cuda.device_count(), "GPUs!")
+
 
 SEED = 0
 torch.manual_seed(SEED)
@@ -234,6 +234,7 @@ if not os.path.exists("logs/"):
     os.mkdir("logs/")
 logfile_path = "logs/" + ending_path
 logging_storage(logfile_path)
+logging.info("Using", torch.cuda.device_count(), "GPUs!")
 # result_path = "result_json/" + ending_path
 if not os.path.exists("result_json/"):
     os.makedirs("result_json/")
