@@ -20,4 +20,4 @@ pip install --no-index wandb
 wandb login $API_KEY
 
 echo "Starting Task"
-python bert_cv.py --ml 256 --bs 8 --epochs 500 --lr 6 --es 2
+python bert_cv.py --ml 128 --bs 8 --epochs 500 --lr 6 --es 2
