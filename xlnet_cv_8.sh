@@ -20,4 +20,4 @@ pip install --no-index wandb
 wandb login $API_KEY
 
 echo "Starting Task"
-python xlnet_cv.py --ml 128 --bs 8 --epochs 500 --lr 3 --es 2
+python xlnet_cv.py --ml 128 --bs 8 --epochs 500 --lr 4 --es 2

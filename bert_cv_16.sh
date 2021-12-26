@@ -6,6 +6,7 @@
 #SBATCH --gres=gpu:4       # Request GPU "generic resources"
 #SBATCH --cpus-per-task=1  # Cores proportional to GPUs: 6 on Cedar, 16 on Graham.
 #SBATCH --mem=4G       # Memory proportional to GPUs: 32000 Cedar, 64000 Graham.
+#SBATCH --array=3,4
 
 module load nixpkgs/16.09
 module load python/3.8.2
@@ -20,4 +21,4 @@ pip install --no-index wandb
 wandb login $API_KEY
 
 echo "Starting Task"
-python bert_cv.py --ml 128 --bs 8 --epochs 500 --lr 6 --es 4
+python bert_cv.py --ml 128 --bs 8 --epochs 500 --lr 7 --es $SLURM_ARRAY_TASK_ID
