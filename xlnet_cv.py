@@ -234,7 +234,7 @@ if not os.path.exists("logs/"):
     os.mkdir("logs/")
 logfile_path = "logs/" + ending_path
 logging_storage(logfile_path)
-logging.info("Using", torch.cuda.device_count(), "GPUs!")
+logging.info("Using %d GPUs!", torch.cuda.device_count())
 # result_path = "result_json/" + ending_path
 if not os.path.exists("result_json/"):
     os.makedirs("result_json/")
