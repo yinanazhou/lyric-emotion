@@ -32,11 +32,11 @@ def preprocess(text):
     # print(text)
 
     # convert to lowercase
-    # text_lower = text.lower()
+    text_lower = text.lower()
     # print(text_lower)
 
     # remove numbers
-    text_no_number = re.sub(r'\d+', '', text)
+    text_no_number = re.sub(r'\d+', '', text_lower)
     # print(text_no_number)
 
     # remove punctuation
@@ -81,7 +81,7 @@ num_epochs = args.epochs
 MAX_LEN = args.ml
 batch_size = args.bs
 # test_size = args.ts
-model_str = 'svm_rbf'
+model_str = 'svm_linear'
 num_labels = 4
 denom = args.adaptive
 remove_stop_words = False
@@ -177,7 +177,7 @@ for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
     # BERT
     # model = BertForSequenceClassification.from_pretrained('bert-base-cased', num_labels=num_labels)
     # model = nn.DataParallel(model)
-    model = svm.SVC(kernel="rbf")
+    model = svm.SVC(kernel="linear")
     # model.to(DEVICE)
 
     model.fit(train_inputs, train_labels)
