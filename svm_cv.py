@@ -81,11 +81,11 @@ num_epochs = args.epochs
 MAX_LEN = args.ml
 batch_size = args.bs
 # test_size = args.ts
-model_str = 'uncased_svm_rbf_stop_stem'
+model_str = 'svm_rbf'
 num_labels = 4
 denom = args.adaptive
-remove_stop_words = True
-stemming = True
+remove_stop_words = False
+stemming = False
 lemma = False
 
 # set path
@@ -146,7 +146,7 @@ train_val_inputs, test_inputs, train_val_labels, test_labels = train_test_split(
                                                                                 random_state=SEED, test_size=0.2)
 
 # Convert to vector
-tfidf_vect = TfidfVectorizer(max_features=MAX_LEN)
+tfidf_vect = TfidfVectorizer(max_features=MAX_LEN, lowercase=False)
 tfidf_vect.fit(lyrics)
 
 train_val_inputs = tfidf_vect.transform(train_val_inputs)
