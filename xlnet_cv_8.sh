@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --account=def-ichiro
 #SBATCH --time=3-00:00:00
-#SBATCH --output=run_output/xlnet_cv_output_%A_%a.out
+#SBATCH --output=run_output/xlnet_cv_output_lr5_es_0.05_%A_%a.out
 #SBATCH --gres=gpu:v100:1
 #SBATCH --gres=gpu:4       # Request GPU "generic resources"
 #SBATCH --cpus-per-task=1  # Cores proportional to GPUs: 6 on Cedar, 16 on Graham.
@@ -20,4 +20,4 @@ pip install --no-index wandb
 wandb login $API_KEY
 
 echo "Starting Task"
-python xlnet_cv.py --ml 128 --bs 8 --epochs 500 --lr 4 --es 2
+python xlnet_esnum.py --ml 512 --bs 8 --epochs 500 --lr 5 --es 0.05
