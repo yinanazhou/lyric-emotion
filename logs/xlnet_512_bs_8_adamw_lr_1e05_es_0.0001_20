@@ -73,3 +73,993 @@
 2021-12-26 14:02:58,927 => loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-pytorch_model.bin from cache at /home/yinan/.cache/torch/transformers/24197ba0ce5dbfe23924431610704c88e2c0371afa49149360e4c823219ab474.7eac4fe898a021204e63c88c00ea68c60443c57f94b4bc3c02adbde6465745ac
 2021-12-26 14:03:02,488 => Weights of XLNetForSequenceClassification not initialized from pretrained model: ['sequence_summary.summary.weight', 'sequence_summary.summary.bias', 'logits_proj.weight', 'logits_proj.bias']
 2021-12-26 14:03:02,488 => Weights from pretrained model not used in XLNetForSequenceClassification: ['lm_loss.weight', 'lm_loss.bias']
+2021-12-30 22:43:00,527 => 1.9.1+cu102
+2021-12-30 22:43:00,548 => cuda
+2021-12-30 22:43:00,548 => Using 4 GPUs!
+2021-12-30 22:43:01,015 => loading file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-spiece.model from cache at /home/yinan/.cache/torch/transformers/dad589d582573df0293448af5109cb6981ca77239ed314e15ca63b7b8a318ddd.8b10bd978b5d01c21303cc761fc9ecd464419b3bf921864a355ba807cfbfafa8
+2021-12-30 22:43:05,715 => ------------------------------------------------------
+2021-12-30 22:43:05,715 => 1 FOLD
+2021-12-30 22:43:10,045 => loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-config.json from cache at /home/yinan/.cache/torch/transformers/c9cc6e53904f7f3679a31ec4af244f4419e25ebc8e71ebf8c558a31cbcf07fc8.69e5e35e0b798cab5e473f253752f8bf4d280ee37682281a23eed80f6e2d09c6
+2021-12-30 22:43:10,046 => Model config XLNetConfig {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "do_sample": false,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "eos_token_ids": null,
+  "ff_activation": "gelu",
+  "finetuning_task": null,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1"
+  },
+  "initializer_range": 0.02,
+  "is_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "num_beams": 1,
+  "num_labels": 4,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 5,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "untie_r": true,
+  "use_bfloat16": false,
+  "vocab_size": 32000
+}
+
+2021-12-30 22:43:10,369 => loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-pytorch_model.bin from cache at /home/yinan/.cache/torch/transformers/24197ba0ce5dbfe23924431610704c88e2c0371afa49149360e4c823219ab474.7eac4fe898a021204e63c88c00ea68c60443c57f94b4bc3c02adbde6465745ac
+2021-12-30 22:43:14,121 => Weights of XLNetForSequenceClassification not initialized from pretrained model: ['sequence_summary.summary.weight', 'sequence_summary.summary.bias', 'logits_proj.weight', 'logits_proj.bias']
+2021-12-30 22:43:14,121 => Weights from pretrained model not used in XLNetForSequenceClassification: ['lm_loss.weight', 'lm_loss.bias']
+2021-12-30 22:46:09,166 => Train: 100.0	Epoch: 1	Iter: 158	Loss: 0.14261	Acc= 50.039	Precision= 50.098	Recall= 49.817	F1_score= 49.484
+2021-12-30 22:48:58,514 => Train: 100.0	Epoch: 2	Iter: 158	Loss: 0.06565	Acc= 80.110	Precision= 80.014	Recall= 79.957	F1_score= 79.940
+2021-12-30 22:51:47,775 => Train: 100.0	Epoch: 3	Iter: 158	Loss: 0.03303	Acc= 91.476	Precision= 91.456	Recall= 91.420	F1_score= 91.432
+2021-12-30 22:54:36,919 => Train: 100.0	Epoch: 4	Iter: 158	Loss: 0.01846	Acc= 95.501	Precision= 95.489	Recall= 95.479	F1_score= 95.483
+2021-12-30 22:57:26,185 => Train: 100.0	Epoch: 5	Iter: 158	Loss: 0.01095	Acc= 97.553	Precision= 97.545	Recall= 97.549	F1_score= 97.545
+2021-12-30 23:00:15,349 => Train: 100.0	Epoch: 6	Iter: 158	Loss: 0.00608	Acc= 99.132	Precision= 99.123	Recall= 99.138	F1_score= 99.129
+2021-12-30 23:03:04,679 => Train: 100.0	Epoch: 7	Iter: 158	Loss: 0.00407	Acc= 99.290	Precision= 99.290	Recall= 99.291	F1_score= 99.290
+2021-12-30 23:05:53,868 => Train: 100.0	Epoch: 8	Iter: 158	Loss: 0.00258	Acc= 99.842	Precision= 99.842	Recall= 99.843	F1_score= 99.842
+2021-12-30 23:08:43,094 => Train: 100.0	Epoch: 9	Iter: 158	Loss: 0.00158	Acc= 99.921	Precision= 99.922	Recall= 99.918	F1_score= 99.920
+2021-12-30 23:11:32,421 => Train: 100.0	Epoch: 10	Iter: 158	Loss: 0.00126	Acc= 99.921	Precision= 99.920	Recall= 99.918	F1_score= 99.919
+2021-12-30 23:14:21,704 => Train: 100.0	Epoch: 11	Iter: 158	Loss: 0.00087	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-30 23:17:10,852 => Train: 100.0	Epoch: 12	Iter: 158	Loss: 0.00075	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-30 23:20:00,020 => Train: 100.0	Epoch: 13	Iter: 158	Loss: 0.00074	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-30 23:22:49,364 => Train: 100.0	Epoch: 14	Iter: 158	Loss: 0.00052	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-30 23:25:38,560 => Train: 100.0	Epoch: 15	Iter: 158	Loss: 0.00047	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-30 23:28:27,683 => Train: 100.0	Epoch: 16	Iter: 158	Loss: 0.00040	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-30 23:31:16,893 => Train: 100.0	Epoch: 17	Iter: 158	Loss: 0.00044	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-30 23:34:06,108 => Train: 100.0	Epoch: 18	Iter: 158	Loss: 0.00038	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-30 23:36:55,376 => Train: 100.0	Epoch: 19	Iter: 158	Loss: 0.00040	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-30 23:39:44,505 => Train: 100.0	Epoch: 20	Iter: 158	Loss: 0.00071	Acc= 99.921	Precision= 99.920	Recall= 99.924	F1_score= 99.922
+2021-12-30 23:42:33,760 => Train: 100.0	Epoch: 21	Iter: 158	Loss: 0.00032	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-30 23:45:23,204 => Train: 100.0	Epoch: 22	Iter: 158	Loss: 0.00030	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-30 23:48:12,399 => Train: 100.0	Epoch: 23	Iter: 158	Loss: 0.00028	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-30 23:51:01,577 => Train: 100.0	Epoch: 24	Iter: 158	Loss: 0.00026	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-30 23:53:50,852 => Train: 100.0	Epoch: 25	Iter: 158	Loss: 0.00027	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-30 23:56:40,020 => Train: 100.0	Epoch: 26	Iter: 158	Loss: 0.00023	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-30 23:59:29,180 => Train: 100.0	Epoch: 27	Iter: 158	Loss: 0.00022	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 00:02:18,361 => Train: 100.0	Epoch: 28	Iter: 158	Loss: 0.00027	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 00:05:07,735 => Train: 100.0	Epoch: 29	Iter: 158	Loss: 0.00024	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 00:07:56,959 => Train: 100.0	Epoch: 30	Iter: 158	Loss: 0.00023	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 00:10:46,142 => Train: 100.0	Epoch: 31	Iter: 158	Loss: 0.00021	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 00:13:35,183 => Train: 100.0	Epoch: 32	Iter: 158	Loss: 0.00022	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 00:16:24,551 => Train: 100.0	Epoch: 33	Iter: 158	Loss: 0.00020	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 00:19:13,705 => Train: 100.0	Epoch: 34	Iter: 158	Loss: 0.00020	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 00:22:02,889 => Train: 100.0	Epoch: 35	Iter: 158	Loss: 0.00018	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 00:24:52,044 => Train: 100.0	Epoch: 36	Iter: 158	Loss: 0.00020	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 00:27:41,435 => Train: 100.0	Epoch: 37	Iter: 158	Loss: 0.00019	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 00:30:30,564 => Train: 100.0	Epoch: 38	Iter: 158	Loss: 0.00018	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 00:33:19,745 => Train: 100.0	Epoch: 39	Iter: 158	Loss: 0.00020	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 00:36:09,121 => Train: 100.0	Epoch: 40	Iter: 158	Loss: 0.00019	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 00:38:58,316 => Train: 100.0	Epoch: 41	Iter: 158	Loss: 0.00017	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 00:41:47,480 => Train: 100.0	Epoch: 42	Iter: 158	Loss: 0.00017	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 00:44:36,685 => Train: 100.0	Epoch: 43	Iter: 158	Loss: 0.00017	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 00:47:25,934 => Train: 100.0	Epoch: 44	Iter: 158	Loss: 0.00018	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 00:50:15,179 => Train: 100.0	Epoch: 45	Iter: 158	Loss: 0.00017	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 00:53:04,322 => Train: 100.0	Epoch: 46	Iter: 158	Loss: 0.00018	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 00:55:53,597 => Train: 100.0	Epoch: 47	Iter: 158	Loss: 0.00018	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 00:58:42,858 => Train: 100.0	Epoch: 48	Iter: 158	Loss: 0.00016	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 01:01:32,054 => Train: 100.0	Epoch: 49	Iter: 158	Loss: 0.00017	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 01:04:21,322 => Train: 100.0	Epoch: 50	Iter: 158	Loss: 0.00016	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 01:07:10,527 => Train: 100.0	Epoch: 51	Iter: 158	Loss: 0.00016	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 01:09:59,891 => Train: 100.0	Epoch: 52	Iter: 158	Loss: 0.00017	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 01:12:49,061 => Train: 100.0	Epoch: 53	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 01:15:38,351 => Train: 100.0	Epoch: 54	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 01:18:27,668 => Train: 100.0	Epoch: 55	Iter: 158	Loss: 0.00016	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 01:21:16,813 => Train: 100.0	Epoch: 56	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 01:24:06,008 => Train: 100.0	Epoch: 57	Iter: 158	Loss: 0.00017	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 01:26:55,222 => Train: 100.0	Epoch: 58	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 01:29:44,494 => Train: 100.0	Epoch: 59	Iter: 158	Loss: 0.00016	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 01:32:33,730 => Train: 100.0	Epoch: 60	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 01:35:22,969 => Train: 100.0	Epoch: 61	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 01:38:12,163 => Train: 100.0	Epoch: 62	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 01:41:01,486 => Train: 100.0	Epoch: 63	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 01:43:50,533 => Train: 100.0	Epoch: 64	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 01:46:39,719 => Train: 100.0	Epoch: 65	Iter: 158	Loss: 0.00017	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 01:49:28,826 => Train: 100.0	Epoch: 66	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 01:52:19,366 => Train: 100.0	Epoch: 67	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 01:55:08,570 => Train: 100.0	Epoch: 68	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 01:57:57,776 => Train: 100.0	Epoch: 69	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 02:00:47,089 => Train: 100.0	Epoch: 70	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 02:03:36,296 => Train: 100.0	Epoch: 71	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 02:06:25,562 => Train: 100.0	Epoch: 72	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 02:09:14,752 => Train: 100.0	Epoch: 73	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 02:12:04,153 => Train: 100.0	Epoch: 74	Iter: 158	Loss: 0.00016	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 02:14:53,329 => Train: 100.0	Epoch: 75	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 02:17:42,566 => Train: 100.0	Epoch: 76	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 02:20:31,829 => Train: 100.0	Epoch: 77	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 02:23:21,197 => Train: 100.0	Epoch: 78	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 02:26:10,341 => Train: 100.0	Epoch: 79	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 02:28:59,529 => Train: 100.0	Epoch: 80	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 02:31:48,929 => Train: 100.0	Epoch: 81	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 02:34:38,177 => Train: 100.0	Epoch: 82	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 02:37:27,291 => Train: 100.0	Epoch: 83	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 02:40:16,565 => Train: 100.0	Epoch: 84	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 02:43:05,962 => Train: 100.0	Epoch: 85	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 02:45:55,123 => Train: 100.0	Epoch: 86	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 02:48:44,304 => Train: 100.0	Epoch: 87	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 02:51:33,563 => Train: 100.0	Epoch: 88	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 02:54:22,924 => Train: 100.0	Epoch: 89	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 02:57:12,158 => Train: 100.0	Epoch: 90	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 03:00:01,324 => Train: 100.0	Epoch: 91	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 03:02:50,558 => Train: 100.0	Epoch: 92	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 03:05:39,880 => Train: 100.0	Epoch: 93	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 03:08:29,248 => Train: 100.0	Epoch: 94	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 03:11:18,448 => Train: 100.0	Epoch: 95	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 03:14:07,895 => Train: 100.0	Epoch: 96	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 03:16:57,120 => Train: 100.0	Epoch: 97	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 03:19:46,258 => Train: 100.0	Epoch: 98	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 03:22:35,544 => Train: 100.0	Epoch: 99	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 03:25:24,961 => Train: 100.0	Epoch: 100	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 03:28:14,221 => Train: 100.0	Epoch: 101	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 03:31:03,454 => Train: 100.0	Epoch: 102	Iter: 158	Loss: 0.00022	Acc= 99.921	Precision= 99.920	Recall= 99.918	F1_score= 99.919
+2021-12-31 03:33:52,693 => Train: 100.0	Epoch: 103	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 03:36:42,026 => Train: 100.0	Epoch: 104	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 03:39:31,071 => Train: 100.0	Epoch: 105	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 03:42:20,392 => Train: 100.0	Epoch: 106	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 03:45:09,667 => Train: 100.0	Epoch: 107	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 03:47:59,047 => Train: 100.0	Epoch: 108	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 03:50:48,285 => Train: 100.0	Epoch: 109	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 03:53:37,457 => Train: 100.0	Epoch: 110	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 03:56:26,744 => Train: 100.0	Epoch: 111	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 03:59:15,854 => Train: 100.0	Epoch: 112	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 04:02:05,065 => Train: 100.0	Epoch: 113	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 04:04:54,332 => Train: 100.0	Epoch: 114	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 04:07:43,680 => Train: 100.0	Epoch: 115	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 04:10:32,813 => Train: 100.0	Epoch: 116	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 04:13:21,962 => Train: 100.0	Epoch: 117	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 04:16:11,261 => Train: 100.0	Epoch: 118	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 04:19:00,553 => Train: 100.0	Epoch: 119	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 04:21:49,749 => Train: 100.0	Epoch: 120	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 04:24:38,942 => Train: 100.0	Epoch: 121	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 04:27:28,095 => Train: 100.0	Epoch: 122	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 04:30:17,469 => Train: 100.0	Epoch: 123	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 04:33:06,671 => Train: 100.0	Epoch: 124	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 04:35:55,846 => Train: 100.0	Epoch: 125	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 04:38:45,105 => Train: 100.0	Epoch: 126	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 04:41:34,378 => Train: 100.0	Epoch: 127	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 04:44:23,637 => Train: 100.0	Epoch: 128	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 04:47:12,929 => Train: 100.0	Epoch: 129	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 04:50:02,372 => Train: 100.0	Epoch: 130	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 04:52:51,686 => Train: 100.0	Epoch: 131	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 04:55:40,935 => Train: 100.0	Epoch: 132	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 04:58:30,101 => Train: 100.0	Epoch: 133	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 05:01:19,403 => Train: 100.0	Epoch: 134	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 05:04:08,523 => Train: 100.0	Epoch: 135	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 05:06:57,605 => Train: 100.0	Epoch: 136	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 05:09:46,847 => Train: 100.0	Epoch: 137	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 05:12:36,249 => Train: 100.0	Epoch: 138	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 05:15:25,408 => Train: 100.0	Epoch: 139	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 05:18:14,556 => Train: 100.0	Epoch: 140	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 05:21:03,781 => Train: 100.0	Epoch: 141	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 05:23:52,985 => Train: 100.0	Epoch: 142	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 05:26:42,237 => Train: 100.0	Epoch: 143	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 05:29:31,433 => Train: 100.0	Epoch: 144	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 05:32:20,832 => Train: 100.0	Epoch: 145	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 05:35:09,997 => Train: 100.0	Epoch: 146	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 05:37:59,160 => Train: 100.0	Epoch: 147	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 05:40:48,526 => Train: 100.0	Epoch: 148	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 05:43:37,836 => Train: 100.0	Epoch: 149	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 05:46:27,150 => Train: 100.0	Epoch: 150	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 05:49:16,322 => Train: 100.0	Epoch: 151	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 05:52:05,603 => Train: 100.0	Epoch: 152	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 05:54:54,895 => Train: 100.0	Epoch: 153	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 05:57:44,099 => Train: 100.0	Epoch: 154	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 06:00:33,287 => Train: 100.0	Epoch: 155	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 06:03:22,585 => Train: 100.0	Epoch: 156	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 06:06:11,917 => Train: 100.0	Epoch: 157	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 06:09:01,068 => Train: 100.0	Epoch: 158	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 06:11:50,296 => Train: 100.0	Epoch: 159	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 06:14:39,540 => Train: 100.0	Epoch: 160	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 06:17:28,789 => Train: 100.0	Epoch: 161	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 06:20:17,828 => Train: 100.0	Epoch: 162	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 06:23:07,113 => Train: 100.0	Epoch: 163	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 06:25:56,397 => Train: 100.0	Epoch: 164	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 06:28:45,471 => Train: 100.0	Epoch: 165	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 06:31:34,617 => Train: 100.0	Epoch: 166	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 06:34:23,711 => Train: 100.0	Epoch: 167	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 06:37:13,034 => Train: 100.0	Epoch: 168	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 06:40:02,216 => Train: 100.0	Epoch: 169	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 06:42:51,534 => Train: 100.0	Epoch: 170	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 06:45:40,762 => Train: 100.0	Epoch: 171	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 06:48:29,942 => Train: 100.0	Epoch: 172	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 06:51:19,209 => Train: 100.0	Epoch: 173	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 06:54:08,394 => Train: 100.0	Epoch: 174	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 06:56:57,696 => Train: 100.0	Epoch: 175	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 06:59:46,857 => Train: 100.0	Epoch: 176	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 07:02:36,096 => Train: 100.0	Epoch: 177	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 07:05:25,229 => Train: 100.0	Epoch: 178	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 07:08:14,539 => Train: 100.0	Epoch: 179	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 07:11:03,675 => Train: 100.0	Epoch: 180	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 07:13:52,980 => Train: 100.0	Epoch: 181	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 07:16:42,050 => Train: 100.0	Epoch: 182	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 07:19:31,396 => Train: 100.0	Epoch: 183	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 07:22:20,687 => Train: 100.0	Epoch: 184	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 07:25:09,814 => Train: 100.0	Epoch: 185	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 07:27:59,049 => Train: 100.0	Epoch: 186	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 07:30:48,313 => Train: 100.0	Epoch: 187	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 07:33:37,501 => Train: 100.0	Epoch: 188	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 07:36:26,760 => Train: 100.0	Epoch: 189	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 07:39:16,110 => Train: 100.0	Epoch: 190	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 07:42:05,349 => Train: 100.0	Epoch: 191	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 07:44:54,436 => Train: 100.0	Epoch: 192	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 07:47:43,644 => Train: 100.0	Epoch: 193	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 07:50:33,039 => Train: 100.0	Epoch: 194	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 07:53:22,210 => Train: 100.0	Epoch: 195	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 07:53:22,218 => Epoch: 195	early stopped at loss: 0.00010
+2021-12-31 07:53:42,194 => Eval: 100.0	Epoch: 195	Iter: 39	Loss: 0.05157	Acc= 92.114	Precision= 92.382	Recall= 92.272	F1_score= 92.138
+2021-12-31 07:53:42,194 => ------------------------------------------------------
+2021-12-31 07:53:42,195 => 2 FOLD
+2021-12-31 07:53:46,471 => loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-config.json from cache at /home/yinan/.cache/torch/transformers/c9cc6e53904f7f3679a31ec4af244f4419e25ebc8e71ebf8c558a31cbcf07fc8.69e5e35e0b798cab5e473f253752f8bf4d280ee37682281a23eed80f6e2d09c6
+2021-12-31 07:53:46,472 => Model config XLNetConfig {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "do_sample": false,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "eos_token_ids": null,
+  "ff_activation": "gelu",
+  "finetuning_task": null,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1"
+  },
+  "initializer_range": 0.02,
+  "is_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "num_beams": 1,
+  "num_labels": 4,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 5,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "untie_r": true,
+  "use_bfloat16": false,
+  "vocab_size": 32000
+}
+
+2021-12-31 07:53:46,805 => loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-pytorch_model.bin from cache at /home/yinan/.cache/torch/transformers/24197ba0ce5dbfe23924431610704c88e2c0371afa49149360e4c823219ab474.7eac4fe898a021204e63c88c00ea68c60443c57f94b4bc3c02adbde6465745ac
+2021-12-31 07:53:50,374 => Weights of XLNetForSequenceClassification not initialized from pretrained model: ['sequence_summary.summary.weight', 'sequence_summary.summary.bias', 'logits_proj.weight', 'logits_proj.bias']
+2021-12-31 07:53:50,374 => Weights from pretrained model not used in XLNetForSequenceClassification: ['lm_loss.weight', 'lm_loss.bias']
+2021-12-31 07:56:41,239 => Train: 100.0	Epoch: 1	Iter: 158	Loss: 0.13354	Acc= 51.460	Precision= 52.441	Recall= 51.244	F1_score= 51.083
+2021-12-31 07:59:32,302 => Train: 100.0	Epoch: 2	Iter: 158	Loss: 0.04944	Acc= 86.188	Precision= 86.234	Recall= 86.092	F1_score= 86.118
+2021-12-31 08:02:23,360 => Train: 100.0	Epoch: 3	Iter: 158	Loss: 0.02213	Acc= 94.554	Precision= 94.579	Recall= 94.538	F1_score= 94.553
+2021-12-31 08:05:14,331 => Train: 100.0	Epoch: 4	Iter: 158	Loss: 0.01087	Acc= 98.185	Precision= 98.171	Recall= 98.182	F1_score= 98.175
+2021-12-31 08:08:05,249 => Train: 100.0	Epoch: 5	Iter: 158	Loss: 0.00649	Acc= 99.132	Precision= 99.127	Recall= 99.134	F1_score= 99.130
+2021-12-31 08:10:56,268 => Train: 100.0	Epoch: 6	Iter: 158	Loss: 0.00296	Acc= 99.842	Precision= 99.841	Recall= 99.840	F1_score= 99.840
+2021-12-31 08:13:47,195 => Train: 100.0	Epoch: 7	Iter: 158	Loss: 0.00187	Acc= 99.842	Precision= 99.840	Recall= 99.843	F1_score= 99.842
+2021-12-31 08:16:38,312 => Train: 100.0	Epoch: 8	Iter: 158	Loss: 0.00138	Acc= 99.921	Precision= 99.921	Recall= 99.923	F1_score= 99.922
+2021-12-31 08:19:29,401 => Train: 100.0	Epoch: 9	Iter: 158	Loss: 0.00088	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 08:22:20,362 => Train: 100.0	Epoch: 10	Iter: 158	Loss: 0.00075	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 08:25:11,351 => Train: 100.0	Epoch: 11	Iter: 158	Loss: 0.00068	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 08:28:02,396 => Train: 100.0	Epoch: 12	Iter: 158	Loss: 0.00054	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 08:30:53,259 => Train: 100.0	Epoch: 13	Iter: 158	Loss: 0.00051	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 08:33:44,189 => Train: 100.0	Epoch: 14	Iter: 158	Loss: 0.00045	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 08:36:35,074 => Train: 100.0	Epoch: 15	Iter: 158	Loss: 0.00038	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 08:39:26,065 => Train: 100.0	Epoch: 16	Iter: 158	Loss: 0.00034	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 08:42:16,922 => Train: 100.0	Epoch: 17	Iter: 158	Loss: 0.00033	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 08:45:07,941 => Train: 100.0	Epoch: 18	Iter: 158	Loss: 0.00034	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 08:47:58,880 => Train: 100.0	Epoch: 19	Iter: 158	Loss: 0.00029	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 08:50:49,955 => Train: 100.0	Epoch: 20	Iter: 158	Loss: 0.00027	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 08:53:41,075 => Train: 100.0	Epoch: 21	Iter: 158	Loss: 0.00029	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 08:56:32,087 => Train: 100.0	Epoch: 22	Iter: 158	Loss: 0.00026	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 08:59:22,950 => Train: 100.0	Epoch: 23	Iter: 158	Loss: 0.00024	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 09:02:13,997 => Train: 100.0	Epoch: 24	Iter: 158	Loss: 0.00022	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 09:05:05,050 => Train: 100.0	Epoch: 25	Iter: 158	Loss: 0.00021	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 09:07:56,027 => Train: 100.0	Epoch: 26	Iter: 158	Loss: 0.00022	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 09:10:47,009 => Train: 100.0	Epoch: 27	Iter: 158	Loss: 0.00021	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 09:13:38,109 => Train: 100.0	Epoch: 28	Iter: 158	Loss: 0.00020	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 09:16:29,018 => Train: 100.0	Epoch: 29	Iter: 158	Loss: 0.00020	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 09:19:20,064 => Train: 100.0	Epoch: 30	Iter: 158	Loss: 0.00019	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 09:22:11,042 => Train: 100.0	Epoch: 31	Iter: 158	Loss: 0.00019	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 09:25:02,017 => Train: 100.0	Epoch: 32	Iter: 158	Loss: 0.00018	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 09:27:52,860 => Train: 100.0	Epoch: 33	Iter: 158	Loss: 0.00017	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 09:30:43,887 => Train: 100.0	Epoch: 34	Iter: 158	Loss: 0.00017	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 09:33:34,886 => Train: 100.0	Epoch: 35	Iter: 158	Loss: 0.00016	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 09:36:25,850 => Train: 100.0	Epoch: 36	Iter: 158	Loss: 0.00017	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 09:39:16,795 => Train: 100.0	Epoch: 37	Iter: 158	Loss: 0.00018	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 09:42:07,827 => Train: 100.0	Epoch: 38	Iter: 158	Loss: 0.00016	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 09:44:58,911 => Train: 100.0	Epoch: 39	Iter: 158	Loss: 0.00016	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 09:47:49,894 => Train: 100.0	Epoch: 40	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 09:50:40,956 => Train: 100.0	Epoch: 41	Iter: 158	Loss: 0.00016	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 09:53:31,880 => Train: 100.0	Epoch: 42	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 09:56:22,874 => Train: 100.0	Epoch: 43	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 09:59:13,798 => Train: 100.0	Epoch: 44	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 10:02:04,901 => Train: 100.0	Epoch: 45	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 10:04:55,794 => Train: 100.0	Epoch: 46	Iter: 158	Loss: 0.00016	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 10:07:46,924 => Train: 100.0	Epoch: 47	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 10:10:38,059 => Train: 100.0	Epoch: 48	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 10:13:29,103 => Train: 100.0	Epoch: 49	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 10:16:20,207 => Train: 100.0	Epoch: 50	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 10:19:11,299 => Train: 100.0	Epoch: 51	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 10:22:02,280 => Train: 100.0	Epoch: 52	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 10:24:53,267 => Train: 100.0	Epoch: 53	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 10:27:44,095 => Train: 100.0	Epoch: 54	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 10:30:35,148 => Train: 100.0	Epoch: 55	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 10:33:26,155 => Train: 100.0	Epoch: 56	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 10:36:17,092 => Train: 100.0	Epoch: 57	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 10:39:08,012 => Train: 100.0	Epoch: 58	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 10:41:58,909 => Train: 100.0	Epoch: 59	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 10:44:49,964 => Train: 100.0	Epoch: 60	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 10:47:40,955 => Train: 100.0	Epoch: 61	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 10:50:31,900 => Train: 100.0	Epoch: 62	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 10:53:22,913 => Train: 100.0	Epoch: 63	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 10:56:13,873 => Train: 100.0	Epoch: 64	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 10:59:04,744 => Train: 100.0	Epoch: 65	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 11:01:55,730 => Train: 100.0	Epoch: 66	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 11:04:46,645 => Train: 100.0	Epoch: 67	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 11:07:37,593 => Train: 100.0	Epoch: 68	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 11:10:28,506 => Train: 100.0	Epoch: 69	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 11:13:19,415 => Train: 100.0	Epoch: 70	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 11:16:10,341 => Train: 100.0	Epoch: 71	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 11:19:01,333 => Train: 100.0	Epoch: 72	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 11:21:52,161 => Train: 100.0	Epoch: 73	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 11:24:43,095 => Train: 100.0	Epoch: 74	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 11:27:34,131 => Train: 100.0	Epoch: 75	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 11:30:25,170 => Train: 100.0	Epoch: 76	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 11:33:16,093 => Train: 100.0	Epoch: 77	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 11:36:06,961 => Train: 100.0	Epoch: 78	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 11:38:57,926 => Train: 100.0	Epoch: 79	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 11:41:48,883 => Train: 100.0	Epoch: 80	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 11:44:39,756 => Train: 100.0	Epoch: 81	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 11:47:30,712 => Train: 100.0	Epoch: 82	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 11:50:21,689 => Train: 100.0	Epoch: 83	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 11:53:12,722 => Train: 100.0	Epoch: 84	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 11:56:03,745 => Train: 100.0	Epoch: 85	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 11:58:54,739 => Train: 100.0	Epoch: 86	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 12:01:45,690 => Train: 100.0	Epoch: 87	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 12:04:36,619 => Train: 100.0	Epoch: 88	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 12:07:27,517 => Train: 100.0	Epoch: 89	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 12:10:18,397 => Train: 100.0	Epoch: 90	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 12:13:09,395 => Train: 100.0	Epoch: 91	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 12:16:00,514 => Train: 100.0	Epoch: 92	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 12:18:51,450 => Train: 100.0	Epoch: 93	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 12:21:42,345 => Train: 100.0	Epoch: 94	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 12:24:33,218 => Train: 100.0	Epoch: 95	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 12:27:24,363 => Train: 100.0	Epoch: 96	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 12:30:15,220 => Train: 100.0	Epoch: 97	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 12:33:06,096 => Train: 100.0	Epoch: 98	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 12:35:57,162 => Train: 100.0	Epoch: 99	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 12:38:48,127 => Train: 100.0	Epoch: 100	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 12:41:38,970 => Train: 100.0	Epoch: 101	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 12:44:29,900 => Train: 100.0	Epoch: 102	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 12:47:20,829 => Train: 100.0	Epoch: 103	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 12:50:11,782 => Train: 100.0	Epoch: 104	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 12:53:02,657 => Train: 100.0	Epoch: 105	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 12:55:53,627 => Train: 100.0	Epoch: 106	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 12:58:44,559 => Train: 100.0	Epoch: 107	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 13:01:35,602 => Train: 100.0	Epoch: 108	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 13:04:26,569 => Train: 100.0	Epoch: 109	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 13:07:17,514 => Train: 100.0	Epoch: 110	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 13:10:08,693 => Train: 100.0	Epoch: 111	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 13:12:59,582 => Train: 100.0	Epoch: 112	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 13:15:50,569 => Train: 100.0	Epoch: 113	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 13:18:41,577 => Train: 100.0	Epoch: 114	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 13:21:32,449 => Train: 100.0	Epoch: 115	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 13:24:23,423 => Train: 100.0	Epoch: 116	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 13:27:14,491 => Train: 100.0	Epoch: 117	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 13:30:05,405 => Train: 100.0	Epoch: 118	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 13:32:56,302 => Train: 100.0	Epoch: 119	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 13:35:47,409 => Train: 100.0	Epoch: 120	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 13:38:38,442 => Train: 100.0	Epoch: 121	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 13:41:29,416 => Train: 100.0	Epoch: 122	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 13:44:20,324 => Train: 100.0	Epoch: 123	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 13:47:11,343 => Train: 100.0	Epoch: 124	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 13:50:02,249 => Train: 100.0	Epoch: 125	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 13:52:53,229 => Train: 100.0	Epoch: 126	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 13:55:44,195 => Train: 100.0	Epoch: 127	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 13:58:35,159 => Train: 100.0	Epoch: 128	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 14:01:26,145 => Train: 100.0	Epoch: 129	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 14:01:26,148 => Epoch: 129	early stopped at loss: 0.00010
+2021-12-31 14:01:45,037 => Eval: 100.0	Epoch: 129	Iter: 39	Loss: 0.08122	Acc= 88.328	Precision= 88.289	Recall= 88.273	F1_score= 88.264
+2021-12-31 14:01:45,038 => ------------------------------------------------------
+2021-12-31 14:01:45,038 => 3 FOLD
+2021-12-31 14:01:51,188 => loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-config.json from cache at /home/yinan/.cache/torch/transformers/c9cc6e53904f7f3679a31ec4af244f4419e25ebc8e71ebf8c558a31cbcf07fc8.69e5e35e0b798cab5e473f253752f8bf4d280ee37682281a23eed80f6e2d09c6
+2021-12-31 14:01:51,189 => Model config XLNetConfig {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "do_sample": false,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "eos_token_ids": null,
+  "ff_activation": "gelu",
+  "finetuning_task": null,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1"
+  },
+  "initializer_range": 0.02,
+  "is_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "num_beams": 1,
+  "num_labels": 4,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 5,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "untie_r": true,
+  "use_bfloat16": false,
+  "vocab_size": 32000
+}
+
+2021-12-31 14:01:51,523 => loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-pytorch_model.bin from cache at /home/yinan/.cache/torch/transformers/24197ba0ce5dbfe23924431610704c88e2c0371afa49149360e4c823219ab474.7eac4fe898a021204e63c88c00ea68c60443c57f94b4bc3c02adbde6465745ac
+2021-12-31 14:01:54,942 => Weights of XLNetForSequenceClassification not initialized from pretrained model: ['sequence_summary.summary.weight', 'sequence_summary.summary.bias', 'logits_proj.weight', 'logits_proj.bias']
+2021-12-31 14:01:54,942 => Weights from pretrained model not used in XLNetForSequenceClassification: ['lm_loss.weight', 'lm_loss.bias']
+2021-12-31 14:04:45,371 => Train: 100.0	Epoch: 1	Iter: 158	Loss: 0.13473	Acc= 52.881	Precision= 53.555	Recall= 52.929	F1_score= 52.721
+2021-12-31 14:07:34,938 => Train: 100.0	Epoch: 2	Iter: 158	Loss: 0.05871	Acc= 83.189	Precision= 83.203	Recall= 83.201	F1_score= 83.167
+2021-12-31 14:10:24,659 => Train: 100.0	Epoch: 3	Iter: 158	Loss: 0.02742	Acc= 93.054	Precision= 93.078	Recall= 93.050	F1_score= 93.048
+2021-12-31 14:13:14,158 => Train: 100.0	Epoch: 4	Iter: 158	Loss: 0.01496	Acc= 96.922	Precision= 96.924	Recall= 96.917	F1_score= 96.919
+2021-12-31 14:16:03,694 => Train: 100.0	Epoch: 5	Iter: 158	Loss: 0.00744	Acc= 98.974	Precision= 98.977	Recall= 98.974	F1_score= 98.976
+2021-12-31 14:18:53,153 => Train: 100.0	Epoch: 6	Iter: 158	Loss: 0.00443	Acc= 99.290	Precision= 99.296	Recall= 99.289	F1_score= 99.291
+2021-12-31 14:21:42,832 => Train: 100.0	Epoch: 7	Iter: 158	Loss: 0.00209	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 14:24:32,302 => Train: 100.0	Epoch: 8	Iter: 158	Loss: 0.00142	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 14:27:21,874 => Train: 100.0	Epoch: 9	Iter: 158	Loss: 0.00104	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 14:30:11,368 => Train: 100.0	Epoch: 10	Iter: 158	Loss: 0.00082	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 14:33:01,152 => Train: 100.0	Epoch: 11	Iter: 158	Loss: 0.00067	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 14:35:50,624 => Train: 100.0	Epoch: 12	Iter: 158	Loss: 0.00060	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 14:38:40,151 => Train: 100.0	Epoch: 13	Iter: 158	Loss: 0.00055	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 14:41:29,757 => Train: 100.0	Epoch: 14	Iter: 158	Loss: 0.00048	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 14:44:19,309 => Train: 100.0	Epoch: 15	Iter: 158	Loss: 0.00050	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 14:47:08,838 => Train: 100.0	Epoch: 16	Iter: 158	Loss: 0.00039	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 14:49:58,556 => Train: 100.0	Epoch: 17	Iter: 158	Loss: 0.00038	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 14:52:48,223 => Train: 100.0	Epoch: 18	Iter: 158	Loss: 0.00036	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 14:55:37,637 => Train: 100.0	Epoch: 19	Iter: 158	Loss: 0.00034	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 14:58:28,194 => Train: 100.0	Epoch: 20	Iter: 158	Loss: 0.00031	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 15:01:17,620 => Train: 100.0	Epoch: 21	Iter: 158	Loss: 0.00033	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 15:04:07,354 => Train: 100.0	Epoch: 22	Iter: 158	Loss: 0.00030	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 15:06:56,882 => Train: 100.0	Epoch: 23	Iter: 158	Loss: 0.00027	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 15:09:47,599 => Train: 100.0	Epoch: 24	Iter: 158	Loss: 0.00027	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 15:12:37,123 => Train: 100.0	Epoch: 25	Iter: 158	Loss: 0.00029	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 15:15:26,585 => Train: 100.0	Epoch: 26	Iter: 158	Loss: 0.00031	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 15:18:16,024 => Train: 100.0	Epoch: 27	Iter: 158	Loss: 0.00030	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 15:21:05,523 => Train: 100.0	Epoch: 28	Iter: 158	Loss: 0.00021	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 15:23:55,143 => Train: 100.0	Epoch: 29	Iter: 158	Loss: 0.00024	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 15:26:44,703 => Train: 100.0	Epoch: 30	Iter: 158	Loss: 0.00021	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 15:29:34,220 => Train: 100.0	Epoch: 31	Iter: 158	Loss: 0.00021	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 15:32:23,683 => Train: 100.0	Epoch: 32	Iter: 158	Loss: 0.00022	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 15:35:13,235 => Train: 100.0	Epoch: 33	Iter: 158	Loss: 0.00020	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 15:38:02,776 => Train: 100.0	Epoch: 34	Iter: 158	Loss: 0.00020	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 15:40:52,467 => Train: 100.0	Epoch: 35	Iter: 158	Loss: 0.00019	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 15:43:42,067 => Train: 100.0	Epoch: 36	Iter: 158	Loss: 0.00018	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 15:46:31,606 => Train: 100.0	Epoch: 37	Iter: 158	Loss: 0.00019	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 15:49:21,125 => Train: 100.0	Epoch: 38	Iter: 158	Loss: 0.00016	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 15:52:10,679 => Train: 100.0	Epoch: 39	Iter: 158	Loss: 0.00018	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 15:55:00,299 => Train: 100.0	Epoch: 40	Iter: 158	Loss: 0.00016	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 15:57:49,750 => Train: 100.0	Epoch: 41	Iter: 158	Loss: 0.00016	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 16:00:40,544 => Train: 100.0	Epoch: 42	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 16:03:30,035 => Train: 100.0	Epoch: 43	Iter: 158	Loss: 0.00018	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 16:06:19,709 => Train: 100.0	Epoch: 44	Iter: 158	Loss: 0.00018	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 16:09:09,180 => Train: 100.0	Epoch: 45	Iter: 158	Loss: 0.00017	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 16:11:58,748 => Train: 100.0	Epoch: 46	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 16:14:48,156 => Train: 100.0	Epoch: 47	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 16:17:38,773 => Train: 100.0	Epoch: 48	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 16:20:28,256 => Train: 100.0	Epoch: 49	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 16:23:17,954 => Train: 100.0	Epoch: 50	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 16:26:07,726 => Train: 100.0	Epoch: 51	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 16:28:57,508 => Train: 100.0	Epoch: 52	Iter: 158	Loss: 0.00016	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 16:31:47,209 => Train: 100.0	Epoch: 53	Iter: 158	Loss: 0.00017	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 16:34:36,777 => Train: 100.0	Epoch: 54	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 16:37:26,440 => Train: 100.0	Epoch: 55	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 16:40:16,139 => Train: 100.0	Epoch: 56	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 16:43:06,901 => Train: 100.0	Epoch: 57	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 16:45:56,301 => Train: 100.0	Epoch: 58	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 16:48:45,842 => Train: 100.0	Epoch: 59	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 16:51:35,371 => Train: 100.0	Epoch: 60	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 16:54:24,931 => Train: 100.0	Epoch: 61	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 16:57:14,414 => Train: 100.0	Epoch: 62	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 17:00:03,917 => Train: 100.0	Epoch: 63	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 17:02:53,504 => Train: 100.0	Epoch: 64	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 17:05:43,084 => Train: 100.0	Epoch: 65	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 17:08:32,559 => Train: 100.0	Epoch: 66	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 17:11:22,149 => Train: 100.0	Epoch: 67	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 17:14:11,604 => Train: 100.0	Epoch: 68	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 17:17:01,223 => Train: 100.0	Epoch: 69	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 17:19:50,775 => Train: 100.0	Epoch: 70	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 17:22:41,559 => Train: 100.0	Epoch: 71	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 17:25:31,328 => Train: 100.0	Epoch: 72	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 17:28:20,913 => Train: 100.0	Epoch: 73	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 17:31:10,689 => Train: 100.0	Epoch: 74	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 17:34:00,311 => Train: 100.0	Epoch: 75	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 17:36:50,895 => Train: 100.0	Epoch: 76	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 17:39:40,417 => Train: 100.0	Epoch: 77	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 17:42:29,962 => Train: 100.0	Epoch: 78	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 17:45:19,467 => Train: 100.0	Epoch: 79	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 17:48:09,037 => Train: 100.0	Epoch: 80	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 17:50:58,748 => Train: 100.0	Epoch: 81	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 17:53:48,281 => Train: 100.0	Epoch: 82	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 17:56:37,822 => Train: 100.0	Epoch: 83	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 17:59:28,355 => Train: 100.0	Epoch: 84	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 18:02:18,014 => Train: 100.0	Epoch: 85	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 18:05:07,551 => Train: 100.0	Epoch: 86	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 18:07:57,081 => Train: 100.0	Epoch: 87	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 18:10:46,614 => Train: 100.0	Epoch: 88	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 18:13:35,984 => Train: 100.0	Epoch: 89	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 18:16:26,574 => Train: 100.0	Epoch: 90	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 18:19:16,063 => Train: 100.0	Epoch: 91	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 18:22:05,551 => Train: 100.0	Epoch: 92	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 18:24:55,091 => Train: 100.0	Epoch: 93	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 18:27:44,712 => Train: 100.0	Epoch: 94	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 18:30:34,199 => Train: 100.0	Epoch: 95	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 18:33:23,979 => Train: 100.0	Epoch: 96	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 18:36:13,481 => Train: 100.0	Epoch: 97	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 18:39:02,966 => Train: 100.0	Epoch: 98	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 18:41:52,683 => Train: 100.0	Epoch: 99	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 18:44:42,256 => Train: 100.0	Epoch: 100	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 18:47:31,742 => Train: 100.0	Epoch: 101	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 18:50:21,333 => Train: 100.0	Epoch: 102	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 18:53:10,974 => Train: 100.0	Epoch: 103	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 18:56:00,496 => Train: 100.0	Epoch: 104	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 18:58:50,071 => Train: 100.0	Epoch: 105	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 19:01:39,546 => Train: 100.0	Epoch: 106	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 19:04:30,056 => Train: 100.0	Epoch: 107	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 19:07:19,591 => Train: 100.0	Epoch: 108	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 19:10:09,013 => Train: 100.0	Epoch: 109	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 19:12:58,496 => Train: 100.0	Epoch: 110	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 19:15:48,059 => Train: 100.0	Epoch: 111	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 19:18:37,493 => Train: 100.0	Epoch: 112	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 19:21:27,034 => Train: 100.0	Epoch: 113	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 19:24:16,654 => Train: 100.0	Epoch: 114	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 19:27:06,348 => Train: 100.0	Epoch: 115	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 19:29:55,906 => Train: 100.0	Epoch: 116	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 19:32:45,411 => Train: 100.0	Epoch: 117	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 19:35:36,203 => Train: 100.0	Epoch: 118	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 19:38:25,683 => Train: 100.0	Epoch: 119	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 19:41:15,279 => Train: 100.0	Epoch: 120	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 19:44:04,813 => Train: 100.0	Epoch: 121	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 19:46:54,581 => Train: 100.0	Epoch: 122	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 19:49:44,130 => Train: 100.0	Epoch: 123	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 19:52:33,584 => Train: 100.0	Epoch: 124	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 19:55:22,997 => Train: 100.0	Epoch: 125	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 19:58:12,533 => Train: 100.0	Epoch: 126	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 20:01:02,050 => Train: 100.0	Epoch: 127	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 20:03:51,518 => Train: 100.0	Epoch: 128	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 20:06:41,057 => Train: 100.0	Epoch: 129	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 20:09:30,539 => Train: 100.0	Epoch: 130	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 20:09:30,542 => Epoch: 130	early stopped at loss: 0.00010
+2021-12-31 20:09:50,026 => Eval: 100.0	Epoch: 130	Iter: 39	Loss: 0.05642	Acc= 90.852	Precision= 90.889	Recall= 90.338	F1_score= 90.547
+2021-12-31 20:09:50,027 => ------------------------------------------------------
+2021-12-31 20:09:50,027 => 4 FOLD
+2021-12-31 20:09:54,202 => loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-config.json from cache at /home/yinan/.cache/torch/transformers/c9cc6e53904f7f3679a31ec4af244f4419e25ebc8e71ebf8c558a31cbcf07fc8.69e5e35e0b798cab5e473f253752f8bf4d280ee37682281a23eed80f6e2d09c6
+2021-12-31 20:09:54,203 => Model config XLNetConfig {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "do_sample": false,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "eos_token_ids": null,
+  "ff_activation": "gelu",
+  "finetuning_task": null,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1"
+  },
+  "initializer_range": 0.02,
+  "is_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "num_beams": 1,
+  "num_labels": 4,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 5,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "untie_r": true,
+  "use_bfloat16": false,
+  "vocab_size": 32000
+}
+
+2021-12-31 20:09:54,533 => loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-pytorch_model.bin from cache at /home/yinan/.cache/torch/transformers/24197ba0ce5dbfe23924431610704c88e2c0371afa49149360e4c823219ab474.7eac4fe898a021204e63c88c00ea68c60443c57f94b4bc3c02adbde6465745ac
+2021-12-31 20:09:57,792 => Weights of XLNetForSequenceClassification not initialized from pretrained model: ['sequence_summary.summary.weight', 'sequence_summary.summary.bias', 'logits_proj.weight', 'logits_proj.bias']
+2021-12-31 20:09:57,792 => Weights from pretrained model not used in XLNetForSequenceClassification: ['lm_loss.weight', 'lm_loss.bias']
+2021-12-31 20:12:47,915 => Train: 100.0	Epoch: 1	Iter: 158	Loss: 0.13687	Acc= 49.803	Precision= 50.483	Recall= 49.639	F1_score= 49.469
+2021-12-31 20:15:36,769 => Train: 100.0	Epoch: 2	Iter: 158	Loss: 0.05894	Acc= 83.741	Precision= 83.743	Recall= 83.682	F1_score= 83.686
+2021-12-31 20:18:25,697 => Train: 100.0	Epoch: 3	Iter: 158	Loss: 0.02815	Acc= 92.976	Precision= 92.972	Recall= 92.975	F1_score= 92.969
+2021-12-31 20:21:14,443 => Train: 100.0	Epoch: 4	Iter: 158	Loss: 0.01382	Acc= 96.606	Precision= 96.606	Recall= 96.594	F1_score= 96.598
+2021-12-31 20:24:03,243 => Train: 100.0	Epoch: 5	Iter: 158	Loss: 0.00695	Acc= 98.895	Precision= 98.894	Recall= 98.898	F1_score= 98.894
+2021-12-31 20:26:52,116 => Train: 100.0	Epoch: 6	Iter: 158	Loss: 0.00398	Acc= 99.211	Precision= 99.210	Recall= 99.217	F1_score= 99.211
+2021-12-31 20:29:41,096 => Train: 100.0	Epoch: 7	Iter: 158	Loss: 0.00194	Acc= 99.921	Precision= 99.920	Recall= 99.923	F1_score= 99.921
+2021-12-31 20:32:29,930 => Train: 100.0	Epoch: 8	Iter: 158	Loss: 0.00161	Acc= 99.842	Precision= 99.840	Recall= 99.845	F1_score= 99.842
+2021-12-31 20:35:18,777 => Train: 100.0	Epoch: 9	Iter: 158	Loss: 0.00146	Acc= 99.842	Precision= 99.840	Recall= 99.845	F1_score= 99.842
+2021-12-31 20:38:07,752 => Train: 100.0	Epoch: 10	Iter: 158	Loss: 0.00119	Acc= 99.921	Precision= 99.923	Recall= 99.920	F1_score= 99.921
+2021-12-31 20:40:56,845 => Train: 100.0	Epoch: 11	Iter: 158	Loss: 0.00067	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 20:43:45,700 => Train: 100.0	Epoch: 12	Iter: 158	Loss: 0.00071	Acc= 99.921	Precision= 99.920	Recall= 99.923	F1_score= 99.921
+2021-12-31 20:46:34,519 => Train: 100.0	Epoch: 13	Iter: 158	Loss: 0.00047	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 20:49:23,350 => Train: 100.0	Epoch: 14	Iter: 158	Loss: 0.00041	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 20:52:12,439 => Train: 100.0	Epoch: 15	Iter: 158	Loss: 0.00036	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 20:55:01,274 => Train: 100.0	Epoch: 16	Iter: 158	Loss: 0.00032	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 20:57:50,007 => Train: 100.0	Epoch: 17	Iter: 158	Loss: 0.00029	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 21:00:38,843 => Train: 100.0	Epoch: 18	Iter: 158	Loss: 0.00027	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 21:03:27,767 => Train: 100.0	Epoch: 19	Iter: 158	Loss: 0.00025	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 21:06:17,824 => Train: 100.0	Epoch: 20	Iter: 158	Loss: 0.00024	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 21:09:06,728 => Train: 100.0	Epoch: 21	Iter: 158	Loss: 0.00026	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 21:11:55,906 => Train: 100.0	Epoch: 22	Iter: 158	Loss: 0.00023	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 21:14:44,660 => Train: 100.0	Epoch: 23	Iter: 158	Loss: 0.00022	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 21:17:33,497 => Train: 100.0	Epoch: 24	Iter: 158	Loss: 0.00022	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 21:20:22,406 => Train: 100.0	Epoch: 25	Iter: 158	Loss: 0.00020	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 21:23:11,342 => Train: 100.0	Epoch: 26	Iter: 158	Loss: 0.00021	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 21:26:00,171 => Train: 100.0	Epoch: 27	Iter: 158	Loss: 0.00021	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 21:28:48,970 => Train: 100.0	Epoch: 28	Iter: 158	Loss: 0.00018	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 21:31:37,839 => Train: 100.0	Epoch: 29	Iter: 158	Loss: 0.00020	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 21:34:26,626 => Train: 100.0	Epoch: 30	Iter: 158	Loss: 0.00017	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 21:37:15,425 => Train: 100.0	Epoch: 31	Iter: 158	Loss: 0.00016	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 21:40:05,551 => Train: 100.0	Epoch: 32	Iter: 158	Loss: 0.00017	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 21:42:54,553 => Train: 100.0	Epoch: 33	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 21:45:43,300 => Train: 100.0	Epoch: 34	Iter: 158	Loss: 0.00017	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 21:48:32,153 => Train: 100.0	Epoch: 35	Iter: 158	Loss: 0.00016	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 21:51:22,324 => Train: 100.0	Epoch: 36	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 21:54:11,165 => Train: 100.0	Epoch: 37	Iter: 158	Loss: 0.00021	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 21:57:00,051 => Train: 100.0	Epoch: 38	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 21:59:48,926 => Train: 100.0	Epoch: 39	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 22:02:37,739 => Train: 100.0	Epoch: 40	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 22:05:26,791 => Train: 100.0	Epoch: 41	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 22:08:15,641 => Train: 100.0	Epoch: 42	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 22:11:04,469 => Train: 100.0	Epoch: 43	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 22:13:53,433 => Train: 100.0	Epoch: 44	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 22:16:42,386 => Train: 100.0	Epoch: 45	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 22:19:31,258 => Train: 100.0	Epoch: 46	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 22:22:20,114 => Train: 100.0	Epoch: 47	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 22:25:10,167 => Train: 100.0	Epoch: 48	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 22:27:58,916 => Train: 100.0	Epoch: 49	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 22:30:47,701 => Train: 100.0	Epoch: 50	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 22:33:36,574 => Train: 100.0	Epoch: 51	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 22:36:25,385 => Train: 100.0	Epoch: 52	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 22:39:14,150 => Train: 100.0	Epoch: 53	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 22:42:02,972 => Train: 100.0	Epoch: 54	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 22:44:53,049 => Train: 100.0	Epoch: 55	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 22:47:41,935 => Train: 100.0	Epoch: 56	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 22:50:30,708 => Train: 100.0	Epoch: 57	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 22:53:19,473 => Train: 100.0	Epoch: 58	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 22:56:08,516 => Train: 100.0	Epoch: 59	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 22:58:57,275 => Train: 100.0	Epoch: 60	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 23:01:47,398 => Train: 100.0	Epoch: 61	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 23:04:36,279 => Train: 100.0	Epoch: 62	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 23:07:25,161 => Train: 100.0	Epoch: 63	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 23:10:15,371 => Train: 100.0	Epoch: 64	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 23:13:04,177 => Train: 100.0	Epoch: 65	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 23:15:53,025 => Train: 100.0	Epoch: 66	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 23:18:41,736 => Train: 100.0	Epoch: 67	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 23:21:30,622 => Train: 100.0	Epoch: 68	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 23:24:19,430 => Train: 100.0	Epoch: 69	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 23:27:08,265 => Train: 100.0	Epoch: 70	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 23:29:57,081 => Train: 100.0	Epoch: 71	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 23:32:45,810 => Train: 100.0	Epoch: 72	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 23:35:35,840 => Train: 100.0	Epoch: 73	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 23:38:24,690 => Train: 100.0	Epoch: 74	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 23:41:13,465 => Train: 100.0	Epoch: 75	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 23:44:02,345 => Train: 100.0	Epoch: 76	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 23:46:51,327 => Train: 100.0	Epoch: 77	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 23:49:40,041 => Train: 100.0	Epoch: 78	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 23:52:28,828 => Train: 100.0	Epoch: 79	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 23:55:17,636 => Train: 100.0	Epoch: 80	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2021-12-31 23:58:07,706 => Train: 100.0	Epoch: 81	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 00:00:56,576 => Train: 100.0	Epoch: 82	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 00:03:46,858 => Train: 100.0	Epoch: 83	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 00:06:35,690 => Train: 100.0	Epoch: 84	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 00:09:24,550 => Train: 100.0	Epoch: 85	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 00:12:13,433 => Train: 100.0	Epoch: 86	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 00:15:02,300 => Train: 100.0	Epoch: 87	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 00:17:51,191 => Train: 100.0	Epoch: 88	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 00:20:40,048 => Train: 100.0	Epoch: 89	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 00:23:29,009 => Train: 100.0	Epoch: 90	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 00:26:17,910 => Train: 100.0	Epoch: 91	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 00:29:06,910 => Train: 100.0	Epoch: 92	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 00:29:06,912 => Epoch: 92	early stopped at loss: 0.00010
+2022-01-01 00:29:26,848 => Eval: 100.0	Epoch: 92	Iter: 39	Loss: 0.05557	Acc= 90.536	Precision= 90.824	Recall= 90.485	F1_score= 90.445
+2022-01-01 00:29:26,848 => ------------------------------------------------------
+2022-01-01 00:29:26,848 => 5 FOLD
+2022-01-01 00:29:31,159 => loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-config.json from cache at /home/yinan/.cache/torch/transformers/c9cc6e53904f7f3679a31ec4af244f4419e25ebc8e71ebf8c558a31cbcf07fc8.69e5e35e0b798cab5e473f253752f8bf4d280ee37682281a23eed80f6e2d09c6
+2022-01-01 00:29:31,160 => Model config XLNetConfig {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "do_sample": false,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "eos_token_ids": null,
+  "ff_activation": "gelu",
+  "finetuning_task": null,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1"
+  },
+  "initializer_range": 0.02,
+  "is_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "num_beams": 1,
+  "num_labels": 4,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 5,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "untie_r": true,
+  "use_bfloat16": false,
+  "vocab_size": 32000
+}
+
+2022-01-01 00:29:31,486 => loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-pytorch_model.bin from cache at /home/yinan/.cache/torch/transformers/24197ba0ce5dbfe23924431610704c88e2c0371afa49149360e4c823219ab474.7eac4fe898a021204e63c88c00ea68c60443c57f94b4bc3c02adbde6465745ac
+2022-01-01 00:29:34,832 => Weights of XLNetForSequenceClassification not initialized from pretrained model: ['sequence_summary.summary.weight', 'sequence_summary.summary.bias', 'logits_proj.weight', 'logits_proj.bias']
+2022-01-01 00:29:34,832 => Weights from pretrained model not used in XLNetForSequenceClassification: ['lm_loss.weight', 'lm_loss.bias']
+2022-01-01 00:32:25,453 => Train: 100.0	Epoch: 1	Iter: 158	Loss: 0.13200	Acc= 52.681	Precision= 53.070	Recall= 52.551	F1_score= 52.557
+2022-01-01 00:35:16,093 => Train: 100.0	Epoch: 2	Iter: 158	Loss: 0.05405	Acc= 84.385	Precision= 84.672	Recall= 84.263	F1_score= 84.334
+2022-01-01 00:38:06,631 => Train: 100.0	Epoch: 3	Iter: 158	Loss: 0.02792	Acc= 92.114	Precision= 92.167	Recall= 92.070	F1_score= 92.090
+2022-01-01 00:40:57,332 => Train: 100.0	Epoch: 4	Iter: 158	Loss: 0.01303	Acc= 97.319	Precision= 97.313	Recall= 97.321	F1_score= 97.315
+2022-01-01 00:43:47,958 => Train: 100.0	Epoch: 5	Iter: 158	Loss: 0.00639	Acc= 98.896	Precision= 98.899	Recall= 98.886	F1_score= 98.891
+2022-01-01 00:46:38,593 => Train: 100.0	Epoch: 6	Iter: 158	Loss: 0.00280	Acc= 99.763	Precision= 99.765	Recall= 99.766	F1_score= 99.765
+2022-01-01 00:49:29,102 => Train: 100.0	Epoch: 7	Iter: 158	Loss: 0.00178	Acc= 99.842	Precision= 99.839	Recall= 99.842	F1_score= 99.840
+2022-01-01 00:52:19,549 => Train: 100.0	Epoch: 8	Iter: 158	Loss: 0.00092	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 00:55:10,299 => Train: 100.0	Epoch: 9	Iter: 158	Loss: 0.00071	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 00:58:01,014 => Train: 100.0	Epoch: 10	Iter: 158	Loss: 0.00065	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 01:00:51,867 => Train: 100.0	Epoch: 11	Iter: 158	Loss: 0.00047	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 01:03:42,403 => Train: 100.0	Epoch: 12	Iter: 158	Loss: 0.00043	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 01:06:33,052 => Train: 100.0	Epoch: 13	Iter: 158	Loss: 0.00037	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 01:09:23,502 => Train: 100.0	Epoch: 14	Iter: 158	Loss: 0.00035	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 01:12:14,121 => Train: 100.0	Epoch: 15	Iter: 158	Loss: 0.00031	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 01:15:04,562 => Train: 100.0	Epoch: 16	Iter: 158	Loss: 0.00027	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 01:17:55,232 => Train: 100.0	Epoch: 17	Iter: 158	Loss: 0.00026	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 01:20:45,812 => Train: 100.0	Epoch: 18	Iter: 158	Loss: 0.00025	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 01:23:36,266 => Train: 100.0	Epoch: 19	Iter: 158	Loss: 0.00022	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 01:26:26,956 => Train: 100.0	Epoch: 20	Iter: 158	Loss: 0.00021	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 01:29:17,656 => Train: 100.0	Epoch: 21	Iter: 158	Loss: 0.00022	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 01:32:08,456 => Train: 100.0	Epoch: 22	Iter: 158	Loss: 0.00019	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 01:34:58,933 => Train: 100.0	Epoch: 23	Iter: 158	Loss: 0.00018	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 01:37:49,789 => Train: 100.0	Epoch: 24	Iter: 158	Loss: 0.00019	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 01:40:40,097 => Train: 100.0	Epoch: 25	Iter: 158	Loss: 0.00017	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 01:43:30,710 => Train: 100.0	Epoch: 26	Iter: 158	Loss: 0.00017	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 01:46:21,445 => Train: 100.0	Epoch: 27	Iter: 158	Loss: 0.00016	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 01:49:11,839 => Train: 100.0	Epoch: 28	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 01:52:02,390 => Train: 100.0	Epoch: 29	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 01:54:53,085 => Train: 100.0	Epoch: 30	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 01:57:43,644 => Train: 100.0	Epoch: 31	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 02:00:34,206 => Train: 100.0	Epoch: 32	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 02:03:24,955 => Train: 100.0	Epoch: 33	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 02:06:15,707 => Train: 100.0	Epoch: 34	Iter: 158	Loss: 0.00014	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 02:09:06,379 => Train: 100.0	Epoch: 35	Iter: 158	Loss: 0.00015	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 02:11:56,978 => Train: 100.0	Epoch: 36	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 02:14:47,445 => Train: 100.0	Epoch: 37	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 02:17:37,934 => Train: 100.0	Epoch: 38	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 02:20:28,403 => Train: 100.0	Epoch: 39	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 02:23:19,016 => Train: 100.0	Epoch: 40	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 02:26:09,692 => Train: 100.0	Epoch: 41	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 02:29:00,431 => Train: 100.0	Epoch: 42	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 02:31:51,133 => Train: 100.0	Epoch: 43	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 02:34:41,764 => Train: 100.0	Epoch: 44	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 02:37:32,489 => Train: 100.0	Epoch: 45	Iter: 158	Loss: 0.00013	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 02:40:23,051 => Train: 100.0	Epoch: 46	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 02:43:13,788 => Train: 100.0	Epoch: 47	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 02:46:04,113 => Train: 100.0	Epoch: 48	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 02:48:54,615 => Train: 100.0	Epoch: 49	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 02:51:45,176 => Train: 100.0	Epoch: 50	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 02:54:35,718 => Train: 100.0	Epoch: 51	Iter: 158	Loss: 0.00012	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 02:57:26,338 => Train: 100.0	Epoch: 52	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 03:00:17,044 => Train: 100.0	Epoch: 53	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 03:03:07,639 => Train: 100.0	Epoch: 54	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 03:05:58,193 => Train: 100.0	Epoch: 55	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 03:08:48,846 => Train: 100.0	Epoch: 56	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 03:11:39,677 => Train: 100.0	Epoch: 57	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 03:14:30,340 => Train: 100.0	Epoch: 58	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 03:17:20,909 => Train: 100.0	Epoch: 59	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 03:20:11,572 => Train: 100.0	Epoch: 60	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 03:23:02,114 => Train: 100.0	Epoch: 61	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 03:25:52,587 => Train: 100.0	Epoch: 62	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 03:28:43,369 => Train: 100.0	Epoch: 63	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 03:31:34,012 => Train: 100.0	Epoch: 64	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 03:34:24,562 => Train: 100.0	Epoch: 65	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 03:37:14,996 => Train: 100.0	Epoch: 66	Iter: 158	Loss: 0.00011	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 03:40:05,891 => Train: 100.0	Epoch: 67	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 03:42:56,539 => Train: 100.0	Epoch: 68	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 03:45:47,102 => Train: 100.0	Epoch: 69	Iter: 158	Loss: 0.00010	Acc= 100.000	Precision= 100.000	Recall= 100.000	F1_score= 100.000
+2022-01-01 03:45:47,139 => Epoch: 69	early stopped at loss: 0.00010
+2022-01-01 03:46:07,811 => Eval: 100.0	Epoch: 69	Iter: 39	Loss: 0.05822	Acc= 91.456	Precision= 91.734	Recall= 91.517	F1_score= 91.464
+2022-01-01 03:46:07,812 => AVERAGE ACCURACY: 90.657
