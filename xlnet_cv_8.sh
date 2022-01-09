@@ -2,7 +2,7 @@
 #SBATCH --account=def-ichiro
 #SBATCH --time=3-00:00:00
 #SBATCH --output=run_output/xlnet_cv_output_lr5_es_0.05_%A_%a.out
-#SBATCH --gres=gpu:v100:1
+#SBATCH --gres=gpu:v100l:1
 #SBATCH --gres=gpu:4       # Request GPU "generic resources"
 #SBATCH --cpus-per-task=1  # Cores proportional to GPUs: 6 on Cedar, 16 on Graham.
 #SBATCH --mem=4G       # Memory proportional to GPUs: 32000 Cedar, 64000 Graham.

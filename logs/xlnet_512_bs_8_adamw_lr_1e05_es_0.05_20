@@ -1,0 +1,395 @@
+2022-01-07 22:14:13,093 => 1.9.1+cu102
+2022-01-07 22:14:13,094 => cuda
+2022-01-07 22:14:13,094 => Using 4 GPUs!
+2022-01-07 22:14:13,538 => loading file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-spiece.model from cache at /home/yinan/.cache/torch/transformers/dad589d582573df0293448af5109cb6981ca77239ed314e15ca63b7b8a318ddd.8b10bd978b5d01c21303cc761fc9ecd464419b3bf921864a355ba807cfbfafa8
+2022-01-07 22:14:18,312 => ------------------------------------------------------
+2022-01-07 22:14:18,312 => 1 FOLD
+2022-01-07 22:14:22,691 => loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-config.json from cache at /home/yinan/.cache/torch/transformers/c9cc6e53904f7f3679a31ec4af244f4419e25ebc8e71ebf8c558a31cbcf07fc8.69e5e35e0b798cab5e473f253752f8bf4d280ee37682281a23eed80f6e2d09c6
+2022-01-07 22:14:22,692 => Model config XLNetConfig {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "do_sample": false,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "eos_token_ids": null,
+  "ff_activation": "gelu",
+  "finetuning_task": null,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1"
+  },
+  "initializer_range": 0.02,
+  "is_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "num_beams": 1,
+  "num_labels": 4,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 5,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "untie_r": true,
+  "use_bfloat16": false,
+  "vocab_size": 32000
+}
+
+2022-01-07 22:14:23,019 => loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-pytorch_model.bin from cache at /home/yinan/.cache/torch/transformers/24197ba0ce5dbfe23924431610704c88e2c0371afa49149360e4c823219ab474.7eac4fe898a021204e63c88c00ea68c60443c57f94b4bc3c02adbde6465745ac
+2022-01-07 22:14:27,104 => Weights of XLNetForSequenceClassification not initialized from pretrained model: ['sequence_summary.summary.weight', 'sequence_summary.summary.bias', 'logits_proj.weight', 'logits_proj.bias']
+2022-01-07 22:14:27,104 => Weights from pretrained model not used in XLNetForSequenceClassification: ['lm_loss.weight', 'lm_loss.bias']
+2022-01-07 22:17:20,297 => Train: 100.0	Epoch: 1	Iter: 158	Loss: 0.14201	Acc= 49.013	Precision= 49.079	Recall= 48.755	F1_score= 48.438
+2022-01-07 22:20:08,663 => Train: 100.0	Epoch: 2	Iter: 158	Loss: 0.05974	Acc= 82.399	Precision= 82.440	Recall= 82.294	F1_score= 82.290
+2022-01-07 22:22:57,859 => Train: 100.0	Epoch: 3	Iter: 158	Loss: 0.03100	Acc= 91.081	Precision= 91.068	Recall= 91.061	F1_score= 91.064
+2022-01-07 22:25:46,916 => Train: 100.0	Epoch: 4	Iter: 158	Loss: 0.01436	Acc= 96.448	Precision= 96.453	Recall= 96.449	F1_score= 96.445
+2022-01-07 22:25:46,918 => Epoch: 4	early stopped at loss: 0.01436
+2022-01-07 22:26:06,334 => Eval: 100.0	Epoch: 4	Iter: 39	Loss: 0.04483	Acc= 88.013	Precision= 88.545	Recall= 88.263	F1_score= 87.656
+2022-01-07 22:26:06,334 => ------------------------------------------------------
+2022-01-07 22:26:06,334 => 2 FOLD
+2022-01-07 22:26:10,522 => loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-config.json from cache at /home/yinan/.cache/torch/transformers/c9cc6e53904f7f3679a31ec4af244f4419e25ebc8e71ebf8c558a31cbcf07fc8.69e5e35e0b798cab5e473f253752f8bf4d280ee37682281a23eed80f6e2d09c6
+2022-01-07 22:26:10,523 => Model config XLNetConfig {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "do_sample": false,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "eos_token_ids": null,
+  "ff_activation": "gelu",
+  "finetuning_task": null,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1"
+  },
+  "initializer_range": 0.02,
+  "is_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "num_beams": 1,
+  "num_labels": 4,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 5,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "untie_r": true,
+  "use_bfloat16": false,
+  "vocab_size": 32000
+}
+
+2022-01-07 22:26:10,844 => loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-pytorch_model.bin from cache at /home/yinan/.cache/torch/transformers/24197ba0ce5dbfe23924431610704c88e2c0371afa49149360e4c823219ab474.7eac4fe898a021204e63c88c00ea68c60443c57f94b4bc3c02adbde6465745ac
+2022-01-07 22:26:14,706 => Weights of XLNetForSequenceClassification not initialized from pretrained model: ['sequence_summary.summary.weight', 'sequence_summary.summary.bias', 'logits_proj.weight', 'logits_proj.bias']
+2022-01-07 22:26:14,706 => Weights from pretrained model not used in XLNetForSequenceClassification: ['lm_loss.weight', 'lm_loss.bias']
+2022-01-07 22:29:06,040 => Train: 100.0	Epoch: 1	Iter: 158	Loss: 0.13219	Acc= 53.828	Precision= 55.531	Recall= 53.712	F1_score= 53.774
+2022-01-07 22:31:57,414 => Train: 100.0	Epoch: 2	Iter: 158	Loss: 0.05385	Acc= 85.162	Precision= 85.298	Recall= 85.097	F1_score= 85.135
+2022-01-07 22:34:48,767 => Train: 100.0	Epoch: 3	Iter: 158	Loss: 0.02548	Acc= 93.449	Precision= 93.457	Recall= 93.392	F1_score= 93.406
+2022-01-07 22:37:40,034 => Train: 100.0	Epoch: 4	Iter: 158	Loss: 0.01179	Acc= 97.553	Precision= 97.547	Recall= 97.532	F1_score= 97.537
+2022-01-07 22:37:40,036 => Epoch: 4	early stopped at loss: 0.01179
+2022-01-07 22:38:00,467 => Eval: 100.0	Epoch: 4	Iter: 39	Loss: 0.04125	Acc= 90.221	Precision= 90.655	Recall= 89.982	F1_score= 90.152
+2022-01-07 22:38:00,467 => ------------------------------------------------------
+2022-01-07 22:38:00,467 => 3 FOLD
+2022-01-07 22:38:04,762 => loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-config.json from cache at /home/yinan/.cache/torch/transformers/c9cc6e53904f7f3679a31ec4af244f4419e25ebc8e71ebf8c558a31cbcf07fc8.69e5e35e0b798cab5e473f253752f8bf4d280ee37682281a23eed80f6e2d09c6
+2022-01-07 22:38:04,763 => Model config XLNetConfig {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "do_sample": false,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "eos_token_ids": null,
+  "ff_activation": "gelu",
+  "finetuning_task": null,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1"
+  },
+  "initializer_range": 0.02,
+  "is_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "num_beams": 1,
+  "num_labels": 4,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 5,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "untie_r": true,
+  "use_bfloat16": false,
+  "vocab_size": 32000
+}
+
+2022-01-07 22:38:05,079 => loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-pytorch_model.bin from cache at /home/yinan/.cache/torch/transformers/24197ba0ce5dbfe23924431610704c88e2c0371afa49149360e4c823219ab474.7eac4fe898a021204e63c88c00ea68c60443c57f94b4bc3c02adbde6465745ac
+2022-01-07 22:38:08,544 => Weights of XLNetForSequenceClassification not initialized from pretrained model: ['sequence_summary.summary.weight', 'sequence_summary.summary.bias', 'logits_proj.weight', 'logits_proj.bias']
+2022-01-07 22:38:08,544 => Weights from pretrained model not used in XLNetForSequenceClassification: ['lm_loss.weight', 'lm_loss.bias']
+2022-01-07 22:40:58,060 => Train: 100.0	Epoch: 1	Iter: 158	Loss: 0.13318	Acc= 53.670	Precision= 53.989	Recall= 53.593	F1_score= 53.116
+2022-01-07 22:43:47,813 => Train: 100.0	Epoch: 2	Iter: 158	Loss: 0.05701	Acc= 83.346	Precision= 83.378	Recall= 83.301	F1_score= 83.314
+2022-01-07 22:46:37,747 => Train: 100.0	Epoch: 3	Iter: 158	Loss: 0.02515	Acc= 93.528	Precision= 93.606	Recall= 93.505	F1_score= 93.525
+2022-01-07 22:49:27,551 => Train: 100.0	Epoch: 4	Iter: 158	Loss: 0.01148	Acc= 97.553	Precision= 97.560	Recall= 97.541	F1_score= 97.548
+2022-01-07 22:49:27,553 => Epoch: 4	early stopped at loss: 0.01148
+2022-01-07 22:49:47,364 => Eval: 100.0	Epoch: 4	Iter: 39	Loss: 0.04347	Acc= 89.905	Precision= 90.793	Recall= 89.664	F1_score= 89.733
+2022-01-07 22:49:47,365 => ------------------------------------------------------
+2022-01-07 22:49:47,365 => 4 FOLD
+2022-01-07 22:49:51,559 => loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-config.json from cache at /home/yinan/.cache/torch/transformers/c9cc6e53904f7f3679a31ec4af244f4419e25ebc8e71ebf8c558a31cbcf07fc8.69e5e35e0b798cab5e473f253752f8bf4d280ee37682281a23eed80f6e2d09c6
+2022-01-07 22:49:51,560 => Model config XLNetConfig {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "do_sample": false,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "eos_token_ids": null,
+  "ff_activation": "gelu",
+  "finetuning_task": null,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1"
+  },
+  "initializer_range": 0.02,
+  "is_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "num_beams": 1,
+  "num_labels": 4,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 5,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "untie_r": true,
+  "use_bfloat16": false,
+  "vocab_size": 32000
+}
+
+2022-01-07 22:49:51,872 => loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-pytorch_model.bin from cache at /home/yinan/.cache/torch/transformers/24197ba0ce5dbfe23924431610704c88e2c0371afa49149360e4c823219ab474.7eac4fe898a021204e63c88c00ea68c60443c57f94b4bc3c02adbde6465745ac
+2022-01-07 22:49:55,659 => Weights of XLNetForSequenceClassification not initialized from pretrained model: ['sequence_summary.summary.weight', 'sequence_summary.summary.bias', 'logits_proj.weight', 'logits_proj.bias']
+2022-01-07 22:49:55,659 => Weights from pretrained model not used in XLNetForSequenceClassification: ['lm_loss.weight', 'lm_loss.bias']
+2022-01-07 22:52:44,858 => Train: 100.0	Epoch: 1	Iter: 158	Loss: 0.14912	Acc= 45.225	Precision= 45.719	Recall= 45.220	F1_score= 45.018
+2022-01-07 22:55:34,156 => Train: 100.0	Epoch: 2	Iter: 158	Loss: 0.06204	Acc= 81.610	Precision= 81.720	Recall= 81.590	F1_score= 81.577
+2022-01-07 22:58:23,299 => Train: 100.0	Epoch: 3	Iter: 158	Loss: 0.02849	Acc= 92.344	Precision= 92.348	Recall= 92.340	F1_score= 92.341
+2022-01-07 23:01:12,524 => Train: 100.0	Epoch: 4	Iter: 158	Loss: 0.01444	Acc= 96.922	Precision= 96.923	Recall= 96.921	F1_score= 96.921
+2022-01-07 23:01:12,526 => Epoch: 4	early stopped at loss: 0.01444
+2022-01-07 23:01:32,024 => Eval: 100.0	Epoch: 4	Iter: 39	Loss: 0.04422	Acc= 88.013	Precision= 88.285	Recall= 87.610	F1_score= 87.749
+2022-01-07 23:01:32,024 => ------------------------------------------------------
+2022-01-07 23:01:32,024 => 5 FOLD
+2022-01-07 23:01:36,282 => loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-config.json from cache at /home/yinan/.cache/torch/transformers/c9cc6e53904f7f3679a31ec4af244f4419e25ebc8e71ebf8c558a31cbcf07fc8.69e5e35e0b798cab5e473f253752f8bf4d280ee37682281a23eed80f6e2d09c6
+2022-01-07 23:01:36,283 => Model config XLNetConfig {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "do_sample": false,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "eos_token_ids": null,
+  "ff_activation": "gelu",
+  "finetuning_task": null,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1"
+  },
+  "initializer_range": 0.02,
+  "is_decoder": false,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1
+  },
+  "layer_norm_eps": 1e-12,
+  "length_penalty": 1.0,
+  "max_length": 20,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "num_beams": 1,
+  "num_labels": 4,
+  "num_return_sequences": 1,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "output_past": true,
+  "pad_token_id": 5,
+  "pruned_heads": {},
+  "repetition_penalty": 1.0,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "temperature": 1.0,
+  "top_k": 50,
+  "top_p": 1.0,
+  "torchscript": false,
+  "untie_r": true,
+  "use_bfloat16": false,
+  "vocab_size": 32000
+}
+
+2022-01-07 23:01:36,623 => loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/xlnet-base-cased-pytorch_model.bin from cache at /home/yinan/.cache/torch/transformers/24197ba0ce5dbfe23924431610704c88e2c0371afa49149360e4c823219ab474.7eac4fe898a021204e63c88c00ea68c60443c57f94b4bc3c02adbde6465745ac
+2022-01-07 23:01:40,311 => Weights of XLNetForSequenceClassification not initialized from pretrained model: ['sequence_summary.summary.weight', 'sequence_summary.summary.bias', 'logits_proj.weight', 'logits_proj.bias']
+2022-01-07 23:01:40,312 => Weights from pretrained model not used in XLNetForSequenceClassification: ['lm_loss.weight', 'lm_loss.bias']
+2022-01-07 23:04:30,140 => Train: 100.0	Epoch: 1	Iter: 158	Loss: 0.12999	Acc= 54.495	Precision= 56.735	Recall= 54.184	F1_score= 54.337
+2022-01-07 23:07:20,018 => Train: 100.0	Epoch: 2	Iter: 158	Loss: 0.05406	Acc= 84.779	Precision= 84.897	Recall= 84.640	F1_score= 84.690
+2022-01-07 23:10:10,202 => Train: 100.0	Epoch: 3	Iter: 158	Loss: 0.02547	Acc= 93.060	Precision= 93.074	Recall= 93.001	F1_score= 93.028
+2022-01-07 23:13:00,366 => Train: 100.0	Epoch: 4	Iter: 158	Loss: 0.01134	Acc= 97.634	Precision= 97.625	Recall= 97.628	F1_score= 97.626
+2022-01-07 23:13:00,369 => Epoch: 4	early stopped at loss: 0.01134
+2022-01-07 23:13:19,733 => Eval: 100.0	Epoch: 4	Iter: 39	Loss: 0.03392	Acc= 92.089	Precision= 92.240	Recall= 92.180	F1_score= 92.065
+2022-01-07 23:13:19,734 => AVERAGE ACCURACY: 89.648
