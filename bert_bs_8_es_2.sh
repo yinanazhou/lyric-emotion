@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --account=def-ichiro
-#SBATCH --time=6-00:00:00
-#SBATCH --output=run_output/bert_cv_512_lr4_output_%A_%a.out
+#SBATCH --time=3-00:00:00
+#SBATCH --output=run_output/bert_cv_128_lr4_output_%A_%a.out
 #SBATCH --gres=gpu:v100l:4
 #SBATCH --gres=gpu:4       # Request GPU "generic resources"
 #SBATCH --cpus-per-task=1  # Cores proportional to GPUs: 6 on Cedar, 16 on Graham.
@@ -21,5 +21,5 @@ pip install --no-index wandb
 wandb login $API_KEY
 
 echo "Starting Task"
-python bert_cv.py --ml 512 --bs 8 --epochs 500 --lr 4 --es $SLURM_ARRAY_TASK_ID
+python bert_cv.py --ml 128 --bs 8 --epochs 500 --lr 4 --es $SLURM_ARRAY_TASK_ID --adaptive 10
 
