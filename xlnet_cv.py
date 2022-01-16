@@ -186,6 +186,11 @@ def eva(v_dataloader):
             "Eval: %5.1f\tEpoch: %d\tIter: %d\tLoss: %5.5f\tAcc= %5.3f\tPrecision= %5.3f\tRecall= %5.3f\tF1_score= %5.3f" % (
             val_len * 100.0 / val_inputs.size(0), i+1, step, total_loss / val_len, f_acc * 100.0 / val_len,
             precision * 100., recall * 100., f1_measure * 100.))
+
+        # wandb log
+        wandb.log({"e_loss": total_loss / val_len, "e_accuracy": f_acc * 100.0 / val_len, "e_precision": precision * 100.,
+                   "e_recall": recall * 100., "e_F1_measure": f1_measure * 100.})
+
         k_result['e_loss'].append(total_loss / val_len)
         k_result['e_accuracy'].append(f_acc * 100.0 / val_len)
         k_result['e_precision'].append(precision * 100.)
@@ -230,9 +235,9 @@ ending_path = ('%s_%d_bs_%d_adamw_lr_%s_es_%s_%d' %(model_str, MAX_LEN, batch_si
 save_model_path = "models/" + ending_path
 if not os.path.exists(save_model_path):
     os.makedirs(save_model_path)
-if not os.path.exists("logs/"):
-    os.mkdir("logs/")
-logfile_path = "logs/" + ending_path
+if not os.path.exists("logs_new/"):
+    os.mkdir("logs_new/")
+logfile_path = "logs_new/" + ending_path
 logging_storage(logfile_path)
 logging.info("Using %d GPUs!", torch.cuda.device_count())
 # result_path = "result_json/" + ending_path
@@ -369,6 +374,7 @@ for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
         gc.collect()
         torch.cuda.empty_cache()
         es_flag, loss_default = train(i, train_dataloader, loss_default)
+        e_acc = eva(val_dataloader)
 
         if es_flag:
             break
@@ -378,8 +384,8 @@ for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
     k_result['epoch'].append(i+1)
     gc.collect()
     torch.cuda.empty_cache()
-    k_acc = eva(val_dataloader)
-    results.append(k_acc)
+    // k_acc = eva(val_dataloader)
+    results.append(acc)
     result_json[str(fold+1)] = []
     result_json[str(fold+1)].append(k_result)
 

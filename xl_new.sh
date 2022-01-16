@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --account=def-ichiro
+#SBATCH --account=rpp-ichiro
 #SBATCH --time=5-00:00:00
-#SBATCH --output=run_output/xlnet_cv_512_lr4_output_%A_%a.out
+#SBATCH --output=run_output_new/xlnet_cv_512_lr4_output_%A_%a.out
 #SBATCH --gres=gpu:v100l:4
 #SBATCH --cpus-per-task=1  # Cores proportional to GPUs: 6 on Cedar, 16 on Graham.
 #SBATCH --array=2,3,4,5
