@@ -374,7 +374,7 @@ for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
         gc.collect()
         torch.cuda.empty_cache()
         es_flag, loss_default = train(i, train_dataloader, loss_default)
-        e_acc = eva(val_dataloader)
+        acc = eva(val_dataloader)
 
         if es_flag:
             break
@@ -384,7 +384,7 @@ for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
     k_result['epoch'].append(i+1)
     gc.collect()
     torch.cuda.empty_cache()
-    // k_acc = eva(val_dataloader)
+    # k_acc = eva(val_dataloader)
     results.append(acc)
     result_json[str(fold+1)] = []
     result_json[str(fold+1)].append(k_result)
