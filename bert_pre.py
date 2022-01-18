@@ -229,8 +229,8 @@ stop = args.stop
 stem = args.stem
 lemma = args.lemma
 # test_size = args.ts
-model_str = 'xl'
-# model_str = 'bert'
+# model_str = 'xl'
+model_str = 'bert'
 num_labels = 4
 denom = args.adaptive
 
@@ -240,13 +240,13 @@ ending_path = ('%s_%d_bs_%d_stop_%s_stem_%s_lemma_%s' %(model_str, MAX_LEN, batc
 save_model_path = "models/" + ending_path
 if not os.path.exists(save_model_path):
     os.makedirs(save_model_path)
-if not os.path.exists("logs/"):
-    os.mkdir("logs/")
-logfile_path = "logs/" + ending_path
+if not os.path.exists("logs_pre/"):
+    os.mkdir("logs_pre/")
+logfile_path = "logs_pre/" + ending_path
 logging_storage(logfile_path)
 # result_path = "result_json/" + ending_path
-if not os.path.exists("result_json/"):
-    os.makedirs("result_json/")
+if not os.path.exists("result_json_pre/"):
+    os.makedirs("result_json_pre/")
 logging.info("Using %d GPUs!" % (torch.cuda.device_count()))
 
 # fetch data
@@ -266,7 +266,8 @@ attention_masks = []
 lyrics = [noiseRemoval(lyric) for lyric in lyrics]
 
 # tokenize
-tokenizer = XLNetTokenizer.from_pretrained('xlnet-base-cased', do_lower_case=True)
+# tokenizer = XLNetTokenizer.from_pretrained('bert-base-cased', do_lower_case=True)
+tokenizer = BertTokenizer.from_pretrained('bert-base-cased', do_lower_case=True)
 tokenized_texts = [tokenizer.tokenize(lyric) for lyric in lyrics]
 logging.info("stop: %s, stem: %s, lemma: %s" % (stop, stem, lemma))
 if stop or stem or lemma:
@@ -287,7 +288,7 @@ if stop or stem or lemma:
             tokenized_texts[i] = [lemmatizer.lemmatize(word) for word in tokenized_texts[i]]
 
 
-# tokenizer = BertTokenizer.from_pretrained('bert-base-cased', do_lower_case=True)
+
 
 # for i, lyric in enumerate(lyrics):
 #     encodings = tokenizer.encode_plus(lyrics, add_special_tokens=True, max_length=MAX_LEN, return_tensors='pt',
@@ -367,9 +368,9 @@ for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
 
     # define model
     # xlnet
-    model = XLNetForSequenceClassification.from_pretrained("xlnet-base-cased", num_labels=num_labels)
+    # model = XLNetForSequenceClassification.from_pretrained("xlnet-base-cased", num_labels=num_labels)
     # BERT
-    # model = BertForSequenceClassification.from_pretrained('bert-base-cased', num_labels=num_labels)
+    model = BertForSequenceClassification.from_pretrained('bert-base-cased', num_labels=num_labels)
     # model = nn.DataParallel(model)
     model.to(DEVICE)
 
