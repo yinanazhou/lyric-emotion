@@ -241,8 +241,8 @@ logfile_path = "logs_new/" + ending_path
 logging_storage(logfile_path)
 logging.info("Using %d GPUs!", torch.cuda.device_count())
 # result_path = "result_json/" + ending_path
-if not os.path.exists("result_json/"):
-    os.makedirs("result_json/")
+if not os.path.exists("result_json_new/"):
+    os.makedirs("result_json_new/")
 
 
 # fetch data
@@ -392,6 +392,6 @@ for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
 logging.info("AVERAGE ACCURACY: %5.3f", sum(results) / len(results))
 result_json['average accuracy'] = []
 result_json['average accuracy'].append(sum(results) / len(results))
-result_path = "result_json/" + ending_path + '.json'
+result_path = "result_json_new/" + ending_path + '.json'
 with open(result_path, 'w') as f:
     json.dump(result_json, f, indent=4)
