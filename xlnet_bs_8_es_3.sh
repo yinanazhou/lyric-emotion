@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --account=def-ichiro
+#SBATCH --account=rpp-ichiro
 #SBATCH --time=5-00:00:00
-#SBATCH --output=run_output/xlnet_cv_128_lr5_output_%A_%a.out
+#SBATCH --output=run_output_new/xlnet_cv_512_lr5_output_%A_%a.out
 #SBATCH --gres=gpu:v100l:4
 #SBATCH --cpus-per-task=1  # Cores proportional to GPUs: 6 on Cedar, 16 on Graham.
 #SBATCH --array=2,3,4,5
@@ -15,7 +15,8 @@ source $SLURM_TMPDIR/env/bin/activate
 pip3 install --upgrade --no-binary numpy==1.20.0 numpy==1.20.0
 pip install --no-index torch
 pip install --no-index -r requirements.txt
-pip install --no-index wandb
+pip install wandb --upgrade
+
 
 wandb login $API_KEY
 
