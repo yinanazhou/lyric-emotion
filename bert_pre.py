@@ -420,6 +420,6 @@ for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
 logging.info("AVERAGE ACCURACY: %5.3f", sum(results) / len(results))
 result_json['average accuracy'] = []
 result_json['average accuracy'].append(sum(results) / len(results))
-result_path = "result_json/" + ending_path + '.json'
+result_path = "result_json_pre/" + ending_path + '.json'
 with open(result_path, 'w') as f:
     json.dump(result_json, f, indent=4)
