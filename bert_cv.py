@@ -205,12 +205,12 @@ batch_size = args.bs
 early_stop = 10 ** (-args.es)
 # test_size = args.ts
 # model_str = 'xlnet8'
-model_str = 'test'
+model_str = 'bert8'
 # num_labels = 4
 denom = args.adaptive
 
 # set path
-trg_path = "moody_test.json"
+trg_path = "moody_lyrics.json"
 ending_path = ('%s_%d_bs_%d_adamw_lr_%s_es_%s_%d' %(model_str, MAX_LEN, batch_size, str(lr).replace("-",""), str(early_stop).replace("-",""), denom))
 save_model_path = "models/" + ending_path
 if not os.path.exists(save_model_path):
