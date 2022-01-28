@@ -6,15 +6,21 @@ import string
 import torch
 import numpy as np
 import logging
-from transformers import AdamW, BertTokenizer, BertForSequenceClassification
+from transformers import XLNetTokenizer, XLNetForSequenceClassification, XLNetModel, AdamW, BertTokenizer, BertForSequenceClassification
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import KFold
 from tensorflow.keras.preprocessing.sequence import pad_sequences
+import torch.nn as nn
 from torch.utils.data import TensorDataset, DataLoader, RandomSampler, SequentialSampler
-from sklearn.metrics import fbeta_score, precision_recall_fscore_support, f1_score
+from sklearn.metrics import fbeta_score, precision_recall_fscore_support, f1_score, accuracy_score
 import argparse
 import wandb
+from bert_model import bertModel
+import warnings
+
+
+warnings.filterwarnings('ignore')
 
 
 def logging_storage(logfile_path):
@@ -54,9 +60,8 @@ def preprocess(text, tokenizer):
 
 def flat_accuracy(preds, labels):
     pred_flat = np.argmax(preds, axis=1).flatten()
-    labels_flat = labels.flatten()
-    labels_flat = labels_flat.cpu().detach().numpy()
-    return np.sum(pred_flat == labels_flat), pred_flat
+    labels_flat = labels.flatten().cpu().detach().numpy()
+    return np.sum(pred_flat == labels_flat), pred_flat, labels_flat
 
 
 def train(i, t_dataloader, loss_new):
@@ -64,8 +69,7 @@ def train(i, t_dataloader, loss_new):
     total_loss = 0.0
     total_predicted_label = np.array([])
     total_actual_label = np.array([])
-    train_len = 0
-    f_acc = 0
+    crossEntropy = nn.CrossEntropyLoss()
 
     ## adaptive lr
     optimizer.param_groups[0]['lr'] *= (0.1) ** (1 / denom)
@@ -83,62 +87,45 @@ def train(i, t_dataloader, loss_new):
 
         outputs = model(b_input_ids, token_type_ids=None, attention_mask=b_input_mask, labels=b_labels)
 
-        pred = outputs[1].detach().cpu().numpy()
-        batch_f_acc, pred_flat = flat_accuracy(pred, b_labels)
-        f_acc += float(batch_f_acc)
-        loss = outputs[0]
+        pred = np.argmax(outputs.detach().cpu().numpy(), axis=1).flatten()
+
+        loss = crossEntropy(outputs, b_labels)
         loss.sum().backward()
         optimizer.step()
 
-        labels_flat = b_labels.flatten().cpu().detach().numpy()
-        total_actual_label = np.concatenate((total_actual_label, labels_flat))
-        total_predicted_label = np.concatenate((total_predicted_label, pred_flat))
+        total_actual_label = np.concatenate((total_actual_label, b_labels))
+        total_predicted_label = np.concatenate((total_predicted_label, pred))
 
-        total_loss += float(outputs[0].sum())
-        train_len += b_input_ids.size(0)
-
-        # if step % 100 == 0 and step:
-        #     precision, recall, f1_measure, _ = precision_recall_fscore_support(total_actual_label,
-        #                                                                        total_predicted_label, average='macro')
-        #     logging.info(
-        #         "Train: %5.1f\tEpoch: %d\tIter: %d\tLoss: %5.5f\tAcc= %5.3f\tPrecision= %5.3f\tRecall= %5.3f\tF1_score= %5.3f" % (
-        #         train_len * 100.0 / train_inputs.size(0), i+1, step, total_loss / train_len, f_acc * 100.0 / train_len,
-        #         precision * 100., recall * 100., f1_measure * 100.))
-
-        # if torch.cuda.device_count() > 1:
-        #     p = 100
-        #     path = save_model_path + '/e_' + str(i) + "_" + str(p) + ".ckpt"
-        #     torch.save(model.module.state_dict(), path)
-        # else:
-        #     path = save_model_path + '/e_' + str(i) + ".pt"
-        #     torch.save(model.state_dict(), path)
+        total_loss += loss.item()
 
     precision, recall, f1_measure, _ = precision_recall_fscore_support(total_actual_label, total_predicted_label,
                                                                        average='macro')
+    acc = accuracy_score(total_actual_label, total_predicted_label)
+
+    epoch_len = len(total_actual_label)
+
     logging.info(
         "Train: %5.1f\tEpoch: %d\tIter: %d\tLoss: %5.5f\tAcc= %5.3f\tPrecision= %5.3f\tRecall= %5.3f\tF1_score= %5.3f" % (
-        train_len * 100.0 / train_inputs.size(0), i+1, step, total_loss / train_len, f_acc * 100.0 / train_len,
+        epoch_len * 100.0 / train_inputs.size(0), i+1, step, total_loss / epoch_len, acc * 100.,
         precision * 100., recall * 100., f1_measure * 100.))
-    k_result['t_loss'].append(total_loss / train_len)
-    k_result['t_accuracy'].append(f_acc * 100.0 / train_len)
+    k_result['t_loss'].append(total_loss / epoch_len)
+    k_result['t_accuracy'].append(acc * 100.)
     k_result['t_precision'].append(precision * 100.)
     k_result['t_recall'].append(recall * 100.)
     k_result['t_F1_measure'].append(f1_measure * 100.)
 
     # wandb log
-    wandb.log({"loss": total_loss / train_len, "accuracy": f_acc * 100.0 / train_len, "precision": precision * 100.,
+    wandb.log({"loss": total_loss / epoch_len, "accuracy": acc, "precision": precision * 100.,
                "recall": recall * 100., "F1_measure": f1_measure * 100.})
 
+    # early stop
     flag = False
 
     loss_last = loss_new
-    loss_new = total_loss / train_len
+    loss_new = total_loss / epoch_len
 
     if loss_last < early_stop and loss_new < early_stop:
-        logging.info("Epoch: %d\tearly stopped at loss: %5.5f" % (i + 1, total_loss / train_len))
-
-        # path = save_model_path + '/early_stopped.pt'
-        # torch.save(model.state_dict(), path)
+        logging.info("Epoch: %d\tearly stopped at loss: %5.5f" % (i + 1, total_loss / epoch_len))
 
         flag = True
     return flag, loss_new
@@ -146,11 +133,11 @@ def train(i, t_dataloader, loss_new):
 
 def eva(v_dataloader):
     model.eval()
-    val_len = 0
+
     total_loss = 0
     total_predicted_label = np.array([])
     total_actual_label = np.array([])
-    f_acc = 0
+    crossEntropy = nn.CrossEntropyLoss()
 
     with torch.no_grad():
         for step, (b_input_ids, b_input_mask, b_labels) in enumerate(v_dataloader):
@@ -159,44 +146,42 @@ def eva(v_dataloader):
             b_labels = b_labels.to(DEVICE)
 
             optimizer.zero_grad()
+
+            torch.cuda.empty_cache()
+
             outputs = model(b_input_ids, token_type_ids=None, attention_mask=b_input_mask, labels=b_labels)
-            pred = outputs[1].detach().cpu().numpy()
-            batch_f_acc, pred_flat = flat_accuracy(pred, b_labels)
-            f_acc += float(batch_f_acc)
+            pred = np.argmax(outputs.detach().cpu().numpy(), axis=1).flatten()
+            loss = crossEntropy(outputs, b_labels)
 
-            labels_flat = b_labels.flatten().cpu().detach().numpy()
-            total_actual_label = np.concatenate((total_actual_label, labels_flat))
-            total_predicted_label = np.concatenate((total_predicted_label, pred_flat))
+            total_actual_label = np.concatenate((total_actual_label, b_labels))
+            total_predicted_label = np.concatenate((total_predicted_label, pred))
 
-            val_len += b_input_ids.size(0)
-            total_loss += float(outputs[0].sum())
-
-        # if step % 100 == 0 and step:
-        #     precision, recall, f1_measure, _ = precision_recall_fscore_support(total_actual_label,
-        #                                                                        total_predicted_label, average='macro')
-        #     logging.info(
-        #         "Eval: %5.1f\tEpoch: %d\tIter: %d\tLoss: %5.5f\tAcc= %5.3f\tPrecision= %5.3f\tRecall= %5.3f\tF1_score= %5.3f" % (
-        #         val_len * 100.0 / val_inputs.size(0), i+1, step, total_loss / val_len, f_acc * 100.0 / val_len,
-        #         precision * 100., recall * 100., f1_measure * 100.))
+            total_loss += loss.item()
 
         precision, recall, f1_measure, _ = precision_recall_fscore_support(total_actual_label, total_predicted_label,
                                                                            average='macro')
+        acc = accuracy_score(total_actual_label, total_predicted_label)
+        epoch_len = len(total_actual_label)
         logging.info(
             "Eval: %5.1f\tEpoch: %d\tIter: %d\tLoss: %5.5f\tAcc= %5.3f\tPrecision= %5.3f\tRecall= %5.3f\tF1_score= %5.3f" % (
-            val_len * 100.0 / val_inputs.size(0), i+1, step, total_loss / val_len, f_acc * 100.0 / val_len,
+            epoch_len * 100.0 / val_inputs.size(0), i+1, step, total_loss / epoch_len, acc * 100.0,
             precision * 100., recall * 100., f1_measure * 100.))
-        k_result['e_loss'].append(total_loss / val_len)
-        k_result['e_accuracy'].append(f_acc * 100.0 / val_len)
+
+        # wandb log
+        wandb.log({"e_loss": total_loss / epoch_len, "e_accuracy": acc * 100.0, "e_precision": precision * 100.,
+                   "e_recall": recall * 100., "e_F1_measure": f1_measure * 100.})
+
+        k_result['e_loss'].append(total_loss / epoch_len)
+        k_result['e_accuracy'].append(acc * 100.0)
         k_result['e_precision'].append(precision * 100.)
         k_result['e_recall'].append(recall * 100.)
         k_result['e_F1_measure'].append(f1_measure * 100.)
-    return f_acc * 100.0 / val_len
+    return acc * 100.0
 
 
 # check gpu
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 # if torch.cuda.device_count() > 1:
-
 
 SEED = 0
 torch.manual_seed(SEED)
@@ -204,7 +189,7 @@ torch.cuda.manual_seed(SEED)
 
 # parser
 parser = argparse.ArgumentParser()
-parser.add_argument('--lr', help='Learning Rate', default=2e-5, type=float)
+parser.add_argument('--lr', help='Learning Rate', default=5, type=float)
 parser.add_argument('--epochs', help='Number of Epochs', default=20, type=int)
 parser.add_argument('--ml', help='Max Len of Sequence', default=1024, type=int)
 parser.add_argument('--bs', help='Batch Size', default=8, type=int)
@@ -219,13 +204,13 @@ MAX_LEN = args.ml
 batch_size = args.bs
 early_stop = 10 ** (-args.es)
 # test_size = args.ts
-# model_str = 'xlnet'
-model_str = 'bert'
-num_labels = 4
+# model_str = 'xlnet8'
+model_str = 'test'
+# num_labels = 4
 denom = args.adaptive
 
 # set path
-trg_path = "moody_lyrics.json"
+trg_path = "moody_test.json"
 ending_path = ('%s_%d_bs_%d_adamw_lr_%s_es_%s_%d' %(model_str, MAX_LEN, batch_size, str(lr).replace("-",""), str(early_stop).replace("-",""), denom))
 save_model_path = "models/" + ending_path
 if not os.path.exists(save_model_path):
@@ -257,21 +242,10 @@ attention_masks = []
 # tokenizer = XLNetTokenizer.from_pretrained('xlnet-base-cased', do_lower_case=True)
 tokenizer = BertTokenizer.from_pretrained('bert-base-cased', do_lower_case=True)
 
-# for i, lyric in enumerate(lyrics):
-#     encodings = tokenizer.encode_plus(lyrics, add_special_tokens=True, max_length=MAX_LEN, return_tensors='pt',
-#                                       return_token_type_ids=False, return_attention_mask=True, pad_to_max_length=True)
-#     attention_mask = pad_sequences(encodings['attention_mask'], maxlen=MAX_LEN, dtype="long", truncating="post", padding="post")
-#     attention_masks.append(attention_mask)
-#     input_id = pad_sequences(encodings['input_ids'], maxlen=MAX_LEN, dtype="long", truncating="post", padding="post")
-#     input_ids.append(input_id)
-
 tokenized_texts = [tokenizer.tokenize(lyric) for lyric in lyrics]
 input_ids = [tokenizer.convert_tokens_to_ids(x) for x in tokenized_texts]
 input_ids = pad_sequences(input_ids, maxlen=MAX_LEN, dtype="long", truncating="post", padding="post")
 
-# for lyric in lyrics:
-#     lyric = preprocess(lyric, tokenizer)
-#     print(lyric)
 
 # Create a mask of 1s for each token followed by 0s for padding
 for seq in input_ids:
@@ -294,11 +268,6 @@ test_inputs = torch.tensor(test_inputs)
 test_labels = torch.tensor(test_labels)
 test_masks = torch.tensor(test_masks)
 
-# dataloader
-# train_val_data = TensorDataset(train_val_inputs, train_val_masks, train_val_labels)
-# train_val_sampler = RandomSampler(train_val_data)
-# train_val_dataloader = DataLoader(train_val_data, sampler=train_val_sampler, batch_size=batch_size)
-
 test_data = TensorDataset(test_inputs, test_masks, test_labels)
 test_sampler = SequentialSampler(test_data)
 test_dataloader = DataLoader(test_data, sampler=test_sampler, batch_size=batch_size)
@@ -308,11 +277,11 @@ results = []
 result_json = {}
 kfold = KFold(n_splits=k_folds, shuffle=True)
 for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
-    logging.info('-------------------------------------------------')
+    logging.info('------------------------------------------------------')
     logging.info('%d FOLD', fold+1)
 
     # wandb init
-    wandb_pj = ending_path + '_fold_' + str(fold)
+    wandb_pj = ending_path + '_fold_'+ str(fold)
     wandb.init(project=wandb_pj, entity="yinanazhou")
 
     # write results of each fold into a dic
@@ -335,10 +304,11 @@ for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
 
     # define model
     # xlnet
-    # model = XLNetForSequenceClassification.from_pretrained("xlnet-base-cased", num_labels=num_labels)
+    # xlnet_transformer = XLNetForSequenceClassification.from_pretrained("xlnet-base-cased", num_labels=8)
     # BERT
-    model = BertForSequenceClassification.from_pretrained('bert-base-cased', num_labels=num_labels)
-    # model = nn.DataParallel(model)
+    model = BertForSequenceClassification.from_pretrained('bert-base-cased', num_labels=8)
+    model = bertModel(model)
+    model = nn.DataParallel(model)
     model.to(DEVICE)
 
     # define optimizer
@@ -369,17 +339,17 @@ for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
         gc.collect()
         torch.cuda.empty_cache()
         es_flag, loss_default = train(i, train_dataloader, loss_default)
+        acc = eva(val_dataloader)
 
         if es_flag:
             break
 
     wandb.finish()
 
-    k_result['epoch'].append(i + 1)
+    k_result['epoch'].append(i+1)
     gc.collect()
     torch.cuda.empty_cache()
-    k_acc = eva(val_dataloader)
-    results.append(k_acc)
+    results.append(acc)
     result_json[str(fold+1)] = []
     result_json[str(fold+1)].append(k_result)
 
