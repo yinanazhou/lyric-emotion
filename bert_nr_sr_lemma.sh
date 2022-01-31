@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --account=rpp-ichiro
 #SBATCH --time=5-00:00:00
-#SBATCH --output=run_output_pre/bert_nr_sr_lemma_%A.out
+#SBATCH --output=run_output/bert_nr_sr_lemma_%A.out
 #SBATCH --gres=gpu:v100l:4
 #SBATCH --cpus-per-task=1  # Cores proportional to GPUs: 6 on Cedar, 16 on Graham.
 #SBATCH --mem=4G       # Memory proportional to GPUs: 32000 Cedar, 64000 Graham.
