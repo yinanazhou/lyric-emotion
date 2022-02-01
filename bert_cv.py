@@ -93,7 +93,7 @@ def train(i, t_dataloader, loss_new):
         loss.sum().backward()
         optimizer.step()
 
-        total_actual_label = np.concatenate((total_actual_label, b_labels))
+        total_actual_label = np.concatenate((total_actual_label, b_labels.detach().cpu().numpy()))
         total_predicted_label = np.concatenate((total_predicted_label, pred))
 
         total_loss += loss.item()
@@ -153,7 +153,7 @@ def eva(v_dataloader):
             pred = np.argmax(outputs.detach().cpu().numpy(), axis=1).flatten()
             loss = crossEntropy(outputs, b_labels)
 
-            total_actual_label = np.concatenate((total_actual_label, b_labels))
+            total_actual_label = np.concatenate((total_actual_label, b_labels.detach().cpu().numpy()))
             total_predicted_label = np.concatenate((total_predicted_label, pred))
 
             total_loss += loss.item()
@@ -308,7 +308,7 @@ for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
     # BERT
     model = BertForSequenceClassification.from_pretrained('bert-base-cased', num_labels=8)
     model = bertModel(model)
-    model = nn.DataParallel(model)
+    # model = nn.DataParallel(model)
     model.to(DEVICE)
 
     # define optimizer
