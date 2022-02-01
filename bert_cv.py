@@ -308,7 +308,7 @@ for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
     # BERT
     model = BertForSequenceClassification.from_pretrained('bert-base-cased', num_labels=8)
     model = bertModel(model)
-    model = nn.DataParallel(model)
+    # model = nn.DataParallel(model)
     model.to(DEVICE)
 
     # define optimizer

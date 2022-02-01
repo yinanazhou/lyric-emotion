@@ -307,7 +307,7 @@ for fold, (train_idx, val_idx) in enumerate(kfold.split(train_val_inputs)):
     # xlnet
     xlnet_transformer = XLNetForSequenceClassification.from_pretrained("xlnet-base-cased", num_labels=8)
     model = xlnetModel(xlnet_transformer)
-    model = nn.DataParallel(model)
+    # model = nn.DataParallel(model)
     # BERT
     # model = BertForSequenceClassification.from_pretrained('bert-base-cased', num_labels=num_labels)
     # model = nn.DataParallel(model)
