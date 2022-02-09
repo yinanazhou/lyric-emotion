@@ -8,7 +8,7 @@ The following have been reloaded with a version change:
   1) python/3.8.2 => python/3.7.4
 
 Using base prefix '/cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/python/3.7.4'
-New python executable in /localscratch/yinan.25964105.0/env/bin/python
+New python executable in /localscratch/yinan.25997177.0/env/bin/python
 Installing setuptools, pip, wheel...
 done.
 Ignoring pip: markers 'python_version < "3"' don't match your environment
@@ -35,151 +35,335 @@ Collecting tensorflow_estimator==2.3.0 (from -r requirements.txt (line 8))
 Collecting tokenizers==0.5.2 (from -r requirements.txt (line 9))
 Collecting torchtext==0.6.0 (from -r requirements.txt (line 10))
 Collecting transformers==2.5.1+computecanada (from -r requirements.txt (line 11))
+Collecting urllib3==1.26.8+computecanada (from -r requirements.txt (line 12))
 Requirement already satisfied: numpy>=1.9.1 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from Keras_Preprocessing->-r requirements.txt (line 2)) (1.16.0)
 Requirement already satisfied: six>=1.9.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from Keras_Preprocessing->-r requirements.txt (line 2)) (1.12.0)
-Collecting regex (from nltk==3.5->-r requirements.txt (line 3))
 Collecting joblib (from nltk==3.5->-r requirements.txt (line 3))
 Collecting tqdm (from nltk==3.5->-r requirements.txt (line 3))
 Collecting click (from nltk==3.5->-r requirements.txt (line 3))
+Collecting regex (from nltk==3.5->-r requirements.txt (line 3))
 Requirement already satisfied: scipy>=0.17.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from scikit-learn==0.22.1->-r requirements.txt (line 4)) (1.2.0)
-Collecting markdown>=2.6.8 (from tensorboard==2.3.0+computecanada->-r requirements.txt (line 5))
-Requirement already satisfied: setuptools>=41.0.0 in /localscratch/yinan.25964105.0/env/lib/python3.7/site-packages (from tensorboard==2.3.0+computecanada->-r requirements.txt (line 5)) (41.0.1)
-Requirement already satisfied: requests<3,>=2.21.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from tensorboard==2.3.0+computecanada->-r requirements.txt (line 5)) (2.21.0)
-Collecting protobuf>=3.6.0 (from tensorboard==2.3.0+computecanada->-r requirements.txt (line 5))
-Collecting google-auth<2,>=1.6.3 (from tensorboard==2.3.0+computecanada->-r requirements.txt (line 5))
 Collecting grpcio>=1.24.3 (from tensorboard==2.3.0+computecanada->-r requirements.txt (line 5))
-Requirement already satisfied: wheel>=0.26; python_version >= "3" in /localscratch/yinan.25964105.0/env/lib/python3.7/site-packages (from tensorboard==2.3.0+computecanada->-r requirements.txt (line 5)) (0.33.4)
 Collecting werkzeug>=0.11.15 (from tensorboard==2.3.0+computecanada->-r requirements.txt (line 5))
 Collecting google-auth-oauthlib<0.5,>=0.4.1 (from tensorboard==2.3.0+computecanada->-r requirements.txt (line 5))
+Requirement already satisfied: requests<3,>=2.21.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from tensorboard==2.3.0+computecanada->-r requirements.txt (line 5)) (2.21.0)
+Requirement already satisfied: setuptools>=41.0.0 in /localscratch/yinan.25997177.0/env/lib/python3.7/site-packages (from tensorboard==2.3.0+computecanada->-r requirements.txt (line 5)) (41.0.1)
 Collecting absl-py>=0.4 (from tensorboard==2.3.0+computecanada->-r requirements.txt (line 5))
-Collecting h5py<2.11.0,>=2.10.0 (from tensorflow_gpu==2.3.0+computecanada->-r requirements.txt (line 7))
+Requirement already satisfied: wheel>=0.26; python_version >= "3" in /localscratch/yinan.25997177.0/env/lib/python3.7/site-packages (from tensorboard==2.3.0+computecanada->-r requirements.txt (line 5)) (0.33.4)
+Collecting google-auth<2,>=1.6.3 (from tensorboard==2.3.0+computecanada->-r requirements.txt (line 5))
+Collecting protobuf>=3.6.0 (from tensorboard==2.3.0+computecanada->-r requirements.txt (line 5))
+Collecting markdown>=2.6.8 (from tensorboard==2.3.0+computecanada->-r requirements.txt (line 5))
 Collecting google-pasta>=0.1.8 (from tensorflow_gpu==2.3.0+computecanada->-r requirements.txt (line 7))
-Collecting gast==0.3.3 (from tensorflow_gpu==2.3.0+computecanada->-r requirements.txt (line 7))
-Collecting astunparse==1.6.3 (from tensorflow_gpu==2.3.0+computecanada->-r requirements.txt (line 7))
-Collecting wrapt>=1.11.1 (from tensorflow_gpu==2.3.0+computecanada->-r requirements.txt (line 7))
-Collecting termcolor>=1.1.0 (from tensorflow_gpu==2.3.0+computecanada->-r requirements.txt (line 7))
 Collecting opt-einsum>=2.3.2 (from tensorflow_gpu==2.3.0+computecanada->-r requirements.txt (line 7))
+Collecting gast==0.3.3 (from tensorflow_gpu==2.3.0+computecanada->-r requirements.txt (line 7))
+Collecting wrapt>=1.11.1 (from tensorflow_gpu==2.3.0+computecanada->-r requirements.txt (line 7))
+Collecting astunparse==1.6.3 (from tensorflow_gpu==2.3.0+computecanada->-r requirements.txt (line 7))
+Collecting h5py<2.11.0,>=2.10.0 (from tensorflow_gpu==2.3.0+computecanada->-r requirements.txt (line 7))
+Collecting termcolor>=1.1.0 (from tensorflow_gpu==2.3.0+computecanada->-r requirements.txt (line 7))
 Collecting sentencepiece (from torchtext==0.6.0->-r requirements.txt (line 10))
-Requirement already satisfied: torch in /localscratch/yinan.25964105.0/env/lib/python3.7/site-packages (from torchtext==0.6.0->-r requirements.txt (line 10)) (1.9.1+computecanada)
+Requirement already satisfied: torch in /localscratch/yinan.25997177.0/env/lib/python3.7/site-packages (from torchtext==0.6.0->-r requirements.txt (line 10)) (1.9.1+computecanada)
 Collecting sacremoses (from transformers==2.5.1+computecanada->-r requirements.txt (line 11))
-Collecting boto3 (from transformers==2.5.1+computecanada->-r requirements.txt (line 11))
 Collecting filelock (from transformers==2.5.1+computecanada->-r requirements.txt (line 11))
+Collecting boto3 (from transformers==2.5.1+computecanada->-r requirements.txt (line 11))
 Requirement already satisfied: importlib-metadata; python_version < "3.8" in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from click->nltk==3.5->-r requirements.txt (line 3)) (0.8)
-Requirement already satisfied: chardet<3.1.0,>=3.0.2 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from requests<3,>=2.21.0->tensorboard==2.3.0+computecanada->-r requirements.txt (line 5)) (3.0.4)
-Requirement already satisfied: urllib3<1.25,>=1.21.1 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from requests<3,>=2.21.0->tensorboard==2.3.0+computecanada->-r requirements.txt (line 5)) (1.24.1)
-Requirement already satisfied: idna<2.9,>=2.5 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from requests<3,>=2.21.0->tensorboard==2.3.0+computecanada->-r requirements.txt (line 5)) (2.8)
+Collecting requests-oauthlib>=0.7.0 (from google-auth-oauthlib<0.5,>=0.4.1->tensorboard==2.3.0+computecanada->-r requirements.txt (line 5))
 Requirement already satisfied: certifi>=2017.4.17 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from requests<3,>=2.21.0->tensorboard==2.3.0+computecanada->-r requirements.txt (line 5)) (2018.11.29)
+Requirement already satisfied: chardet<3.1.0,>=3.0.2 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from requests<3,>=2.21.0->tensorboard==2.3.0+computecanada->-r requirements.txt (line 5)) (3.0.4)
+Requirement already satisfied: idna<2.9,>=2.5 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from requests<3,>=2.21.0->tensorboard==2.3.0+computecanada->-r requirements.txt (line 5)) (2.8)
 Collecting pyasn1-modules>=0.2.1 (from google-auth<2,>=1.6.3->tensorboard==2.3.0+computecanada->-r requirements.txt (line 5))
 Collecting rsa<5,>=3.1.4; python_version >= "3.6" (from google-auth<2,>=1.6.3->tensorboard==2.3.0+computecanada->-r requirements.txt (line 5))
 Collecting cachetools<5.0,>=2.0.0 (from google-auth<2,>=1.6.3->tensorboard==2.3.0+computecanada->-r requirements.txt (line 5))
-Collecting requests-oauthlib>=0.7.0 (from google-auth-oauthlib<0.5,>=0.4.1->tensorboard==2.3.0+computecanada->-r requirements.txt (line 5))
-Requirement already satisfied: typing-extensions in /localscratch/yinan.25964105.0/env/lib/python3.7/site-packages (from torch->torchtext==0.6.0->-r requirements.txt (line 10)) (4.0.0+computecanada)
-Collecting s3transfer<0.6.0,>=0.5.0 (from boto3->transformers==2.5.1+computecanada->-r requirements.txt (line 11))
+Requirement already satisfied: typing-extensions in /localscratch/yinan.25997177.0/env/lib/python3.7/site-packages (from torch->torchtext==0.6.0->-r requirements.txt (line 10)) (4.0.0+computecanada)
 Collecting botocore<1.24.0,>=1.23.46 (from boto3->transformers==2.5.1+computecanada->-r requirements.txt (line 11))
 Collecting jmespath<1.0.0,>=0.7.1 (from boto3->transformers==2.5.1+computecanada->-r requirements.txt (line 11))
+Collecting s3transfer<0.6.0,>=0.5.0 (from boto3->transformers==2.5.1+computecanada->-r requirements.txt (line 11))
 Requirement already satisfied: zipp>=0.3.2 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from importlib-metadata; python_version < "3.8"->click->nltk==3.5->-r requirements.txt (line 3)) (0.3.3)
-Collecting pyasn1<0.5.0,>=0.4.6 (from pyasn1-modules>=0.2.1->google-auth<2,>=1.6.3->tensorboard==2.3.0+computecanada->-r requirements.txt (line 5))
 Collecting oauthlib>=3.0.0 (from requests-oauthlib>=0.7.0->google-auth-oauthlib<0.5,>=0.4.1->tensorboard==2.3.0+computecanada->-r requirements.txt (line 5))
+Collecting pyasn1<0.5.0,>=0.4.6 (from pyasn1-modules>=0.2.1->google-auth<2,>=1.6.3->tensorboard==2.3.0+computecanada->-r requirements.txt (line 5))
 Requirement already satisfied: python-dateutil<3.0.0,>=2.1 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from botocore<1.24.0,>=1.23.46->boto3->transformers==2.5.1+computecanada->-r requirements.txt (line 11)) (2.7.5)
+ERROR: requests 2.21.0 has requirement urllib3<1.25,>=1.21.1, but you'll have urllib3 1.26.8+computecanada which is incompatible.
 ERROR: markdown 3.3.6+computecanada has requirement importlib-metadata>=4.4; python_version < "3.10", but you'll have importlib-metadata 0.8 which is incompatible.
 ERROR: tensorflow-gpu 2.3.0+computecanada has requirement scipy==1.4.1, but you'll have scipy 1.2.0 which is incompatible.
-ERROR: botocore 1.23.46+computecanada has requirement urllib3<1.27,>=1.25.4, but you'll have urllib3 1.24.1 which is incompatible.
-Installing collected packages: Keras, Keras-Preprocessing, regex, joblib, tqdm, click, nltk, scikit-learn, tensorboard-plugin-wit, markdown, protobuf, pyasn1, pyasn1-modules, rsa, cachetools, google-auth, grpcio, werkzeug, oauthlib, requests-oauthlib, google-auth-oauthlib, absl-py, tensorboard, h5py, google-pasta, gast, astunparse, wrapt, termcolor, opt-einsum, tensorflow-estimator, tensorflow-gpu, tokenizers, sentencepiece, torchtext, sacremoses, jmespath, botocore, s3transfer, boto3, filelock, transformers
+Installing collected packages: Keras, Keras-Preprocessing, joblib, tqdm, click, regex, nltk, scikit-learn, grpcio, werkzeug, pyasn1, pyasn1-modules, rsa, cachetools, google-auth, oauthlib, requests-oauthlib, google-auth-oauthlib, tensorboard-plugin-wit, absl-py, protobuf, markdown, tensorboard, google-pasta, tensorflow-estimator, opt-einsum, gast, wrapt, astunparse, h5py, termcolor, tensorflow-gpu, tokenizers, sentencepiece, torchtext, sacremoses, filelock, urllib3, jmespath, botocore, s3transfer, boto3, transformers
   Found existing installation: pyasn1 0.4.3
-    Not uninstalling pyasn1 at /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages, outside environment /localscratch/yinan.25964105.0/env
+    Not uninstalling pyasn1 at /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages, outside environment /localscratch/yinan.25997177.0/env
     Can't uninstall 'pyasn1'. No files were found to uninstall.
-Successfully installed Keras-2.7.0+computecanada Keras-Preprocessing-1.1.2+computecanada absl-py-1.0.0+computecanada astunparse-1.6.3+computecanada boto3-1.20.46+computecanada botocore-1.23.46+computecanada cachetools-4.2.4+computecanada click-8.0.3+computecanada filelock-3.3.2+computecanada gast-0.3.3+computecanada google-auth-1.35.0+computecanada google-auth-oauthlib-0.4.6+computecanada google-pasta-0.2.0+computecanada grpcio-1.38.0+computecanada h5py-2.10.0+computecanada jmespath-0.10.0+computecanada joblib-1.1.0+computecanada markdown-3.3.6+computecanada nltk-3.5+computecanada oauthlib-3.1.1+computecanada opt-einsum-3.3.0+computecanada protobuf-3.19.3+computecanada pyasn1-0.4.8+computecanada pyasn1-modules-0.2.8+computecanada regex-2020.11.13+computecanada requests-oauthlib-1.3.0+computecanada rsa-4.8+computecanada s3transfer-0.5.0+computecanada sacremoses-0.0.46+computecanada scikit-learn-0.22.1+computecanada sentencepiece-0.1.91+computecanada tensorboard-2.3.0+computecanada tensorboard-plugin-wit-1.7.0+computecanada tensorflow-estimator-2.3.0+computecanada tensorflow-gpu-2.3.0+computecanada termcolor-1.1.0+computecanada tokenizers-0.5.2+computecanada torchtext-0.6.0+computecanada tqdm-4.62.3+computecanada transformers-2.5.1+computecanada werkzeug-2.0.2+computecanada wrapt-1.11.2+computecanada
+  Found existing installation: urllib3 1.24.1
+    Not uninstalling urllib3 at /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages, outside environment /localscratch/yinan.25997177.0/env
+    Can't uninstall 'urllib3'. No files were found to uninstall.
+Successfully installed Keras-2.7.0+computecanada Keras-Preprocessing-1.1.2+computecanada absl-py-1.0.0+computecanada astunparse-1.6.3+computecanada boto3-1.20.46+computecanada botocore-1.23.46+computecanada cachetools-4.2.4+computecanada click-8.0.3+computecanada filelock-3.3.2+computecanada gast-0.3.3+computecanada google-auth-1.35.0+computecanada google-auth-oauthlib-0.4.6+computecanada google-pasta-0.2.0+computecanada grpcio-1.38.0+computecanada h5py-2.10.0+computecanada jmespath-0.10.0+computecanada joblib-1.1.0+computecanada markdown-3.3.6+computecanada nltk-3.5+computecanada oauthlib-3.1.1+computecanada opt-einsum-3.3.0+computecanada protobuf-3.19.3+computecanada pyasn1-0.4.8+computecanada pyasn1-modules-0.2.8+computecanada regex-2020.11.13+computecanada requests-oauthlib-1.3.0+computecanada rsa-4.8+computecanada s3transfer-0.5.0+computecanada sacremoses-0.0.46+computecanada scikit-learn-0.22.1+computecanada sentencepiece-0.1.91+computecanada tensorboard-2.3.0+computecanada tensorboard-plugin-wit-1.7.0+computecanada tensorflow-estimator-2.3.0+computecanada tensorflow-gpu-2.3.0+computecanada termcolor-1.1.0+computecanada tokenizers-0.5.2+computecanada torchtext-0.6.0+computecanada tqdm-4.62.3+computecanada transformers-2.5.1+computecanada urllib3-1.26.8+computecanada werkzeug-2.0.2+computecanada wrapt-1.11.2+computecanada
 Ignoring pip: markers 'python_version < "3"' don't match your environment
 Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/nix/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/nix/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
 Collecting wandb
   Using cached https://files.pythonhosted.org/packages/05/39/d73e9a767184e0e1798255aed78e05ed4ebe988c0552f9abd36127dc2c53/wandb-0.12.10-py2.py3-none-any.whl
-Requirement already satisfied, skipping upgrade: requests<3,>=2.0.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from wandb) (2.21.0)
-Collecting shortuuid>=0.5.0 (from wandb)
-  Using cached https://files.pythonhosted.org/packages/22/1b/dda73524fc8dd5cd3b80adcc585a49b3f43f8889453d2ed96291b2fcc860/shortuuid-1.0.8-py3-none-any.whl
-Collecting six>=1.13.0 (from wandb)
-Collecting sentry-sdk>=1.0.0 (from wandb)
-  Using cached https://files.pythonhosted.org/packages/61/64/d588297b5c260d1ff38093e2b80d04f724bf23f9f10ecace6fd192529c69/sentry_sdk-1.5.4-py2.py3-none-any.whl
-Requirement already satisfied, skipping upgrade: protobuf>=3.12.0 in /localscratch/yinan.25964105.0/env/lib/python3.7/site-packages (from wandb) (3.19.3+computecanada)
-Collecting pathtools (from wandb)
-Collecting docker-pycreds>=0.4.0 (from wandb)
 Collecting GitPython>=1.0.0 (from wandb)
   Using cached https://files.pythonhosted.org/packages/ed/4e/441f12af8faed3b6efe95c4b9359943ee741d5a96a0fee0c9676bde0b7f4/GitPython-3.1.26-py3-none-any.whl
-Requirement already satisfied, skipping upgrade: Click!=8.0.0,>=7.0 in /localscratch/yinan.25964105.0/env/lib/python3.7/site-packages (from wandb) (8.0.3+computecanada)
-Collecting yaspin>=1.0.0 (from wandb)
 Collecting psutil>=5.0.0 (from wandb)
-Collecting promise<3,>=2.0 (from wandb)
-Collecting PyYAML (from wandb)
+Collecting pathtools (from wandb)
+Requirement already satisfied, skipping upgrade: Click!=8.0.0,>=7.0 in /localscratch/yinan.25997177.0/env/lib/python3.7/site-packages (from wandb) (8.0.3+computecanada)
+Collecting docker-pycreds>=0.4.0 (from wandb)
+Collecting yaspin>=1.0.0 (from wandb)
+Collecting sentry-sdk>=1.0.0 (from wandb)
+  Using cached https://files.pythonhosted.org/packages/61/64/d588297b5c260d1ff38093e2b80d04f724bf23f9f10ecace6fd192529c69/sentry_sdk-1.5.4-py2.py3-none-any.whl
 Requirement already satisfied, skipping upgrade: python-dateutil>=2.6.1 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from wandb) (2.7.5)
-Requirement already satisfied, skipping upgrade: idna<2.9,>=2.5 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from requests<3,>=2.0.0->wandb) (2.8)
-Requirement already satisfied, skipping upgrade: certifi>=2017.4.17 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from requests<3,>=2.0.0->wandb) (2018.11.29)
-Requirement already satisfied, skipping upgrade: chardet<3.1.0,>=3.0.2 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from requests<3,>=2.0.0->wandb) (3.0.4)
-Requirement already satisfied, skipping upgrade: urllib3<1.25,>=1.21.1 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from requests<3,>=2.0.0->wandb) (1.24.1)
-Requirement already satisfied, skipping upgrade: typing-extensions>=3.7.4.3; python_version < "3.8" in /localscratch/yinan.25964105.0/env/lib/python3.7/site-packages (from GitPython>=1.0.0->wandb) (4.0.0+computecanada)
+Requirement already satisfied, skipping upgrade: protobuf>=3.12.0 in /localscratch/yinan.25997177.0/env/lib/python3.7/site-packages (from wandb) (3.19.3+computecanada)
+Collecting promise<3,>=2.0 (from wandb)
+Collecting shortuuid>=0.5.0 (from wandb)
+  Using cached https://files.pythonhosted.org/packages/22/1b/dda73524fc8dd5cd3b80adcc585a49b3f43f8889453d2ed96291b2fcc860/shortuuid-1.0.8-py3-none-any.whl
+Collecting PyYAML (from wandb)
+Collecting six>=1.13.0 (from wandb)
+Requirement already satisfied, skipping upgrade: requests<3,>=2.0.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from wandb) (2.21.0)
+Requirement already satisfied, skipping upgrade: typing-extensions>=3.7.4.3; python_version < "3.8" in /localscratch/yinan.25997177.0/env/lib/python3.7/site-packages (from GitPython>=1.0.0->wandb) (4.0.0+computecanada)
 Collecting gitdb<5,>=4.0.1 (from GitPython>=1.0.0->wandb)
 Requirement already satisfied, skipping upgrade: importlib-metadata; python_version < "3.8" in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from Click!=8.0.0,>=7.0->wandb) (0.8)
-Requirement already satisfied, skipping upgrade: termcolor<2.0.0,>=1.1.0 in /localscratch/yinan.25964105.0/env/lib/python3.7/site-packages (from yaspin>=1.0.0->wandb) (1.1.0+computecanada)
+Requirement already satisfied, skipping upgrade: termcolor<2.0.0,>=1.1.0 in /localscratch/yinan.25997177.0/env/lib/python3.7/site-packages (from yaspin>=1.0.0->wandb) (1.1.0+computecanada)
+Requirement already satisfied, skipping upgrade: urllib3>=1.10.0 in /localscratch/yinan.25997177.0/env/lib/python3.7/site-packages (from sentry-sdk>=1.0.0->wandb) (1.26.8+computecanada)
+Requirement already satisfied, skipping upgrade: certifi in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from sentry-sdk>=1.0.0->wandb) (2018.11.29)
+Requirement already satisfied, skipping upgrade: chardet<3.1.0,>=3.0.2 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from requests<3,>=2.0.0->wandb) (3.0.4)
+Requirement already satisfied, skipping upgrade: idna<2.9,>=2.5 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from requests<3,>=2.0.0->wandb) (2.8)
 Collecting smmap<6,>=3.0.1 (from gitdb<5,>=4.0.1->GitPython>=1.0.0->wandb)
 Requirement already satisfied, skipping upgrade: zipp>=0.3.2 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from importlib-metadata; python_version < "3.8"->Click!=8.0.0,>=7.0->wandb) (0.3.3)
 ERROR: tensorflow-gpu 2.3.0+computecanada has requirement scipy==1.4.1, but you'll have scipy 1.2.0 which is incompatible.
-Installing collected packages: shortuuid, six, sentry-sdk, pathtools, docker-pycreds, smmap, gitdb, GitPython, yaspin, psutil, promise, PyYAML, wandb
+Installing collected packages: smmap, gitdb, GitPython, psutil, pathtools, six, docker-pycreds, yaspin, sentry-sdk, promise, shortuuid, PyYAML, wandb
   Found existing installation: six 1.12.0
-    Not uninstalling six at /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages, outside environment /localscratch/yinan.25964105.0/env
+    Not uninstalling six at /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages, outside environment /localscratch/yinan.25997177.0/env
     Can't uninstall 'six'. No files were found to uninstall.
 Successfully installed GitPython-3.1.26 PyYAML-5.3.1+computecanada docker-pycreds-0.4.0+computecanada gitdb-4.0.9+computecanada pathtools-0.1.2+computecanada promise-2.3+computecanada psutil-5.7.3+computecanada sentry-sdk-1.5.4 shortuuid-1.0.8 six-1.16.0+computecanada smmap-5.0.0+computecanada wandb-0.12.10 yaspin-2.1.0+computecanada
+/cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages/requests/__init__.py:91: RequestsDependencyWarning: urllib3 (1.26.8) or chardet (3.0.4) doesn't match a supported version!
+  RequestsDependencyWarning)
 Traceback (most recent call last):
-  File "/localscratch/yinan.25964105.0/env/bin/wandb", line 10, in <module>
+  File "/localscratch/yinan.25997177.0/env/bin/wandb", line 10, in <module>
     sys.exit(cli())
-  File "/localscratch/yinan.25964105.0/env/lib/python3.7/site-packages/click/core.py", line 1128, in __call__
+  File "/localscratch/yinan.25997177.0/env/lib/python3.7/site-packages/click/core.py", line 1128, in __call__
     return self.main(*args, **kwargs)
-  File "/localscratch/yinan.25964105.0/env/lib/python3.7/site-packages/click/core.py", line 1053, in main
+  File "/localscratch/yinan.25997177.0/env/lib/python3.7/site-packages/click/core.py", line 1053, in main
     rv = self.invoke(ctx)
-  File "/localscratch/yinan.25964105.0/env/lib/python3.7/site-packages/click/core.py", line 1659, in invoke
+  File "/localscratch/yinan.25997177.0/env/lib/python3.7/site-packages/click/core.py", line 1659, in invoke
     return _process_result(sub_ctx.command.invoke(sub_ctx))
-  File "/localscratch/yinan.25964105.0/env/lib/python3.7/site-packages/click/core.py", line 1395, in invoke
+  File "/localscratch/yinan.25997177.0/env/lib/python3.7/site-packages/click/core.py", line 1395, in invoke
     return ctx.invoke(self.callback, **ctx.params)
-  File "/localscratch/yinan.25964105.0/env/lib/python3.7/site-packages/click/core.py", line 754, in invoke
+  File "/localscratch/yinan.25997177.0/env/lib/python3.7/site-packages/click/core.py", line 754, in invoke
     return __callback(*args, **kwargs)
-  File "/localscratch/yinan.25964105.0/env/lib/python3.7/site-packages/wandb/cli/cli.py", line 86, in wrapper
+  File "/localscratch/yinan.25997177.0/env/lib/python3.7/site-packages/wandb/cli/cli.py", line 86, in wrapper
     return func(*args, **kwargs)
-  File "/localscratch/yinan.25964105.0/env/lib/python3.7/site-packages/wandb/cli/cli.py", line 235, in login
+  File "/localscratch/yinan.25997177.0/env/lib/python3.7/site-packages/wandb/cli/cli.py", line 235, in login
     wandb.login(relogin=relogin, key=key, anonymous=anon_mode, host=host, force=True)
-  File "/localscratch/yinan.25964105.0/env/lib/python3.7/site-packages/wandb/sdk/wandb_login.py", line 76, in login
+  File "/localscratch/yinan.25997177.0/env/lib/python3.7/site-packages/wandb/sdk/wandb_login.py", line 76, in login
     configured = _login(**kwargs)
-  File "/localscratch/yinan.25964105.0/env/lib/python3.7/site-packages/wandb/sdk/wandb_login.py", line 278, in _login
+  File "/localscratch/yinan.25997177.0/env/lib/python3.7/site-packages/wandb/sdk/wandb_login.py", line 278, in _login
     wlogin.configure_api_key(key)
-  File "/localscratch/yinan.25964105.0/env/lib/python3.7/site-packages/wandb/sdk/wandb_login.py", line 167, in configure_api_key
+  File "/localscratch/yinan.25997177.0/env/lib/python3.7/site-packages/wandb/sdk/wandb_login.py", line 167, in configure_api_key
     apikey.write_key(self._settings, key)
-  File "/localscratch/yinan.25964105.0/env/lib/python3.7/site-packages/wandb/sdk/lib/apikey.py", line 212, in write_key
+  File "/localscratch/yinan.25997177.0/env/lib/python3.7/site-packages/wandb/sdk/lib/apikey.py", line 212, in write_key
     raise ValueError("API key must be 40 characters long, yours was %s" % len(key))
 ValueError: API key must be 40 characters long, yours was 41
 Starting Task
-Traceback (most recent call last):
-  File "xlnet_cv.py", line 9, in <module>
-    from transformers import XLNetTokenizer, XLNetForSequenceClassification, XLNetModel, AdamW, BertTokenizer, BertForSequenceClassification
-  File "/localscratch/yinan.25964105.0/env/lib/python3.7/site-packages/transformers/__init__.py", line 22, in <module>
-    from .configuration_albert import ALBERT_PRETRAINED_CONFIG_ARCHIVE_MAP, AlbertConfig
-  File "/localscratch/yinan.25964105.0/env/lib/python3.7/site-packages/transformers/configuration_albert.py", line 18, in <module>
-    from .configuration_utils import PretrainedConfig
-  File "/localscratch/yinan.25964105.0/env/lib/python3.7/site-packages/transformers/configuration_utils.py", line 25, in <module>
-    from .file_utils import CONFIG_NAME, cached_path, hf_bucket_url, is_remote_url
-  File "/localscratch/yinan.25964105.0/env/lib/python3.7/site-packages/transformers/file_utils.py", line 22, in <module>
-    import boto3
-  File "/localscratch/yinan.25964105.0/env/lib/python3.7/site-packages/boto3/__init__.py", line 16, in <module>
-    from boto3.session import Session
-  File "/localscratch/yinan.25964105.0/env/lib/python3.7/site-packages/boto3/session.py", line 17, in <module>
-    import botocore.session
-  File "/localscratch/yinan.25964105.0/env/lib/python3.7/site-packages/botocore/session.py", line 29, in <module>
-    import botocore.credentials
-  File "/localscratch/yinan.25964105.0/env/lib/python3.7/site-packages/botocore/credentials.py", line 35, in <module>
-    from botocore.config import Config
-  File "/localscratch/yinan.25964105.0/env/lib/python3.7/site-packages/botocore/config.py", line 16, in <module>
-    from botocore.endpoint import DEFAULT_TIMEOUT, MAX_POOL_CONNECTIONS
-  File "/localscratch/yinan.25964105.0/env/lib/python3.7/site-packages/botocore/endpoint.py", line 22, in <module>
-    from botocore.awsrequest import create_request_object
-  File "/localscratch/yinan.25964105.0/env/lib/python3.7/site-packages/botocore/awsrequest.py", line 24, in <module>
-    import botocore.utils
-  File "/localscratch/yinan.25964105.0/env/lib/python3.7/site-packages/botocore/utils.py", line 32, in <module>
-    import botocore.httpsession
-  File "/localscratch/yinan.25964105.0/env/lib/python3.7/site-packages/botocore/httpsession.py", line 10, in <module>
-    from urllib3.util.ssl_ import (
-ImportError: cannot import name 'PROTOCOL_TLS' from 'urllib3.util.ssl_' (/cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages/urllib3/util/ssl_.py)
+2022-02-02 07:28:11.030926: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+/cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages/requests/__init__.py:91: RequestsDependencyWarning: urllib3 (1.26.8) or chardet (3.0.4) doesn't match a supported version!
+  RequestsDependencyWarning)
+wandb: Currently logged in as: yinanazhou (use `wandb login --relogin` to force relogin)
+2022-02-02 07:28:24.867123: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+wandb: Tracking run with wandb version 0.12.10
+wandb: Syncing run visionary-salad-1
+wandb: ⭐️ View project at https://wandb.ai/yinanazhou/xlnet8_16_bs_8_adamw_lr_0.0001_es_0.01_20_fold_0
+wandb: 🚀 View run at https://wandb.ai/yinanazhou/xlnet8_16_bs_8_adamw_lr_0.0001_es_0.01_20_fold_0/runs/1rws4ag5
+wandb: Run data is saved locally in /project/6002780/yinan/Thesis_MER_Lyrics/arch/lyric-emotion/wandb/run-20220202_072823-1rws4ag5
+wandb: Run `wandb offline` to turn off syncing.
+
+wandb: Waiting for W&B process to finish, PID 126934... (success).
+wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb:                                                                                
+/cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages/requests/__init__.py:91: RequestsDependencyWarning: urllib3 (1.26.8) or chardet (3.0.4) doesn't match a supported version!
+  RequestsDependencyWarning)
+wandb: Run history:
+wandb:     F1_measure ▁▇█▇▇
+wandb:       accuracy ▁▅█▅▃
+wandb:   e_F1_measure ▁▁▁▁▁
+wandb:     e_accuracy ▁▁▁▁▁
+wandb:         e_loss █▅▂▆▁
+wandb:    e_precision ▁▁▁▁▁
+wandb:       e_recall ▁▁▁▁▁
+wandb:           loss █▄▁▂▃
+wandb:      precision ▁▆█▆▇
+wandb:         recall ▁▅█▅▃
+wandb: 
+wandb: Run summary:
+wandb:     F1_measure 21.68727
+wandb:       accuracy 0.25099
+wandb:   e_F1_measure 9.04393
+wandb:     e_accuracy 22.08202
+wandb:         e_loss 0.1765
+wandb:    e_precision 5.5205
+wandb:       e_recall 25.0
+wandb:           loss 0.17594
+wandb:      precision 25.2876
+wandb:         recall 24.91158
+wandb: 
+wandb: Synced 4 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Synced visionary-salad-1: https://wandb.ai/yinanazhou/xlnet8_16_bs_8_adamw_lr_0.0001_es_0.01_20_fold_0/runs/1rws4ag5
+wandb: Find logs at: ./wandb/run-20220202_072823-1rws4ag5/logs/debug.log
+wandb: 
+
+2022-02-02 07:29:35.595192: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+wandb: Tracking run with wandb version 0.12.10
+wandb: Syncing run upbeat-terrain-1
+wandb: ⭐️ View project at https://wandb.ai/yinanazhou/xlnet8_16_bs_8_adamw_lr_0.0001_es_0.01_20_fold_1
+wandb: 🚀 View run at https://wandb.ai/yinanazhou/xlnet8_16_bs_8_adamw_lr_0.0001_es_0.01_20_fold_1/runs/3pgufgxu
+wandb: Run data is saved locally in /project/6002780/yinan/Thesis_MER_Lyrics/arch/lyric-emotion/wandb/run-20220202_072933-3pgufgxu
+wandb: Run `wandb offline` to turn off syncing.
+
+wandb: Waiting for W&B process to finish, PID 127039... (success).
+wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb:                                                                                
+/cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages/requests/__init__.py:91: RequestsDependencyWarning: urllib3 (1.26.8) or chardet (3.0.4) doesn't match a supported version!
+  RequestsDependencyWarning)
+wandb: Run history:
+wandb:     F1_measure █▃▁▄▃
+wandb:       accuracy ▂▁▄▄█
+wandb:   e_F1_measure ▁▁▁▁▁
+wandb:     e_accuracy ▁▁▁▁▁
+wandb:         e_loss ▅█▁▂▃
+wandb:    e_precision ▁▁▁▁▁
+wandb:       e_recall ▁▁▁▁▁
+wandb:           loss █▃▆▁▆
+wandb:      precision ▅█▇▇▁
+wandb:         recall ▃▁▄▄█
+wandb: 
+wandb: Run summary:
+wandb:     F1_measure 19.34151
+wandb:       accuracy 0.25651
+wandb:   e_F1_measure 9.35897
+wandb:     e_accuracy 23.02839
+wandb:         e_loss 0.17593
+wandb:    e_precision 5.7571
+wandb:       e_recall 25.0
+wandb:           loss 0.17526
+wandb:      precision 20.74828
+wandb:         recall 25.45112
+wandb: 
+wandb: Synced 4 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Synced upbeat-terrain-1: https://wandb.ai/yinanazhou/xlnet8_16_bs_8_adamw_lr_0.0001_es_0.01_20_fold_1/runs/3pgufgxu
+wandb: Find logs at: ./wandb/run-20220202_072933-3pgufgxu/logs/debug.log
+wandb: 
+
+2022-02-02 07:30:39.341023: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+wandb: Tracking run with wandb version 0.12.10
+wandb: Syncing run clean-fire-1
+wandb: ⭐️ View project at https://wandb.ai/yinanazhou/xlnet8_16_bs_8_adamw_lr_0.0001_es_0.01_20_fold_2
+wandb: 🚀 View run at https://wandb.ai/yinanazhou/xlnet8_16_bs_8_adamw_lr_0.0001_es_0.01_20_fold_2/runs/j2ysetk6
+wandb: Run data is saved locally in /project/6002780/yinan/Thesis_MER_Lyrics/arch/lyric-emotion/wandb/run-20220202_073037-j2ysetk6
+wandb: Run `wandb offline` to turn off syncing.
+
+wandb: Waiting for W&B process to finish, PID 127145... (success).
+wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb:                                                                                
+/cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages/requests/__init__.py:91: RequestsDependencyWarning: urllib3 (1.26.8) or chardet (3.0.4) doesn't match a supported version!
+  RequestsDependencyWarning)
+wandb: Run history:
+wandb:     F1_measure ▇█▁▆█
+wandb:       accuracy ██▄▁▄
+wandb:   e_F1_measure ▁███▁
+wandb:     e_accuracy ▁███▁
+wandb:         e_loss █▃▃▂▁
+wandb:    e_precision ▁███▁
+wandb:       e_recall ▁▁▁▁▁
+wandb:           loss ▆▄█▃▁
+wandb:      precision ▄█▁▇▇
+wandb:         recall ██▄▁▄
+wandb: 
+wandb: Run summary:
+wandb:     F1_measure 21.04223
+wandb:       accuracy 0.24704
+wandb:   e_F1_measure 9.46292
+wandb:     e_accuracy 23.34385
+wandb:         e_loss 0.17563
+wandb:    e_precision 5.83596
+wandb:       e_recall 25.0
+wandb:           loss 0.17596
+wandb:      precision 24.68275
+wandb:         recall 24.63903
+wandb: 
+wandb: Synced 4 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Synced clean-fire-1: https://wandb.ai/yinanazhou/xlnet8_16_bs_8_adamw_lr_0.0001_es_0.01_20_fold_2/runs/j2ysetk6
+wandb: Find logs at: ./wandb/run-20220202_073037-j2ysetk6/logs/debug.log
+wandb: 
+
+2022-02-02 07:31:43.099331: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+wandb: Tracking run with wandb version 0.12.10
+wandb: Syncing run faithful-music-1
+wandb: ⭐️ View project at https://wandb.ai/yinanazhou/xlnet8_16_bs_8_adamw_lr_0.0001_es_0.01_20_fold_3
+wandb: 🚀 View run at https://wandb.ai/yinanazhou/xlnet8_16_bs_8_adamw_lr_0.0001_es_0.01_20_fold_3/runs/1u1jt7m3
+wandb: Run data is saved locally in /project/6002780/yinan/Thesis_MER_Lyrics/arch/lyric-emotion/wandb/run-20220202_073141-1u1jt7m3
+wandb: Run `wandb offline` to turn off syncing.
+
+wandb: Waiting for W&B process to finish, PID 127251... (success).
+wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb:                                                                                
+/cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages/requests/__init__.py:91: RequestsDependencyWarning: urllib3 (1.26.8) or chardet (3.0.4) doesn't match a supported version!
+  RequestsDependencyWarning)
+wandb: Run history:
+wandb:     F1_measure █▄▃▄▁
+wandb:       accuracy █▁▄█▂
+wandb:   e_F1_measure █▁▁▁▁
+wandb:     e_accuracy █▁▁▁▁
+wandb:         e_loss █▃▁▂▁
+wandb:    e_precision █▁▁▁▁
+wandb:       e_recall ▁▁▁▁▁
+wandb:           loss █▆▁▅▃
+wandb:      precision ▄▂▆█▁
+wandb:         recall █▁▄█▂
+wandb: 
+wandb: Run summary:
+wandb:     F1_measure 18.05363
+wandb:       accuracy 0.24388
+wandb:   e_F1_measure 10.27569
+wandb:     e_accuracy 25.86751
+wandb:         e_loss 0.17489
+wandb:    e_precision 6.46688
+wandb:       e_recall 25.0
+wandb:           loss 0.17569
+wandb:      precision 22.95936
+wandb:         recall 24.9353
+wandb: 
+wandb: Synced 4 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Synced faithful-music-1: https://wandb.ai/yinanazhou/xlnet8_16_bs_8_adamw_lr_0.0001_es_0.01_20_fold_3/runs/1u1jt7m3
+wandb: Find logs at: ./wandb/run-20220202_073141-1u1jt7m3/logs/debug.log
+wandb: 
+
+2022-02-02 07:32:45.795070: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+wandb: Tracking run with wandb version 0.12.10
+wandb: Syncing run lively-dawn-1
+wandb: ⭐️ View project at https://wandb.ai/yinanazhou/xlnet8_16_bs_8_adamw_lr_0.0001_es_0.01_20_fold_4
+wandb: 🚀 View run at https://wandb.ai/yinanazhou/xlnet8_16_bs_8_adamw_lr_0.0001_es_0.01_20_fold_4/runs/9a105vb6
+wandb: Run data is saved locally in /project/6002780/yinan/Thesis_MER_Lyrics/arch/lyric-emotion/wandb/run-20220202_073243-9a105vb6
+wandb: Run `wandb offline` to turn off syncing.
+
+wandb: Waiting for W&B process to finish, PID 127342... (success).
+wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: - 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: \ 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: | 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb: / 0.00MB of 0.00MB uploaded (0.00MB deduped)wandb:                                                                                
+/cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages/requests/__init__.py:91: RequestsDependencyWarning: urllib3 (1.26.8) or chardet (3.0.4) doesn't match a supported version!
+  RequestsDependencyWarning)
+wandb: Run history:
+wandb:     F1_measure ▆▃█▁▇
+wandb:       accuracy ▂▂█▁▄
+wandb:   e_F1_measure ▁▁▁▁▁
+wandb:     e_accuracy ▁▁▁▁▁
+wandb:         e_loss █▅▄▁▁
+wandb:    e_precision ▁▁▁▁▁
+wandb:       e_recall ▁▁▁▁▁
+wandb:           loss █▇▃▆▁
+wandb:      precision ▆▂▅▁█
+wandb:         recall ▂▂█▁▃
+wandb: 
+wandb: Run summary:
+wandb:     F1_measure 17.02212
+wandb:       accuracy 0.24763
+wandb:   e_F1_measure 10.401
+wandb:     e_accuracy 26.26582
+wandb:         e_loss 0.17644
+wandb:    e_precision 6.56646
+wandb:       e_recall 25.0
+wandb:           loss 0.17566
+wandb:      precision 30.6387
+wandb:         recall 25.24933
+wandb: 
+wandb: Synced 4 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Synced lively-dawn-1: https://wandb.ai/yinanazhou/xlnet8_16_bs_8_adamw_lr_0.0001_es_0.01_20_fold_4/runs/9a105vb6
+wandb: Find logs at: ./wandb/run-20220202_073243-9a105vb6/logs/debug.log
+wandb: 
+
