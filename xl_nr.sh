@@ -15,6 +15,7 @@ pip3 install --upgrade --no-binary numpy==1.20.0 numpy==1.20.0
 pip install --no-index torch
 pip install --no-index -r requirements.txt
 pip install wandb --upgrade
+pip install boto3 botocore awscli --ignore-installed
 
 wandb login $API_KEY
 
