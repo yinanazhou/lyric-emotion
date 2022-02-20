@@ -66,100 +66,90 @@ num_epochs = args.epochs
 MAX_LEN = args.ml
 batch_size = args.bs
 # test_size = args.ts
-model_str = 'svm_rbf_lc_nr_lemma'
+model_str = 'test_svm_rbf_lc_nr_stem'
 num_labels = 4
 denom = args.adaptive
 remove_stop_words = False
-stemming = False
-lemma = True
+stemming = True
+lemma = False
 
 # set path
-trg_path = "AllMusic_dataset.json"
+test_pth = "MER_dataset.json"
+train_pth = "AllMusic_dataset.json"
 ending_path = ('%s_ml_%d' %(model_str, MAX_LEN))
 if not os.path.exists("AllMusic_logs_F1/"):
     os.mkdir("AllMusic_logs_F1/")
 logfile_path = "AllMusic_logs_F1/" + ending_path
 logging_storage(logfile_path)
 # result_path = "result_json/" + ending_path
-if not os.path.exists("AllMusic_result_F1_json/"):
-    os.makedirs("AllMusic_result_F1_json/")
+# if not os.path.exists("MER_result_F1_json/"):
+#     os.makedirs("MER_result_F1_json/")
 
 
-# fetch data
-with open(trg_path) as f:
-    song_info = json.load(f)
-lyrics = song_info["Lyric"]
-labels = song_info["Mood"]
-labels = np.array(labels)
-
+# fetch training data
+with open(train_pth) as f:
+    trainSet = json.load(f)
+trainLyrics = trainSet["Lyric"]
+trainLabels = trainSet["Mood"]
+trainLabels = np.array(trainLabels)
+# fetch test data
+with open(test_pth) as f:
+    testSet = json.load(f)
+testLyrics = testSet["Lyric"]
+testLabels = testSet["Mood"]
+testLabels = np.array(testLabels)
 
 # noise reduction
-lyrics = [noise_removal(lyric) for lyric in lyrics]
+# train
+trainLyrics = [noise_removal(trainLyric) for trainLyric in trainLyrics]
+# test
+testLyrics = [noise_removal(testLyric) for testLyric in testLyrics]
 
 if remove_stop_words or stemming or lemma:
 
-    lyrics = [word_tokenize(lyric) for lyric in lyrics]
+    trainLyrics = [word_tokenize(trainLyric) for trainLyric in trainLyrics]
+    testLyrics = [word_tokenize(testLyric) for testLyric in testLyrics]
 
     if remove_stop_words:
         stop_words = set(stopwords.words('english'))
-        for i in range(len(lyrics)):
-
-            lyrics[i] = [word for word in lyrics[i] if word not in stop_words]
+        for i in range(len(trainLyrics)):
+            trainLyrics[i] = [word for word in trainLyrics[i] if word not in stop_words]
+        for i in range(len(testLyrics)):
+            testLyrics[i] = [word for word in testLyrics[i] if word not in stop_words]
 
     if stemming:
         stemmer = PorterStemmer()
-        for i in range(len(lyrics)):
-            lyrics[i] = [stemmer.stem(word) for word in lyrics[i]]
+        for i in range(len(trainLyrics)):
+            trainLyrics[i] = [stemmer.stem(word) for word in trainLyrics[i]]
+        for i in range(len(testLyrics)):
+            testLyrics[i] = [stemmer.stem(word) for word in testLyrics[i]]
 
     if lemma:
         lemmatizer = WordNetLemmatizer()
-        for i in range(len(lyrics)):
-            lyrics[i] = [lemmatizer.lemmatize(word) for word in lyrics[i]]
+        for i in range(len(trainLyrics)):
+            trainLyrics[i] = [lemmatizer.lemmatize(word) for word in trainLyrics[i]]
+        for i in range(len(testLyrics)):
+            testLyrics[i] = [lemmatizer.lemmatize(word) for word in testLyrics[i]]
 
 
-    for i in range(len(lyrics)):
-        lyrics[i] = ' '.join(lyrics[i])
+    for i in range(len(trainLyrics)):
+        trainLyrics[i] = ' '.join(trainLyrics[i])
+    for i in range(len(testLyrics)):
+        testLyrics[i] = ' '.join(testLyrics[i])
 # Convert to vector
 tfidf_vect = TfidfVectorizer(max_features=MAX_LEN, lowercase=True)
-lyrics = tfidf_vect.fit_transform(lyrics).toarray()
-
-nSplits = 2
-nRepeats = 5
-repeaded_kfold = RepeatedStratifiedKFold(n_splits=nSplits, n_repeats=nRepeats, random_state=SEED)
+trainLyrics = tfidf_vect.fit_transform(trainLyrics).toarray()
+testLyrics = tfidf_vect.fit_transform(testLyrics).toarray()
 
 results = []
 result_json = {}
-for fold, (train_idx, test_idx) in enumerate(repeaded_kfold.split(lyrics, labels)):
-    logging.info('-------------------------------------------------')
-    logging.info('Repeat: %d, Fold: %d' % (fold//nSplits + 1, (fold)%nSplits + 1))
 
-    k_result = {'F1': []}
+logging.info('-------------------------------------------------')
+logging.info('Test')
+# define model
+model = svm.SVC(kernel="rbf")
+model.fit(trainLyrics, trainLabels)
+pred = model.predict(testLyrics)
+f1 = f1_score(testLabels, pred, average='macro')
+logging.info("F1 = %5.3f" % (f1 * 100))
 
-    # Dataset.select(indices=train_idx)
-    train_inputs, test_inputs = lyrics[train_idx], lyrics[test_idx]
-    train_labels, test_labels = labels[train_idx], labels[test_idx]
-    # print("TRAIN:", train_idx, "TEST:", test_idx)
-
-    # define model
-    model = svm.SVC(kernel="rbf")
-    # model.to(DEVICE)
-
-    model.fit(train_inputs, train_labels)
-
-    pred = model.predict(test_inputs)
-
-    k_f1 = f1_score(test_labels, pred, average='macro')
-    logging.info("F1 = %5.3f" % (k_f1 * 100))
-
-    k_result['F1'].append(k_f1 * 100)
-
-    results.append(k_f1 * 100)
-    result_json[str(fold+1)] = []
-    result_json[str(fold+1)].append(k_result)
-
-logging.info("AVERAGE F1: %5.3f", sum(results) / len(results))
-result_json['average f1'] = []
-result_json['average f1'].append(sum(results) / len(results))
-result_path = "AllMusic_result_F1_json/" + ending_path + '.json'
-with open(result_path, 'w') as f:
-    json.dump(result_json, f, indent=4)
