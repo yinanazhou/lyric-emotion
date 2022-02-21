@@ -6,7 +6,7 @@ import string
 import torch
 import numpy as np
 import logging
-from pytorchtools import EarlyStopping
+from EarlyStoppingPytorch.pytorchtools import EarlyStopping
 from transformers import XLNetTokenizer, XLNetForSequenceClassification, XLNetModel, AdamW, BertTokenizer, BertForSequenceClassification
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split, RepeatedStratifiedKFold
