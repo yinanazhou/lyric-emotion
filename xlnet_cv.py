@@ -301,10 +301,6 @@ for seq in input_ids:
     seq_mask = [float(i > 0) for i in seq]
     attention_masks.append(seq_mask)
 
-# convert to tensor
-input_ids = torch.tensor(input_ids, device=DEVICE)
-attention_masks = torch.tensor(attention_masks, device=DEVICE)
-labels = torch.tensor(labels, device=DEVICE)
 
 nSplits = 2
 nRepeats = 2
