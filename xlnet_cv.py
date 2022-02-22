@@ -301,6 +301,11 @@ for seq in input_ids:
     seq_mask = [float(i > 0) for i in seq]
     attention_masks.append(seq_mask)
 
+# convert to tensor
+input_ids = torch.tensor(input_ids)
+attention_masks = torch.tensor(attention_masks)
+labels = torch.tensor(labels)
+labels = torch.sub(labels, 1)
 
 nSplits = 2
 nRepeats = 2
@@ -372,17 +377,18 @@ for fold, (train_idx, test_idx) in enumerate(repeaded_kfold.split(input_ids, lab
         gc.collect()
         torch.cuda.empty_cache()
         loss_default, train_f1 = train(i, train_dataloader, loss_default)
-        test_loss, test_f1 = eval(test_dataloader)
+        test_loss, test_f1 = eva(test_dataloader)
 
         early_stopping(test_loss, model)
 
         if early_stopping.early_stop:
             logging.info("Early stopping at epoch %i" % i)
             break
-
+    wandb.finish()
     logging.info("t_F1 = %5.3f, e_f1 = %5.3f" % (train_f1 * 100., test_f1 * 100.))
     k_result['t_F1'].append(train_f1 * 100.)
     k_result['e_F1'].append(test_f1 * 100.)
+    k_result['epoch'].append(i + 1)
 
     results.append(test_f1 * 100)
     result_json[str(fold + 1)] = []
