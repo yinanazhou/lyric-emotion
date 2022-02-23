@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --account=rpp-ichiro
-#SBATCH --time=2:00:00
+#SBATCH --time=1-00:00:00
 #SBATCH --output=run_output/test.out
 #SBATCH --gres=gpu:v100l:4
 #SBATCH --cpus-per-task=1  # Cores proportional to GPUs: 6 on Cedar, 16 on Graham.
@@ -19,5 +19,5 @@ pip install --no-index wandb
 wandb login $API_KEY
 
 echo "Starting Task"
-python xlnet_cv.py --ml 128 --bs 8 --epochs 100 --lr 5
+python xlnet_cv.py --ml 512 --bs 8 --epochs 500 --lr 5
 
