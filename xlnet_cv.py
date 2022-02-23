@@ -87,7 +87,7 @@ def train(i, t_dataloader, loss_new):
     # wandb log
     wandb.log({"t_loss": total_loss / train_steps, "t_F1": f1 * 100.})
 
-    return loss_new, f1
+    return loss_new, f1 * 100.
 
 
 def eva(v_dataloader):
@@ -120,9 +120,9 @@ def eva(v_dataloader):
         val_f1 = f1_score(total_actual_label, total_predicted_label, average="macro")
 
         # wandb log
-        wandb.log({"e_loss": total_loss / val_steps, "e_F1": val_f1})
+        wandb.log({"e_loss": total_loss / val_steps, "e_F1": val_f1 * 100.})
 
-    return total_loss / val_steps, val_f1
+    return total_loss / val_steps, val_f1 * 100.
 
 
 # check gpu
