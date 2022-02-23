@@ -295,7 +295,7 @@ for fold, (train_idx, test_idx) in enumerate(repeaded_kfold.split(input_ids, lab
         "early_stop_criteria": early_stop
     }
 
-    early_stopping = EarlyStopping(patience=3, verbose=True)
+    early_stopping = EarlyStopping(patience=3, verbose=True, path=save_model_path)
 
     loss_default = 5.0
     train_f1 = 0.0
@@ -307,7 +307,7 @@ for fold, (train_idx, test_idx) in enumerate(repeaded_kfold.split(input_ids, lab
         loss_default, train_f1 = train(i, train_dataloader, loss_default)
         test_loss, test_f1 = eva(test_dataloader)
 
-        early_stopping(test_loss, model, path=save_model_path)
+        early_stopping(test_loss, model)
 
         if early_stopping.early_stop:
             logging.info("Early stopping at epoch %i" % i)
