@@ -8,7 +8,7 @@ The following have been reloaded with a version change:
   1) python/3.8.2 => python/3.7.4
 
 Using base prefix '/cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/python/3.7.4'
-New python executable in /localscratch/yinan.27594753.0/env/bin/python
+New python executable in /localscratch/yinan.27595148.0/env/bin/python
 Installing setuptools, pip, wheel...
 done.
 Ignoring pip: markers 'python_version < "3"' don't match your environment
@@ -38,95 +38,98 @@ Collecting torchtext==0.6.0 (from -r requirements.txt (line 11))
 Collecting torchvision (from -r requirements.txt (line 12))
 Collecting transformers==2.5.1+computecanada (from -r requirements.txt (line 13))
 Collecting urllib3==1.26.7+computecanada (from -r requirements.txt (line 14))
-Requirement already satisfied: numpy>=1.9.1 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from Keras_Preprocessing->-r requirements.txt (line 2)) (1.16.0)
 Requirement already satisfied: six>=1.9.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from Keras_Preprocessing->-r requirements.txt (line 2)) (1.12.0)
+Requirement already satisfied: numpy>=1.9.1 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from Keras_Preprocessing->-r requirements.txt (line 2)) (1.16.0)
 Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from matplotlib->-r requirements.txt (line 3)) (2.3.1)
-Requirement already satisfied: python-dateutil>=2.1 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from matplotlib->-r requirements.txt (line 3)) (2.7.5)
-Requirement already satisfied: kiwisolver>=1.0.1 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from matplotlib->-r requirements.txt (line 3)) (1.0.1)
 Requirement already satisfied: cycler>=0.10 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from matplotlib->-r requirements.txt (line 3)) (0.10.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from matplotlib->-r requirements.txt (line 3)) (1.0.1)
+Requirement already satisfied: python-dateutil>=2.1 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from matplotlib->-r requirements.txt (line 3)) (2.7.5)
+Collecting click (from nltk==3.6.5+computecanada->-r requirements.txt (line 4))
+Collecting tqdm (from nltk==3.6.5+computecanada->-r requirements.txt (line 4))
+Collecting joblib (from nltk==3.6.5+computecanada->-r requirements.txt (line 4))
 Collecting regex>=2021.8.3 (from nltk==3.6.5+computecanada->-r requirements.txt (line 4))
   ERROR: Could not find a version that satisfies the requirement regex>=2021.8.3 (from nltk==3.6.5+computecanada->-r requirements.txt (line 4)) (from versions: 2018.1.10+computecanada, 2019.11.1+computecanada, 2020.11.13+computecanada)
 ERROR: No matching distribution found for regex>=2021.8.3 (from nltk==3.6.5+computecanada->-r requirements.txt (line 4))
 Ignoring pip: markers 'python_version < "3"' don't match your environment
 Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/nix/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/nix/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
 Collecting wandb
-Collecting Click!=8.0.0,>=7.0 (from wandb)
-Collecting subprocess32>=3.5.3 (from wandb)
-Collecting six>=1.13.0 (from wandb)
-Collecting configparser>=3.8.1 (from wandb)
-Requirement already satisfied: python-dateutil>=2.6.1 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from wandb) (2.7.5)
-Collecting yaspin>=1.0.0 (from wandb)
-Collecting PyYAML (from wandb)
-Collecting sentry-sdk>=1.0.0 (from wandb)
 Collecting GitPython>=1.0.0 (from wandb)
-Collecting shortuuid>=0.5.0 (from wandb)
+Collecting yaspin>=1.0.0 (from wandb)
 Collecting promise<3,>=2.0 (from wandb)
-Collecting protobuf>=3.12.0 (from wandb)
-Collecting psutil>=5.0.0 (from wandb)
-Collecting docker-pycreds>=0.4.0 (from wandb)
+Collecting six>=1.13.0 (from wandb)
+Collecting subprocess32>=3.5.3 (from wandb)
+Collecting Click!=8.0.0,>=7.0 (from wandb)
+Requirement already satisfied: python-dateutil>=2.6.1 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from wandb) (2.7.5)
+Collecting shortuuid>=0.5.0 (from wandb)
+Collecting configparser>=3.8.1 (from wandb)
 Requirement already satisfied: requests<3,>=2.0.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from wandb) (2.21.0)
+Collecting protobuf>=3.12.0 (from wandb)
 Collecting pathtools (from wandb)
-Requirement already satisfied: importlib-metadata; python_version < "3.8" in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from Click!=8.0.0,>=7.0->wandb) (0.8)
-Collecting termcolor<2.0.0,>=1.1.0 (from yaspin>=1.0.0->wandb)
-Requirement already satisfied: certifi in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from sentry-sdk>=1.0.0->wandb) (2018.11.29)
-Requirement already satisfied: urllib3>=1.10.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from sentry-sdk>=1.0.0->wandb) (1.24.1)
+Collecting docker-pycreds>=0.4.0 (from wandb)
+Collecting psutil>=5.0.0 (from wandb)
+Collecting sentry-sdk>=1.0.0 (from wandb)
+Collecting PyYAML (from wandb)
 Collecting gitdb<5,>=4.0.1 (from GitPython>=1.0.0->wandb)
-Requirement already satisfied: typing-extensions>=3.7.4.3; python_version < "3.10" in /localscratch/yinan.27594753.0/env/lib/python3.7/site-packages (from GitPython>=1.0.0->wandb) (4.0.1+computecanada)
-Requirement already satisfied: chardet<3.1.0,>=3.0.2 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from requests<3,>=2.0.0->wandb) (3.0.4)
+Requirement already satisfied: typing-extensions>=3.7.4.3; python_version < "3.10" in /localscratch/yinan.27595148.0/env/lib/python3.7/site-packages (from GitPython>=1.0.0->wandb) (4.0.1+computecanada)
+Collecting termcolor<2.0.0,>=1.1.0 (from yaspin>=1.0.0->wandb)
+Requirement already satisfied: importlib-metadata; python_version < "3.8" in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from Click!=8.0.0,>=7.0->wandb) (0.8)
 Requirement already satisfied: idna<2.9,>=2.5 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from requests<3,>=2.0.0->wandb) (2.8)
-Requirement already satisfied: zipp>=0.3.2 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from importlib-metadata; python_version < "3.8"->Click!=8.0.0,>=7.0->wandb) (0.3.3)
+Requirement already satisfied: urllib3<1.25,>=1.21.1 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from requests<3,>=2.0.0->wandb) (1.24.1)
+Requirement already satisfied: chardet<3.1.0,>=3.0.2 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from requests<3,>=2.0.0->wandb) (3.0.4)
+Requirement already satisfied: certifi>=2017.4.17 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from requests<3,>=2.0.0->wandb) (2018.11.29)
 Collecting smmap<6,>=3.0.1 (from gitdb<5,>=4.0.1->GitPython>=1.0.0->wandb)
-Installing collected packages: Click, subprocess32, six, configparser, termcolor, yaspin, PyYAML, sentry-sdk, smmap, gitdb, GitPython, shortuuid, promise, protobuf, psutil, docker-pycreds, pathtools, wandb
+Requirement already satisfied: zipp>=0.3.2 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from importlib-metadata; python_version < "3.8"->Click!=8.0.0,>=7.0->wandb) (0.3.3)
+Installing collected packages: smmap, gitdb, GitPython, termcolor, yaspin, six, promise, subprocess32, Click, shortuuid, configparser, protobuf, pathtools, docker-pycreds, psutil, sentry-sdk, PyYAML, wandb
   Found existing installation: six 1.12.0
-    Not uninstalling six at /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages, outside environment /localscratch/yinan.27594753.0/env
+    Not uninstalling six at /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages, outside environment /localscratch/yinan.27595148.0/env
     Can't uninstall 'six'. No files were found to uninstall.
 Successfully installed Click-8.0.3+computecanada GitPython-3.1.24+computecanada PyYAML-5.3.1+computecanada configparser-5.0.2+computecanada docker-pycreds-0.4.0+computecanada gitdb-4.0.9+computecanada pathtools-0.1.2+computecanada promise-2.3+computecanada protobuf-3.19.3+computecanada psutil-5.7.3+computecanada sentry-sdk-1.5.0+computecanada shortuuid-1.0.1+computecanada six-1.16.0+computecanada smmap-5.0.0+computecanada subprocess32-3.5.4+computecanada termcolor-1.1.0+computecanada wandb-0.12.5+computecanada yaspin-2.1.0+computecanada
 Ignoring pip: markers 'python_version < "3"' don't match your environment
 Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/nix/avx2, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/nix/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
 Collecting sagemaker
+Requirement already satisfied, skipping upgrade: protobuf>=3.1 in /localscratch/yinan.27595148.0/env/lib/python3.7/site-packages (from sagemaker) (3.19.3+computecanada)
 Collecting attrs==20.3.0 (from sagemaker)
-Requirement already satisfied, skipping upgrade: protobuf>=3.1 in /localscratch/yinan.27594753.0/env/lib/python3.7/site-packages (from sagemaker) (3.19.3+computecanada)
-Collecting boto3>=1.20.21 (from sagemaker)
-  Downloading https://files.pythonhosted.org/packages/c5/24/3e6eafb86827388a42d7202a4ce99691f7619646e75a5b5dcd5be4d8931c/boto3-1.21.6-py3-none-any.whl (132kB)
-Collecting packaging>=20.0 (from sagemaker)
-Requirement already satisfied, skipping upgrade: numpy>=1.9.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from sagemaker) (1.16.0)
 Collecting protobuf3-to-dict>=0.1.5 (from sagemaker)
 Collecting smdebug-rulesconfig==1.0.1 (from sagemaker)
   Using cached https://files.pythonhosted.org/packages/26/a1/45a13a05198bbe9527bab2c5e5daa8bd02678aa825eec14783e767bfa7d1/smdebug_rulesconfig-1.0.1-py2.py3-none-any.whl
-Collecting google-pasta (from sagemaker)
+Requirement already satisfied, skipping upgrade: numpy>=1.9.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from sagemaker) (1.16.0)
 Collecting importlib-metadata>=1.4.0 (from sagemaker)
   Using cached https://files.pythonhosted.org/packages/f9/5f/8f5e198c94a04163fc2e1c425d3963197d59b631614db52bc02b11ee4cff/importlib_metadata-4.11.1-py3-none-any.whl
+Requirement already satisfied, skipping upgrade: pandas in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from sagemaker) (0.23.4)
+Collecting packaging>=20.0 (from sagemaker)
+Collecting google-pasta (from sagemaker)
 Collecting pathos (from sagemaker)
   Using cached https://files.pythonhosted.org/packages/23/6b/7ffe02bdb5f5cf4b2290cc906b415dde7c886dbb11928dda40d39e6654dd/pathos-0.2.8-py2.py3-none-any.whl
-Requirement already satisfied, skipping upgrade: pandas in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from sagemaker) (0.23.4)
-Collecting s3transfer<0.6.0,>=0.5.0 (from boto3>=1.20.21->sagemaker)
-Collecting botocore<1.25.0,>=1.24.6 (from boto3>=1.20.21->sagemaker)
-  Downloading https://files.pythonhosted.org/packages/19/ab/a7cae9c1b58c82239f9ce4da21ed8f2d4508b8ebf78e24bfe7927b001353/botocore-1.24.6-py3-none-any.whl (8.5MB)
-Collecting jmespath<1.0.0,>=0.7.1 (from boto3>=1.20.21->sagemaker)
-Requirement already satisfied, skipping upgrade: pyparsing!=3.0.5,>=2.0.2 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from packaging>=20.0->sagemaker) (2.3.1)
-Requirement already satisfied, skipping upgrade: six in /localscratch/yinan.27594753.0/env/lib/python3.7/site-packages (from protobuf3-to-dict>=0.1.5->sagemaker) (1.16.0+computecanada)
+Collecting boto3>=1.20.21 (from sagemaker)
+  Using cached https://files.pythonhosted.org/packages/c5/24/3e6eafb86827388a42d7202a4ce99691f7619646e75a5b5dcd5be4d8931c/boto3-1.21.6-py3-none-any.whl
+Requirement already satisfied, skipping upgrade: six in /localscratch/yinan.27595148.0/env/lib/python3.7/site-packages (from protobuf3-to-dict>=0.1.5->sagemaker) (1.16.0+computecanada)
 Collecting zipp>=0.5 (from importlib-metadata>=1.4.0->sagemaker)
-Requirement already satisfied, skipping upgrade: typing-extensions>=3.6.4; python_version < "3.8" in /localscratch/yinan.27594753.0/env/lib/python3.7/site-packages (from importlib-metadata>=1.4.0->sagemaker) (4.0.1+computecanada)
-Collecting dill>=0.3.4 (from pathos->sagemaker)
-Collecting pox>=0.3.0 (from pathos->sagemaker)
-  Using cached https://files.pythonhosted.org/packages/25/6e/7bc83d285dd0438f6ba106dba4fa85e569b09bae14f3c8d9df7acdc92629/pox-0.3.0-py2.py3-none-any.whl
-Collecting ppft>=1.6.6.4 (from pathos->sagemaker)
-  Using cached https://files.pythonhosted.org/packages/e1/95/17253538621d21308a6e7ca67cd8f87c64e81f95477e57ee78766cf79aaa/ppft-1.6.6.4-py3-none-any.whl
-Collecting multiprocess>=0.70.12 (from pathos->sagemaker)
+Requirement already satisfied, skipping upgrade: typing-extensions>=3.6.4; python_version < "3.8" in /localscratch/yinan.27595148.0/env/lib/python3.7/site-packages (from importlib-metadata>=1.4.0->sagemaker) (4.0.1+computecanada)
 Requirement already satisfied, skipping upgrade: pytz>=2011k in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from pandas->sagemaker) (2018.9)
 Requirement already satisfied, skipping upgrade: python-dateutil>=2.5.0 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from pandas->sagemaker) (2.7.5)
+Requirement already satisfied, skipping upgrade: pyparsing!=3.0.5,>=2.0.2 in /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages (from packaging>=20.0->sagemaker) (2.3.1)
+Collecting pox>=0.3.0 (from pathos->sagemaker)
+  Using cached https://files.pythonhosted.org/packages/25/6e/7bc83d285dd0438f6ba106dba4fa85e569b09bae14f3c8d9df7acdc92629/pox-0.3.0-py2.py3-none-any.whl
+Collecting dill>=0.3.4 (from pathos->sagemaker)
+Collecting multiprocess>=0.70.12 (from pathos->sagemaker)
+Collecting ppft>=1.6.6.4 (from pathos->sagemaker)
+  Using cached https://files.pythonhosted.org/packages/e1/95/17253538621d21308a6e7ca67cd8f87c64e81f95477e57ee78766cf79aaa/ppft-1.6.6.4-py3-none-any.whl
+Collecting jmespath<1.0.0,>=0.7.1 (from boto3>=1.20.21->sagemaker)
+Collecting s3transfer<0.6.0,>=0.5.0 (from boto3>=1.20.21->sagemaker)
+Collecting botocore<1.25.0,>=1.24.6 (from boto3>=1.20.21->sagemaker)
+  Using cached https://files.pythonhosted.org/packages/19/ab/a7cae9c1b58c82239f9ce4da21ed8f2d4508b8ebf78e24bfe7927b001353/botocore-1.24.6-py3-none-any.whl
 Collecting urllib3<1.27,>=1.25.4 (from botocore<1.25.0,>=1.24.6->boto3>=1.20.21->sagemaker)
 ERROR: requests 2.21.0 has requirement urllib3<1.25,>=1.21.1, but you'll have urllib3 1.26.8+computecanada which is incompatible.
-Installing collected packages: attrs, urllib3, jmespath, botocore, s3transfer, boto3, packaging, protobuf3-to-dict, smdebug-rulesconfig, google-pasta, zipp, importlib-metadata, dill, pox, ppft, multiprocess, pathos, sagemaker
-  Found existing installation: urllib3 1.24.1
-    Not uninstalling urllib3 at /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages, outside environment /localscratch/yinan.27594753.0/env
-    Can't uninstall 'urllib3'. No files were found to uninstall.
+Installing collected packages: attrs, protobuf3-to-dict, smdebug-rulesconfig, zipp, importlib-metadata, packaging, google-pasta, pox, dill, multiprocess, ppft, pathos, jmespath, urllib3, botocore, s3transfer, boto3, sagemaker
   Found existing installation: zipp 0.3.3
-    Not uninstalling zipp at /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages, outside environment /localscratch/yinan.27594753.0/env
+    Not uninstalling zipp at /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages, outside environment /localscratch/yinan.27595148.0/env
     Can't uninstall 'zipp'. No files were found to uninstall.
   Found existing installation: importlib-metadata 0.8
-    Not uninstalling importlib-metadata at /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages, outside environment /localscratch/yinan.27594753.0/env
+    Not uninstalling importlib-metadata at /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages, outside environment /localscratch/yinan.27595148.0/env
     Can't uninstall 'importlib-metadata'. No files were found to uninstall.
+  Found existing installation: urllib3 1.24.1
+    Not uninstalling urllib3 at /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages, outside environment /localscratch/yinan.27595148.0/env
+    Can't uninstall 'urllib3'. No files were found to uninstall.
 Successfully installed attrs-20.3.0+computecanada boto3-1.21.6 botocore-1.24.6 dill-0.3.4+computecanada google-pasta-0.2.0+computecanada importlib-metadata-4.11.1 jmespath-0.10.0+computecanada multiprocess-0.70.12.2+computecanada packaging-21.3+computecanada pathos-0.2.8 pox-0.3.0 ppft-1.6.6.4 protobuf3-to-dict-0.1.5 s3transfer-0.5.1+computecanada sagemaker-2.77.0 smdebug-rulesconfig-1.0.1 urllib3-1.26.8+computecanada zipp-3.7.0+computecanada
 /cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/scipy-stack/2019a/lib/python3.7/site-packages/requests/__init__.py:91: RequestsDependencyWarning: urllib3 (1.26.8) or chardet (3.0.4) doesn't match a supported version!
   RequestsDependencyWarning)
