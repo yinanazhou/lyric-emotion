@@ -168,9 +168,10 @@ denom = args.adaptive
 # set path
 trg_path = "LastFM_cleaned_train.json"
 ending_path = ('%s_%d_bs_%d_lc_%s_nr_%s_stem_%s_lemma_%s' %(model_str, MAX_LEN, batch_size, lc, nr, stem, lemma))
-save_model_path = "models/" + ending_path + '.pt'
-if not os.path.exists(save_model_path):
-    os.makedirs(save_model_path)
+model_path = ending_path + '.ckpt'
+if not os.path.exists('models/'):
+    os.makedirs('models/')
+save_model_path = os.path.join('models', model_path)
 if not os.path.exists("logs/"):
     os.mkdir("logs/")
 logfile_path = "logs/" + ending_path

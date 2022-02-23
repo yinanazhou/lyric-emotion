@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --account=rpp-ichiro
-#SBATCH --time=1-00:00:00
+#SBATCH --time=0-02:00:00
 #SBATCH --output=run_output/test.out
 #SBATCH --gres=gpu:v100l:4
 #SBATCH --cpus-per-task=1  # Cores proportional to GPUs: 6 on Cedar, 16 on Graham.
@@ -15,6 +15,7 @@ pip3 install --upgrade --no-binary numpy==1.20.0 numpy==1.20.0
 pip install --no-index torch
 pip install --no-index -r requirements.txt
 pip install --no-index wandb
+pip install --upgrade sagemaker
 
 wandb login $API_KEY
 
