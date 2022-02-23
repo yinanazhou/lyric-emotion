@@ -14,8 +14,7 @@ module load scipy-stack
 virtualenv --no-download $SLURM_TMPDIR/env
 source $SLURM_TMPDIR/env/bin/activate
 pip3 install --upgrade --no-binary numpy==1.20.0 numpy==1.20.0
-pip install --no-index torch
-pip install --no-index -r requirements.txt
+pip3 install --no-index -r requirements.txt
 pip install --no-index wandb
 pip install --upgrade sagemaker
 
