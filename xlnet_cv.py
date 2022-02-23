@@ -140,7 +140,7 @@ parser.add_argument('--lr', help='Learning Rate', default=5, type=float)
 parser.add_argument('--epochs', help='Number of Epochs', default=20, type=int)
 parser.add_argument('--ml', help='Max Len of Sequence', default=1024, type=int)
 parser.add_argument('--bs', help='Batch Size', default=8, type=int)
-parser.add_argument('--es', help='Early Stopping Loss Criteria ', default=2, type=float)
+parser.add_argument('--es', help='Early Stopping Loss Patience ', default=7, type=float)
 parser.add_argument('--adaptive', help='Adaptive LR', default='20', type=float)
 parser.add_argument('--lc', help='Lowercase Conversion', default=False, type=bool)
 parser.add_argument('--nr', help='Noise Removal', default=False, type=bool)
@@ -154,7 +154,7 @@ lr = 10 ** (-args.lr)
 num_epochs = args.epochs
 MAX_LEN = args.ml
 batch_size = args.bs
-early_stop = 10 ** (-args.es)
+es = args.es
 lc = args.lc
 nr = args.nr
 stop = args.stop
@@ -167,7 +167,7 @@ denom = args.adaptive
 
 # set path
 trg_path = "LastFM_cleaned_train.json"
-ending_path = ('%s_%d_bs_%d_lc_%s_nr_%s_stem_%s_lemma_%s' %(model_str, MAX_LEN, batch_size, lc, nr, stem, lemma))
+ending_path = ('%s_%d_bs_%d_es_%i_lc_%s_nr_%s_stem_%s_lemma_%s' %(model_str, MAX_LEN, batch_size, es, lc, nr, stem, lemma))
 model_path = ending_path + '.ckpt'
 if not os.path.exists('models/'):
     os.makedirs('models/')
@@ -189,33 +189,30 @@ labels = song_info["Mood"]
 labels = np.array(labels)
 
 # text preprocessing
-logging.info("lc: %s, nr: %s, stop: %s, stem: %s, lemma: %s" % (lc, nr, stop, stem, lemma))
+logging.info("es: %i, lc: %s, nr: %s, stop: %s, stem: %s, lemma: %s" % (es, lc, nr, stop, stem, lemma))
 if nr:
     lyrics = [noiseRemoval(lyric) for lyric in lyrics]
+
+# tokenize
+tokenizer = XLNetTokenizer.from_pretrained('xlnet-base-cased', do_lower_case=lc)
+tokenized_texts = [tokenizer.tokenize(lyric) for lyric in lyrics]
 
 if stop or stem or lemma:
 
     if stop:
         stop_words = set(stopwords.words('english'))
-        for i in range(len(lyrics)):
-            lyrics[i] = [word for word in lyrics[i] if word not in stop_words]
+        for i in range(len(tokenized_texts)):
+            tokenized_texts[i] = [word for word in tokenized_texts[i] if word not in stop_words]
 
     if stem:
         stemmer = PorterStemmer()
-        for i in range(len(lyrics)):
-            lyrics[i] = [stemmer.stem(word) for word in lyrics[i]]
+        for i in range(len(tokenized_texts)):
+            tokenized_texts[i] = [stemmer.stem(word, to_lowercase=lc) for word in tokenized_texts[i]]
 
     if lemma:
         lemmatizer = WordNetLemmatizer()
-        for i in range(len(lyrics)):
-            lyrics[i] = [lemmatizer.lemmatize(word) for word in lyrics[i]]
-
-    for i in range(len(lyrics)):
-        lyrics[i] = ' '.join(lyrics[i])
-
-# tokenize
-tokenizer = XLNetTokenizer.from_pretrained('xlnet-base-cased', do_lower_case=lc)
-tokenized_texts = [tokenizer.tokenize(lyric) for lyric in lyrics]
+        for i in range(len(tokenized_texts)):
+            tokenized_texts[i] = [lemmatizer.lemmatize(word) for word in tokenized_texts[i]]
 
 # convert tokens to index number in the XLNet vocabulary
 input_ids = [tokenizer.convert_tokens_to_ids(x) for x in tokenized_texts]
@@ -293,10 +290,10 @@ for fold, (train_idx, test_idx) in enumerate(repeaded_kfold.split(input_ids, lab
         "epochs": num_epochs,
         "batch_size": batch_size,
         "max_len": MAX_LEN,
-        "early_stop_criteria": early_stop
+        "early_stop_criteria": es
     }
 
-    early_stopping = EarlyStopping(patience=3, verbose=True, path=save_model_path)
+    early_stopping = EarlyStopping(patience=es, verbose=True, path=save_model_path)
 
     loss_default = 5.0
     train_f1 = 0.0
@@ -320,7 +317,7 @@ for fold, (train_idx, test_idx) in enumerate(repeaded_kfold.split(input_ids, lab
     k_result['e_F1'].append(test_f1)
     k_result['epoch'].append(i + 1)
 
-    results.append(test_f1 * 100)
+    results.append(test_f1)
     result_json[str(fold + 1)] = []
     result_json[str(fold + 1)].append(k_result)
 
