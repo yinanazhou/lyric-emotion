@@ -13,10 +13,21 @@ module load python/3.8.2
 module load scipy-stack
 virtualenv --no-download $SLURM_TMPDIR/env
 source $SLURM_TMPDIR/env/bin/activate
-pip3 install --upgrade --no-binary numpy==1.20.0 numpy==1.20.0
-pip3 install --no-index -r requirements.txt
+pip install --no-index --upgrade pip
+#pip3 install --upgrade --no-binary numpy==1.20.0 numpy==1.20.0
+pip install --no-index -r requirements.txt
+pip install --no-index numpy==1.20.0+computacanada
 pip install --no-index wandb
-pip install --upgrade sagemaker
+pip install --no-index --upgrade sagemaker
+pip install --no-index torch
+pip install --no-index transformers==2.5.1+computecanada
+pip install --no-index tensorflow_gpu==2.3.0+computecanada
+pip install --no-index Keras
+pip install --no-index urllib3==1.26.7+computecanada
+pip install --no-index nltk
+pip install --no-index scikit-learn==0.22.1
+pip install --no-index tokenizers==0.5.2
+
 
 wandb login $API_KEY
 
