@@ -167,7 +167,7 @@ denom = args.adaptive
 
 # set path
 trg_path = "LastFM_cleaned_train.json"
-ending_path = ('%s_%d_bs_%d_es_%i_lc_%s_nr_%s_stem_%s_lemma_%s' %(model_str, MAX_LEN, batch_size, es, lc, nr, stem, lemma))
+ending_path = ('%s_%d_bs_%d_lr_%s_es_%i_lc_%s_nr_%s_stem_%s_lemma_%s' %(model_str, MAX_LEN, batch_size,str(lr).replace("-",""), es, lc, nr, stem, lemma))
 model_path = ending_path + '.ckpt'
 if not os.path.exists('models/'):
     os.makedirs('models/')
@@ -234,7 +234,7 @@ labels = torch.tensor(labels)
 labels = torch.sub(labels, 1)
 
 nSplits = 2
-nRepeats = 1
+nRepeats = 5
 repeaded_kfold = RepeatedStratifiedKFold(n_splits=nSplits, n_repeats=nRepeats, random_state=SEED)
 
 results = []
