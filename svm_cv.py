@@ -58,6 +58,11 @@ parser.add_argument('--ml', help='Max Len of Sequence', default=1024, type=int)
 parser.add_argument('--bs', help='Batch Size', default=8, type=int)
 # parser.add_argument('--ts', help='Test Size (0-1)', default=0.2, type=float)
 parser.add_argument('--adaptive', help='Adaptive LR', default='20', type=float)
+parser.add_argument('--lc', help='Lowercase Conversion', default=False, type=bool)
+parser.add_argument('--nr', help='Noise Removal', default=False, type=bool)
+parser.add_argument('--stop', help='Stop Words Removal', default=False, type=bool)
+parser.add_argument('--stem', help='Stemming', default=False, type=bool)
+parser.add_argument('--lemma', help='Lemmatization', default=False, type=bool)
 
 args = parser.parse_args()
 
@@ -66,23 +71,25 @@ num_epochs = args.epochs
 MAX_LEN = args.ml
 batch_size = args.bs
 # test_size = args.ts
-model_str = 'svm_rbf_lc_nr_lemma'
+model_str = 'svm_rbf_stem'
 num_labels = 4
 denom = args.adaptive
-remove_stop_words = False
-stemming = False
-lemma = True
+remove_stop_words = args.stop
+stemming = args.stem
+lemma = args.lemma
+lc = args.lc
+nr = args.nr
 
 # set path
-trg_path = "AllMusic_dataset.json"
+trg_path = "LastFM_cleaned_train.json"
 ending_path = ('%s_ml_%d' %(model_str, MAX_LEN))
-if not os.path.exists("AllMusic_logs_F1/"):
-    os.mkdir("AllMusic_logs_F1/")
-logfile_path = "AllMusic_logs_F1/" + ending_path
+if not os.path.exists("LastFM_logs_F1/"):
+    os.mkdir("LastFM_logs_F1/")
+logfile_path = "LastFM_logs_F1/" + ending_path
 logging_storage(logfile_path)
 # result_path = "result_json/" + ending_path
-if not os.path.exists("AllMusic_result_F1_json/"):
-    os.makedirs("AllMusic_result_F1_json/")
+if not os.path.exists("LastFM_result_F1_json/"):
+    os.makedirs("LastFM_result_F1_json/")
 
 
 # fetch data
@@ -94,7 +101,8 @@ labels = np.array(labels)
 
 
 # noise reduction
-lyrics = [noise_removal(lyric) for lyric in lyrics]
+if nr:
+    lyrics = [noise_removal(lyric) for lyric in lyrics]
 
 if remove_stop_words or stemming or lemma:
 
@@ -103,13 +111,12 @@ if remove_stop_words or stemming or lemma:
     if remove_stop_words:
         stop_words = set(stopwords.words('english'))
         for i in range(len(lyrics)):
-
             lyrics[i] = [word for word in lyrics[i] if word not in stop_words]
 
     if stemming:
         stemmer = PorterStemmer()
         for i in range(len(lyrics)):
-            lyrics[i] = [stemmer.stem(word) for word in lyrics[i]]
+            lyrics[i] = [stemmer.stem(word, to_lowercase=lc) for word in lyrics[i]]
 
     if lemma:
         lemmatizer = WordNetLemmatizer()
@@ -120,7 +127,7 @@ if remove_stop_words or stemming or lemma:
     for i in range(len(lyrics)):
         lyrics[i] = ' '.join(lyrics[i])
 # Convert to vector
-tfidf_vect = TfidfVectorizer(max_features=MAX_LEN, lowercase=True)
+tfidf_vect = TfidfVectorizer(max_features=MAX_LEN, lowercase=lc)
 lyrics = tfidf_vect.fit_transform(lyrics).toarray()
 
 nSplits = 2
@@ -160,6 +167,6 @@ for fold, (train_idx, test_idx) in enumerate(repeaded_kfold.split(lyrics, labels
 logging.info("AVERAGE F1: %5.3f", sum(results) / len(results))
 result_json['average f1'] = []
 result_json['average f1'].append(sum(results) / len(results))
-result_path = "AllMusic_result_F1_json/" + ending_path + '.json'
+result_path = "LastFM_result_F1_json/" + ending_path + '.json'
 with open(result_path, 'w') as f:
     json.dump(result_json, f, indent=4)
