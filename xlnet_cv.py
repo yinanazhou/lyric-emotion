@@ -6,7 +6,7 @@ import string
 import torch
 import numpy as np
 import logging
-from EarlyStoppingPytorch.pytorchtools import EarlyStopping
+# from EarlyStoppingPytorch.pytorchtools import EarlyStopping
 from transformers import XLNetTokenizer, XLNetForSequenceClassification, XLNetModel, AdamW, BertTokenizer, BertForSequenceClassification
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split, RepeatedStratifiedKFold
@@ -293,7 +293,7 @@ for fold, (train_idx, test_idx) in enumerate(repeaded_kfold.split(input_ids, lab
         "early_stop_criteria": es
     }
 
-    early_stopping = EarlyStopping(patience=es, verbose=True, path=save_model_path)
+    # early_stopping = EarlyStopping(patience=es, verbose=True, path=save_model_path)
 
     loss_default = 5.0
     train_f1 = 0.0
@@ -305,11 +305,11 @@ for fold, (train_idx, test_idx) in enumerate(repeaded_kfold.split(input_ids, lab
         loss_default, train_f1 = train(i, train_dataloader, loss_default)
         test_loss, test_f1 = eva(test_dataloader)
 
-        early_stopping(test_loss, model)
+        # early_stopping(test_loss, model)
 
-        if early_stopping.early_stop:
-            logging.info("Early stopping at epoch %i" % i)
-            break
+        # if early_stopping.early_stop:
+        #     logging.info("Early stopping at epoch %i" % i)
+        #     break
 
     wandb.finish()
     logging.info("t_F1 = %5.3f, e_f1 = %5.3f" % (train_f1, test_f1))
