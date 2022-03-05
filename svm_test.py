@@ -71,7 +71,7 @@ num_epochs = args.epochs
 MAX_LEN = args.ml
 batch_size = args.bs
 # test_size = args.ts
-model_str = 'test_svm_rbf_x'
+model_str = 'All_test_svm_rbf_lc_nr_sr_stem'
 num_labels = 4
 denom = args.adaptive
 remove_stop_words = args.stop
@@ -81,8 +81,8 @@ lc = args.lc
 nr = args.nr
 
 # set path
-train_path = "LastFM_cleaned_train.json"
-test_path = "LastFM_cleaned_test.json"
+train_path = "LastFM_full_cleaned.json"
+test_path = "AllMusic_cleaned.json"
 ending_path = ('%s_ml_%d' %(model_str, MAX_LEN))
 if not os.path.exists("LastFM_logs_F1/"):
     os.mkdir("LastFM_logs_F1/")
