@@ -266,6 +266,10 @@ for fold, (train_idx, test_idx) in enumerate(repeaded_kfold.split(input_ids, lab
     model = XLNetForSequenceClassification.from_pretrained("xlnet-base-cased", num_labels=num_labels)
     model.to(DEVICE)
 
+    for name, param in model.named_parameters():
+        if 'classifier' not in name:  # classifier layer
+            param.requires_grad = False
+
     # define optimizer
     param_optimizer = list(model.named_parameters())
     no_decay = ['bias', 'gamma', 'beta']

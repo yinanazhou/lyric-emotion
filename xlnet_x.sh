@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --account=rpp-ichiro
-#SBATCH --time=1-00:00:00
-#SBATCH --output=run_output/xl_x_512_1d.out
+#SBATCH --time=0-02:00:00
+#SBATCH --output=run_output/freeze_test.out
 #SBATCH --gres=gpu:v100l:4
 #SBATCH --cpus-per-task=1  # Cores proportional to GPUs: 6 on Cedar, 16 on Graham.
 #SBATCH --mem=4G       # Memory proportional to GPUs: 32000 Cedar, 64000 Graham.
@@ -33,5 +33,5 @@ pip install --no-index tokenizers==0.5.2
 wandb login $API_KEY
 
 echo "Starting Task"
-python xlnet_cv.py --ml 512 --bs 8 --epochs 500 --lr 6
+python xlnet_cv.py --ml 64 --bs 8 --epochs 50 --lr 5
 
