@@ -267,7 +267,7 @@ for fold, (train_idx, test_idx) in enumerate(repeaded_kfold.split(input_ids, lab
     model.to(DEVICE)
 
     for name, param in model.named_parameters():
-        if 'classifier' not in name:  # classifier layer
+        if 'logits_proj' not in name:  # classifier layer
             param.requires_grad = False
 
     # define optimizer
