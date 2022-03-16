@@ -33,5 +33,5 @@ pip install --no-index tokenizers==0.5.2
 wandb login $API_KEY
 
 echo "Starting Task"
-python xlnet_cv.py --ml 64 --bs 8 --epochs 50 --lr 5
+python xlnet_cv.py --ml 512 --bs 8 --epochs 50 --lr 7
 

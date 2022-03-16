@@ -33,6 +33,6 @@ pip install --no-index tokenizers==0.5.2
 wandb login $API_KEY
 
 echo "Starting Task"
-python xlnet_cv.py --ml 512 --bs 8 --epochs 500 --lr 7 --es $SLURM_ARRAY_TASK_ID --lc True --sr True --stem True
+python xlnet_cv.py --ml 512 --bs 8 --epochs 500 --lr 7 --es $SLURM_ARRAY_TASK_ID --lc True --stop True --stem True
 
 
