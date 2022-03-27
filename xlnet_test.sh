@@ -4,7 +4,7 @@
 #SBATCH --output=run_output/test.out
 #SBATCH --gres=gpu:v100l:4
 #SBATCH --cpus-per-task=1  # Cores proportional to GPUs: 6 on Cedar, 16 on Graham.
-#SBATCH --mem=4G       # Memory proportional to GPUs: 32000 Cedar, 64000 Graham.
+#SBATCH --mem=6G       # Memory proportional to GPUs: 32000 Cedar, 64000 Graham.
 #SBATCH --mail-user=yinan.a.zhou@gmail.com
 #SBATCH --mail-type=ALL
 
@@ -32,5 +32,5 @@ pip install --no-index tokenizers==0.5.2
 wandb login $API_KEY
 
 echo "Starting Task"
-python xlnet_cv.py --ml 512 --bs 8 --epochs 500 --lr 5 --es 40 --nr True --lemma True
+python xlnet_cv.py --ml 64 --bs 8 --epochs 20
 
