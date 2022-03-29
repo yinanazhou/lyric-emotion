@@ -161,7 +161,7 @@ stop = args.stop
 stem = args.stem
 lemma = args.lemma
 # test_size = args.ts
-model_str = 'bert'
+model_str = 'bert2'
 num_labels = 4
 denom = args.adaptive
 
@@ -268,7 +268,7 @@ for fold, (train_idx, test_idx) in enumerate(repeaded_kfold.split(input_ids, lab
 
     for name, param in model.named_parameters():
         # if 'transformer' in name and '11' not in name:  # classifier layer
-        if 'bert' in name:
+        if 'bert' in name and 'pooler' not in name:
             param.requires_grad = False
 
     # define optimizer
