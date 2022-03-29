@@ -161,7 +161,7 @@ stop = args.stop
 stem = args.stem
 lemma = args.lemma
 # test_size = args.ts
-model_str = 'xl'
+model_str = 'bert'
 num_labels = 4
 denom = args.adaptive
 
