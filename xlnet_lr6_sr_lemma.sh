@@ -1,11 +1,11 @@
 #!/bin/bash
 #SBATCH --account=rpp-ichiro
-#SBATCH --time=1-00:00:00
+#SBATCH --time=0-10:00:00
 #SBATCH --output=run_output/xl_x_lr6_sr_lemma_%A_%a.out
 #SBATCH --gres=gpu:v100l:4
 #SBATCH --cpus-per-task=1  # Cores proportional to GPUs: 6 on Cedar, 16 on Graham.
 #SBATCH --mem=6G       # Memory proportional to GPUs: 32000 Cedar, 64000 Graham.
-#SBATCH --array=5
+#SBATCH --array=3
 #SBATCH --mail-user=yinan.a.zhou@gmail.com
 #SBATCH --mail-type=ALL
 

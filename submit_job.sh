@@ -22,30 +22,30 @@ array=(
   # xlnet_lr5_sr_stem.sh
   # xlnet_lr5_stem.sh
   # xlnet_lr5_x.sh
-#  xlnet_lr6_lc.sh
+  xlnet_lr6_lc.sh
   xlnet_lr6_lc_lemma.sh
   xlnet_lr6_lc_nr.sh
   xlnet_lr6_lc_nr_lemma.sh
-#  xlnet_lr6_lc_nr_sr.sh
+  xlnet_lr6_lc_nr_sr.sh
   xlnet_lr6_lc_nr_stem.sh
   xlnet_lr6_lc_nr_sr_lemma.sh
-#  xlnet_lr6_lc_nr_sr_stem.sh
-#  xlnet_lr6_lc_sr.sh
+  xlnet_lr6_lc_nr_sr_stem.sh
+  xlnet_lr6_lc_sr.sh
   xlnet_lr6_lc_sr_lemma.sh
-#  xlnet_lr6_lc_sr_stem.sh
-#  xlnet_lr6_lc_stem.sh
+  xlnet_lr6_lc_sr_stem.sh
+  xlnet_lr6_lc_stem.sh
   xlnet_lr6_lemma.sh
-#  xlnet_lr6_nr.sh
+  xlnet_lr6_nr.sh
   xlnet_lr6_nr_lemma.sh
-#  xlnet_lr6_nr_sr.sh
+  xlnet_lr6_nr_sr.sh
   xlnet_lr6_nr_sr_lemma.sh
-#  xlnet_lr6_nr_sr_stem.sh
-#  xlnet_lr6_nr_stem.sh
-#  xlnet_lr6_sr.sh
+  xlnet_lr6_nr_sr_stem.sh
+  xlnet_lr6_nr_stem.sh
+  xlnet_lr6_sr.sh
   xlnet_lr6_sr_lemma.sh
-#  xlnet_lr6_sr_stem.sh
-#  xlnet_lr6_stem.sh
-#  xlnet_lr6_x.sh
+  xlnet_lr6_sr_stem.sh
+  xlnet_lr6_stem.sh
+  xlnet_lr6_x.sh
 )
 
 for i in ${array[@]}; do
