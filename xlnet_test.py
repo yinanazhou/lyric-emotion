@@ -280,7 +280,7 @@ wandb.init(project=wandb_pj, entity="yinanazhou")
 # train_labels, test_labels = labels[train_idx], labels[test_idx]
 
 # split train and validation set
-train_val_split = StratifiedShuffleSplit(n_splits=1, test_size=0.5, random_state=SEED)
+train_val_split = StratifiedShuffleSplit(n_splits=1, test_size=0.2, random_state=SEED)
 for train_index, test_index in train_val_split.split(inputIdTrain, trainLabels):
     train_inputs, val_inputs = inputIdTrain[train_index], inputIdTrain[test_index]
     train_masks, val_masks = attentionMaskTrain[train_index], attentionMaskTrain[test_index]
