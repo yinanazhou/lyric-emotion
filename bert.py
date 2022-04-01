@@ -161,7 +161,7 @@ stop = args.stop
 stem = args.stem
 lemma = args.lemma
 # test_size = args.ts
-model_str = 'bert2'
+model_str = 'bert'
 num_labels = 4
 denom = args.adaptive
 
@@ -169,16 +169,16 @@ denom = args.adaptive
 trg_path = "LastFM_cleaned_train.json"
 ending_path = ('%s_%d_bs_%d_lr_%s_es_%i_lc_%s_nr_%s_sr_%s_stem_%s_lemma_%s' %(model_str, MAX_LEN, batch_size,str(lr).replace("-",""), es, lc, nr, stop, stem, lemma))
 model_path = ending_path + '.ckpt'
-if not os.path.exists('models/'):
-    os.makedirs('models/')
-save_model_path = os.path.join('models', model_path)
-if not os.path.exists("logs/"):
-    os.mkdir("logs/")
-logfile_path = "logs/" + ending_path
+if not os.path.exists('bert_models/'):
+    os.makedirs('bert_models/')
+save_model_path = os.path.join('bert_models', model_path)
+if not os.path.exists("bert_logs/"):
+    os.mkdir("bert_logs/")
+logfile_path = "bert_logs/" + ending_path
 logging_storage(logfile_path)
 # result_path = "result_json/" + ending_path
-if not os.path.exists("result_json/"):
-    os.makedirs("result_json/")
+if not os.path.exists("bert_result_json/"):
+    os.makedirs("bert_result_json/")
 logging.info("Using %d GPUs!" % (torch.cuda.device_count()))
 
 # fetch data
@@ -329,7 +329,7 @@ for fold, (train_idx, test_idx) in enumerate(repeaded_kfold.split(input_ids, lab
 logging.info("AVERAGE F1: %5.3f", sum(results) / len(results))
 result_json['average f1'] = []
 result_json['average f1'].append(sum(results) / len(results))
-result_path = "result_json/" + ending_path + '.json'
+result_path = "bert_result_json/" + ending_path + '.json'
 with open(result_path, 'w') as f:
     json.dump(result_json, f, indent=4)
 
