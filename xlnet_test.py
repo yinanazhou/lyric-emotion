@@ -162,25 +162,25 @@ stop = args.stop
 stem = args.stem
 lemma = args.lemma
 # test_size = args.ts
-model_str = 'xl'
+model_str = 'xlTest'
 num_labels = 4
 denom = args.adaptive
 
 # set path
 train_path = "LastFM_cleaned_train.json"
 test_path = "LastFM_cleaned_test.json"
-ending_path = ('Ltest_%s_%d_bs_%d_lr_%s_es_%i_lc_%s_nr_%s_sr_%s_stem_%s_lemma_%s' %(model_str, MAX_LEN, batch_size,str(lr).replace("-",""), es, lc, nr, stop, stem, lemma))
+ending_path = ('%s_%d_bs_%d_lr_%s_es_%i_lc_%s_nr_%s_sr_%s_stem_%s_lemma_%s' %(model_str, MAX_LEN, batch_size,str(lr).replace("-",""), es, lc, nr, stop, stem, lemma))
 model_path = ending_path + '.ckpt'
-if not os.path.exists('models/'):
-    os.makedirs('models/')
-save_model_path = os.path.join('models', model_path)
-if not os.path.exists("logs/"):
-    os.mkdir("logs/")
-logfile_path = "logs/" + ending_path
+if not os.path.exists('test_models/'):
+    os.makedirs('test_models/')
+save_model_path = os.path.join('test_models', model_path)
+if not os.path.exists("test_logs/"):
+    os.mkdir("test_logs/")
+logfile_path = "test_logs/" + ending_path
 logging_storage(logfile_path)
 # result_path = "result_json/" + ending_path
-if not os.path.exists("result_json/"):
-    os.makedirs("result_json/")
+if not os.path.exists("test_result_json/"):
+    os.makedirs("test_result_json/")
 logging.info("Using %d GPUs!" % (torch.cuda.device_count()))
 
 # fetch training data
