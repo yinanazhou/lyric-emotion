@@ -284,13 +284,13 @@ train_val_split = StratifiedShuffleSplit(n_splits=1, test_size=0.2, random_state
 for train_index, test_index in train_val_split.split(inputIdTrain, trainLabels):
     train_inputs, val_inputs = inputIdTrain[train_index], inputIdTrain[test_index]
     train_masks, val_masks = attentionMaskTrain[train_index], attentionMaskTrain[test_index]
-    train_labels, test_labels = trainLabels[train_index], trainLabels[test_index]
+    train_labels, val_labels = trainLabels[train_index], trainLabels[test_index]
 
 train_data = TensorDataset(train_inputs, train_masks, train_labels)
 train_sampler = SequentialSampler(train_data)
 train_dataloader = DataLoader(train_data, sampler=train_sampler, batch_size=batch_size)
 
-val_data = TensorDataset(val_inputs, val_masks, test_labels)
+val_data = TensorDataset(val_inputs, val_masks, val_labels)
 val_sampler = SequentialSampler(train_data)
 val_dataloader = DataLoader(train_data, sampler=val_sampler, batch_size=batch_size)
 
