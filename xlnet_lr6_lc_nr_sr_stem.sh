@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --account=rpp-ichiro
-#SBATCH --time=1-00:00:00
+#SBATCH --time=0-03:00:00
 #SBATCH --output=run_output/xlTest_x_lr6_lc_nr_sr_stem_%A_%a.out
 #SBATCH --gres=gpu:v100l:4
 #SBATCH --cpus-per-task=1  # Cores proportional to GPUs: 6 on Cedar, 16 on Graham.
