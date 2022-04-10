@@ -7,7 +7,7 @@ import torch
 import numpy as np
 import logging
 from EarlyStoppingPytorch.pytorchtools import EarlyStopping
-from transformers import XLNetTokenizer, XLNetForSequenceClassification, XLNetModel, AdamW, BertTokenizer, BertForSequenceClassification
+from transformers import AdamW, BertTokenizer, BertForSequenceClassification
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split, RepeatedStratifiedKFold
 from tensorflow.keras.preprocessing.sequence import pad_sequences
@@ -162,13 +162,13 @@ stop = args.stop
 stem = args.stem
 lemma = args.lemma
 # test_size = args.ts
-model_str = 'AllMusicXlTest'
+model_str = 'bertTest'
 num_labels = 4
 denom = args.adaptive
 
 # set path
-train_path = "LastFM_full_cleaned.json"
-test_path = "AllMusic_cleaned.json"
+train_path = "LastFM_cleaned_train.json"
+test_path = "LastFM_cleaned_test.json"
 ending_path = ('%s_%d_bs_%d_lr_%s_es_%i_lc_%s_nr_%s_sr_%s_stem_%s_lemma_%s' %(model_str, MAX_LEN, batch_size,str(lr).replace("-",""), es, lc, nr, stop, stem, lemma))
 model_path = ending_path + '.ckpt'
 if not os.path.exists('test_models/'):
@@ -206,10 +206,10 @@ if nr:
     testLyrics = [noiseRemoval(testLyric) for testLyric in testLyrics]
 
 # tokenize
-tokenizer = XLNetTokenizer.from_pretrained('xlnet-base-cased', do_lower_case=lc)
+tokenizer = BertTokenizer.from_pretrained('bert-base-cased', do_lower_case=lc)
 tokenizedTrain = [tokenizer.tokenize(lyric) for lyric in trainLyrics]
 # tokenize
-tokenizer = XLNetTokenizer.from_pretrained('xlnet-base-cased', do_lower_case=lc)
+tokenizer = BertTokenizer.from_pretrained('bert-base-cased', do_lower_case=lc)
 tokenizedTest = [tokenizer.tokenize(lyric) for lyric in testLyrics]
 
 if stop or stem or lemma:
@@ -230,12 +230,12 @@ if stop or stem or lemma:
         if lemma: tokenizedTest[i] = [lemmatizer.lemmatize(word) for word in tokenizedTest[i]]
 
 # train
-# convert tokens to index number in the XLNet vocabulary
+# convert tokens to index number in the Bert vocabulary
 inputIdTrain = [tokenizer.convert_tokens_to_ids(x) for x in tokenizedTrain]
 # Pad input tokens
 inputIdTrain = pad_sequences(inputIdTrain, maxlen=MAX_LEN, dtype="long", truncating="post", padding="post")
 # test
-# convert tokens to index number in the XLNet vocabulary
+# convert tokens to index number in the Bert vocabulary
 inputIdTest = [tokenizer.convert_tokens_to_ids(x) for x in tokenizedTest]
 # Pad input tokens
 inputIdTest = pad_sequences(inputIdTest, maxlen=MAX_LEN, dtype="long", truncating="post", padding="post")
@@ -280,7 +280,7 @@ wandb.init(project=wandb_pj, entity="yinanazhou")
 # train_labels, test_labels = labels[train_idx], labels[test_idx]
 
 # split train and validation set
-train_val_split = StratifiedShuffleSplit(n_splits=1, test_size=0.4, random_state=SEED)
+train_val_split = StratifiedShuffleSplit(n_splits=1, test_size=0.5, random_state=SEED)
 for train_index, test_index in train_val_split.split(inputIdTrain, trainLabels):
     train_inputs, val_inputs = inputIdTrain[train_index], inputIdTrain[test_index]
     train_masks, val_masks = attentionMaskTrain[train_index], attentionMaskTrain[test_index]
@@ -299,11 +299,12 @@ test_sampler = SequentialSampler(test_data)
 test_dataloader = DataLoader(test_data, sampler=test_sampler, batch_size=batch_size)
 
 # model
-model = XLNetForSequenceClassification.from_pretrained("xlnet-base-cased", num_labels=num_labels)
+model = BertForSequenceClassification.from_pretrained("bert-base-cased", num_labels=num_labels)
 model.to(DEVICE)
 
 for name, param in model.named_parameters():
-    if 'transformer' in name and '11' not in name:  # classifier layer
+    # if 'transformer' in name and '11' not in name:  # classifier layer
+    if 'bert' in name and 'pooler' not in name and '11' not in name:
         param.requires_grad = False
 
 # define optimizer
