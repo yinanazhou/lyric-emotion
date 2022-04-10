@@ -6,7 +6,7 @@ import string
 import torch
 import numpy as np
 import logging
-from sklearn.model_selection import RepeatedStratifiedKFold
+from sklearn.model_selection import StratifiedShuffleSplit
 from sklearn import svm
 from sklearn.metrics import fbeta_score, precision_recall_fscore_support, f1_score, accuracy_score
 import argparse
@@ -71,7 +71,7 @@ num_epochs = args.epochs
 MAX_LEN = args.ml
 batch_size = args.bs
 # test_size = args.ts
-model_str = 'All_test_svm_rbf_lc_nr_sr_stem'
+model_str = 'Atest'
 num_labels = 4
 denom = args.adaptive
 remove_stop_words = args.stop
@@ -84,9 +84,9 @@ nr = args.nr
 train_path = "LastFM_full_cleaned.json"
 test_path = "AllMusic_cleaned.json"
 ending_path = ('%s_ml_%d' %(model_str, MAX_LEN))
-if not os.path.exists("LastFM_logs_F1/"):
-    os.mkdir("LastFM_logs_F1/")
-logfile_path = "LastFM_logs_F1/" + ending_path
+if not os.path.exists("LastFM_test_logs_F1/"):
+    os.mkdir("LastFM_test_logs_F1/")
+logfile_path = "LastFM_test_logs_F1/" + ending_path
 logging_storage(logfile_path)
 # result_path = "result_json/" + ending_path
 # if not os.path.exists("MER_result_F1_json/"):
@@ -145,10 +145,22 @@ if remove_stop_words or stemming or lemma:
     for i in range(len(testLyrics)):
         testLyrics[i] = ' '.join(testLyrics[i])
 
+trainLyrics = np.array(trainLyrics)
+trainLabels = np.array(trainLabels)
+testLyrics = np.array(testLyrics)
+testLabels = np.array(testLabels)
+
+# split train and validation set
+train_val_split = StratifiedShuffleSplit(n_splits=1, test_size=0.4, random_state=SEED)
+for train_index, test_index in train_val_split.split(trainLyrics, trainLabels):
+    train_inputs, val_inputs = trainLyrics[train_index], trainLyrics[test_index]
+    train_labels, val_labels = trainLabels[train_index], trainLabels[test_index]
+
 # Convert to vector
 tfidf_vect = TfidfVectorizer(max_features=MAX_LEN, lowercase=lc)
-trainLyrics = tfidf_vect.fit_transform(trainLyrics).toarray()
-testLyrics = tfidf_vect.transform(testLyrics).toarray()
+train_inputs = tfidf_vect.fit_transform(train_inputs).toarray()
+val_inputs = tfidf_vect.transform(val_inputs).toarray()
+test_inputs = tfidf_vect.transform(testLyrics).toarray()
 
 # results = []
 # result_json = {}
@@ -157,8 +169,15 @@ logging.info('-------------------------------------------------')
 logging.info('Test')
 # define model
 model = svm.SVC(kernel="rbf")
-model.fit(trainLyrics, trainLabels)
-pred = model.predict(testLyrics)
-f1 = f1_score(testLabels, pred, average='macro')
-logging.info("F1 = %5.3f" % (f1 * 100))
+model.fit(train_inputs, train_labels)
+
+# validation
+val_pred = model.predict(val_inputs)
+val_f1 = f1_score(val_labels, val_pred, average='macro')
+
+# test
+test_pred = model.predict(test_inputs)
+test_f1 = f1_score(testLabels, test_pred, average='macro')
+
+logging.info("Validation F1 = %5.3f; Test F1 = %5.3f" % (val_f1 * 100, test_f1 * 100))
 
