@@ -167,8 +167,8 @@ num_labels = 4
 denom = args.adaptive
 
 # set path
-train_path = "LastFM_cleaned_train.json"
-test_path = "LastFM_cleaned_test.json"
+train_path = "LastFM_full_cleaned.json"
+test_path = "AllMusic_cleaned.json"
 ending_path = ('%s_%d_bs_%d_lr_%s_es_%i_lc_%s_nr_%s_sr_%s_stem_%s_lemma_%s' %(model_str, MAX_LEN, batch_size,str(lr).replace("-",""), es, lc, nr, stop, stem, lemma))
 model_path = ending_path + '.ckpt'
 if not os.path.exists('test_models/'):
@@ -280,7 +280,7 @@ wandb.init(project=wandb_pj, entity="yinanazhou")
 # train_labels, test_labels = labels[train_idx], labels[test_idx]
 
 # split train and validation set
-train_val_split = StratifiedShuffleSplit(n_splits=1, test_size=0.5, random_state=SEED)
+train_val_split = StratifiedShuffleSplit(n_splits=1, test_size=0.4, random_state=SEED)
 for train_index, test_index in train_val_split.split(inputIdTrain, trainLabels):
     train_inputs, val_inputs = inputIdTrain[train_index], inputIdTrain[test_index]
     train_masks, val_masks = attentionMaskTrain[train_index], attentionMaskTrain[test_index]
