@@ -267,7 +267,7 @@ for fold, (train_idx, test_idx) in enumerate(repeaded_kfold.split(input_ids, lab
     model.to(DEVICE)
 
     for name, param in model.named_parameters():
-        if 'transformer' in name and '11' not in name:  # classifier layer
+        if 'transformer' in name and '11' not in name and '10' not in name:  # classifier layer
             param.requires_grad = False
 
     # define optimizer
